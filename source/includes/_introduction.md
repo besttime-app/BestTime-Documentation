@@ -40,14 +40,14 @@ The forecast results include:
     - Ranking based on the maximum peak of the day
     - Ranking based on the total visitors volume of the day
 - Hour analysis
-    - How busy each our of the day will be (rated from 1 to 5)
+    - How busy each our of the day will be (rated from -2 to +2)
 - Peak analysis
     - Start time of the peak
-    - Max time of the peak
+    - Time of the peak (maximum)
     - End time of the peak
-    - Peak intensity 
+    - Peak intensity (rated from 1 to 5)
 - Surge analysis
-    - What time are most people going to the business
+    - What time are most people going to the business 
     - What time are most people leaving the business
 - Busy hours
     - List of all busy hours per day.
@@ -96,8 +96,9 @@ BestTime.app has several query endpoints:
 
 
 ## Use cases
+A few examples how the analysed data can be used in real world:
+
 - Find the most popular hours of a bar using the peak analysis. This way you will never end up in an empty bar, and never end up in the queue.
 - Find the most quiet gym by comparing multiple gyms in your neighbourhood.
 - Find the best time to go to a museum and avoid the queue.
 - Compare your business with the competitors to find the perfect time to launch an event.
-- 
