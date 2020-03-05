@@ -15,6 +15,11 @@ Besides hour forecasts, additional analysis are included. For example: the peak 
 
 Once a business has been forecasted additional queries can be made on the forecast. For example: When is today's next peak? When will it be quiet on Saturday? How busy will it be next hour? 
 
+
+<aside class="notice">
+In the documentation and the API the word 'venue' is used to indicate a public business. Therefore the word 'venue' and 'business' will be used interchangable.
+</aside>
+
 ## Forecasts
 
 A forecast can be made by giving the name and the approximate address of the public business. BestTime.app will try to find the correct business. If there is enough data available it will analyse the data and create a forecast. 
@@ -102,3 +107,12 @@ A few examples how the analysed data can be used in real world:
 - Find the most quiet gym by comparing multiple gyms in your neighbourhood.
 - Find the best time to go to a museum and avoid the queue.
 - Compare your business with the competitors to find the perfect time to launch an event.
+
+
+## Forecast day window and weekdays
+TODO
+BestTime.app uses 24 hour notation, displayed from `0` to `23`. Where `0` indicates mightnight and `23` indicates 11PM. In real-life 
+Explain day window ranges from 6am till 5am (`hour=6` till `hour=5`). 
+Normal day goes from midnight `hour=0` to 
+besttime.app does only work weekdays instead of days.
+explain 3am is not notated as next day/

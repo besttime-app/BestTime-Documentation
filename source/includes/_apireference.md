@@ -1,6 +1,24 @@
 
 # API Reference
 
+BestTime.app uses API keys to allow access to the API. You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
+
+BestTime.app expects for the API key to be included in all API requests to the server. 
+Our API accepts only JSON-encoded POST request and returns JSON-encoded responses.
+This makes it easier to request business names and addresses without the need to encode the parameters (us you would usually need to do with GET query parameters).
+
+## API Keys 
+
+Authentication for the API is done using API keys.
+
+There are two types of API keys. Private keys to create a new forecast, and public keys to query data from existing forecasted businesses. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, in order to avoid other people from forecasting new businesses and abusing your limited forecast credits. The public key can be used to query existing business forecasts. It can only used get existing forecast data (read-only). 
+
+API keys are generated in pairs, and you can generate multiple API key sets (pairs) in the API key management page. When using multiple API keys, you should remember that you can only query forecasts from the same key set. 
+
+All key sets use credits from the same account. When an API key is compromised you can delete the API key set through the API Key management page.
+
+## Authentication
+
 > To authorize, use this code:
 
 
@@ -49,7 +67,6 @@ $.ajax(settings).done(function (response) {
 });
 ```
 
-
 > The above command returns JSON structured like this:
 
 ```json
@@ -62,60 +79,27 @@ $.ajax(settings).done(function (response) {
   }
 ```
 
-<details>
-  <summary>stuff with *mark* **down**</summary>
-  <p>
-<!-- the above p cannot start right at the beginning of the line and is mandatory for everything else to work -->
-##*formatted* **heading** with [a](link)
-```java
-code block
-```
+### Input attributes
 
-  <details>
-    <summary><small>nested</small> stuff</summary><p>
-<!-- alternative placement of p shown above -->
+- **api_key_private** `string`  
+ 32 Character private API key. Used to create new forecasts or get live data.  
+ &nbsp; 
+- **api_key_public** `string`  
+ 32 Character public API key. Used to query (lookup) specific data from an excisting forecast.  
+ &nbsp;  
 
-* list
-* with
+<aside class="notice">
+Base endpoint: https://BestTime.app/api/v1/
+</aside>
 
- 1. nested
- 1. items
+<aside class="notice">
+HTTP method: POST
+</aside>
 
-    ```java
-    // including code
-    ```
- 1. blocks
-
-  </p></details>
-</p></details>
-
-
-BestTime.app uses API keys to allow access to the API. You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
-
-BestTime.app expects for the API key to be included in all API requests to the server. 
-Our API accepts only JSON-encoded POST request and returns JSON-encoded responses.
-This makes it easier to request business names and addresses without encoding them (for example as GET parameters)
 
 <aside class="notice">
 Make sure to replace <code>e267713ecda84c77a055294dbb12c6d4</code> with your 32 char API key.
 </aside>
-
-## API Keys 
-
-Authentication for the API is done using API keys.
-
-There are two types of API keys. Private keys to create a new forecast, and public keys to query data from existing forecasted businesses. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, in order to avoid other people from forecasting new businesses and abusing your limited forecast credits. The public key can be used to query existing business forecasts. It can only used get existing forecast data (read-only). 
-
-### insert api request with api_key_ examples in json body
-
-API keys are generated in pairs, and you can generate multiple API key sets (pairs) in the API key management page. When using multiple API keys, you should remember that you can only query forecasts from the same key set. 
-
-All key sets use credits from the same account. When an API key is compromised you can delete the API key set through the API Key management page.
-
-## Authentication
-
-<code>api_key_private</code>
-<code>api_key_public</code>
 
 
 ## Credits

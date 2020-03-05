@@ -1,0 +1,56 @@
+{
+    "analysis": [
+        {
+            "busy_hours": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "change_hours": {
+                "most_people_come": 8,
+                "most_people_leave": 0
+            },
+            "day_info": {
+                "day_int": 0,
+                "day_rank_max": 6,
+                "day_rank_mean": 4,
+                "day_text": "Monday",
+                "venue_closed": 4,
+                "venue_open": 4
+            },
+            "hour_analysis": [
+                {
+                    "hour": 6,
+                    "intensity_nr": -1,
+                    "intensity_txt": "Below average"
+                },
+                ...
+            ],
+            "peak_hours": [
+                {
+                    "peak_start": 8,
+                    "peak_max": 11,
+                    "peak_end": 23,
+                    "peak_delta_mean_week": 29,
+                    "peak_intensity": 4
+                }
+            ],
+            "quiet_hours": [
+                6,
+                1,
+                2,
+                3
+            ]
+        },
+        ...
+    ],
+    "epoch_analysis": "1583314752",
+    "status": "OK",
+    "venue_info": {
+        "venue_address": "1201 Ocean Ave San Francisco, CA 94112 United States",
+        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+        "venue_name": "McDonald's",
+        "venue_timezone": "America/Los_Angeles"
+    }
+}}
