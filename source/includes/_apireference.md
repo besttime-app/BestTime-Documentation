@@ -5,13 +5,14 @@ BestTime.app uses API keys to allow access to the API. You can find or generate 
 
 BestTime.app expects for the API key to be included in all API requests to the server. 
 Our API accepts only JSON-encoded POST request and returns JSON-encoded responses.
-This makes it easier to request business names and addresses without the need to encode the parameters (us you would usually need to do with GET query parameters).
+This makes it easier to request venue names and addresses without the need to encode the parameters (us you would usually need to do with GET query parameters).
 
 ## API Keys 
 
 Authentication for the API is done using API keys.
 
-There are two types of API keys. Private keys to create a new forecast, and public keys to query data from existing forecasted businesses. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, in order to avoid other people from forecasting new businesses and abusing your limited forecast credits. The public key can be used to query existing business forecasts. It can only used get existing forecast data (read-only). 
+There are two types of API keys. Private keys to create a new forecast, and public keys to query data from existing forecasted venues. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, in order to avoid other people from forecasting new venues and abusing your limited forecast credits. The public key can be used to query existing venue forecasts. It can only used get existing forecast data (read-only). 
+
 
 API keys are generated in pairs, and you can generate multiple API key sets (pairs) in the API key management page. When using multiple API keys, you should remember that you can only query forecasts from the same key set. 
 
@@ -105,12 +106,12 @@ Make sure to replace <code>e267713ecda84c77a055294dbb12c6d4</code> with your 32 
 ## Credits
 
 There are two types of credits. Forecast credits and query credits. 
-When forecasting a business using the private API key a 'forecast credit' is substracted from your account. When querying an existing forecast a 'query credit' is substracted from your account. 
+When forecasting a venue using the private API key a 'forecast credit' is substracted from your account. When querying an existing forecast a 'query credit' is substracted from your account. 
 
 Forecast credits are substracted when a forecast is succesfully made and saved on the server. It won't substract a forecast query when:
 
-* The business is not found
-* The business is found but it could not be forecasted (when there is not enough data)
+* The venue is not found
+* The venue is found but it could not be forecasted (when there is not enough data)
 * The forecast fails (internal error)
 
 When querying an existing forecast a query credit is subtracted for every request. Each subscription plans contains at least 1000x more query credits than forecast queries. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).
@@ -119,7 +120,7 @@ When querying an existing forecast a query credit is subtracted for every reques
 |------------------------------------|------------------|------------------|-----------------|
 | Create a new forecast              | Forecast credits | Private          | api_key_private |
 | Get live data (platiunum only)     | Forecast credits | Private          | api_key_private |
-| List all forecast by business_id   | None             | Private          | api_key_private |
+| List all forecast by venue_id   | None             | Private          | api_key_private |
 | Query data from existing forecasts | Query credits    | Public           | api_key_public  |
 
 ### Subscription plans

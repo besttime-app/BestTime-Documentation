@@ -3,8 +3,8 @@
 
 Welcome to the BestTime.app documentation! The documentation includes different sections.
 
-* What is BestTime.app
-* API reference
+* What is BestTime.app (see below)
+* [API reference](#api-reference)
 
 
 ## What is BestTime.app?

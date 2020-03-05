@@ -141,13 +141,75 @@ $.ajax(settings).done(function (response) {
 });
 ```
 
-> TODO add JSON example
+> The above request returns a JSON reponse like this:
 
-> TODO update....Click <a href="https://github.com/besttime-app/slate/blob/master/source/examples/forecast_new/forecast_new_response.json" target="_blank">here</a> for the full JSON response
+```json
+  {
+    "busy_hours": [
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "16",
+        "17",
+        "18"
+    ],
+    "day_info": {
+        "day_int": 0,
+        "day_rank_max": 6,
+        "day_rank_mean": 4,
+        "day_text": "Monday",
+        "venue_closed": 4,
+        "venue_open": 4
+    },
+    "day_int": 0,
+    "epoch_analysis": 1583400856,
+    "hour_analysis": [
+        {
+            "hour": 6,
+            "intensity_nr": -1,
+            "intensity_txt": "Below average"
+        },
+        {
+            "hour": 7,
+            "intensity_nr": -1,
+            "intensity_txt": "Below average"
+        },
+        ... other hours hidden. See below for the full JSON response examoke ...
+    ],
+    "peak_hours": [
+        {
+            "peak_delta_mean_week": 29,
+            "peak_end": 23,
+            "peak_intensity": 4,
+            "peak_max": 11,
+            "peak_start": 8
+        }
+    ],
+    "quiet_hours": [
+        "6",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+    ],
+    "surge_hours": {
+        "most_people_come": 8,
+        "most_people_leave": 0
+    },
+    "updated_on": "2020-03-05T09:34:16.836061+00:00",
+    "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+    "venue_name": "McDonald's"
+}
+```
 
-### Input attributes
+> Click <a href="https://github.com/besttime-app/slate/blob/master/source/examples/query_day/query_day_response.json" target="_blank">here</a> for the full JSON response
 
-The 'query week' endpoint is used to retrieve all data from an existing forecast (every day of the week). The response structure is exactly the same as the [new forecast](#new-forecast) response. 
+### Input attributes Query Day
+
+The 'query day' endpoint is used to retrieve all analysis from an existing forecast for a specific day of the week.
 
 - **venue_id** `string` <span style="color:orange">REQUIRED</span>  
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'forecast list' endpoint which shows all previously forecasted venues.
@@ -170,9 +232,6 @@ HTTP method: POST
 
 ### Response attributes
 
-The response attributes are exactly the same as the attributes in the 'new forecast' endpoint.  
- &nbsp;
-See [new forecast reponse attributes](#responseattributesnewforecast)
 
 
 

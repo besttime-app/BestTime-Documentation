@@ -116,6 +116,7 @@ $.ajax(settings).done(function (response) {
     }
 }}
 ```
+
 > Click <a href="https://github.com/besttime-app/slate/blob/master/source/examples/forecast_new/forecast_new_response.json" target="_blank">here</a> for the full JSON response
 
 
