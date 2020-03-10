@@ -146,73 +146,73 @@ HTTP method: POST
 
 ### Response attributes New Forecast <a name="responseattributesnewforecast"></a>
 
-- **analysis** `object`  
- Containing the all the included analytics like 'peak_hours', 'busy_hours', etc.  
+- **analysis** `list`  
+ List with an analysis object for each day of the week, containing analysis like 'peak_hours', 'busy_hours', etc per day. The list contains days `object` and are sorted on day of the week: `day_int` `0` (Monday) to `6` (Sunday).  
  &nbsp; 
- - analysis.**day_info** `object`  
-   Details about the day    
-  &nbsp;
-     - analysis.day_info.**day_int** `int`  
-       Day integer range `0` (Monday) to `6` (Sunday)  
-       &nbsp;
-     - analysis.day_info.**day_rank_max** `int`  
-       Day ranking based on maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
-       &nbsp;
-     - analysis.day_info.**day_rank_mean** `int`  
-       Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least busy day of the week.  
-       &nbsp;
-     - analysis.day_info.**day_text** `string`  
-       Day name. E.g. `monday`  
-       &nbsp;
-     - analysis.day_info.**venue_closed** `int`  
-       Hour of day when the venue closes. Range `0` to `23` hour  
-       &nbsp;
-     - analysis.day_info.**venue_open** `int`  
-       Hour of day when the venue opens. Range `0` to `23` hour  
-       &nbsp;
- - analysis.**hour_analysis** `list`  
-   List with hour objects, containing details per hour.  
-  &nbsp;
-     - analysis.hour_analysis.**hour** `int`  
-       Hour integer range `0` (midnight) to `23` (11pm). Please note that the hour window within a weekday starts at 6AM `hour = 6` and ends at 5AM `hour = 5`. See Introduction section [Forecast day window and weekdays](#forecast-day-window-and-weekdays)  
-       &nbsp;
-     - analysis.hour_analysis.**intensity_nr** `int`  
-       Hour intensity_nr indicates how busy the venue is on a scale of 5, ranging from `-2` to `2`. When the venue is closed at the given hour it indicates `999`. See `intensity_txt` for the textual version of the same scale.  
-       &nbsp;
-     - analysis.hour_analysis.**intensity_txt** `string`  
-       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensit is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.  
-       &nbsp;
- - analysis.**peak_hours** `list`  
-   List with peak objects, containing details of one or multiple peaks per day.  
-  &nbsp;
-     - analysis.peak_hours.**peak_start** `int`  
-       Start hour of the peak, using the 24 hour notation.  
-       &nbsp;
-     - analysis.peak_hours.**peak_max** `int`  
-       Hour of the day when the peak is at its maximum. Using the 24 hour notation.  
-       &nbsp;
-     - analysis.peak_hours.**peak_end** `int`  
-       End hour of the peak, using the 24 hour notation.  
-       &nbsp;
-     - analysis.peak_hours.**peak_intensity** `int`  
-       Intensity of the peak, rated from `1` (minimum) to `5` (maximum)  
-       &nbsp;
-     - analysis.peak_hours.**peak_delta_mean_week** `int`  
-       Percentage how much the peak maximum is above the mean busyness of the week.  
-       &nbsp;
- - analysis.**quiet_hours** `list`  
-   List with quiet hours of the day. The hours are in 24 hour `int` notation.  
-  &nbsp;
- - analysis.**busy_hours** `list`  
+ - analysis[day_int].**busy_hours** `list`  
    List with busy hours of the day. The hours are in 24 hour `int` notation.  
   &nbsp;
- - analysis.**surge_hours** `object`  
+ - analysis[day_int].**day_info** `object`  
+   Details about the day.   
+  &nbsp;
+     - analysis[day_int].day_info.**day_int** `int`  
+       Day integer range `0` (Monday) to `6` (Sunday)  
+       &nbsp;
+     - analysis[day_int].day_info.**day_rank_max** `int`  
+       Day ranking based on maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
+       &nbsp;
+     - analysis[day_int].day_info.**day_rank_mean** `int`  
+       Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least busy day of the week.  
+       &nbsp;
+     - analysis[day_int].day_info.**day_text** `string`  
+       Day name. E.g. `monday`  
+       &nbsp;
+     - analysis[day_int].day_info.**venue_closed** `int`  
+       Hour of day when the venue closes. Range `0` to `23` hour  
+       &nbsp;
+     - analysis[day_int].day_info.**venue_open** `int`  
+       Hour of day when the venue opens. Range `0` to `23` hour  
+       &nbsp;
+ - analysis[day_int].**hour_analysis** `list`  
+   List with hour objects, containing details per hour.  
+  &nbsp;
+     - analysis[day_int].hour_analysis.**hour** `int`  
+       Hour integer range `0` (midnight) to `23` (11pm). Please note that the day window within a weekday starts at 6AM `hour = 6` and ends at 5AM `hour = 5` next day. See Introduction section [Forecast day window and weekdays](#forecast-day-window-and-weekdays)  
+       &nbsp;
+     - analysis[day_int].hour_analysis.**intensity_nr** `int`  
+       Hour intensity_nr indicates how busy the venue is on a scale of 5, ranging from `-2` to `2`. When the venue is closed at the given hour it indicates `999`. See `intensity_txt` for the textual version of the same scale.  
+       &nbsp;
+     - analysis[day_int].hour_analysis.**intensity_txt** `string`  
+       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensit is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.  
+       &nbsp;
+ - analysis[day_int].**peak_hours** `list`  
+   List with peak objects, containing details of one or multiple peaks per day.  
+  &nbsp;
+     - analysis[day_int].peak_hours.**peak_start** `int`  
+       Start hour of the peak, using the 24 hour notation.  
+       &nbsp;
+     - analysis[day_int].peak_hours.**peak_max** `int`  
+       Hour of the day when the peak is at its maximum. Using the 24 hour notation.  
+       &nbsp;
+     - analysis[day_int].peak_hours.**peak_end** `int`  
+       End hour of the peak, using the 24 hour notation.  
+       &nbsp;
+     - analysis[day_int].peak_hours.**peak_intensity** `int`  
+       Intensity of the peak, rated from `1` (minimum) to `5` (maximum)  
+       &nbsp;
+     - analysis[day_int].peak_hours.**peak_delta_mean_week** `int`  
+       Percentage how much the peak maximum is above the mean busyness of the week.  
+       &nbsp;
+ - analysis[day_int].**quiet_hours** `list`  
+   List with quiet hours of the day. The hours are in 24 hour `int` notation.  
+  &nbsp;
+ - analysis[day_int].**surge_hours** `object`  
    Details at which hour most people enter (come) or leave the venue.
   &nbsp;
-     - analysis.surge_hours.**most_people_come** `int`  
+     - analysis[day_int].surge_hours.**most_people_come** `int`  
        Hour when most people come to the venue during the day window. The hours are in 24 hour `int` notation.  
        &nbsp;
-     - analysis.surge_hours.**most_people_leave** `int`  
+     - analysis[day_int].surge_hours.**most_people_leave** `int`  
        Hour when most people leave to the venue during the day window. The hours are in 24 hour `int` notation.  
        &nbsp;
 - **epoch_analysis** `int`  
@@ -224,6 +224,9 @@ HTTP method: POST
 - **venue_info** `object`  
  Details of the forecasted venue.  
  &nbsp; 
+ - venue_info.**venue_name** `string`  
+   Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.  
+  &nbsp;
  - venue_info.**venue_address** `string`  
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
   &nbsp;

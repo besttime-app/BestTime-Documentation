@@ -1,0 +1,15 @@
+{
+    "analysis": {
+        "hour_analysis": {
+            "hour": 23,
+            "intensity_nr": 0,
+            "intensity_txt": "Average"
+        }
+    },
+    "day_int": 3,
+    "epoch_analysis": 1583400856,
+    "forecast_updated_on": "2020-03-05T09:34:16.842662+00:00",
+    "status": "OK",
+    "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+    "venue_name": "McDonald's"
+}

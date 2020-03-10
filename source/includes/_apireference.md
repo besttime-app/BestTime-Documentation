@@ -1,18 +1,23 @@
 
 # API Reference
 
+The API Reference explains how:
+
+- authentication works using the API Keys.
+- credits are handled with your API usage.
+- to create a new venue forecast.
+- to query an existing forecast to get specific, or more detailed data.
+
+## API Key
+
 BestTime.app uses API keys to allow access to the API. You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
 
 BestTime.app expects for the API key to be included in all API requests to the server. 
 Our API accepts only JSON-encoded POST request and returns JSON-encoded responses.
 This makes it easier to request venue names and addresses without the need to encode the parameters (us you would usually need to do with GET query parameters).
 
-## API Keys 
-
 Authentication for the API is done using API keys.
-
 There are two types of API keys. Private keys to create a new forecast, and public keys to query data from existing forecasted venues. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, in order to avoid other people from forecasting new venues and abusing your limited forecast credits. The public key can be used to query existing venue forecasts. It can only used get existing forecast data (read-only). 
-
 
 API keys are generated in pairs, and you can generate multiple API key sets (pairs) in the API key management page. When using multiple API keys, you should remember that you can only query forecasts from the same key set. 
 
@@ -72,15 +77,15 @@ $.ajax(settings).done(function (response) {
 
 ```json
   {
-    'status' : 'OK',
-    'message' : 'Valid api_key_private',
-    'valid': true,
-    'quota_forecasts_remaining' : 300,
-    'quota_queries_remaining' : 1000000
+    "status" : "OK",
+    "message" : "Valid api_key_private",
+    "valid": true,
+    "quota_forecasts_remaining" : 300,
+    "quota_queries_remaining" : 1000000
   }
 ```
 
-### Input attributes
+### Input attributez
 
 - **api_key_private** `string`  
  32 Character private API key. Used to create new forecasts or get live data.  

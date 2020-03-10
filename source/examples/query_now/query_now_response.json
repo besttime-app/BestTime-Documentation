@@ -1,0 +1,20 @@
+{
+    "analysis": {
+        "hour_analysis": {
+            "hour": 11,
+            "intensity_nr": 2,
+            "intensity_txt": "High"
+        }
+    },
+    "day_int": 5,
+    "epoch_analysis": 1583400856,
+    "forecast_updated_on": "2020-03-05T09:34:16.843149+00:00",
+    "status": "OK",
+    "venue_info": {
+        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+        "venue_localtime": "Fri, 06 Mar 2020 09:00:00 GMT",
+        "venue_localtime_iso": "2020-03-06T01:00:00.908668-08:00",
+        "venue_name": "McDonald's",
+        "venue_timezone": "America/Los_Angeles"
+    }
+}

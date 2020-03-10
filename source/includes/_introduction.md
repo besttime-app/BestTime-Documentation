@@ -103,10 +103,16 @@ BestTime.app has several query endpoints:
 ## Use cases
 A few examples how the analysed data can be used in real world:
 
+- Inform visitors what the best time is to visit a venue.
 - Find the most popular hours of a bar using the peak analysis. This way you will never end up in an empty bar, and never end up in the queue.
 - Find the most quiet gym by comparing multiple gyms in your neighbourhood.
+- Compare how multiple chain stores of different brands compete against each other.
 - Find the best time to go to a museum and avoid the queue.
+- Find out of a venue is more crowded than normal at this moment with the live data.
+- Create a dashboard for your venue (e.g. reception, kitchen, etc) to keep your employees informed how busy it is now (live), how busy it will be next hour (forecasted), and when the next peak is coming.
 - Compare your business with the competitors to find the perfect time to launch an event.
+- Marketing: Enrich your retail marketing research reports.
+- Behavioral research: Get insights how people behave in certain areas. E.g. in general gyms tend to peak around 7am and 7pm, restaurants tend to peak around 1pm and 9pm, shops tend to peak around 4pm.
 
 
 ## Forecast day window and weekdays

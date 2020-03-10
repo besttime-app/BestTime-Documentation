@@ -15,6 +15,12 @@ includes:
   - apireference
   - forecastendpoints
   - queryendpoints
+  - queryendpointsweek
+  - queryendpointsday
+  - queryendpointshour
+  - queryendpointshourcurrent
+  - queryendpointspeakhours
+
   - errors
   # - analysisdetails
   # - examples
