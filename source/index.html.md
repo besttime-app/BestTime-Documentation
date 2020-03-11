@@ -20,11 +20,13 @@ includes:
   - queryendpointshour
   - queryendpointshourcurrent
   - queryendpointspeakhours
+  - queryendpointsbusyhours
+  - queryendpointsquiethours
 
-  - errors
+  #- errors
   # - analysisdetails
   # - examples
-  - old
+  #- old
 
 search: true
 ---
