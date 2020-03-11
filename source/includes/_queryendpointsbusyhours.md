@@ -176,11 +176,10 @@ HTTP method: POST
 }
 ```
 
-### Response attributes Query Peaks
-
+### Response attributes Query Busy hours
 
 - **analysis** `object`  
- Containing the all the peak analysis and venue day info.
+ Containing the all the busy hour analysis and venue day info.
  - analysis.**busy_hours** `list`  
    List with busy hour objects, containing details of one or multiple busy periods per day.  
   &nbsp;

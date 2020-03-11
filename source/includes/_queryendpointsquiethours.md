@@ -56,7 +56,7 @@ $.ajax(settings).done(function (response) {
 });
 ```
 
-### Input attributes Query quiet hours
+### Input attributes Query Quiet hours
 
 The 'query quiet hours' endpoint is used to retrieve all quiet hour information from an existing forecast for a specific day of the week.
 By default, the response includes the quiet hour information for the current day (at the local timezone of the venue). 
@@ -164,11 +164,11 @@ HTTP method: POST
 }
 ```
 
-### Response attributes Query Peaks
+### Response attributes Query Quiet hours
 
 
 - **analysis** `object`  
- Containing the all the peak analysis and venue day info.
+ Containing the all the quiet hour analysis and venue day info.
  - analysis.**quiet_hours** `list`  
    List with quiet hour objects, containing details of one or multiple quiet periods per day.  
   &nbsp;

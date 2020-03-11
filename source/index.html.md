@@ -8,6 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://BestTime.app'>BestTime.app</a>
+  - <a href='https://t.me/besttimeapi'>Telegram Group</a>
 
 includes:
   - introduction
@@ -22,6 +23,7 @@ includes:
   - queryendpointspeakhours
   - queryendpointsbusyhours
   - queryendpointsquiethours
+  - queryendpointsurge
 
   #- errors
   # - analysisdetails
