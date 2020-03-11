@@ -59,7 +59,7 @@ $.ajax(settings).done(function (response) {
 ### Input attributes Query Peaks
 
 The 'query peaks' endpoint is used to retrieve all peaks from an existing forecast for a specific day of the week.
-By default the response includes the peak objects for the current day (at the local timezone of the venue) `peak_hours`. Additionally it contains a list with peak objects `peaks_coming` which only contains the peaks from `peak_hours` which have not passed yet.
+By default, the response includes the peak objects for the current day (at the local timezone of the venue) `peak_hours`. Additionally, it contains a list with peak objects `peaks_coming` which only contains the peaks from `peak_hours` which have not passed yet.
 
 - **venue_id** `string` <span style="color:orange">REQUIRED</span>  
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'forecast list' endpoint which shows all previously forecasted venues.  
@@ -83,7 +83,7 @@ HTTP method: POST
 </aside>
 
 
-> The above request returns a JSON reponse like this:
+> The above request returns a JSON response like this:
 
 ```json
 {
@@ -161,7 +161,7 @@ HTTP method: POST
        Day integer range `0` (Monday) to `6` (Sunday)  
        &nbsp;
      - analysis.day_info.**day_rank_max** `int`  
-       Day ranking based on maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
+       Day ranking based on the maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
        &nbsp;
      - analysis.day_info.**day_rank_mean** `int`  
        Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least busy day of the week.  
@@ -248,10 +248,9 @@ HTTP method: POST
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
   &nbsp;
  - venue_info.**venue_id** `string`  
-   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding  result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
+   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
    The `venue_id` is used to perform queries.
   &nbsp;
  - venue_info.**venue_timezone** `string`  
-   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding  result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
-   The `venue_id` is used to perform queries.
+   The timezone of the venue.
   &nbsp;

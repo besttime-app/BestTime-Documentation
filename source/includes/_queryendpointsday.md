@@ -76,7 +76,7 @@ HTTP method: POST
 </aside>
 
 
-> The above request returns a JSON reponse like this:
+> The above request returns a JSON response like this:
 
 ```json
   {
@@ -160,7 +160,7 @@ HTTP method: POST
        Day integer range `0` (Monday) to `6` (Sunday)  
        &nbsp;
      - analysis.day_info.**day_rank_max** `int`  
-       Day ranking based on maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
+       Day ranking based on the maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
        &nbsp;
      - analysis.day_info.**day_rank_mean** `int`  
        Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least busy day of the week.  
@@ -184,7 +184,7 @@ HTTP method: POST
        Hour intensity_nr indicates how busy the venue is on a scale of 5, ranging from `-2` to `2`. When the venue is closed at the given hour it indicates `999`. See `intensity_txt` for the textual version of the same scale.  
        &nbsp;
      - analysis.hour_analysis.**intensity_txt** `string`  
-       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensit is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.  
+       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensity is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.  
        &nbsp;
  - analysis.**peak_hours** `list`  
    List with peak objects, containing details of one or multiple peaks per day.  
@@ -235,11 +235,11 @@ HTTP method: POST
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
   &nbsp;
  - venue_info.**venue_id** `string`  
-   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding  result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
+   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
    The `venue_id` is used to perform queries.
   &nbsp;
  - venue_info.**venue_timezone** `string`  
-   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding  result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
+   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
    The `venue_id` is used to perform queries.
   &nbsp;
 

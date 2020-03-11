@@ -13,15 +13,15 @@ The API Reference explains how:
 BestTime.app uses API keys to allow access to the API. You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
 
 BestTime.app expects for the API key to be included in all API requests to the server. 
-Our API accepts only JSON-encoded POST request and returns JSON-encoded responses.
-This makes it easier to request venue names and addresses without the need to encode the parameters (us you would usually need to do with GET query parameters).
+Our API accepts only JSON-encoded POST requests and returns JSON-encoded responses.
+This makes it easier to request venue names and addresses without the need to encode the parameters (like you would usually need to do with GET query parameters).
 
 Authentication for the API is done using API keys.
-There are two types of API keys. Private keys to create a new forecast, and public keys to query data from existing forecasted venues. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, in order to avoid other people from forecasting new venues and abusing your limited forecast credits. The public key can be used to query existing venue forecasts. It can only used get existing forecast data (read-only). 
+There are two types of API keys; Private keys are used to create a new forecast, and public keys to query data from existing forecasted venues. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, to avoid other people from forecasting new venues and abusing your limited forecast credits. The public key can be used to query existing venue forecasts. However, it can only be used to get existing forecast data (read-only). 
 
 API keys are generated in pairs, and you can generate multiple API key sets (pairs) in the API key management page. When using multiple API keys, you should remember that you can only query forecasts from the same key set. 
 
-All key sets use credits from the same account. When an API key is compromised you can delete the API key set through the API Key management page.
+All key set use credits from the same account. When an API key is compromised you can delete the API key set through the API Key management page.
 
 ## Authentication
 
@@ -111,20 +111,20 @@ Make sure to replace <code>e267713ecda84c77a055294dbb12c6d4</code> with your 32 
 ## Credits
 
 There are two types of credits. Forecast credits and query credits. 
-When forecasting a venue using the private API key a 'forecast credit' is substracted from your account. When querying an existing forecast a 'query credit' is substracted from your account. 
+When forecasting a venue using the private API key a 'forecast credit' is subtracted from your account. When querying an existing forecast a 'query credit' is subtracted from your account. 
 
-Forecast credits are substracted when a forecast is succesfully made and saved on the server. It won't substract a forecast query when:
+Forecast credits are subtracted when a forecast is successfully made and saved on the server. It won't subtract a forecast query when:
 
 * The venue is not found
 * The venue is found but it could not be forecasted (when there is not enough data)
 * The forecast fails (internal error)
 
-When querying an existing forecast a query credit is subtracted for every request. Each subscription plans contains at least 1000x more query credits than forecast queries. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).
+When querying an existing forecast a query credit is subtracted for every request. Each subscription plan contains at least 1000x more query credits than forecast queries. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).
 
 | Goal                               | Credits used     | API Key required | Parameter       |
 |------------------------------------|------------------|------------------|-----------------|
 | Create a new forecast              | Forecast credits | Private          | api_key_private |
-| Get live data (platiunum only)     | Forecast credits | Private          | api_key_private |
+| Get live data (platinum only)     | Forecast credits | Private          | api_key_private |
 | List all forecast by venue_id   | None             | Private          | api_key_private |
 | Query data from existing forecasts | Query credits    | Public           | api_key_public  |
 

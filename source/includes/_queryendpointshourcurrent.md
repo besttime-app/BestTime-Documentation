@@ -80,7 +80,7 @@ HTTP method: POST
 </aside>
 
 
-> The above request returns a JSON reponse like this:
+> The above request returns a JSON response like this:
 
 ```json
 {
@@ -106,5 +106,5 @@ HTTP method: POST
 
 ### Response attributes Query Current Hour
 
-The response attributes are exactly the same as the attributes in the 'query hour' endpoint.
-See [query hour](#query-hour) reponse attributes.
+The response attributes are the same as the attributes in the 'query hour' endpoint.
+See [query hour](#query-hour) response attributes.

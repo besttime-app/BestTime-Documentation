@@ -121,7 +121,7 @@ $.ajax(settings).done(function (response) {
 
 
 The 'new forecast' endpoint is used to create a [forecast](#forecasts) of a venue based on the most recent available data. Forecasts are created using the venue name and address as input. The response includes the forecast (including different analysis), and venue information.
-The venue information includes the `venue_id`. This ID is the primary parameter to lookup previously forecasted venues, using the [query endpoints] (#query-endpoints). Forecast are stored on the server for a certain amount of days (see [data retention](#data-retention))
+The venue information includes the `venue_id`. This ID is the primary parameter to lookup previously forecasted venues, using the [query endpoints] (#query-endpoints). Forecasts are stored on the server for a certain amount of days (see [data retention](#data-retention))
 
 ### Input attributes New Forecast
 
@@ -183,7 +183,7 @@ HTTP method: POST
        Hour intensity_nr indicates how busy the venue is on a scale of 5, ranging from `-2` to `2`. When the venue is closed at the given hour it indicates `999`. See `intensity_txt` for the textual version of the same scale.  
        &nbsp;
      - analysis[day_int].hour_analysis.**intensity_txt** `string`  
-       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensit is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.  
+       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensity is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.  
        &nbsp;
  - analysis[day_int].**peak_hours** `list`  
    List with peak objects, containing details of one or multiple peaks per day.  
@@ -231,7 +231,7 @@ HTTP method: POST
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
   &nbsp;
  - venue_info.**venue_id** `string`  
-   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding  result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
+   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
    The `venue_id` is used to perform queries.
   &nbsp;
 
