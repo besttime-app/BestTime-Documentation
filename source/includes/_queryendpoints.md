@@ -16,33 +16,4 @@ Query endpoints:
 
 ## Query all venues
 
-[{
-        "epoch_analysis": 1583911633,
-        "updated_on": "Wed, 11 Mar 2020 07:27:14 GMT",
-        "venue_address": "1201 Ocean Ave San Francisco, CA 94112 United States",
-        "venue_forecasted": true,
-        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-        "venue_lat": 37.7235448,
-        "venue_lng": -122.455458,
-        "venue_name": "McDonald's",
-        "venue_timezone": "America/Los_Angeles",
-        "venue_week_rank_max": [
-            5,
-            5,
-            1,
-            3,
-            7,
-            6,
-            2
-        ],
-        "venue_week_rank_mean": [
-            5,
-            4,
-            2,
-            2,
-            3,
-            6,
-            7
-        ]
-    }
-]
+TODO
