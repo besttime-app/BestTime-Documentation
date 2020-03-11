@@ -15,10 +15,20 @@ Besides hour forecasts, additional analysis are included. For example, the peak 
 
 Once a business has been forecasted additional queries can be made on the forecast. For example: When is today's next peak? When will it be quiet on Saturday? How busy will it be next hour? 
 
+## Use cases
+Below are a few example use-cases how the analyzed data can be used in real-world:
 
-<aside class="notice">
-In the documentation and the API, the word 'venue' is used to indicate a public business. Therefore the word 'venue' and 'business' will be used interchangeable.
-</aside>
+- Inform visitors what the best time is to visit a venue.
+- Find the most popular hours of a bar using the peak analysis. This way you will never end up in an empty bar, and never end up in the queue.
+- Find the quietest gym by comparing multiple gyms in your neighborhood.
+- Compare how multiple chain stores of different brands compete against each other.
+- Find the best time to go to a museum and avoid the queue.
+- Find out of a venue is more crowded than normal at this moment with the live data.
+- Create a dashboard for your venue (e.g. reception, kitchen, etc) to keep your employees informed how busy it is now (live), how busy it will be next hour (forecasted), and when the next peak is coming.
+- Compare your business with the competitors to find the perfect time to launch an event.
+- Marketing: Enrich your retail marketing research reports.
+- Behavioral research: Get insights on how people behave in certain areas. E.g. in general gyms tend to peak around 7 am and 7 pm, restaurants tend to peak around 1 pm and 9 pm, shops tend to peak around 4 pm.
+
 
 ## Forecasts
 
@@ -98,21 +108,6 @@ BestTime.app has several query endpoints:
 - Query the quiet hours of today (or X days ahead from today)
 - Query the peak hours of today (or X days ahead from today)
 - Query the surge hours of today (or X days ahead from today)
-
-
-## Use cases
-Below are a few example use-cases how the analyzed data can be used in real-world:
-
-- Inform visitors what the best time is to visit a venue.
-- Find the most popular hours of a bar using the peak analysis. This way you will never end up in an empty bar, and never end up in the queue.
-- Find the quietest gym by comparing multiple gyms in your neighborhood.
-- Compare how multiple chain stores of different brands compete against each other.
-- Find the best time to go to a museum and avoid the queue.
-- Find out of a venue is more crowded than normal at this moment with the live data.
-- Create a dashboard for your venue (e.g. reception, kitchen, etc) to keep your employees informed how busy it is now (live), how busy it will be next hour (forecasted), and when the next peak is coming.
-- Compare your business with the competitors to find the perfect time to launch an event.
-- Marketing: Enrich your retail marketing research reports.
-- Behavioral research: Get insights on how people behave in certain areas. E.g. in general gyms tend to peak around 7 am and 7 pm, restaurants tend to peak around 1 pm and 9 pm, shops tend to peak around 4 pm.
 
 
 ## Forecast day window and weekdays
