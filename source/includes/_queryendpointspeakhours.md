@@ -62,7 +62,7 @@ The 'query peaks' endpoint is used to retrieve all peaks from an existing foreca
 By default, the response includes the peak objects for the current day (at the local timezone of the venue) `peak_hours`. Additionally, it contains a list with peak objects `peaks_coming` which only contains the peaks from `peak_hours` which have not passed yet.
 
 - **venue_id** `string` <span style="color:orange">REQUIRED</span>  
- The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'forecast list' endpoint which shows all previously forecasted venues.  
+ The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
  &nbsp; 
 - **hour_step** `int` <span style="color:blue">OPTIONAL</span>  
   Adjust the hour (hour of the venue in the local timezone). E.g. `0` means current hour, and `-2` means two hours ago. Range: min `-12`, max `12`.  
@@ -246,6 +246,11 @@ HTTP method: POST
   &nbsp;
  - venue_info.**venue_address** `string`  
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
+  &nbsp;
+ - venue_info.**venue_current_gmtttime** `string`  
+   Time at the venue in Greenwich Mean Time.  
+ - venue_info.**venue_current_localtime_iso** `string`  
+   Local time at the venue in ISO standard format.  
   &nbsp;
  - venue_info.**venue_id** `string`  
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).

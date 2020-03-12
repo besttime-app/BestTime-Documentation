@@ -59,7 +59,7 @@ $.ajax(settings).done(function (response) {
 The 'query week' endpoint is used to retrieve all data from an existing forecast (every day of the week). The response structure is exactly the same as the [new forecast](#new-forecast) response. 
 
 - **venue_id** `string` <span style="color:orange">REQUIRED</span>  
- The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'forecast list' endpoint which shows all previously forecasted venues.  
+ The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
  &nbsp; 
 - **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
  Public API Key. See more info on [API keys](#api-keys)  

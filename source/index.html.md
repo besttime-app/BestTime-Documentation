@@ -15,7 +15,9 @@ includes:
   # - gettingstarted
   - apireference
   - forecastendpoints
+  - forecastliveendpoints
   - queryendpoints
+  - queryendpointsvenue
   - queryendpointsvenues
   - queryendpointsweek
   - queryendpointsday

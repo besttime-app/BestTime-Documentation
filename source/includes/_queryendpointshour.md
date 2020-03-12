@@ -62,7 +62,7 @@ $.ajax(settings).done(function (response) {
 The 'query hour' endpoint is used to retrieve the 'hour analysis' forecast for the given hour and day of the week.  
 
 - **venue_id** `string` <span style="color:orange">REQUIRED</span>  
- The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'forecast list' endpoint which shows all previously forecasted venues.  
+ The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
  &nbsp; 
 - **day_int** `int` <span style="color:orange">REQUIRED</span>  
  Day of the week. Range `0` (Monday) to `6` (Sunday).  

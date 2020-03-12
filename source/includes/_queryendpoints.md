@@ -6,7 +6,10 @@ The `venue_id` is the primary parameter to query an existing forecast.
 Query endpoints:  
 
 **Venues**
-Query all previously forecasted venues, including venue details.  
+Lists all previously forecaste venues, and venue_id's. 
+
+**Venue**
+Query a forecasted venues, including detailed venue information.  
 
 **Week**
 Query the forecast for the whole week, including all analysis. This gives the same response as the original 'new forecast' endpoint.  
