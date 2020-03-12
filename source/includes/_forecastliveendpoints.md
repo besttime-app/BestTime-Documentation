@@ -76,7 +76,7 @@ When creating a live forecast the normal forecast for the venue will also be upd
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecast/new/
+New forecast endpoint: https://BestTime.app/api/v1/forecast/live/
 </aside>
 
 <aside class="notice">
