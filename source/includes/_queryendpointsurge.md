@@ -180,10 +180,10 @@ HTTP method: POST
        Day integer range `0` (Monday) to `6` (Sunday)  
        &nbsp;
      - analysis.day_info.**day_rank_max** `int`  
-       Day ranking based on the maximum surgeness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most surge day of the week.  
+       Day ranking based on the maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most surge day of the week.  
        &nbsp;
      - analysis.day_info.**day_rank_mean** `int`  
-       Day ranking based on mean surgeness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least surge day of the week.  
+       Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least surge day of the week.  
        &nbsp;
      - analysis.day_info.**day_text** `string`  
        Day name. E.g. `monday`  
@@ -217,5 +217,5 @@ HTTP method: POST
    The `venue_id` is used to perform queries.
   &nbsp;
  - venue_info.**venue_timezone** `string`  
-   The timezone of the venue.
+  The timezone of the venue. E.g. `America/Los Angeles`  
   &nbsp;

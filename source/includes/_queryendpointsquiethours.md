@@ -261,5 +261,5 @@ HTTP method: POST
    The `venue_id` is used to perform queries.
   &nbsp;
  - venue_info.**venue_timezone** `string`  
-   The timezone of the venue.
+   The timezone of the venue. E.g. `America/Los Angeles`  
   &nbsp;

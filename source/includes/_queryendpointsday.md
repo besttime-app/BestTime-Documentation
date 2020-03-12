@@ -239,7 +239,6 @@ HTTP method: POST
    The `venue_id` is used to perform queries.
   &nbsp;
  - venue_info.**venue_timezone** `string`  
-   Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
-   The `venue_id` is used to perform queries.
+   The timezone of the venue. E.g. `America/Los Angeles`  
   &nbsp;
 

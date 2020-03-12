@@ -16,6 +16,7 @@ includes:
   - apireference
   - forecastendpoints
   - queryendpoints
+  - queryendpointsvenues
   - queryendpointsweek
   - queryendpointsday
   - queryendpointshour
