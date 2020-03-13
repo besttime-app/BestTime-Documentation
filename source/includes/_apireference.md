@@ -85,7 +85,7 @@ $.ajax(settings).done(function (response) {
   }
 ```
 
-### Input attributez
+### Input attributes
 
 - **api_key_private** `string`  
  32 Character private API key. Used to create new forecasts or get live data.  

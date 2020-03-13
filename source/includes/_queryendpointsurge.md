@@ -213,7 +213,7 @@ HTTP method: POST
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
   &nbsp;
  - venue_info.**venue_current_gmtttime** `string`  
-   Time at the venue in Greenwich Mean Time.  
+   Time at the venue in Greenwich Mean Time. Adjusting the `hour_step` and `day_step` will also alter this time.  
  - venue_info.**venue_current_localtime_iso** `string`  
    Local time at the venue in ISO standard format.  
   &nbsp;

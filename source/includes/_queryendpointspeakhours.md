@@ -248,9 +248,9 @@ HTTP method: POST
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
   &nbsp;
  - venue_info.**venue_current_gmtttime** `string`  
-   Time at the venue in Greenwich Mean Time.  
+   Time at the venue in Greenwich Mean Time. Adjusting the `hour_step` and `day_step` will also alter this time.  
  - venue_info.**venue_current_localtime_iso** `string`  
-   Local time at the venue in ISO standard format.  
+   Local time at the venue in ISO standard format. Adjusting the `hour_step` and `day_step` will also alter this time.  
   &nbsp;
  - venue_info.**venue_id** `string`  
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
