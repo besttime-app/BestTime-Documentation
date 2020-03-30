@@ -94,8 +94,7 @@ The live forecast endpoint is only available for platinum subscribers.
 {
     "analysis": {
         "venue_forecasted_popularity": 28,
-        "venue_live_forecasted_detla": 0.46,
-        "venue_live_forecasted_detla_pct": "-53%",
+        "venue_live_forecasted_detla": -15,
         "venue_live_popularity": 13,
         "venue_live_popularity_available": true
     },
@@ -110,14 +109,17 @@ The live forecast endpoint is only available for platinum subscribers.
 }
 ```
 
-### Response attributes New Forecast <a name="responseattributesnewforecast"></a>
+### Response attributes Live Forecast <a name="responseattributesnewforecast"></a>
 
 - **analysis** `list`  
+ TODO
  List with an analysis object for each day of the week, containing analysis like 'peak_hours', 'busy_hours', etc per day. The list contains days `object` and are sorted on day of the week: `day_int` `0` (Monday) to `6` (Sunday).  
  &nbsp; 
- - analysis[day_int].**busy_hours** `list`  
-   List with busy hours of the day. The hours are in 24 hour `int` notation.  
-  &nbsp;
+
+ TODO
+
+
+
 - **status** `string`  
  Status of the response. Either `OK` or `Error`.  
  &nbsp; 
