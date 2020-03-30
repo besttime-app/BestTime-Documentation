@@ -73,6 +73,8 @@ $.ajax(settings).done(function (response) {
 });
 ```
 
+You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -80,12 +82,12 @@ $.ajax(settings).done(function (response) {
     "status" : "OK",
     "message" : "Valid api_key_private",
     "valid": true,
-    "quota_forecasts_remaining" : 300,
-    "quota_queries_remaining" : 1000000
+    "credits_forecast" : 300,
+    "credits_query" : 1000000
   }
 ```
 
-### Input attributes
+### Private and public API keys
 
 - **api_key_private** `string`  
  32 Character private API key. Used to create new forecasts or get live data.  
