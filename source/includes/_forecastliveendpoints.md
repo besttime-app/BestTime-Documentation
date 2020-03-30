@@ -8,7 +8,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/forecast/live/"
+url = "https://BestTime.app/api/v1/forecast/live"
 
 headers = {
     'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/forecast/live/' \
+curl --location --request POST 'https://BestTime.app/api/v1/forecast/live' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "venue_name" : "McDonald'\''s",
@@ -38,7 +38,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/forecast/live/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/forecast/live/",
+  "url": "https://BestTime.app/api/v1/forecast/live",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -76,7 +76,7 @@ When creating a live forecast the normal forecast for the venue will also be upd
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecast/live/
+New forecast endpoint: https://BestTime.app/api/v1/forecast/live
 </aside>
 
 <aside class="notice">

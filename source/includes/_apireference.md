@@ -32,7 +32,7 @@ All key set use credits from the same account. When an API key is compromised yo
 import requests
 import json
 
-url = "https://besttime.app/api/v1/"
+url = "https://besttime.app/api/v1"
 
 headers = {
     'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/' \
+curl --location --request POST 'https://besttime.app/api/v1' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"api_key_private": "e267713ecda84c77a055294dbb12c6d4"
@@ -58,7 +58,7 @@ curl --location --request POST 'https://besttime.app/api/v1/' \
 
 ```javascript
 var settings = {
-  "url": "https://besttime.app/api/v1/",
+  "url": "https://besttime.app/api/v1",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -79,11 +79,13 @@ You can find or generate API keys at the [API keys Management](http://besttime.a
 
 ```json
   {
-    "status" : "OK",
-    "message" : "Valid api_key_private",
-    "valid": true,
-    "credits_forecast" : 300,
-    "credits_query" : 1000000
+    "active": true,
+    "api_key_private": "e267713ecda84c77a055294dbb12c6d4",
+    "api_key_public": "e11661721b084d36b8f469a2c012e754",
+    "credits_forecast": 300,
+    "credits_query": 10000000,
+    "status": "OK",
+    "valid": true
   }
 ```
 
@@ -97,7 +99,7 @@ You can find or generate API keys at the [API keys Management](http://besttime.a
  &nbsp;  
 
 <aside class="notice">
-Base endpoint: https://BestTime.app/api/v1/
+Base endpoint: https://BestTime.app/api/v1
 </aside>
 
 <aside class="notice">

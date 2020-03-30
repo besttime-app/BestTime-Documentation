@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/allvenues/"
+url = "https://BestTime.app/api/v1/query/allvenues"
 
 headers = {
     'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/allvenues/' \
+curl --location --request POST 'https://BestTime.app/api/v1/query/allvenues' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
@@ -32,7 +32,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/query/allvenues/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/allvenues/",
+  "url": "https://BestTime.app/api/v1/query/allvenues",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -56,7 +56,7 @@ The 'query venues' endpoint is used to retrieve a list with all previously forec
  &nbsp; 
 
 <aside class="notice">
-Query venues endpoint: https://BestTime.app/api/v1/query/allvenues/
+Query venues endpoint: https://BestTime.app/api/v1/query/allvenues
 </aside>
 
 <aside class="notice">

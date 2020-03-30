@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/venue/"
+url = "https://BestTime.app/api/v1/query/venue"
 
 headers = {
     'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/venue/' \
+curl --location --request POST 'https://BestTime.app/api/v1/query/venue' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
@@ -34,7 +34,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/query/venue/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/venue/",
+  "url": "https://BestTime.app/api/v1/query/venue",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -63,7 +63,7 @@ The 'query venue' endpoint is used to retrieve information about the venue. It d
  &nbsp; 
 
 <aside class="notice">
-Query venues endpoint: https://BestTime.app/api/v1/query/venues/
+Query venues endpoint: https://BestTime.app/api/v1/query/venues
 </aside>
 
 <aside class="notice">

@@ -10,7 +10,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/forecast/new/"
+url = "https://BestTime.app/api/v1/forecast/new"
 
 headers = {
     'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/forecast/new/' \
+curl --location --request POST 'https://BestTime.app/api/v1/forecast/new' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "venue_name" : "McDonald'\''s",
@@ -40,7 +40,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/forecast/new/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/forecast/new/",
+  "url": "https://BestTime.app/api/v1/forecast/new",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -136,7 +136,7 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecast/new/
+New forecast endpoint: https://BestTime.app/api/v1/forecast/new
 </aside>
 
 <aside class="notice">

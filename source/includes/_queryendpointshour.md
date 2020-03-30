@@ -7,7 +7,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/hour/"
+url = "https://BestTime.app/api/v1/query/hour"
 
 headers = {
     'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/hour/' \
+curl --location --request POST 'https://BestTime.app/api/v1/query/hour' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
@@ -39,7 +39,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/query/hour/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/hour/",
+  "url": "https://BestTime.app/api/v1/query/hour",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -75,7 +75,7 @@ The 'query hour' endpoint is used to retrieve the 'hour analysis' forecast for t
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/query/hour/
+New forecast endpoint: https://BestTime.app/api/v1/query/hour
 </aside>
 
 <aside class="notice">

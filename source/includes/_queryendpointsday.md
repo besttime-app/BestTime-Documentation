@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/day/"
+url = "https://BestTime.app/api/v1/query/day"
 
 headers = {
     'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/day/' \
+curl --location --request POST 'https://BestTime.app/api/v1/query/day' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
@@ -36,7 +36,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/query/day/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/day/",
+  "url": "https://BestTime.app/api/v1/query/day",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -68,7 +68,7 @@ The 'query day' endpoint is used to retrieve all analysis from an existing forec
  &nbsp; 
 
 <aside class="notice">
-Query day endpoint: https://BestTime.app/api/v1/query/day/
+Query day endpoint: https://BestTime.app/api/v1/query/day
 </aside>
 
 <aside class="notice">

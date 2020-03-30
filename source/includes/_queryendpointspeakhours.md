@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/peaks/"
+url = "https://BestTime.app/api/v1/query/peaks"
 
 headers = {
     'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/peaks/' \
+curl --location --request POST 'https://BestTime.app/api/v1/query/peaks' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
@@ -38,7 +38,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/query/peaks/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/peaks/",
+  "url": "https://BestTime.app/api/v1/query/peaks",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -75,7 +75,7 @@ By default, the response includes the peak objects for the current day (at the l
  &nbsp; 
 
 <aside class="notice">
-Query peak endpoint: https://BestTime.app/api/v1/query/peaks/
+Query peak endpoint: https://BestTime.app/api/v1/query/peaks
 </aside>
 
 <aside class="notice">

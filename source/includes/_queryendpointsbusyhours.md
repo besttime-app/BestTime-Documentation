@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/busy/"
+url = "https://BestTime.app/api/v1/query/busy"
 
 headers = {
     'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ response_dict = json.loads(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/busy/' \
+curl --location --request POST 'https://BestTime.app/api/v1/query/busy' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
@@ -38,7 +38,7 @@ curl --location --request POST 'https://BestTime.app/api/v1/query/busy/' \
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/busy/",
+  "url": "https://BestTime.app/api/v1/query/busy",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json"
@@ -75,7 +75,7 @@ By default, the response includes the busy hour information for the current day 
  &nbsp; 
 
 <aside class="notice">
-Query busy hours endpoint: https://BestTime.app/api/v1/query/busy/
+Query busy hours endpoint: https://BestTime.app/api/v1/query/busy
 </aside>
 
 <aside class="notice">
