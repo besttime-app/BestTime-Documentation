@@ -144,8 +144,3 @@ The live forecast endpoint is only available for platinum subscribers.
  - venue_info.**venue_timezone** `string`  
   The timezone of the venue. E.g. `America/Los Angeles`.  
   &nbsp;
-
-
-TODO HTTP DELETE method forecast new 
-  
-TODO ADD Live forecast endpoint
