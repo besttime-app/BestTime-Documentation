@@ -64,6 +64,9 @@ By default, the response includes the peak objects for the current day (at the l
 - **venue_id** `string` <span style="color:orange">REQUIRED</span>  
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
  &nbsp; 
+- **day_int** `int` <span style="color:blue">OPTIONAL</span>  
+ Day of the week. Range `0` (Monday) to `6` (Sunday).  
+ &nbsp; 
 - **hour_step** `int` <span style="color:blue">OPTIONAL</span>  
   Adjust the hour (hour of the venue in the local timezone). E.g. `0` means current hour, and `-2` means two hours ago. Range: min `-12`, max `12`.  
  &nbsp; 
