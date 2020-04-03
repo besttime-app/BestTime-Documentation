@@ -10,7 +10,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts/live"
+url = "https://besttime.app/api/v1/forecasts"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
@@ -27,7 +27,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/forecasts/live?
+curl --location --request POST 'https://besttime.app/api/v1/forecasts?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
 venue_name=McDonalds&
 venue_address=Ocean%20Ave%2C%20San%20Fransisco'
@@ -35,7 +35,7 @@ venue_address=Ocean%20Ave%2C%20San%20Fransisco'
 
 ```javascript
 var settings = {
-    "url": "https://besttime.app/api/v1/forecasts/live",
+    "url": "https://besttime.app/api/v1/forecasts",
     "data": {
         'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
         'venue_name': 'McDonalds',
