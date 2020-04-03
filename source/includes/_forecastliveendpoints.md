@@ -85,10 +85,10 @@ The live forecast endpoint is only available for platinum subscribers.
 ```json
 {
     "analysis": {
-        "venue_forecasted_popularity": 28,
-        "venue_live_forecasted_detla": -15,
-        "venue_live_popularity": 13,
-        "venue_live_popularity_available": true
+        "venue_forecasted_busyness": 60,
+        "venue_live_busyness": 20,
+        "venue_live_busyness_available": true,
+        "venue_live_forecasted_detla": -40
     },
     "status": "OK",
     "venue_info": {
@@ -103,15 +103,21 @@ The live forecast endpoint is only available for platinum subscribers.
 
 ### Response attributes Live Forecast <a name="responseattributesnewforecast"></a>
 
-- **analysis** `list`  
- TODO
- List with an analysis object for each day of the week, containing analysis like 'peak_hours', 'busy_hours', etc per day. The list contains days `object` and are sorted on day of the week: `day_int` `0` (Monday) to `6` (Sunday).  
+- **analysis** `object`  
+ Object with live analysis details.  
  &nbsp; 
-
- TODO
-
-
-
+ - analysis.**venue_forecasted_busyness** `int`  
+   Forecasted busyness for this hour, based on the weekly forecast. Ranging from `0` to `100`.  
+  &nbsp;
+ - analysis.**venue_live_busyness** `int`  
+   Live busyness at the venue for current, based on the weekly forecast. Ranging from `0` to `100`.  
+  &nbsp;
+ - analysis.**venue_live_busyness_available** `bool`  
+   Indicates if there is live data available for this venue at this moment.  
+  &nbsp;
+ - analysis.**venue_live_forecasted_detla** `int`  
+   Indicates the difference of the current live busyness versus the forecasted busyness for this hour, in percentage. A negative number indicates that is is less busy then normal, while a positive number indicates that it is busyer than normal. Ranging from `-100` to `100`.  
+  &nbsp;
 - **status** `string`  
  Status of the response. Either `OK` or `Error`.  
  &nbsp; 
@@ -120,9 +126,6 @@ The live forecast endpoint is only available for platinum subscribers.
  &nbsp; 
  - venue_info.**venue_name** `string`  
    Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.  
-  &nbsp;
- - venue_info.**venue_address** `string`  
-   Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
   &nbsp;
  - venue_info.**venue_id** `string`  
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
