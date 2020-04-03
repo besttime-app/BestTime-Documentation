@@ -30,42 +30,26 @@ All key set use credits from the same account. When an API key is compromised yo
 
 ```python
 import requests
-import json
 
-url = "https://besttime.app/api/v1"
+url = "https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122"
 
-headers = {
-    'Content-Type': 'application/json'
-}
+payload = {}
+headers= {}
 
-payload = json.dumps({
-    'api_key_private': 'e267713ecda84c77a055294dbb12c6d4'
-})
+response = requests.request("GET", url, headers=headers, data = payload)
 
-response = requests.request("POST", url, headers=headers, data = payload)
-
-response_dict = json.loads(response.text.encode('utf8'))
+print(response.text.encode('utf8'))
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1' \
---header 'Content-Type: application/json' \
---data-raw '{
-	"api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-}	'
+curl --location --request GET 'https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://besttime.app/api/v1",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    "api_key_private":"e267713ecda84c77a055294dbb12c6d4"
-    }),
+  "url": "https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122",
+  "method": "GET"
 };
 
 $.ajax(settings).done(function (response) {
@@ -80,8 +64,8 @@ You can find or generate API keys at the [API keys Management](http://besttime.a
 ```json
   {
     "active": true,
-    "api_key_private": "e267713ecda84c77a055294dbb12c6d4",
-    "api_key_public": "e11661721b084d36b8f469a2c012e754",
+    "api_key_private": "pri_a00de9e302662c0217a9cf08ab304122",
+    "api_key_public": "pub_e11661721b084d36b8f469a2c012e754",
     "credits_forecast": 300,
     "credits_query": 10000000,
     "status": "OK",
@@ -99,16 +83,16 @@ You can find or generate API keys at the [API keys Management](http://besttime.a
  &nbsp;  
 
 <aside class="notice">
-Base endpoint: https://BestTime.app/api/v1
+Base endpoint: https://BestTime.app/api/v1/keys
 </aside>
 
 <aside class="notice">
-HTTP method: POST
+HTTP method: GET
 </aside>
 
 
 <aside class="notice">
-Make sure to replace <code>e267713ecda84c77a055294dbb12c6d4</code> with your 32 char API key.
+Make sure to replace <code>pri_a00de9e302662c0217a9cf08ab304122</code> with your 36 char private API key.
 </aside>
 
 
@@ -133,4 +117,4 @@ When querying an existing forecast a query credit is subtracted for every reques
 | Query data from existing forecasts | Query credits    | Public           | api_key_public  |
 
 ### Subscription plans
-Credits will be added at the start of every monthly invoice cycle, when you upgrade, or when you buy extra credit bundles (only for selected subscription plans). Credits don't expire and automatically roll over to the next month.
+Credits will be added at the start of every monthly invoice cycle, when you upgrade, or when you buy extra credit bundles (only for selected subscription plans). Credits don't expire and automatically roll over to the next month. If you cancel your subscription coins will stay in your account. However, all your API keys will be deactivated. This means you cannot create new forecasts and query existing forecasts. If you decide to re-subscribe on the same account you can use your old coins, but you cannot access the previous forecasts anymore.

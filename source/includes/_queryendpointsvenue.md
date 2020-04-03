@@ -6,47 +6,36 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/venue"
+url = "https://besttime.app/api/v1/venues/ven_51387131543761435650505241346a394a6432395362654a496843"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754'
 }
 
-payload = json.dumps({
-  	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-    "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-})
+response = requests.request("GET", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/venue' \
---header 'Content-Type: application/json' \
---data-raw '{
-  "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-  "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-}	'
+curl --location --request GET 'https://besttime.app/api/v1/venues/en_51387131543761435650505241346a394a6432395362654a496843&
+api_key_public=pub_e11661721b084d36b8f469a2c012e754'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/venue",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-      "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-    }),
+    "url": "https://besttime.app/api/v1/venues/ven_51387131543761435650505241346a394a6432395362654a496843",
+    "data": {
+        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754'
+    },
+    "method": "GET"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -63,11 +52,11 @@ The 'query venue' endpoint is used to retrieve information about the venue. It d
  &nbsp; 
 
 <aside class="notice">
-Query venues endpoint: https://BestTime.app/api/v1/query/venues
+Query venues endpoint: https://BestTime.app/api/v1/venues
 </aside>
 
 <aside class="notice">
-HTTP method: POST
+HTTP method: GET
 </aside>
 
 
@@ -75,37 +64,15 @@ HTTP method: POST
 
 ```json
 {
-    "analysis": {
-        "week_info": {
-            "day_rank_max": [
-                5,
-                5,
-                1,
-                3,
-                7,
-                6,
-                2
-            ],
-            "day_rank_mean": [
-                5,
-                4,
-                2,
-                2,
-                3,
-                6,
-                7
-            ]
-        }
-    },
-    "epoch_analysis": 1583990338,
-    "forecast_updated_on": "Thu, 12 Mar 2020 05:18:59 GMT",
+    "epoch_analysis": 1585875838,
+    "forecast_updated_on": "Fri, 03 Apr 2020 01:03:58 GMT",
     "status": "OK",
     "venue_forecasted": true,
     "venue_info": {
-        "venue_address": "1201 Ocean Ave San Francisco, CA 94112 United States",
-        "venue_current_gmttime": "Thu, 12 Mar 2020 05:49:15 GMT",
-        "venue_current_localtime_iso": "2020-03-11T22:49:15.899800-07:00",
-        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+        "venue_address": "1201 Ocean Ave San Francisco, CA 94112",
+        "venue_current_gmttime": "Fri, 03 Apr 2020 03:03:51 GMT",
+        "venue_current_localtime_iso": "2020-04-02T20:03:51.063663-07:00",
+        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_lat": 37.7235448,
         "venue_lng": -122.455458,
         "venue_name": "McDonald's",
@@ -118,17 +85,6 @@ HTTP method: POST
 ### Response attributes Query Venue
 The JSON response will contain detailed venue information.
 
-- **analysis** `object`  
- Containing the all the included analytics like 'peak_hours', 'busy_hours', etc for the given day. 
- - analysis.**week_info** `object`  
-   Details about the week    
-  &nbsp;
-     - analysis.week_info.**day_rank_max** `list`  
-       Day ranking list based on the maximum busyness of the day. It contains `int` elements ranging from `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week. The first element represents Monday, and the last element represents Sunday.  
-       &nbsp;
-     - analysis.week_info.**day_rank_mean** `list`  
-       Day ranking list based on mean busyness (total volume) of the day. It contains `int` elements ranging from `1` to `7`. E.g. `7` indicates the least busy day of the week. The first element represents Monday, and the last element represents Sunday.  
-       &nbsp;
 - **epoch_analysis** `int`  
  Epoch timestamp when the forecast was made.  
  &nbsp; 

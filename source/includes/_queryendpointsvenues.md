@@ -6,44 +6,36 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/allvenues"
+url = "https://besttime.app/api/v1/venues"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
 }
 
-payload = json.dumps({
-    "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-})
+response = requests.request("GET", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/allvenues' \
---header 'Content-Type: application/json' \
---data-raw '{
-  "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-}	'
+curl --location --request GET 'https://besttime.app/api/v1/venues?
+api_key_private=pri_50990bf1f8828f6abbf6152013113c6b'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/allvenues",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-      "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-    }),
+    "url": "https://besttime.app/api/v1/venues",
+    "data": {
+        'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
+    },
+    "method": "GET"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -56,11 +48,11 @@ The 'query venues' endpoint is used to retrieve a list with all previously forec
  &nbsp; 
 
 <aside class="notice">
-Query venues endpoint: https://BestTime.app/api/v1/query/allvenues
+Query venues endpoint: https://BestTime.app/api/v1/venues
 </aside>
 
 <aside class="notice">
-HTTP method: POST
+HTTP method: GET
 </aside>
 
 
@@ -71,7 +63,7 @@ HTTP method: POST
     {
         "venue_address": "1201 Ocean Ave San Francisco, CA 94112 United States",
         "venue_forecasted": true,
-        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_name": "McDonald's"
     }
 ]

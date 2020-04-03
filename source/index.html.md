@@ -12,7 +12,6 @@ toc_footers:
 
 includes:
   - introduction
-  # - gettingstarted
   - apireference
   - forecastendpoints
   - forecastliveendpoints
@@ -20,18 +19,18 @@ includes:
   - queryendpointsvenue
   - queryendpointsvenues
   - queryendpointsweek
+  - queryendpointsweekraw
+  - queryendpointsweekoverview
   - queryendpointsday
+  - queryendpointsdayraw
   - queryendpointshour
+  - queryendpointshourraw
   - queryendpointshourcurrent
+  - queryendpointsnowraw
   - queryendpointspeakhours
   - queryendpointsbusyhours
   - queryendpointsquiethours
   - queryendpointsurge
-
-  #- errors
-  # - analysisdetails
-  # - examples
-  #- old
 
 search: true
 ---

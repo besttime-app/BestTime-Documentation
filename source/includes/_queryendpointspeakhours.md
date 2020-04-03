@@ -6,53 +6,43 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/peaks"
+url = "https://besttime.app/api/v1/forecasts/peaks"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843'
+    'day_step': 0,
+    'hour_step': 0
 }
 
-payload = json.dumps({
-  "api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-  "hour_step":1,
-  "day_step":0
-})
+response = requests.request("GET", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/peaks' \
---header 'Content-Type: application/json' \
---data-raw '{
-	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-  "hour_step":1,
-  "day_step":0
-}	'
+curl --location --request GET 'https://besttime.app/api/v1/forecasts/peaks?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
+day_step=0&
+hour_step=0'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/peaks",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	    "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-      "hour_step":1,
-      "day_step":0
-    }),
+    "url": "https://besttime.app/api/v1/forecasts/peaks",
+    "data": {
+        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+        'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
+        'day_step': 0,
+        'hour_step': 0
+    },
+    "method": "GET"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -78,11 +68,11 @@ By default, the response includes the peak objects for the current day (at the l
  &nbsp; 
 
 <aside class="notice">
-Query peak endpoint: https://BestTime.app/api/v1/query/peaks
+Query peak endpoint: https://BestTime.app/api/v1/forecasts/peaks
 </aside>
 
 <aside class="notice">
-HTTP method: POST
+HTTP method: GET
 </aside>
 
 
@@ -145,7 +135,7 @@ HTTP method: POST
     "venue_info": {
         "venue_current_gmttime": "Tue, 10 Mar 2020 22:19:56 GMT",
         "venue_current_localtime_iso": "2020-03-10T15:19:56.979659-07:00",
-        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_name": "McDonald's",
         "venue_timezone": "America/Los_Angeles"
     }

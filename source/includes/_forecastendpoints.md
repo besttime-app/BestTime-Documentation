@@ -10,50 +10,42 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/forecast/new"
+url = "https://besttime.app/api/v1/forecasts/live"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
+    'venue_name': 'McDonalds',
+    'venue_address': 'Ocean Ave, San Fransisco'
 }
 
-payload = json.dumps({
-    "venue_name" : "McDonald's",
-	"venue_address" : "1201 Ocean Ave, San Francisco, CA 94112, United States",
-    'api_key_private': 'e267713ecda84c77a055294dbb12c6d4'
-})
+response = requests.request("POST", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/forecast/new' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "venue_name" : "McDonald'\''s",
-	"venue_address" : "1201 Ocean Ave, San Francisco, CA 94112, United States",
-	"api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-}	'
+curl --location --request POST 'https://besttime.app/api/v1/forecasts/live?
+api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
+venue_name=McDonalds&
+venue_address=Ocean%20Ave%2C%20San%20Fransisco'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/forecast/new",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    "venue_name" : "McDonald's",
-	"venue_address" : "1201 Ocean Ave, San Francisco, CA 94112, United States",
-    "api_key_private":"e267713ecda84c77a055294dbb12c6d4"
-    }),
+    "url": "https://besttime.app/api/v1/forecasts/live",
+    "data": {
+        'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+        'venue_name': 'McDonalds',
+        'venue_address': 'Ocean Ave, San Fransisco'
+    },
+    "method": "POST"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -110,7 +102,7 @@ $.ajax(settings).done(function (response) {
     "status": "OK",
     "venue_info": {
         "venue_address": "1201 Ocean Ave San Francisco, CA 94112 United States",
-        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_name": "McDonald's",
         "venue_timezone": "America/Los_Angeles"
     }
@@ -136,7 +128,7 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecast/new
+New forecast endpoint: https://BestTime.app/api/v1/forecast
 </aside>
 
 <aside class="notice">

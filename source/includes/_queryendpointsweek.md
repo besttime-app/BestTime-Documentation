@@ -6,47 +6,37 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/week"
+url = "https://besttime.app/api/v1/forecasts/week"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
 }
 
-payload = json.dumps({
-    "api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw=="
-})
+response = requests.request("GET", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/week' \
---header 'Content-Type: application/json' \
---data-raw '{
-	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw=="
-}	'
+curl --location --request GET 'https://besttime.app/api/v1/forecasts/week?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/week",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	    "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw=="
-    }),
+    "url": "https://besttime.app/api/v1/forecasts/week",
+    "data": {
+        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+        'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843'
+    },
+    "method": "GET"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -66,11 +56,11 @@ The 'query week' endpoint is used to retrieve all data from an existing forecast
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/query/week
+New forecast endpoint: https://BestTime.app/api/v1/forecasts/week
 </aside>
 
 <aside class="notice">
-HTTP method: POST
+HTTP method: GET
 </aside>
 
 

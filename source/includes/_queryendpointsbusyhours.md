@@ -6,53 +6,40 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/busy"
+url = "https://besttime.app/api/v1/forecasts/busy"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
+    'day_step': 0
 }
 
-payload = json.dumps({
-  "api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-  "hour_step":1,
-  "day_step":0
-})
+response = requests.request("GET", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/busy' \
---header 'Content-Type: application/json' \
---data-raw '{
-	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-  "hour_step":1,
-  "day_step":0
-}	'
+curl --location --request GET 'https://besttime.app/api/v1/forecasts/busy?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
+day_step=0'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/busy",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	    "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-      "hour_step":1,
-      "day_step":0
-    }),
+    "url": "https://besttime.app/api/v1/forecasts/busy",
+    "data": {
+        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+        'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
+        'day_step': 0
+    },
+    "method": "GET"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -67,9 +54,6 @@ By default, the response includes the busy hour information for the current day 
  - **day_int** `int` <span style="color:blue">OPTIONAL</span>  
  Day of the week. Range `0` (Monday) to `6` (Sunday).  
  &nbsp; 
-- **hour_step** `int` <span style="color:blue">OPTIONAL</span>  
-  Adjust the hour (hour of the venue in the local timezone). E.g. `0` means current hour, and `-2` means two hours ago. Range: min `-12`, max `12`.  
- &nbsp; 
 - **day_step** `int` <span style="color:blue">OPTIONAL</span>  
   Adjust the day (day of week of the venue in the local timezone). E.g. `0` means current day, and `1` means tomorrow. Range: min `-31`, max `31`.  
  &nbsp;  
@@ -78,11 +62,11 @@ By default, the response includes the busy hour information for the current day 
  &nbsp; 
 
 <aside class="notice">
-Query busy hours endpoint: https://BestTime.app/api/v1/query/busy
+Query busy hours endpoint: https://BestTime.app/api/v1/forecasts/busy
 </aside>
 
 <aside class="notice">
-HTTP method: POST
+HTTP method: GET
 </aside>
 
 

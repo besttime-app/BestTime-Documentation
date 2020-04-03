@@ -6,50 +6,40 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/query/day"
+url = "https://besttime.app/api/v1/forecasts/day"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
+    'day_int': 3
 }
 
-payload = json.dumps({
-    "api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-    "day_int": 3
-})
+response = requests.request("GET", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/query/day' \
---header 'Content-Type: application/json' \
---data-raw '{
-	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	"venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-    "day_int": 3
-}	'
+curl --location --request GET 'https://besttime.app/api/v1/forecasts/day?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
+day_int=3'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/query/day",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    	"api_key_public": "352a9addc0ac4c599572e56f504080d3",
-	    "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
-        "day_int": 3
-    }),
+    "url": "https://besttime.app/api/v1/forecasts/day",
+    "data": {
+        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+        'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
+        'day_int': 3
+    },
+    "method": "GET"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -68,11 +58,11 @@ The 'query day' endpoint is used to retrieve all analysis from an existing forec
  &nbsp; 
 
 <aside class="notice">
-Query day endpoint: https://BestTime.app/api/v1/query/day
+Query day endpoint: https://BestTime.app/api/v1/forecasts/day
 </aside>
 
 <aside class="notice">
-HTTP method: POST
+HTTP method: GET
 </aside>
 
 
@@ -138,7 +128,7 @@ HTTP method: POST
   "epoch_analysis": 1583400856,
   "forecast_updated_on": "2020-03-05T09:34:16.836061+00:00",
   "status": "OK",
-  "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+  "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
   "venue_name": "McDonald's"
 }
 ```

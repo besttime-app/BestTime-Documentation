@@ -8,50 +8,42 @@
 import requests
 import json
 
-url = "https://BestTime.app/api/v1/forecast/live"
+url = "https://besttime.app/api/v1/forecasts/"
 
-headers = {
-    'Content-Type': 'application/json'
+params = {
+    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
+    'venue_name': 'McDonalds',
+    'venue_address': 'Ocean Ave, San Fransisco'
 }
 
-payload = json.dumps({
-    "venue_name" : "McDonald's",
-	  "venue_address" : "1201 Ocean Ave, San Francisco, CA 94112, United States",
-    'api_key_private': 'e267713ecda84c77a055294dbb12c6d4'
-})
+response = requests.request("POST", url, params=params)
 
-response = requests.request("POST", url, headers=headers, data = payload)
+data = json.loads(response.text)
 
-response_dict = json.loads(response.text.encode('utf8'))
+print(data)
 ```
 
 ```shell
 # cURL
-curl --location --request POST 'https://BestTime.app/api/v1/forecast/live' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "venue_name" : "McDonald'\''s",
-	  "venue_address" : "1201 Ocean Ave, San Francisco, CA 94112, United States",
-	  "api_key_private": "e267713ecda84c77a055294dbb12c6d4"
-}	'
+curl --location --request POST 'https://besttime.app/api/v1/forecasts?
+api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
+venue_name=McDonalds&
+venue_address=Ocean%20Ave%2C%20San%20Fransisco'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://BestTime.app/api/v1/forecast/live",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    "venue_name" : "McDonald's",
-	  "venue_address" : "1201 Ocean Ave, San Francisco, CA 94112, United States",
-    "api_key_private":"e267713ecda84c77a055294dbb12c6d4"
-    }),
+    "url": "https://besttime.app/api/v1/forecasts",
+    "data": {
+        'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+        'venue_name': 'McDonalds',
+        'venue_address': 'Ocean Ave, San Fransisco'
+    },
+    "method": "POST"
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
+    console.log(response);
 });
 ```
 
@@ -102,7 +94,7 @@ The live forecast endpoint is only available for platinum subscribers.
     "venue_info": {
         "venue_current_gmttime": "Thu, 12 Mar 2020 13:05:53 GMT",
         "venue_current_localtime_iso": "2020-03-12T06:05:53.948572-07:00",
-        "venue_id": "wqXCm8K8wr7DmcKTw4BsU8KWemrCo8KWdMOFw4TDhMKHwrDClFjChmHConHCsw==",
+        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_name": "McDonald's",
         "venue_timezone": "America/Los_Angeles"
     }

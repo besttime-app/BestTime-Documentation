@@ -51,7 +51,9 @@ A forecast is usually created within a few seconds and responds with all primary
 
 The forecast results include:
 
-- Week analysis with a ranking of most busy days of the week
+- Week analysis
+    - Peak busyness per day percentage
+    - Average busyness (volume) per day percentage
     - Ranking based on the maximum peak of the day
     - Ranking based on the total visitor's volume of the day
 - Hour analysis
@@ -69,8 +71,11 @@ The forecast results include:
 - Quiet hours
     - List of all quiet hours per day.
 
-- Live analysis (Only for selected subscription plans)
+Platinum features:
+
+- Live analysis
     - How much more or less busy is this business now (live) compared to the historical average for this hour and day.
+- Raw week, day, and hour busyness percentage data.
 
 ### Relative numbers
 
@@ -111,9 +116,5 @@ BestTime.app has several query endpoints:
 
 
 ## Forecast day window and weekdays
-TODO
-BestTime.app uses 24-hour notation, displayed from `0` to `23`. Where `0` indicates midnight and `23` indicates 11 pm. In real-life 
-Explain day window ranges from 6 am till 5 am (`hour=6` till `hour=5`). 
-Normal day goes from midnight `hour = 0` to 
-besttime.app does only work weekdays instead of days.
-explain 3am is not notated as next day/
+BestTime.app uses 24-hour notation, displayed from `0` to `23`. Where `0` indicates midnight and `23` indicates 11 pm. 
+To make forecasts more useful in real-life the window for one day has been set from 6 am until 5 am next day. This is for example useful for public venues with late opening times like bars and nightclubs. If you query for example the data for a Monday. The result includes the hours for Monday 6 am until Tuesday 5 am.
