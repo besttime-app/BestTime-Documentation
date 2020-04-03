@@ -71,16 +71,21 @@ The now raw endpoint is only available for platinum subscribers.
 
 ```json
 {
-    "analysis": {
-        "hour_analysis_raw": 70
+  "analysis": {
+    "hour_analysis": {
+      "hour": 16,
+      "intensity_nr": 0,
+      "intensity_txt": "Average"
     },
-    "epoch_analysis": 1585875838,
-    "forecast_updated_on": "2020-04-03T01:03:58.685394+00:00",
-    "status": "OK",
-    "venue_info": {
-        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
-        "venue_name": "McDonald's"
-    }
+    "hour_raw": 70
+  },
+  "epoch_analysis": 1585890444,
+  "forecast_updated_on": "2020-04-03T05:07:26.012357+00:00",
+  "status": "OK",
+  "venue_info": {
+    "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
+    "venue_name": "McDonald's"
+  }
 }
 ```
 
