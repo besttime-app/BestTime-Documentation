@@ -188,7 +188,7 @@ The JSON response will contain a `list` with venue `objects`.
     Day integer range `0` (Monday) to `6` (Sunday)  
     &nbsp;
   - venues[N].**day_raw** `list`  
-    List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.
+    List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.  
     &nbsp;
   - venues[N].**venue_address** `string`  
    Address of the venue. This is the address of the venue as found by the geocoding lookup.  
