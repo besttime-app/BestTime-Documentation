@@ -61,19 +61,37 @@ data = json.loads(response.text)
 print(data)
 ```
 
-# TODO
-```shell
+<!-- ```shell
 # cURL
 curl --location --request GET 'https://besttime.app/api/v1/venues?
-api_key_private=pri_50990bf1f8828f6abbf6152013113c6b'
-```
+    api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
+    busy_min=50&
+    busy_max=100,
+    hour_min=18,
+    hour_max=23,
+    now=false,
+    live=false,
+    types': ['BAR','CAFE','NIGHTCLUB'],
+    lat': 51.5121172,
+    lng': -0.126173,
+    radius': 2000
+``` -->
 
-# TODO
 ```javascript
 var settings = {
     "url": "https://besttime.app/api/v1/venues",
     "data": {
-        'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
+            'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+            'busy_min': 50,
+            'busy_max': 100,
+            'hour_min': 18,
+            'hour_max': 23,
+            'now': false,
+            'live': false,
+            'types': ['BAR','CAFE','NIGHTCLUB'],
+            'lat': 51.5121172,
+            'lng': -0.126173,
+            'radius': 2000
     },
     "method": "GET"
 };

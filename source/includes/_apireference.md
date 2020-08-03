@@ -1,5 +1,5 @@
 
-# <a name="api-keys"></a> API Reference
+# API Reference
 
 The API Reference explains how:
 
@@ -8,7 +8,7 @@ The API Reference explains how:
 - to create a new venue forecast.
 - to query an existing forecast to get specific, or more detailed data.
 
-## API Key
+## <a name="api-keys"></a> API Key
 
 BestTime.app uses API keys to allow access to the API. You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
 
