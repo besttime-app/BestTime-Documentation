@@ -107,7 +107,13 @@ The peak-, surge-, busy-, quiet analysis query responses include the time remain
 ### Query analysis
 BestTime.app has several query endpoints:
 
-- Query the whole original forecast (includes all analysis)
+Venue queries:
+- Query the details of a specific venue
+- Query all forecasted venues
+- Query all venues matching the busyness, location, time & day, and/or type filter
+
+Forecast of a single venue queries:
+- Query the whole original forecast (includes all analysis) of a venue
 - Query a specific day of the week (includes all analysis)
 - Query a specific hour of the day 
 - Query the current hour of the business with the local business timezone taken into account (or X hours ahead from the current hour)
