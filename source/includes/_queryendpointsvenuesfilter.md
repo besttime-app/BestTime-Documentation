@@ -127,7 +127,7 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
   &nbsp; 
 
 <aside class="notice">
-Query venues endpoint: https://BestTime.app/api/v1/venues/filter
+Query filtered venues endpoint: https://BestTime.app/api/v1/venues/filter
 </aside>
 
 <aside class="notice">
