@@ -6,7 +6,10 @@ The `venue_id` is the primary parameter to query an existing forecast.
 Query endpoints:  
 
 **Venues**
-Lists all previously forecasted venues, and venue_id's. 
+Lists all previously forecasted venues, and venue_id's.
+
+**Venues filtered (Radar)**
+Query the venues that match the busyness, location, time, day and type filter.
 
 **Venue**
 Query a forecasted venue, with detailed venue information.  
