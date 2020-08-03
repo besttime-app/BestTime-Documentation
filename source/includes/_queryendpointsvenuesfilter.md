@@ -1,38 +1,6 @@
-## Venue Filter (Radar)
+## Query filtered venues (Radar)
 
 > Filter forecasted venues on busyness, location, type, day, and time.
-
-
-    # busy filters
-    busy_min = fields.Integer(validate=validate.Range(
-        min=0, max=100), load_only=True)
-    busy_max = fields.Integer(validate=validate.Range(
-        min=0, max=100), load_only=True)
-
-    # datetime filters
-    hour_min = fields.Integer(validate=validate.Range(
-        min=0, max=23), load_only=True)
-    hour_max = fields.Integer(validate=validate.Range(
-        min=0, max=23), load_only=True)
-    day_int = fields.Integer(validate=validate.Range(
-        min=0, max=6), load_only=True)
-    now = fields.Boolean(load_only=True)
-    live = fields.Boolean(load_only=True)
-
-    types = fields.String(required=False, load_only=True)
-
-    # radius params filters
-    lat = fields.Float(required=False, load_only=True)
-    lng = fields.Float(required=False, load_only=True)
-    radius = fields.Integer(validate=validate.Range(
-        min=0, max=100000), load_only=True)
-
-    # bounding box params filters
-    lat_min = fields.Float(required=False, load_only=True)
-    lat_max = fields.Float(required=False, load_only=True)
-    lng_min = fields.Float(required=False, load_only=True)
-    lng_max = fields.Float(required=False, load_only=True)
-
 
 ```python
 import requests
