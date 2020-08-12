@@ -75,9 +75,9 @@ This API endpoint is currently in beta and expected to be released in August 202
 
 ### Input attributes Venue Filter
 
-The 'venue filter' endpoint will return all venues and the raw forecasted busyness data that meet the filter requirements. Venues can be filtered on how busy they are, on  location, type of venue, day & time range, or a combination. This could be usefull to for e.g. find all busy bar's, cafe's and nightclubs, between 6pm and 11pm in a specific neighbourhood. The filter will only return venues that are forecasted with the given private API key.
+The 'venue filter' endpoint will return all venues and the raw forecasted busyness data that meet the filter requirements. Venues can be filtered on how busy they are, on  location, type of venue, day & time range, or a combination. This could be useful to for e.g. find all busy bars, cafes and nightclubs, between 6pm and 11pm in a specific neighborhood. The filter will only return venues that are forecasted with the given private API key.
 
-The BestTime ['Radar'](https://besttime.app/api/v1/radar/filter) tool is using the same API endpoint to show all venues that meet the filter criterea on a (heat)map. 
+The BestTime ['Radar'](https://besttime.app/api/v1/radar/filter) tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map. 
 
 This query endpoint requires the private API key. Although the private API keys is used, this endpoint will be charged with query credits.
 
@@ -100,22 +100,22 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
  Day of the week. Range `0` (Monday) to `6` (Sunday). Will default to current day in local time of the first found venue that meets the filter. Cannot be used in combination with the `now` and `live` parameters set to be `true`.
  &nbsp; 
 - **now** `bool` <span style="color:blue">OPTIONAL</span>  
- Sets the time and day filter to the current day and hour in local time. The localtime of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `live`, `day_int`, `hour_min`, and `hour_max` parameters.  
+ Sets the time and day filter to the current day and hour in local time. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `live`, `day_int`, `hour_min`, and `hour_max` parameters.  
  &nbsp; 
 - **live** `bool` <span style="color:blue">OPTIONAL</span>  
- Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Vennues without live data will be filtered out. The localtime of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
+ Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
  &nbsp; 
 - **types** `list` <span style="color:blue">OPTIONAL</span>  
  Filters on one or more venue types. All types are selected if the `types` parameter is ommited. Possible types are `['APPAREL', 'ARTS', 'BANKING', 'BAR', 'BOTANICAL_GARDEN', 'CAFE', 'CAR_RENTAL', 'CHURCH', 'CITY_HALL', 'COFFEE', 'DENTIST', 'DOCTOR', 'EMBASSY', 'EVENT_VENUE', 'FAST_FOOD', 'FOOD_AND_DRINK', 'FOOD_DELIVERY', 'GAS_STATION', 'GOVERNMENT', 'GROCERY', 'LODGING','MARKET', 'MOVIE_THEATER', 'MUSEUM', 'Other', 'PARK', 'PERFORMING_ARTS', 'PERSONAL_CARE', 'PHARMACY', 'PUBLIC_TRANSIT', 'RESTAURANT', 'SCHOOL', 'SHOPPING', 'SKILL_INSTRUCTION', 'SPA', 'SPORTS_COMPLEX', 'SUPERMARKET', 'TEA', 'TOURIST_DESTINATION', 'VISITOR_CENTER']`  
  &nbsp; 
 - **lat** `float` <span style="color:blue">OPTIONAL</span>  
-   Geographic latitude of the search circle. `lat` must be combined with `lng`, and `radius`. The search cirlce cannot be combined with the bounding box parameters.  
+   Geographic latitude of the search circle. `lat` must be combined with `lng`, and `radius`. The search circle cannot be combined with the bounding box parameters.  
   &nbsp;
 - **lng** `float` <span style="color:blue">OPTIONAL</span>  
-   Geographic longitude of the search circle.  `lng` must be combined with `lat`, and `radius`. The search cirlce cannot be combined with the bounding box parameters.  
+   Geographic longitude of the search circle.  `lng` must be combined with `lat`, and `radius`. The search circle cannot be combined with the bounding box parameters.  
   &nbsp; 
 - **radius** `int` <span style="color:blue">OPTIONAL</span>  
-   Radius of the search circle in meter.  `radius` must be combined with `lat`, and `lng`. The search cirlce cannot be combined with the bounding box parameters.  
+   Radius of the search circle in meter.  `radius` must be combined with `lat`, and `lng`. The search circle cannot be combined with the bounding box parameters.  
   &nbsp; 
 - **lat_min** `float` <span style="color:blue">OPTIONAL</span>  
    Minimum latitude of the bounding box (South-West). `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters.  
