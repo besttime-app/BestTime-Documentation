@@ -1,6 +1,6 @@
 ## Query filtered venues (Radar)
 
-> Filter forecasted venues on busyness, location, type, day, and time.
+> Filter forecasted venues on busyness, location, type, day, and time. 
 
 ```python
 import requests
@@ -68,6 +68,10 @@ $.ajax(settings).done(function (response) {
     console.log(response);
 });
 ```
+
+<aside class="warning">
+This API endpoint is currently in beta and expected to be released in August 2020.
+</aside>
 
 ### Input attributes Venue Filter
 
