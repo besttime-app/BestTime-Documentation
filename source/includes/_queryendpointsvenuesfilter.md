@@ -85,7 +85,10 @@ The endpoint will only return venues that have been forecasted before with the p
 
 To prevent manually adding all venues in a specific area (e.g. neighborhood or city) the 'Add Area' tool can be used (expected to be released in August 2020). Using this tool the user can define a geographical bounding box, select multiple desired types of venues (e.g. supermarkets, gyms, restaurants, etc). Under the hood it uses the Google Maps Nearby API to discover venues in the defined area (you will need a Google Maps API key). This geocoder has currently the biggest database and gives the best results.
 
-![Radar tool (Venue filter)](images/radar-venue-filter-small.jpg)
+Radar tool (which is using this 'venue filter' endpoint) 
+<a href="http://example.com/" target="_blank">
+  <img alt="Radar tool (Venue filter)" src="images/radar-venue-filter-small.jpg">
+</a>
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
  Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-keys)  
