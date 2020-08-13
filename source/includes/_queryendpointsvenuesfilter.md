@@ -77,9 +77,15 @@ This API endpoint is currently in beta and expected to be released in August 202
 
 The 'venue filter' endpoint will return all venues and the raw forecasted busyness data that meet the filter requirements. Venues can be filtered on how busy they are, on  location, type of venue, day & time range, or a combination. This could be useful to for e.g. find all busy bars, cafes and nightclubs, between 6pm and 11pm in a specific neighborhood. The filter will only return venues that are forecasted with the given private API key.
 
-The BestTime ['Radar'](https://besttime.app/api/v1/radar/filter) tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map. 
-
 This query endpoint requires the private API key. Although the private API keys is used, this endpoint will be charged with query credits.
+
+The BestTime ['Radar'](https://besttime.app/api/v1/radar/filter) tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map (scheduled to be released in August 2020).
+
+The endpoint will only return venues that have been forecasted before with the provided `api_key_private`. The user can manually add each desired venue individually through the BestTime API, or can use an external API service with public business (like Google Maps Places Nearby search, Here.com, Fouresquare Venues, or Factual Places). Using the external service places in a certain area can be discovered and the results (venue name and address) can be fed into the BestTime API. 
+
+To prevent manually adding all venues in a specific area (e.g. neighborhood or city) the 'Add Area' tool can be used (expected to be released in August 2020). Using this tool the user can define a geographical bounding box, select multiple desired types of venues (e.g. supermarkets, gyms, restaurants, etc). Under the hood it uses the Google Maps Nearby API to discover venues in the defined area (you will need a Google Maps API key). This geocoder has currently the biggest database and gives the best results.
+
+![Radar tool (Venue filter)](images/radar-venue-filter-small.jpg)
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
  Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-keys)  
