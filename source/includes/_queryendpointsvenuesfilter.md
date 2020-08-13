@@ -79,7 +79,7 @@ The 'venue filter' endpoint will return all venues and the raw forecasted busyne
 
 This query endpoint requires the private API key. Although the private API keys is used, this endpoint will be charged with query credits.
 
-The BestTime ['Radar'](https://besttime.app/api/v1/radar/filter) tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map (scheduled to be released in August 2020).
+The BestTime Radar tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map (scheduled to be released in August 2020).
 
 The endpoint will only return venues that have been forecasted before with the provided `api_key_private`. The user can manually add each desired venue individually through the BestTime API, or can use an external API service with public business (like Google Maps Places Nearby search, Here.com, Fouresquare Venues, or Factual Places). Using the external service places in a certain area can be discovered and the results (venue name and address) can be fed into the BestTime API. 
 
