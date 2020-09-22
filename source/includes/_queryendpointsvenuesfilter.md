@@ -29,42 +29,30 @@ data = json.loads(response.text)
 print(data)
 ```
 
-<!-- ```shell
+```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues?
-    api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
-    busy_min=50&
-    busy_max=100,
-    hour_min=18,
-    hour_max=23,
-    now=false,
-    live=false,
-    types': ['BAR','CAFE','NIGHTCLUB'],
-    lat': 51.5121172,
-    lng': -0.126173,
-    radius': 2000
-``` -->
+curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
+```
 
 ```javascript
-var settings = {
-    "url": "https://besttime.app/api/v1/venues",
-    "data": {
-            'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-            'busy_min': 50,
-            'busy_max': 100,
-            'hour_min': 18,
-            'hour_max': 23,
-            'now': false,
-            'live': false,
-            'types': ['BAR','CAFE','NIGHTCLUB'],
-            'lat': 51.5121172,
-            'lng': -0.126173,
-            'radius': 2000
-    },
-    "method": "GET"
-};
+var params = {
+    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+    'busy_min': 50,
+    'busy_max': 100,
+    'hour_min': 18,
+    'hour_max': 23,
+    'now': false,
+    'live': false,
+    'types': ['BAR','CAFE','NIGHTCLUB'],
+    'lat': 51.5121172,
+    'lng': -0.126173,
+    'radius': 2000
+}
 
-$.ajax(settings).done(function (response) {
+$.ajax({
+"url": "https://besttime.app/api/v1/venues/filter?" + new URLSearchParams(params),
+"method": "GET"
+}).done(function (response) {
     console.log(response);
 });
 ```

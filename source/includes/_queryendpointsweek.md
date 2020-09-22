@@ -26,16 +26,15 @@ curl --location --request GET 'https://besttime.app/api/v1/forecasts/week?api_ke
 ```
 
 ```javascript
-var settings = {
-    "url": "https://besttime.app/api/v1/forecasts/week",
-    "data": {
-        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
-        'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843'
-    },
-    "method": "GET"
-};
+var params = {
+    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843'
+}
 
-$.ajax(settings).done(function (response) {
+$.ajax({
+"url": "https://besttime.app/api/v1/forecasts/week?" + new URLSearchParams(params),
+"method": "GET"
+}).done(function (response) {
     console.log(response);
 });
 ```
@@ -56,7 +55,7 @@ The 'query week' endpoint is used to retrieve all data from an existing forecast
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecasts/week
+Week forecast endpoint: https://BestTime.app/api/v1/forecasts/week
 </aside>
 
 <aside class="notice">

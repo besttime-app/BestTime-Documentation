@@ -26,15 +26,10 @@ api_key_public=pub_e11661721b084d36b8f469a2c012e754'
 ```
 
 ```javascript
-var settings = {
-    "url": "https://besttime.app/api/v1/venues/ven_51387131543761435650505241346a394a6432395362654a496843",
-    "data": {
-        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754'
-    },
-    "method": "GET"
-};
-
-$.ajax(settings).done(function (response) {
+$.ajax({
+"url": "https://besttime.app/api/v1/venues/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_public=pub_e11661721b084d36b8f469a2c012e754",
+"method": "GET"
+}).done(function (response) {
     console.log(response);
 });
 ```
@@ -52,7 +47,7 @@ The 'query venue' endpoint is used to retrieve information about the venue. It d
  &nbsp; 
 
 <aside class="notice">
-Query venues endpoint: https://BestTime.app/api/v1/venues
+Query venue endpoint: https://BestTime.app/api/v1/venues/<venue_id>
 </aside>
 
 <aside class="notice">

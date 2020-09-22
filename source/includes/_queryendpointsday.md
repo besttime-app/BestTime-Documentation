@@ -28,17 +28,16 @@ day_int=3'
 ```
 
 ```javascript
-var settings = {
-    "url": "https://besttime.app/api/v1/forecasts/day",
-    "data": {
-        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
-        'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
-        'day_int': 3
-    },
-    "method": "GET"
-};
+var params = {
+   'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
+    'day_int': 3
+}
 
-$.ajax(settings).done(function (response) {
+$.ajax({
+"url": "https://besttime.app/api/v1/forecasts/day?" + new URLSearchParams(params),
+"method": "GET"
+}).done(function (response) {
     console.log(response);
 });
 ```

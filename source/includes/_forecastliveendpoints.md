@@ -32,17 +32,16 @@ venue_address=Ocean%20Ave%2C%20San%20Fransisco'
 ```
 
 ```javascript
-var settings = {
-    "url": "https://besttime.app/api/v1/forecasts/live",
-    "data": {
-        'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-        'venue_name': 'McDonalds',
-        'venue_address': 'Ocean Ave, San Fransisco'
-    },
-    "method": "POST"
-};
+var params = {
+    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+    'venue_name': 'McDonalds',
+    'venue_address': 'Ocean Ave, San Fransisco'
+}
 
-$.ajax(settings).done(function (response) {
+$.ajax({
+"url": "https://besttime.app/api/v1/forecasts/live?" + new URLSearchParams(params),
+"method": "POST"
+}).done(function (response) {
     console.log(response);
 });
 ```
@@ -68,7 +67,7 @@ When creating a live forecast the normal forecast for the venue will also be upd
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecast/live
+Live endpoint: https://BestTime.app/api/v1/forecast/live
 </aside>
 
 <aside class="notice">

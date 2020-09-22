@@ -22,24 +22,19 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/forecasts/now/raw?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
-day_int=3&
-hour=16'
+curl --location --request GET 'https://besttime.app/api/v1/forecasts/now/raw?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843'
 ```
 
 ```javascript
-var settings = {
-    "url": "https://besttime.app/api/v1/forecasts/now/raw",
-    "data": {
-        'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
-        'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
-        'day_int': 3,
-        'hour': 16
-    },
-    "method": "GET"
-};
+var params = {
+    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843'
+}
 
-$.ajax(settings).done(function (response) {
+$.ajax({
+"url": "https://besttime.app/api/v1/forecasts/now/raw?" + new URLSearchParams(params),
+"method": "GET"
+}).done(function (response) {
     console.log(response);
 });
 ```
@@ -56,7 +51,7 @@ The 'query now raw' endpoint is used to retrieve the raw data from an existing f
  &nbsp;
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecasts/now/raw
+Now raw endpoint: https://BestTime.app/api/v1/forecasts/now/raw
 </aside>
 
 <aside class="notice">
