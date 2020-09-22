@@ -74,10 +74,6 @@ Live endpoint: https://BestTime.app/api/v1/forecast/live
 HTTP method: POST
 </aside>
 
-<aside class="warning">
-The live forecast endpoint is only available for platinum subscribers.
-</aside>
-
 
 > The above request returns JSON structured like this:
 
