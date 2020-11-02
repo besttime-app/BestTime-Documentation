@@ -51,11 +51,14 @@ By default, the response includes the busy hour information for the current day 
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
  &nbsp; 
  - **day_int** `int` <span style="color:blue">OPTIONAL</span>  
- Day of the week. Range `0` (Monday) to `6` (Sunday).  
+ Day of the week. Range `0` (Monday) to `6` (Sunday). `day_int` cannot be used in combination with `day_step` and `hour_step`.  
  &nbsp; 
 - **day_step** `int` <span style="color:blue">OPTIONAL</span>  
-  Adjust the day (day of week of the venue in the local timezone). E.g. `0` means current day, and `1` means tomorrow. Range: min `-31`, max `31`.  
+  Adjust the day (day of week of the venue in the local timezone). E.g. `0` means current day, and `1` means tomorrow. Range: min `-31`, max `31`. `day_step` cannot be used in combination with `day_int`.  
  &nbsp;  
+- **hour_step** `int` <span style="color:blue">OPTIONAL</span>  
+  Adjust the hour (hour of the venue in the local timezone). E.g. `0` means current hour, and `-2` means two hours ago. Range: min `-12`, max `12`. `hour_step` cannot be used in combination with `day_int`.  
+ &nbsp;
 - **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
  Public API Key. See more info on [API keys](#api-keys)  
  &nbsp; 

@@ -48,7 +48,7 @@ $.ajax({
 
 The 'live forecast' endpoint is used to get live information of the venue. Life forecasts are either created using the venue name and address, or the venue_id as input in the request. The response includes information regarding the live busyness at this moment compared to the forecasted busyness of the corresponding hour.  
 
-When creating a live forecast the normal forecast for the venue will also be updated, and saved on the server. The updated forecast will be available through the normal query endpoints. 
+When creating a live forecast the normal forecast for the venue will NOT be updated. Use one of the other New Forecast endpoints
 
 
 ### Input attributes New Forecast
