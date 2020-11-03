@@ -107,7 +107,7 @@ Forecast credits are subtracted when a forecast is successfully made and saved o
 * The venue is found but it could not be forecasted (when there is not enough data)
 * The forecast fails (internal error)
 
-When querying an existing forecast a query credit is subtracted for every request. Each subscription plan contains at least 1000x more query credits than forecast queries. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).
+When querying an existing forecast a query credit is subtracted for every request. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).
 
 | Goal                               | Credits used     | API Key required | Parameter       |
 |------------------------------------|------------------|------------------|-----------------|
