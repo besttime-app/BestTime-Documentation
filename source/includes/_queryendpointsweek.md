@@ -68,3 +68,13 @@ HTTP method: GET
 The response attributes are exactly the same as the attributes in the 'new forecast' endpoint.  
  &nbsp;
 See [new forecast reponse attributes](#responseattributesnewforecast)
+
+### Combine a new forecast with this query in a single API call
+This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
+
+-  HTTP method: `POST` (instead of `GET`)
+-  The same API query endpoint URL `https://besttime.app/api/v1/forecasts/week`
+-  `venue_name` and `venue_address` as input or `venue_id`
+- The input attributes from this query endpoint
+
+See the [New Forecast](#forecast-new-link) endpoint for more information on the `venue_name` and `venue_address` input. This will be counted as new forecast credits instead of a query credit.

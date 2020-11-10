@@ -2,7 +2,7 @@
 # Forecasts endpoints
 
 
-## New forecast
+## <a name="forecast-new-link"></a>  New forecast
 
 > Create a new forecast:
 

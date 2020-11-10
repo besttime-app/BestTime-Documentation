@@ -50,6 +50,9 @@ Query venues endpoint: https://BestTime.app/api/v1/venues
 HTTP method: GET
 </aside>
 
+<aside class="warning">
+API Credit usage per API call for this endpoint depends on the amount of returned venues and your plan. See 'API key credits' for more information.
+</aside>
 
 > The above request returns a JSON response like this (this example only contains a list with one venue):
 

@@ -23,6 +23,7 @@ API keys are generated in pairs, and you can generate multiple API key sets (pai
 
 All key set use credits from the same account. When an API key is compromised you can delete the API key set through the API Key management page.
 
+
 ## Authentication
 
 > To authorize, use this code:
@@ -98,23 +99,52 @@ Make sure to replace <code>pri_a00de9e302662c0217a9cf08ab304122</code> with your
 
 ## Credits
 
-There are two types of credits. Forecast credits and query credits. 
-When forecasting a venue using the private API key a 'forecast credit' is subtracted from your account. When querying an existing forecast a 'query credit' is subtracted from your account. 
+The API usage is counted with credits and the amount of credits per API call depends on the used API endpoint. The tools on the website also use the API internally and will therefore also count the used credits.
 
-Forecast credits are subtracted when a forecast is successfully made and saved on the server. It won't subtract a forecast query when:
+When querying an existing forecast a query credit is counted for every request. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).  
+&nbsp;  
 
-* The venue is not found
-* The venue is found but it could not be forecasted (when there is not enough data)
-* The forecast fails (internal error)
+| API Endpoint                               | Credits     | API Key required |
+|------------------------------------|------------------|------------------|
+| New forecasts (success)             | 2          | Private          | 
+| New forecasts (unsuccessful)        | 1         | Private        |
+| Live data                           | 1         | Private          | 
+| Venue (filter) (basic plan)           | 1 / venue    | Private          |
+| Venue (filter) (premium plan)           | 1 / 10 venues | Private          |
+| Query existing forecast                | 1         | Public            |  
+ 
+ &nbsp; 
 
-When querying an existing forecast a query credit is subtracted for every request. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).
+Unsuccessful forecasts are also counted as credits, with the exception of server errors. This is to prevent overloading the API servers with low quality address inputs.
 
-| Goal                               | Credits used     | API Key required | Parameter       |
-|------------------------------------|------------------|------------------|-----------------|
-| Create a new forecast              | Forecast credits | Private          | api_key_private |
-| Get live data (platinum only)     | Forecast credits | Private          | api_key_private |
-| List all forecast by venue_id   | None             | Private          | api_key_private |
-| Query data from existing forecasts | Query credits    | Public           | api_key_public  |
+It is the users responsibility to prevent api key abuse. Hide your API keys secure to prevent other people from using API credits resulting in higher monthly subscription fees.
+
 
 ### Subscription plans
+BestTime has two types of plans. Metered and unlimited plans. The metered plans will automatically charge you depending on the credit usage at the end of a (monthly) billing cycle. The basic plan is the lowest-priced plan. All functionality is available in the basic plan, However the forecast data is only stored for 1 day (retention days). After 1 day you will need to forecast a venue again to query an existing forecast or to use the venue in the venue filter endpoint (or radar tool). Upgrade to the premium plan to increase the retention days and benefit from lower-priced API credits. 
+
+BestTime also offers multiple 'Unlimited' plans if you don't like the uncertainty of a metered plan. The unlimited plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each unlimited plan is limited to a certain amount of new venues per calender month. 
+Contact us for a custom amount of retention days or for a higher monthly amount of unlimited venues.
+
+
+Old plans:  &nbsp;  
 Credits will be added at the start of every monthly invoice cycle, when you upgrade, or when you buy extra credit bundles (only for selected subscription plans). Credits don't expire and automatically roll over to the next month. If you cancel your subscription coins will stay in your account. However, all your API keys will be deactivated. This means you cannot create new forecasts and query existing forecasts. If you decide to re-subscribe on the same account you can use your old coins, but you cannot access the previous forecasts anymore.
+
+## HTTP (Error) API codes
+
+BestTime uses the following HTTP codes
+
+| Code  | Meaning   | 
+|---------------|-------------|
+| 200              | OK      | 
+| 400             | Bad Request - check your API parameters |
+|401               | Unauthorized |
+| 404              | Not found - API resource not found |
+| 405               | Method Not Allowed - You tried to access the API with an invalid route |
+|429 |Too Many Requests - You have been rate-limited
+|500 | Internal Server Error - We have a problem with the server and the team has been automatically notified
+| 503 | Service Unavailable
+
+&nbsp;  
+
+By default the API is limited to 300 API requests per 10 seconds per IP address. You will receive a HTTP 429 'too many requests' above this threshold. Contact us for if you need higher limits.
