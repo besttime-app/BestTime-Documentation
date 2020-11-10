@@ -45,6 +45,8 @@ BestTime.app works in general only for public businesses. For example:
 * Shops
 * Museums
 * Theatres
+* Malls
+* Supermarkets
 * Public offices (like customer service points)
 * Theme parks
 
@@ -72,12 +74,7 @@ The forecast results include:
     - List of all busy hours per day.
 - Quiet hours
     - List of all quiet hours per day.
-
-Platinum features:
-
-- Live analysis
-    - How much more or less busy is this business now (live) compared to the historical average for this hour and day.
-- Raw week, day, and hour busyness percentage data.
+- Raw hour busyness percentage data for every day of the week.
 
 ### Relative numbers
 
