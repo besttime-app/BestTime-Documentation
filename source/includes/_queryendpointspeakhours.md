@@ -10,7 +10,7 @@ url = "https://besttime.app/api/v1/forecasts/peaks"
 
 params = {
     'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
-    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843'
+    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
     'day_step': 0,
     'hour_step': 0
 }

@@ -1,8 +1,10 @@
 
 # Forecasts endpoints
+  
+  
 
-
-## <a name="forecast-new-link"></a>  New forecast
+## New forecast
+<a name="forecast-new-link"></a> 
 
 > Create a new forecast:
 
@@ -13,7 +15,7 @@ import json
 url = "https://besttime.app/api/v1/forecasts"
 
 params = {
-    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
+    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
     'venue_name': 'McDonalds',
     'venue_address': 'Ocean Ave, San Fransisco'
 }
