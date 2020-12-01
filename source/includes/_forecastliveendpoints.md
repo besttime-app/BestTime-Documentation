@@ -56,7 +56,7 @@ When creating a live forecast the normal forecast for the venue will NOT be upda
 - **venue_name** `string` <span style="color:blue">OPTIONAL</span>  
  Name of the venue (public business). When then using the `venue_id` the `venue_name` and `venue_address` can be omitted.  
  &nbsp; 
-- **venue_name** `string` <span style="color:blue">OPTIONAL</span>  
+- **venue_address** `string` <span style="color:blue">OPTIONAL</span>  
  Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.  
  &nbsp;
 - **venue_id** `string` <span style="color:blue">OPTIONAL</span>  

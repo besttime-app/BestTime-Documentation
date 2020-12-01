@@ -121,7 +121,7 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
 - **venue_name** `string` <span style="color:orange">REQUIRED</span>  
  Name of the venue (public business)  
  &nbsp; 
-- **venue_name** `string` <span style="color:orange">REQUIRED</span>  
+- **venue_address** `string` <span style="color:orange">REQUIRED</span>  
  Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.  
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
