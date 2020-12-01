@@ -83,7 +83,7 @@ HTTP method: POST
         "venue_forecasted_busyness": 60,
         "venue_live_busyness": 20,
         "venue_live_busyness_available": true,
-        "venue_live_forecasted_detla": -40
+        "venue_live_forecasted_delta": -40
     },
     "status": "OK",
     "venue_info": {
@@ -105,13 +105,15 @@ HTTP method: POST
    Forecasted busyness for this hour, based on the weekly forecast. Ranging from `0` to `100`.  
   &nbsp;
  - analysis.**venue_live_busyness** `int`  
-   Live busyness at the venue for current, based on the weekly forecast. Ranging from `0` to `100`.  
+   Live busyness at the venue for current, based on the weekly forecast. Ranging from `0` to '1000'. 
+   In most cases the live percentage will be 100% or lower. However if the value is above 100% it 
+   means it is more busy than the highest forecasted peak of the week.
   &nbsp;
  - analysis.**venue_live_busyness_available** `bool`  
    Indicates if there is live data available for this venue at this moment.  
   &nbsp;
- - analysis.**venue_live_forecasted_detla** `int`  
-   Indicates the difference of the current live busyness versus the forecasted busyness for this hour, in percentage. A negative number indicates that is is less busy then normal, while a positive number indicates that it is busyer than normal. Ranging from `-100` to `100`.  
+ - analysis.**venue_live_forecasted_delta** `int`  
+   Indicates the difference of the current live busyness versus the forecasted busyness for this hour, in percentage. A negative number indicates that is is less busy then normal, while a positive number indicates that it is more busy than normal. Ranging from `-100` to `100`.  
   &nbsp;
 - **status** `string`  
  Status of the response. Either `OK` or `Error`.  
