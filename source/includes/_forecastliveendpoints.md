@@ -105,9 +105,9 @@ HTTP method: POST
    Forecasted busyness for this hour, based on the weekly forecast. Ranging from `0` to `100`.  
   &nbsp;
  - analysis.**venue_live_busyness** `int`  
-   Live busyness at the venue for current, based on the weekly forecast. Ranging from `0` to '1000'. 
+   Live busyness at the venue for current, based on the weekly forecast. Ranging from `0` to `200` percent. 
    In most cases the live percentage will be 100% or lower. However if the value is above 100% it 
-   means it is more busy than the highest forecasted peak of the week.
+   means it is more busy than the highest forecasted peak of the week. E.g. 200% meaning it is two times more busy than the normal forecasted peak of the week. 
   &nbsp;
  - analysis.**venue_live_busyness_available** `bool`  
    Indicates if there is live data available for this venue at this moment.  
