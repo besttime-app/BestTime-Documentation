@@ -2,13 +2,13 @@
 title: BestTime.app API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
   - python
   - javascript
+  - shell
 
 toc_footers:
   - <a href='https://BestTime.app'>BestTime.app</a>
-  - <a href='https://t.me/besttimeapi'>Telegram Group</a>
+  # - <a href='https://blog.besttime.app'>Blog</a>
 
 includes:
   - introduction
