@@ -9,6 +9,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='https://BestTime.app'>BestTime.app</a>
   # - <a href='https://blog.besttime.app'>Blog</a>
+  - <a href='https://besttime.app/contact'>Contact Us</a>
 
 includes:
   - introduction
