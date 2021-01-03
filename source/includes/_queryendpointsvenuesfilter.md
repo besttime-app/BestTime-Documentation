@@ -14,6 +14,7 @@ params = {
     'busy_max': 100,
     'hour_min': 18,
     'hour_max': 23,
+    'busy_conf':'any',
     'now': False,
     'live': False,
     'types': ['BAR','CAFE','NIGHTCLUB'],
@@ -31,7 +32,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
+curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&hour_conf=any&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
 ```
 
 ```javascript
@@ -39,6 +40,7 @@ var params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
     'busy_min': 50,
     'busy_max': 100,
+    'busy_conf':'any',
     'hour_min': 18,
     'hour_max': 23,
     'now': false,
@@ -79,10 +81,13 @@ Radar tool (which is using this 'venue filter' endpoint)
  Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-keys)  
  &nbsp;
 - **busy_min** `int` <span style="color:blue">OPTIONAL</span>  
-Minimum busyness for the filtered venues, ranging from `0` to `100` procent. Matches the filter if at least <b>one</b> of the selected hour(s) is at or above the minimum selected busyness.  
+Minimum busyness for the filtered venues, ranging from `0` to `100` procent.  Use `busy_conf` parameter to change the filter method.  
  &nbsp;
 - **busy_max** `int` <span style="color:blue">OPTIONAL</span>  
-Maximum busyness for the filtered venues, ranging from `0` to `100` procent. Matches the filter if <b>all</b> selected hour(s) are at or below the selected maximum busyness.  
+Maximum busyness for the filtered venues, ranging from `0` to `100` procent. Use `busy_conf` parameter to change the filter method.    
+ &nbsp;
+- **busy_conf** `string` <span style="color:blue">OPTIONAL</span>  
+Selects how `busy_min` and `busy_max` filters on busyness percentage. Possible options are `any` or `all`. Defaults to  `any`. `any` will return venues when at least one of the (selected) hours matches the `busy_min` and/or `busy_max` filter(s). `all` will return venues when all (selected) hours match the `busy_min` and/or `busy_max` filter(s). Use the `hour_min` and/or `hour_max` parameters to select specific hours were the `busy_min` and/or `busy_max` filters are applied on.  
  &nbsp;
 - **hour_min** `int` <span style="color:blue">OPTIONAL</span>  
 Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the day window.  See [Forecast day window and weekdays](#forecast-day-window-and-weekdays). Cannot be used in combination with the `now` and `live` parameters set to be `true`.  
