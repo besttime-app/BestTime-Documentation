@@ -129,7 +129,7 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecast
+New forecast endpoint: https://BestTime.app/api/v1/forecasts
 </aside>
 
 <aside class="notice">
