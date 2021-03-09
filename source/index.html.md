@@ -16,6 +16,8 @@ includes:
   - apireference
   - forecastendpoints
   - forecastliveendpoints
+  - venuecollections
+  - queryendpointsvenuessearch
   - queryendpoints
   - queryendpointsvenue
   - queryendpointsvenues
@@ -33,6 +35,7 @@ includes:
   - queryendpointsbusyhours
   - queryendpointsquiethours
   - queryendpointsurge
+
 
 search: true
 ---
