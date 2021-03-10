@@ -8,7 +8,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts"
+url = "https://beta.besttime.app/api/v1/forecasts"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
@@ -25,7 +25,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/forecasts?
+curl --location --request POST 'https://beta.besttime.app/api/v1/forecasts?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
 venue_name=McDonalds&
 venue_address=Ocean%20Ave%2C%20San%20Fransisco'
@@ -39,7 +39,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -125,7 +125,7 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecasts
+New forecast endpoint: https://beta.besttime.app/api/v1/forecasts
 </aside>
 
 <aside class="notice">

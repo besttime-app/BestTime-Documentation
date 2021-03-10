@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/venues/filter"
+url = "https://beta.besttime.app/api/v1/venues/filter"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
@@ -32,7 +32,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&hour_conf=any&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
+curl --location --request GET 'https://beta.besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&hour_conf=any&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
 ```
 
 ```javascript
@@ -52,7 +52,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/venues/filter?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/venues/filter?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -158,7 +158,7 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 
 
 <aside class="notice">
-Query filtered venues endpoint: https://BestTime.app/api/v1/venues/filter
+Query filtered venues endpoint: https://beta.besttime.app/api/v1/venues/filter
 </aside>
 
 <aside class="notice">

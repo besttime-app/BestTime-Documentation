@@ -7,7 +7,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts/live"
+url = "https://beta.besttime.app/api/v1/forecasts/live"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
@@ -24,7 +24,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/forecasts/live?
+curl --location --request POST 'https://beta.besttime.app/api/v1/forecasts/live?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
 venue_name=McDonalds&
 venue_address=Ocean%20Ave%2C%20San%20Fransisco'
@@ -38,7 +38,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts/live?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts/live?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -66,7 +66,7 @@ When creating a live forecast the normal forecast for the venue will NOT be upda
  &nbsp; 
 
 <aside class="notice">
-Live endpoint: https://BestTime.app/api/v1/forecast/live
+Live endpoint: https://beta.besttime.app/api/v1/forecast/live
 </aside>
 
 <aside class="notice">

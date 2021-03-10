@@ -7,7 +7,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts/hour"
+url = "https://beta.besttime.app/api/v1/forecasts/hour"
 
 params = {
     'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
@@ -25,7 +25,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/forecasts/hour?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
+curl --location --request GET 'https://beta.besttime.app/api/v1/forecasts/hour?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
 day_int=3&
 hour=23'
 ```
@@ -39,7 +39,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts/hour?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts/hour?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -64,7 +64,7 @@ The 'query hour' endpoint is used to retrieve the 'hour analysis' forecast for t
  &nbsp; 
 
 <aside class="notice">
-Hour forecast endpoint: https://BestTime.app/api/v1/forecasts/hour
+Hour forecast endpoint: https://beta.besttime.app/api/v1/forecasts/hour
 </aside>
 
 <aside class="notice">
@@ -139,7 +139,7 @@ HTTP method: GET
 This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
 
 -  HTTP method: `POST` (instead of `GET`)
--  The same API query endpoint URL `https://besttime.app/api/v1/forecasts/hour`
+-  The same API query endpoint URL `https://beta.besttime.app/api/v1/forecasts/hour`
 -  `venue_name` and `venue_address` as input or `venue_id`
 - The input attributes from this query endpoint
 

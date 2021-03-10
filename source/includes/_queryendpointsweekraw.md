@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts/week/raw"
+url = "https://beta.besttime.app/api/v1/forecasts/week/raw"
 
 params = {
     'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
@@ -22,7 +22,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/forecasts/week/raw?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843'
+curl --location --request GET 'https://beta.besttime.app/api/v1/forecasts/week/raw?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843'
 ```
 
 ```javascript
@@ -32,7 +32,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts/week/raw?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts/week/raw?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -51,7 +51,7 @@ The 'query week raw' endpoint is used to retrieve the raw data from an existing 
  &nbsp; 
 
 <aside class="notice">
-Week raw endpoint: https://BestTime.app/api/v1/forecasts/week/raw
+Week raw endpoint: https://beta.besttime.app/api/v1/forecasts/week/raw
 </aside>
 
 <aside class="notice">
@@ -89,7 +89,7 @@ HTTP method: GET
 ```
 
 ### Alternative split per day data
-Using the endpoint `https://besttime.app/api/v1/forecasts/week/raw2` will result in the same response but split per day using the day window from 6am till 5am next day.
+Using the endpoint `https://beta.besttime.app/api/v1/forecasts/week/raw2` will result in the same response but split per day using the day window from 6am till 5am next day.
 
 ```json
 {
@@ -137,7 +137,7 @@ Using the endpoint `https://besttime.app/api/v1/forecasts/week/raw2` will result
 This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
 
 -  HTTP method: `POST` (instead of `GET`)
--  The same API query endpoint URL `https://besttime.app/api/v1/forecasts/week/raw`
+-  The same API query endpoint URL `https://beta.besttime.app/api/v1/forecasts/week/raw`
 -  `venue_name` and `venue_address` as input or `venue_id`
 - The input attributes from this query endpoint
 

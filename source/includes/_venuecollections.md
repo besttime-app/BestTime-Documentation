@@ -18,7 +18,7 @@ There are multiple ways to use a collection in combination with the other BestTi
 import requests
 import json
 
-url = "https://besttime.app/api/v1/collection"
+url = "https://beta.besttime.app/api/v1/collection"
 
 params = {
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
@@ -35,7 +35,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/collection?api_key_private=pri_s43661721b084d36b8f469a2c012e754&
+curl --location --request POST 'https://beta.besttime.app/api/v1/collection?api_key_private=pri_s43661721b084d36b8f469a2c012e754&
 collection_id=col_51387131543761435650505241346a39&
 name=Supermarkets%20in%20Los%20Angeles%20CA'
 ```
@@ -48,7 +48,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/collection?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/collection?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -68,7 +68,7 @@ $.ajax({
  &nbsp; 
 
 <aside class="notice">
-Collection create endpoint: https://BestTime.app/api/v1/collection
+Collection create endpoint: https://beta.besttime.app/api/v1/collection
 </aside>
 
 <aside class="notice">
@@ -96,7 +96,7 @@ HTTP method: POST
 import requests
 import json
 
-url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
+url = "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
 
 params = {
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
@@ -111,7 +111,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754
+curl --location --request POST 'https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754
 ```
 
 ```javascript
@@ -120,7 +120,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -140,7 +140,7 @@ $.ajax({
  &nbsp; 
 
 <aside class="notice">
-Collection Add Venue endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
+Collection Add Venue endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
 </aside>
 
 <aside class="notice">
@@ -162,7 +162,7 @@ HTTP method: POST
 ## Collection Venues (TODO)
 
 <aside class="notice">
-Collection Venues endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}
+Collection Venues endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}
 </aside>
 
 <aside class="notice">
@@ -172,7 +172,7 @@ HTTP method: GET
 ## Collection Remove venue (TODO)
 
 <aside class="notice">
-Collection Remove Venue endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
+Collection Remove Venue endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
 </aside>
 
 <aside class="notice">
@@ -183,7 +183,7 @@ HTTP method: DELETE
 ## Collection delete (TODO)
 
 <aside class="notice">
-Collection Delete endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}
+Collection Delete endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}
 </aside>
 
 <aside class="notice">

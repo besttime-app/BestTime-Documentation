@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/venues/search"
+url = "https://beta.besttime.app/api/v1/venues/search"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
@@ -25,7 +25,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&opened=now'
+curl --location --request POST 'https://beta.besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&opened=now'
 ```
 
 ```javascript
@@ -38,7 +38,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/venues/search?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/venues/search?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -235,7 +235,7 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 
 
 <aside class="notice">
-Search venue endpoint: https://besttime.app/api/v1/venues/search
+Search venue endpoint: https://beta.besttime.app/api/v1/venues/search
 </aside>
 
 <aside class="notice">
@@ -252,7 +252,7 @@ API Credit usage per API call for this endpoint depends on the number `num` of r
 ```json
 {
     "_links": {
-        "venue_search_progress": "https://besttime.app/api/v1/venues/progress?job_id=e0880f28-3a19-4871-a355-4ca21f10c2c8&collection_id=col_ac734e76ad2d4696a5a66541c67587e8"
+        "venue_search_progress": "https://beta.besttime.app/api/v1/venues/progress?job_id=e0880f28-3a19-4871-a355-4ca21f10c2c8&collection_id=col_ac734e76ad2d4696a5a66541c67587e8"
     },
     "collection_id": "col_ac734e76ad2d4696a5a66541c67587e8",
     "job_id": "e0880f28-3a19-4871-a355-4ca21f10c2c8",
@@ -287,7 +287,7 @@ The JSON response will contain a URL to the Venue Search Progress endpoint to tr
 import requests
 import json
 
-url = "https://besttime.app/api/v1/venues/progress"
+url = "https://beta.besttime.app/api/v1/venues/progress"
 
 params = {
     'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
@@ -306,7 +306,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&opened=now'
+curl --location --request GET 'https://beta.besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&opened=now'
 ```
 
 ```javascript
@@ -319,7 +319,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/venues/search?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/venues/search?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
