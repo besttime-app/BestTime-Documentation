@@ -1,4 +1,4 @@
-## Query busy hours
+# Query busy hours
 
 > Query busy hours:
 

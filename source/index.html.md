@@ -18,11 +18,10 @@ includes:
   - forecastliveendpoints
   - queryendpointsvenuessearch
   - venuecollections
-
   - queryendpoints
+  - queryendpointsvenuesfilter
   - queryendpointsvenue
   - queryendpointsvenues
-  - queryendpointsvenuesfilter
   - queryendpointsweek
   - queryendpointsweekraw
   - queryendpointsweekoverview

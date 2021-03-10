@@ -1,4 +1,4 @@
-## Query quiet hours
+# Query quiet hours
 
 > Query quiet hours:
 

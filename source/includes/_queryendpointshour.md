@@ -1,5 +1,5 @@
 
-## Query hour 
+# Query hour 
 
 > Query a specific hour of the week:
 

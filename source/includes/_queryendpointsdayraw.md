@@ -1,4 +1,4 @@
-## Query day raw
+# Query day raw
 
 > Query the raw day data:
 

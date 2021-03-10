@@ -1,4 +1,4 @@
-## Query surge hours
+# Query surge hours
 
 > Query surge hours:
 

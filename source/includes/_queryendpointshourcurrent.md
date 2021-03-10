@@ -1,5 +1,5 @@
 
-## Query now
+# Query now
 
 > Query the now:
 

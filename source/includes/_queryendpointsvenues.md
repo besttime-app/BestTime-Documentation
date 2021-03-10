@@ -1,4 +1,4 @@
-## Query all venues
+# Query all venues
 
 > Query list of all forecasted venues:
 

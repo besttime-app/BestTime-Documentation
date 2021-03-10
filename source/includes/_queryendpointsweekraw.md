@@ -1,4 +1,4 @@
-## Query week raw
+# Query week raw
 
 > Query the raw week data:
 

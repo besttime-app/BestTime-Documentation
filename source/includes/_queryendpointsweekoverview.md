@@ -1,4 +1,4 @@
-## Query weekoverview
+# Query weekoverview
 
 > Query the week overview:
 

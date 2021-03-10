@@ -1,4 +1,4 @@
-## Query peak hours
+# Query peak hours
 
 > Query peaks:
 

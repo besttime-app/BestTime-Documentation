@@ -1,4 +1,4 @@
-## Query filtered venues (Radar)
+# Query filtered venues (Radar)
 
 > Filter forecasted venues on busyness, location, type, day, and time. 
 

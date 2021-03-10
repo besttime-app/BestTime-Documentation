@@ -1,4 +1,4 @@
-## Query day 
+# Query day 
 
 > Query one day of the week:
 

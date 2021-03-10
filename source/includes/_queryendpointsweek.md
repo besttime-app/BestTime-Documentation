@@ -1,4 +1,4 @@
-## Query week
+# Query week
 
 > Query the week (whole forecast):
 

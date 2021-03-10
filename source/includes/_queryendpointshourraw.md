@@ -1,4 +1,4 @@
-## Query hour raw
+# Query hour raw
 
 > Query the raw hour data:
 

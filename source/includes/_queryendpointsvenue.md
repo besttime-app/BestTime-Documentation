@@ -1,4 +1,4 @@
-## Query venue
+# Query venue
 
 > Query a single venue:
 

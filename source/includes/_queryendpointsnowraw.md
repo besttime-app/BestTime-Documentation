@@ -1,4 +1,4 @@
-## Query now raw
+# Query now raw
 
 > Query the raw hour data for current hour:
 
