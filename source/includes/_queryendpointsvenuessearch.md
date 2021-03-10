@@ -147,7 +147,7 @@ Default number is `20`. API credits for this endpoint are counted per `20` searc
 Search for venues with specific opening times. Options are `24`, `now`, `all` . `24` will return venues with a 24 hour opening time. `now` will return venues that are opened at this moment. `all` will return all venues regardless of their opening hours. Defaults to `all`.
  &nbsp;
 - **fast** `boolean` <span style="color:blue">OPTIONAL</span>  
-Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See API Credits for more info <TODO add Credits link>. Fixed packages and Metered Pro each have limited amount of fast search queries per month. Contact us for high volume fast search queries.
+Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See API Credits for more info <TODO add Credits link>. Fixed packages each have limited amount of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calander month. Contact us for high volume fast or normal search queries.
  &nbsp;
 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
