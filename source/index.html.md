@@ -16,8 +16,9 @@ includes:
   - apireference
   - forecastendpoints
   - forecastliveendpoints
-  - venuecollections
   - queryendpointsvenuessearch
+  - venuecollections
+
   - queryendpoints
   - queryendpointsvenue
   - queryendpointsvenues

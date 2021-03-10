@@ -1,4 +1,4 @@
-## Venue Search 
+# Venue Search 
 
 > Find and add new venues based on a search query.
 

@@ -1,12 +1,8 @@
 
-# Forecasts endpoints
-  
-  
-
-## New forecast
+# New foot-traffic venue forecast
 <a name="forecast-new-link"></a> 
 
-> Create a new forecast:
+> Returns foot-traffic forecast for a venue based on a name and address
 
 ```python
 import requests

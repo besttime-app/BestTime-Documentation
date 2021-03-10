@@ -1,8 +1,7 @@
 
+# Live foot-traffic data
 
-## Live forecast
-
-> Create a Live forecast:
+> Returns Live foot-traffic data for a venue based on the venue name and address:
 
 ```python
 import requests
