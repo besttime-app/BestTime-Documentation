@@ -291,10 +291,7 @@ url = "https://beta.besttime.app/api/v1/venues/progress"
 
 params = {
     'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
-    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5',
-    'num': 200,
-    'fast': False,
-    'opened': 'now'
+    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
 }
 
 response = requests.request("GET", url, params=params)
@@ -306,26 +303,32 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://beta.besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&opened=now'
+curl --location --request GET 'https://beta.besttime.app/api/v1/venues/progress?
+job_id=0a693bb3-7bd6-4d43-9495-a2773f1c9e29&collection_id=col_ffbebb4003974979b75a14844d60e9c5'
 ```
 
 ```javascript
 var params = {
-    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-    'q': 'quiet supermarkets in sydney australia sunday morning',
-    'num': 200,
-    'fast': false,
-    'opened': 'now'
+    'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
+    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
 }
 
 $.ajax({
-"url": "https://beta.besttime.app/api/v1/venues/search?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/venues/progress?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
 });
 ```
 
+### Input attributes Venue Search Progress
+
+- **job_id** `string` <span style="color:orange">REQUIRED</span>  
+ Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-keys) for more info.
+ &nbsp;
+- **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
+Adding the `collection_id` passes on the collection_id in the result links once the venue search  is finished.  
+ &nbsp;
 
 
 > The above request returns a JSON response with the progress of the venue search. Once it is completed it will show the second displayed JSON response.
