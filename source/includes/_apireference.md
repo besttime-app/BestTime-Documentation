@@ -104,13 +104,15 @@ The API usage is counted with credits and the amount of credits per API call dep
 When querying an existing forecast a query credit is counted for every request. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).  
 &nbsp;  
 
-| API Endpoint                               | Credits     | API Key required |
+| API Endpoint                           | Credits     | API Key required |
 |------------------------------------|------------------|------------------|
 | New forecasts (success)             | 2          | Private          | 
 | New forecasts (unsuccessful)        | 1         | Private        |
 | Live data                           | 1         | Private          | 
 | Venue (filter) (basic plan)           | 1 / venue    | Private          |
 | Venue (filter) (premium plan)           | 1 / 10 venues | Private          |
+| Venue Search (Normal)          | 1 / 20 venues | Private          |
+| Venue Search (Fast)          | 5 / 20 venues | Private          |
 | Query existing forecast                | 1         | Public            |  
  
  &nbsp; 
@@ -121,10 +123,10 @@ It is the users responsibility to prevent api key abuse. Hide your API keys secu
 
 
 ### Subscription plans
-BestTime has two types of plans. Metered and unlimited plans. The metered plans will automatically charge you depending on the credit usage at the end of a (monthly) billing cycle. The basic plan is the lowest-priced plan. All functionality is available in the basic plan, However the forecast data is only stored for 1 day (retention days). After 1 day you will need to forecast a venue again to query an existing forecast or to use the venue in the venue filter endpoint (or radar tool). Upgrade to the premium plan to increase the retention days and benefit from lower-priced API credits. 
+BestTime has two types of plans. Metered and packaged plans. The metered plans will automatically charge you depending on the credit usage at the end of a (monthly) billing cycle. The basic plan is the lowest-priced plan. All functionality is available in the basic plan, However the forecast data is only stored for 7 days (retention days). After 7 days you will need to forecast a venue again to query an existing forecast or to use the venue in the venue filter endpoint (or radar tool). Upgrade to the premium plan to increase the retention days and benefit from lower-priced API credits. 
 
-BestTime also offers multiple 'Unlimited' plans if you don't like the uncertainty of a metered plan. The unlimited plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each unlimited plan is limited to a certain amount of new venues per calender month. 
-Contact us for a custom amount of retention days or for a higher monthly amount of unlimited venues.
+BestTime also offers multiple 'packaged' plans if you don't like the uncertainty of a metered plan. The packaged plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each packehed plan is limited to a certain amount of new venues per calender month, and venue search calls per calender month.
+Contact us for a custom amount of retention days, for a higher monthly amount of packaged venues, or more venue search calls.
 
 
 Old plans:  &nbsp;  
@@ -147,4 +149,4 @@ BestTime uses the following HTTP codes
 
 &nbsp;  
 
-By default the API is limited to 300 API requests per 10 seconds per IP address. You will receive a HTTP 429 'too many requests' above this threshold. Contact us for if you need higher limits.
+By default the API is limited to 200 API requests per 10 seconds per IP address. You will receive a HTTP 429 'too many requests' above this threshold. Contact us for if you need higher limits.

@@ -1,19 +1,32 @@
-# Venue collections TODO
+# Venue collections
 
-> Group venues together in collections:
+Collections can be used to group venues together. Each collection has an unique 36 `collection_id` and an optional name.
+Venues inside a collection are managed using the `venue_id` of each venue. 
+Your existing collections can be also viewed on the Collection page. <TODO add link>
+
+Through the collections API endpoints you can create or delete collections, and add or remove venues to/from an existing collection. 
+
+There are multiple ways to use a collection in combination with the other BestTime tools/ API endpoints 
+- Manually add venues to a collection to group them and later call the collection to simply know which `venue_id`’s belong together.
+- Pass a collection_id to a New forecast <Todo link> to automatically add one or multiple successful venues to an existing collection. 
+- The Radar tool and Venue Filter accepts a collection_id as input show and filter only on the venues inside that collection
+- The Venue Search tool and API endpoint automatically creates a new collection with a new search query, with the search query as collection name. The Venue Search API endpoint also accepts an existing collection id. This will merge the new search results with the given collection.
+
+## Create a collection
 
 ```python
 import requests
 import json
 
-url = "https://besttime.app/api/v1/venues/search"
+url = "https://besttime.app/api/v1/collection"
 
 params = {
-    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
-    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843',
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+    'collection_id': 'col_51387131543761435650505241346a39',
+    'name': 'Supermarkets in Los Angeles, CA'
 }
 
-response = requests.request("GET", url, params=params)
+response = requests.request("POST", url, params=params)
 
 data = json.loads(response.text)
 
@@ -22,20 +35,21 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=100&fast=false&opened=now'
-
-
+curl --location --request POST 'https://besttime.app/api/v1/collection?api_key_private=pri_s43661721b084d36b8f469a2c012e754&
+collection_id=col_51387131543761435650505241346a39&
+name=Supermarkets%20in%20Los%20Angeles%20CA'
 ```
 
 ```javascript
 var params = {
-    'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
-    'venue_id': 'ven_51387131543761435650505241346a394a6432395362654a496843'
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+    'collection_id': 'col_51387131543761435650505241346a39',
+    'name': 'Supermarkets in Los Angeles, CA'
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts/week/raw?" + new URLSearchParams(params),
-"method": "GET"
+"url": "https://besttime.app/api/v1/collection?" + new URLSearchParams(params),
+"method": "POST"
 }).done(function (response) {
     console.log(response);
 });
@@ -43,21 +57,22 @@ $.ajax({
 
 ### Input attributes
 
-The 'query week raw' endpoint is used to retrieve the raw data from an existing forecast (every day of the week).
-
-- **venue_id** `string` <span style="color:orange">REQUIRED</span>  
- The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
+- **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
+ The unique ID for the collection, 36 characters long. A new unique `collection_id` will be generated if no self generated id is included in the request.
  &nbsp; 
-- **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
- Public API Key. See more info on [API keys](#api-keys)  
+- **name** `string` <span style="color:blue">OPTIONAL</span>  
+ Name for the collection. Does not have to be unique. Maximum `128` characters long.
+ &nbsp; 
+- **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
+ Private API Key. See more info on [API keys](#api-keys)  
  &nbsp; 
 
 <aside class="notice">
-Week raw endpoint: https://BestTime.app/api/v1/forecasts/week/raw
+Collection create endpoint: https://BestTime.app/api/v1/collection
 </aside>
 
 <aside class="notice">
-HTTP method: GET
+HTTP method: POST
 </aside>
 
 
@@ -65,83 +80,112 @@ HTTP method: GET
 
 ```json
 {
-    "analysis": {
-        "week_raw": [
-            0.0,
-            10.0,
-            30.0,
-            60.0,
-            80.0,
-            90.0,
-            100.0,
-            Other hours hidden 
-            50.0,
-            40.0,
-            40.0,
-            30.0,
-            10.0,
-            0.0,
-            0.0
-        ]
+    "collection": {
+        "api_key_private": "pri_s43661721b084d36b8f469a2c012e754",
+        "collection_id": "col_51387131543761435650505241346a39",
+        "name": "Supermarkets in Los Angeles, CA"
     },
-    "epoch_analysis": 1585875838,
-    "forecast_updated_on": "2020-04-03T01:03:58.692417+00:00",
-    "venue_name": "McDonald's"
+    "status": "OK"
 }
 ```
 
-### Alternative split per day data
-Using the endpoint `https://besttime.app/api/v1/forecasts/week/raw2` will result in the same response but split per day using the day window from 6am till 5am next day.
+
+## Add venues to a collection
+
+```python
+import requests
+import json
+
+url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
+
+params = {
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+}
+
+response = requests.request("POST", url, params=params)
+
+data = json.loads(response.text)
+
+print(data)
+```
+
+```shell
+# cURL
+curl --location --request POST 'https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754
+```
+
+```javascript
+var params = {
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754'
+}
+
+$.ajax({
+"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
+"method": "POST"
+}).done(function (response) {
+    console.log(response);
+});
+```
+
+### Input attributes
+
+- **collection_id** `string` <span style="color:orange">REQUIRED</span>  
+ The unique ID for the collection, 36 characters long.
+ &nbsp; 
+- **venue_id** `string` <span style="color:orange">REQUIRED</span>  
+ ID of the venue to be added to the collection.
+ &nbsp; 
+- **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
+ Private API Key. See more info on [API keys](#api-keys)  
+ &nbsp; 
+
+<aside class="notice">
+Collection Add Venue endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
+</aside>
+
+<aside class="notice">
+HTTP method: POST
+</aside>
+
+
+> The above request returns JSON structured like this:
 
 ```json
 {
-    "analysis": {
-        "week_raw": [
-            {
-                "day_int": 0,
-                "day_raw": [
-                    20,
-                    30,
-                    40,
-                    50,
-                    60,
-                    ...
-                    60,
-                    50,
-                    40,
-                    30,
-                    20,
-                    0,
-                    20,
-                    20
-                ]
-            },
-            ....
-        ]
-    },
+    "collection_id": "col_51387131543761435650505241346a39",
+    "message": "Venue added to collection",
     "status": "OK",
-    "window": {
-        "day_window_end_int": 6,
-        "day_window_end_txt": "Monday",
-        "day_window_start_int": 0,
-        "day_window_start_txt": "Monday",
-        "time_window_end": 5,
-        "time_window_end_12h": "5AM",
-        "time_window_start": 6,
-        "time_window_start_12h": "6AM",
-        "week_window": "Monday 6AM until Monday 5AM next week"
-    }
+    "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843"
 }
 ```
 
+## Collection Venues (TODO)
 
-### Combine a new forecast with this query in a single API call
-This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
+<aside class="notice">
+Collection Venues endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}
+</aside>
 
--  HTTP method: `POST` (instead of `GET`)
--  The same API query endpoint URL `https://besttime.app/api/v1/forecasts/week/raw`
--  `venue_name` and `venue_address` as input or `venue_id`
-- The input attributes from this query endpoint
+<aside class="notice">
+HTTP method: GET
+</aside>
 
-See the [New Forecast](#forecast-new-link) endpoint for more information on the `venue_name` and `venue_address` input. This will be counted as new forecast credits instead of a query credit.
+## Collection Remove venue (TODO)
 
+<aside class="notice">
+Collection Remove Venue endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
+</aside>
+
+<aside class="notice">
+HTTP method: DELETE
+</aside>
+
+
+## Collection delete (TODO)
+
+<aside class="notice">
+Collection Delete endpoint: https://BestTime.app/api/v1/collection/{{collection_id}}
+</aside>
+
+<aside class="notice">
+HTTP method: DELETE
+</aside>
