@@ -50,7 +50,7 @@ Find and add new venues based on a search query. The search query can e.g. conta
 The search query can be narrowed down with additional filters like the location (e.g. a neighborhood, city, or country), or add geographical data (lat, lng, radius) to find venues related to the search query in a geographic location.
 
 Multiple API endpoints are involved from entering a search input until returning foot-traffic data for the found venues.
-The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id`.  You can poll the Venue Search Progress endpoint to poll to progress. 
+The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id`.  You can poll the Venue Search Progress endpoint to poll to progress. The venue search functionality can also be used without API using the website [Venue Search Tool](https://beta.besttime.app/api/v1/searchvenues) or on the [Radar tool](https://beta.besttime.app/api/v1/radar/filter).
 
 ### Venue filters
 
