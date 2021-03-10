@@ -1,5 +1,5 @@
 
-# New foot-traffic venue forecast
+# New foot-traffic forecast
 <a name="forecast-new-link"></a> 
 
 > Returns foot-traffic forecast for a venue based on a name and address
