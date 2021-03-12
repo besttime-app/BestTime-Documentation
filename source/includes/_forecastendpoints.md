@@ -60,6 +60,32 @@ $.ajax({
                 "venue_closed": 6,
                 "venue_open": 23
             },
+            "day_raw": [
+                10,
+                25,
+                40,
+                55,
+                65,
+                75,
+                75,
+                75,
+                75,
+                75,
+                70,
+                65,
+                50,
+                40,
+                30,
+                25,
+                25,
+                25,
+                20,
+                15,
+                10,
+                0,
+                5,
+                5
+            ],
             "hour_analysis": [
                 {
                     "hour": 6,
@@ -166,6 +192,9 @@ Note: the Javascript example uses the jQuery library
      - analysis[day_int].day_info.**venue_open** `int`  
        Hour of day when the venue opens. Range `0` to `23` hour  
        &nbsp;
+ - analysis[day_int].**day_raw** `list`  
+   List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.  
+    &nbsp;
  - analysis[day_int].**hour_analysis** `list`  
    List with hour objects, containing details per hour.  
   &nbsp;
