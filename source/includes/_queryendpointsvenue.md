@@ -43,7 +43,7 @@ The 'query venue' endpoint is used to retrieve information about the venue. It d
  &nbsp; 
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">

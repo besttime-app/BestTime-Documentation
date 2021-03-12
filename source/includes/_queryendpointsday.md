@@ -53,7 +53,7 @@ The 'query day' endpoint is used to retrieve all analysis from an existing forec
  Day of the week. Range `0` (Monday) to `6` (Sunday).  
  &nbsp; 
 - **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
- Public API Key. See more info on [API keys](#api-keys)  
+ Public API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">

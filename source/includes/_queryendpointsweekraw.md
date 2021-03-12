@@ -47,7 +47,7 @@ The 'query week raw' endpoint is used to retrieve the raw data from an existing 
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
  &nbsp; 
 - **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
- Public API Key. See more info on [API keys](#api-keys)  
+ Public API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">

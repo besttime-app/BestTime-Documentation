@@ -54,7 +54,7 @@ The Venue Search model will lookup venues in the background and will forecast th
 
 ### Venue filters
 
-The Venue Search Progress endpoint will return a link to view the results in the 'Radar tool' and the 'venue filter' endpoint once the background job has been completed (`job_finished: true`). The venue search endpoint accepts filters similar to the 'venue filter' endpoint and Radar tool. By providing these parameters the links to the Radar tool and Venue Filter endpoint will automatically include the filter parameters. 
+The Venue Search Progress endpoint will return a link to view the results in the 'Radar tool' and the 'venue filter' API endpoint once the background job has been completed (`job_finished: true`). The venue search endpoint accepts filters similar to the 'venue filter' endpoint and Radar tool. By providing these parameters the links to the Radar tool and Venue Filter endpoint will automatically include the filter parameters. Only after analyzing each venue (foot-traffic forecast) the filters can be applied. The venue search result therefore also includes venues that do not meet the filter criteria, but match the other search query text.
 
 ### Natural langauge in the search query as filters
 
@@ -134,7 +134,7 @@ This query endpoint requires the private API key.
 ### Input attributes Venue Search
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-keys) for more info.
+ Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-reference) for more info.
  &nbsp;
 - **q** `string` <span style="color:orange">REQUIRED</span>  
  Text query to search venues with a matching venue name (e.g. Whole Foods), or venue type (e.g. restaurants), and location (e.g. neighborhood, city, state or country). You can use natural language to automatically add venue filters. See [Natural Language in a search query](#natural-langauge-in-the-search-query-as-filters)
@@ -324,7 +324,7 @@ $.ajax({
 ### Input attributes Venue Search Progress
 
 - **job_id** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-keys) for more info.
+ Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-reference) for more info.
  &nbsp;
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
 Adding the `collection_id` passes on the collection_id in the result links once the venue search  is finished. See [Collections](#venue-collections).  

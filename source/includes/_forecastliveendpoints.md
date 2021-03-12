@@ -62,7 +62,7 @@ When creating a live forecast the normal forecast for the venue will NOT be upda
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues. To use the `venue_id` as input, the venue needs to be forecasted before. When the `venue_id` parameter is omitted the `venue_name` and `venue_address` parameters are required.  
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">

@@ -78,7 +78,7 @@ Radar tool (which is using this 'venue filter' endpoint)
 </a>
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-keys)  
+ Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-reference)  
  &nbsp;
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
 Filters on vennues within a collection. See more info on [Collections](#venue-collections)

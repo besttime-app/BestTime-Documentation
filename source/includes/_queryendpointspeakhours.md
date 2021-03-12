@@ -63,7 +63,7 @@ By default, the response includes the peak objects for the current day (at the l
   Adjust the hour (hour of the venue in the local timezone). E.g. `0` means current hour, and `-2` means two hours ago. Range: min `-12`, max `12`. `hour_step` cannot be used in combination with `day_int`.  
  &nbsp;
 - **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
- Public API Key. See more info on [API keys](#api-keys)  
+ Public API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">

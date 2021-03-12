@@ -64,7 +64,7 @@ $.ajax({
  Name for the collection. Does not have to be unique. Maximum `128` characters long.
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
@@ -136,7 +136,7 @@ $.ajax({
  ID of the venue to be added to the collection.
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
@@ -204,7 +204,7 @@ $.ajax({
  The unique ID for the collection, 36 characters long.
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
@@ -276,7 +276,7 @@ $.ajax({
  ID of the venue to be removed from the collection.
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
@@ -349,7 +349,7 @@ $.ajax({
  The unique ID for the collection, 36 characters long. 
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
