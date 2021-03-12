@@ -81,7 +81,7 @@ Radar tool (which is using this 'venue filter' endpoint)
  Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-keys)  
  &nbsp;
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
-Filters on vennues within a collection. See more info on [Collections](#collections) TODO check link
+Filters on vennues within a collection. See more info on [Collections](#venue-collections)
  &nbsp;
 - **busy_min** `int` <span style="color:blue">OPTIONAL</span>  
 Minimum busyness for the filtered venues, ranging from `0` to `100` procent.  Use `busy_conf` parameter to change the filter method.  
@@ -109,9 +109,6 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
  &nbsp; 
 - **live_refresh** `bool` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
  Live refresh set to `true` will refresh all live and forecast data for each individual venue meeting the filter.  This will slow down the request and results in extra API credits per refreshed venue.
- &nbsp; 
-- **collection_id** `string` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
- Returns only venues added to given collection. 
  &nbsp; 
 - **types** `list` <span style="color:blue">OPTIONAL</span>  
  Filters on one or more venue types. All types are selected if the `types` parameter is ommited. Possible types are `['APPAREL', 'ARTS', 'BANKING', 'BAR', 'BOTANICAL_GARDEN', 'CAFE', 'CAR_RENTAL', 'CHURCH', 'CITY_HALL', 'COFFEE', 'DENTIST', 'DOCTOR', 'EMBASSY', 'EVENT_VENUE', 'FAST_FOOD', 'FOOD_AND_DRINK', 'FOOD_DELIVERY', 'GAS_STATION', 'GOVERNMENT', 'GROCERY', 'LODGING','MARKET', 'MOVIE_THEATER', 'MUSEUM', 'Other', 'PARK', 'PERFORMING_ARTS', 'PERSONAL_CARE', 'PHARMACY', 'PUBLIC_TRANSIT', 'RESTAURANT', 'SCHOOL', 'SHOPPING', 'SKILL_INSTRUCTION', 'SPA', 'SPORTS_COMPLEX', 'SUPERMARKET', 'TEA', 'TOURIST_DESTINATION', 'VISITOR_CENTER']`  

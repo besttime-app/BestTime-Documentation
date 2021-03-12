@@ -50,7 +50,7 @@ Find and add new venues based on a search query. The search query can e.g. conta
 The search query can be narrowed down with additional filters like the location (e.g. a neighborhood, city, or country), or add geographical data (lat, lng, radius) to find venues related to the search query in a geographic location.
 
 Multiple API endpoints are involved from entering a search input until returning foot-traffic data for the found venues.
-The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id`.  You can poll the Venue Search Progress endpoint to poll to progress. The venue search functionality can also be used without API using the website [Venue Search Tool](https://beta.besttime.app/api/v1/searchvenues) or on the [Radar tool](https://beta.besttime.app/api/v1/radar/filter).
+The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id` (see [Collections](#venue-collections)).  You can poll the Venue Search Progress endpoint to poll to progress. The venue search functionality can also be used without API using the website [Venue Search Tool](https://beta.besttime.app/api/v1/searchvenues) or on the [Radar tool](https://beta.besttime.app/api/v1/radar/filter).
 
 ### Venue filters
 
@@ -137,7 +137,7 @@ This query endpoint requires the private API key.
  Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-keys) for more info.
  &nbsp;
 - **q** `string` <span style="color:orange">REQUIRED</span>  
- Text query to search venues with a matching venue name (e.g. Whole Foods), or venue type (e.g. restaurants), and location (e.g. neighborhood, city, state or country). You can use natural language to automatically add venue filters. <see TODO fix link [Natural langauge in the search query as filters](#Natural langauge in the search query as filters).>
+ Text query to search venues with a matching venue name (e.g. Whole Foods), or venue type (e.g. restaurants), and location (e.g. neighborhood, city, state or country). You can use natural language to automatically add venue filters. See [Natural Language in a search query](#natural-langauge-in-the-search-query-as-filters)
  &nbsp;
 - **num** `int` <span style="color:blue">OPTIONAL</span>  
 Maximum number of search results, with increments of 20 venues, and a range from `20` to `200`.
@@ -147,7 +147,7 @@ Default number is `20`. API credits for this endpoint are counted per `20` searc
 Search for venues with specific opening times. Options are `24`, `now`, `all` . `24` will return venues with a 24 hour opening time. `now` will return venues that are opened at this moment. `all` will return all venues regardless of their opening hours. Defaults to `all`.
  &nbsp;
 - **fast** `boolean` <span style="color:blue">OPTIONAL</span>  
-Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See API Credits for more info <TODO add Credits link>. Fixed packages each have limited amount of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calander month. Contact us for high volume fast or normal search queries.
+Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See [API Credits](#credits) for more info. Fixed packages each have limited amount of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calander month. Contact us for high volume fast or normal search queries.
  &nbsp;
 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
@@ -188,7 +188,7 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
  Live refresh set to `true` will refresh all live and forecast data for each individual venue meeting the filter.  This will slow down the request and results in extra API credits per refreshed venue. 
  &nbsp; 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
- Returns only venues added to given collection. See Collections for more info. <TODO add link to collection info>
+ Returns only venues added to given collection. See Collections for more info. See [Collections](#venue-collections).  
  &nbsp; 
 - **types** `list` <span style="color:blue">OPTIONAL</span>  
  Filters on one or more venue types. All types are selected if the `types` parameter is ommited. Possible types are `['APPAREL', 'ARTS', 'BANKING', 'BAR', 'BOTANICAL_GARDEN', 'CAFE', 'CAR_RENTAL', 'CHURCH', 'CITY_HALL', 'COFFEE', 'DENTIST', 'DOCTOR', 'EMBASSY', 'EVENT_VENUE', 'FAST_FOOD', 'FOOD_AND_DRINK', 'FOOD_DELIVERY', 'GAS_STATION', 'GOVERNMENT', 'GROCERY', 'LODGING','MARKET', 'MOVIE_THEATER', 'MUSEUM', 'Other', 'PARK', 'PERFORMING_ARTS', 'PERSONAL_CARE', 'PHARMACY', 'PUBLIC_TRANSIT', 'RESTAURANT', 'SCHOOL', 'SHOPPING', 'SKILL_INSTRUCTION', 'SPA', 'SPORTS_COMPLEX', 'SUPERMARKET', 'TEA', 'TOURIST_DESTINATION', 'VISITOR_CENTER']`  
@@ -262,17 +262,17 @@ API Credit usage per API call for this endpoint depends on the number `num` of r
 
 
 ### Response attributes Venue Search
-The JSON response will contain a URL to the Venue Search Progress endpoint to track the progress of the current venue search that runs in the background. This URL is the same as the 'Venue Search Progress' API endpoint <TODO add link>.
+The JSON response will contain a URL to the Venue Search Progress endpoint to track the progress of the current venue search that runs in the background. This URL is the same as the [Venue Search Progress](#response-attributes-venue-search) API endpoint.
 
 - **_links** `object` 
   &nbsp;
   - _links.**venue_search_progress** `string`  
-    Link to the venue search background job. Use this link to check the progress on the search venues query. When the job is finished it will display the found venues, how many venues have forecast data, and links to show the found venues with foot-traffic results directly in the 'Radar tool` and 'venue filter' endpoints. <For more info see venue_search_progress TODO link.>
+    Link to the venue search background job. Use this link to check the progress on the search venues query. When the job is finished it will display the found venues, how many venues have forecast data, and links to show the found venues with foot-traffic results directly in the 'Radar tool` and 'venue filter' endpoints. For more info see [Venue Search Progress](#response-attributes-venue-search).
     &nbsp;
     
     &nbsp;
 - **collection_id** `string` 
- Unique ID for the collection, 36 characters long.  
+ Unique ID for the collection, 36 characters long. See [Collections](#venue-collections). 
  - **job_id** `string` 
  Unique ID for the venue search background job.  
 - **status** `string` 
@@ -327,7 +327,7 @@ $.ajax({
  Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-keys) for more info.
  &nbsp;
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
-Adding the `collection_id` passes on the collection_id in the result links once the venue search  is finished.  
+Adding the `collection_id` passes on the collection_id in the result links once the venue search  is finished. See [Collections](#venue-collections).  
  &nbsp;
 
 
