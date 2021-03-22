@@ -1,14 +1,13 @@
 
+# Live foot-traffic data
 
-## Live forecast
-
-> Create a Live forecast:
+> Returns Live foot-traffic data for a venue based on the venue name and address:
 
 ```python
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts/live"
+url = "https://beta.besttime.app/api/v1/forecasts/live"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
@@ -25,7 +24,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/forecasts/live?
+curl --location --request POST 'https://beta.besttime.app/api/v1/forecasts/live?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
 venue_name=McDonalds&
 venue_address=Ocean%20Ave%2C%20San%20Fransisco'
@@ -39,7 +38,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts/live?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts/live?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -63,11 +62,11 @@ When creating a live forecast the normal forecast for the venue will NOT be upda
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues. To use the `venue_id` as input, the venue needs to be forecasted before. When the `venue_id` parameter is omitted the `venue_name` and `venue_address` parameters are required.  
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
-Live endpoint: https://BestTime.app/api/v1/forecast/live
+Live endpoint: https://beta.besttime.app/api/v1/forecast/live
 </aside>
 
 <aside class="notice">

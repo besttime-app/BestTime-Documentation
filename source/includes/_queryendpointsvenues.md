@@ -1,4 +1,4 @@
-## Query all venues
+# Query all venues
 
 > Query list of all forecasted venues:
 
@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/venues"
+url = "https://beta.besttime.app/api/v1/venues"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b'
@@ -21,13 +21,13 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues?
+curl --location --request GET 'https://beta.besttime.app/api/v1/venues?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b'
 ```
 
 ```javascript
 $.ajax({
-"url": "https://besttime.app/api/v1/venues?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b",
+"url": "https://beta.besttime.app/api/v1/venues?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b",
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -39,11 +39,11 @@ $.ajax({
 The 'query venues' endpoint is used to retrieve a list with all previously forecasted venues. This query endpoint requires the private API key. Although the private API keys is used, this endpoint will be charged with query credits.
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)  
+ Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
-Query venues endpoint: https://BestTime.app/api/v1/venues
+Query venues endpoint: https://beta.besttime.app/api/v1/venues
 </aside>
 
 <aside class="notice">

@@ -15,7 +15,7 @@ Besides hour forecasts, additional analysis are included. For example, the peak 
 
 Once a business has been forecasted additional queries can be made on the forecast. For example: When is today's next peak? When will it be quiet on Saturday? How busy will it be next hour? 
 
-Using the [Radar tool](https://besttime.app/api/v1/radar/filter) or the [Query filtered venues](#query-filtered-venues-radar) api endpoint venues can be filtered on how busy they are, location, time & day, and business type.
+Using the [Radar tool](https://beta.besttime.app/api/v1/radar/filter) or the [Query filtered venues](#query-filtered-venues-radar) api endpoint venues can be filtered on how busy they are, location, time & day, and business type.
 
 ## Use cases
 Below are a few example use-cases how the analyzed data can be used in real-world:

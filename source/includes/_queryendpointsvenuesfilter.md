@@ -1,4 +1,4 @@
-## Query filtered venues (Radar)
+# Query filtered venues (Radar)
 
 > Filter forecasted venues on busyness, location, type, day, and time. 
 
@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/venues/filter"
+url = "https://beta.besttime.app/api/v1/venues/filter"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
@@ -32,7 +32,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&hour_conf=any&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
+curl --location --request GET 'https://beta.besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&hour_conf=any&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
 ```
 
 ```javascript
@@ -52,7 +52,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/venues/filter?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/venues/filter?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -78,7 +78,10 @@ Radar tool (which is using this 'venue filter' endpoint)
 </a>
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-keys)  
+ Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-reference)  
+ &nbsp;
+- **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
+Filters on vennues within a collection. See more info on [Collections](#venue-collections)
  &nbsp;
 - **busy_min** `int` <span style="color:blue">OPTIONAL</span>  
 Minimum busyness for the filtered venues, ranging from `0` to `100` procent.  Use `busy_conf` parameter to change the filter method.  
@@ -104,6 +107,9 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 - **live** `bool` <span style="color:blue">OPTIONAL</span>  
  Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
  &nbsp; 
+- **live_refresh** `bool` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
+ Live refresh set to `true` will refresh all live and forecast data for each individual venue meeting the filter.  This will slow down the request and results in extra API credits per refreshed venue.
+ &nbsp; 
 - **types** `list` <span style="color:blue">OPTIONAL</span>  
  Filters on one or more venue types. All types are selected if the `types` parameter is ommited. Possible types are `['APPAREL', 'ARTS', 'BANKING', 'BAR', 'BOTANICAL_GARDEN', 'CAFE', 'CAR_RENTAL', 'CHURCH', 'CITY_HALL', 'COFFEE', 'DENTIST', 'DOCTOR', 'EMBASSY', 'EVENT_VENUE', 'FAST_FOOD', 'FOOD_AND_DRINK', 'FOOD_DELIVERY', 'GAS_STATION', 'GOVERNMENT', 'GROCERY', 'LODGING','MARKET', 'MOVIE_THEATER', 'MUSEUM', 'Other', 'PARK', 'PERFORMING_ARTS', 'PERSONAL_CARE', 'PHARMACY', 'PUBLIC_TRANSIT', 'RESTAURANT', 'SCHOOL', 'SHOPPING', 'SKILL_INSTRUCTION', 'SPA', 'SPORTS_COMPLEX', 'SUPERMARKET', 'TEA', 'TOURIST_DESTINATION', 'VISITOR_CENTER']`  
  &nbsp; 
@@ -128,9 +134,28 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 - **lng_max** `float` <span style="color:blue">OPTIONAL</span>  
    Maximum longitude of the bounding box (North-East). `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
   &nbsp; 
+- **price_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>  
+   Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_min` filters out all venues without a price level.  
+  &nbsp; 
+- **price_max** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+   Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level.  
+  &nbsp; 
+- **rating_min** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`.  
+  &nbsp; 
+- **rating_max** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+   Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
+  &nbsp; 
+- **reviews_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+   Minimum amount of reviews for a venue. Minimum value `0`.  
+  &nbsp;  
+- **reviews_max** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>   
+   Maximum amount of reviews for a venue. Minimum value `0`.
+  &nbsp; 
+
 
 <aside class="notice">
-Query filtered venues endpoint: https://BestTime.app/api/v1/venues/filter
+Query filtered venues endpoint: https://beta.besttime.app/api/v1/venues/filter
 </aside>
 
 <aside class="notice">

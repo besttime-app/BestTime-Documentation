@@ -1,4 +1,4 @@
-## Query hour raw
+# Query hour raw
 
 > Query the raw hour data:
 
@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts/hour/raw"
+url = "https://beta.besttime.app/api/v1/forecasts/hour/raw"
 
 params = {
     'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
@@ -24,7 +24,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/forecasts/hour/raw?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&day_int=3&hour=16'
+curl --location --request GET 'https://beta.besttime.app/api/v1/forecasts/hour/raw?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&day_int=3&hour=16'
 ```
 
 ```javascript
@@ -36,7 +36,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts/hour/raw?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts/hour/raw?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -57,11 +57,11 @@ The 'query hour raw' endpoint is used to retrieve the raw data from an existing 
  Hour of the day. Range `0` (Midnight) to `23` (11pm). Please note that the day window within a weekday starts at 6AM `hour = 6` and ends at 5AM `hour = 5` next day. See Introduction section [Forecast day window and weekdays](#forecast-day-window-and-weekdays)  
  &nbsp; 
 - **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
- Public API Key. See more info on [API keys](#api-keys)  
+ Public API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
-Hour raw endpoint: https://BestTime.app/api/v1/forecasts/hour/raw
+Hour raw endpoint: https://beta.besttime.app/api/v1/forecasts/hour/raw
 </aside>
 
 <aside class="notice">
@@ -95,7 +95,7 @@ HTTP method: GET
 This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
 
 -  HTTP method: `POST` (instead of `GET`)
--  The same API query endpoint URL `https://besttime.app/api/v1/forecasts/hour/raw`
+-  The same API query endpoint URL `https://beta.besttime.app/api/v1/forecasts/hour/raw`
 -  `venue_name` and `venue_address` as input or `venue_id`
 - The input attributes from this query endpoint
 

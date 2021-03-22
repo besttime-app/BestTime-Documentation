@@ -1,18 +1,14 @@
 
-# Forecasts endpoints
-  
-  
-
-## New forecast
+# New foot-traffic forecast
 <a name="forecast-new-link"></a> 
 
-> Create a new forecast:
+> Returns foot-traffic forecast for a venue based on a name and address
 
 ```python
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts"
+url = "https://beta.besttime.app/api/v1/forecasts"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
@@ -29,7 +25,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/forecasts?
+curl --location --request POST 'https://beta.besttime.app/api/v1/forecasts?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
 venue_name=McDonalds&
 venue_address=Ocean%20Ave%2C%20San%20Fransisco'
@@ -43,7 +39,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -64,6 +60,32 @@ $.ajax({
                 "venue_closed": 6,
                 "venue_open": 23
             },
+            "day_raw": [
+                10,
+                25,
+                40,
+                55,
+                65,
+                75,
+                75,
+                75,
+                75,
+                75,
+                70,
+                65,
+                50,
+                40,
+                30,
+                25,
+                25,
+                25,
+                20,
+                15,
+                10,
+                0,
+                5,
+                5
+            ],
             "hour_analysis": [
                 {
                     "hour": 6,
@@ -125,11 +147,11 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
  Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.  
  &nbsp; 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-keys)
+ Private API Key. See more info on [API keys](#api-reference)
  &nbsp; 
 
 <aside class="notice">
-New forecast endpoint: https://BestTime.app/api/v1/forecasts
+New forecast endpoint: https://beta.besttime.app/api/v1/forecasts
 </aside>
 
 <aside class="notice">
@@ -170,6 +192,9 @@ Note: the Javascript example uses the jQuery library
      - analysis[day_int].day_info.**venue_open** `int`  
        Hour of day when the venue opens. Range `0` to `23` hour  
        &nbsp;
+ - analysis[day_int].**day_raw** `list`  
+   List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.  
+    &nbsp;
  - analysis[day_int].**hour_analysis** `list`  
    List with hour objects, containing details per hour.  
   &nbsp;

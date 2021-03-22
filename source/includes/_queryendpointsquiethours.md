@@ -1,4 +1,4 @@
-## Query quiet hours
+# Query quiet hours
 
 > Query quiet hours:
 
@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://besttime.app/api/v1/forecasts/quiet"
+url = "https://beta.besttime.app/api/v1/forecasts/quiet"
 
 params = {
     'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
@@ -24,7 +24,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/forecasts/quiet?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
+curl --location --request GET 'https://beta.besttime.app/api/v1/forecasts/quiet?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843&
 day_step=0&
 hour_step=0'
 ```
@@ -38,7 +38,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://besttime.app/api/v1/forecasts/quiet?" + new URLSearchParams(params),
+"url": "https://beta.besttime.app/api/v1/forecasts/quiet?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -63,11 +63,11 @@ By default, the response includes the quiet hour information for the current day
   Adjust the hour (hour of the venue in the local timezone). E.g. `0` means current hour, and `-2` means two hours ago. Range: min `-12`, max `12`. `hour_step` cannot be used in combination with `day_int`.  
  &nbsp;
 - **api_key_public** `string` <span style="color:orange">REQUIRED</span>  
- Public API Key. See more info on [API keys](#api-keys)  
+ Public API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
 
 <aside class="notice">
-Query quiet hours endpoint: https://BestTime.app/api/v1/forecasts/quiet
+Query quiet hours endpoint: https://beta.besttime.app/api/v1/forecasts/quiet
 </aside>
 
 <aside class="notice">
@@ -266,7 +266,7 @@ HTTP method: GET
 This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
 
 -  HTTP method: `POST` (instead of `GET`)
--  The same API query endpoint URL `https://besttime.app/api/v1/forecasts/quiet`
+-  The same API query endpoint URL `https://beta.besttime.app/api/v1/forecasts/quiet`
 -  `venue_name` and `venue_address` as input or `venue_id`
 - The input attributes from this query endpoint
 

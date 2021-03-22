@@ -16,10 +16,12 @@ includes:
   - apireference
   - forecastendpoints
   - forecastliveendpoints
+  - queryendpointsvenuessearch
+  - venuecollections
   - queryendpoints
+  - queryendpointsvenuesfilter
   - queryendpointsvenue
   - queryendpointsvenues
-  - queryendpointsvenuesfilter
   - queryendpointsweek
   - queryendpointsweekraw
   - queryendpointsweekoverview
@@ -33,6 +35,7 @@ includes:
   - queryendpointsbusyhours
   - queryendpointsquiethours
   - queryendpointsurge
+
 
 search: true
 ---
