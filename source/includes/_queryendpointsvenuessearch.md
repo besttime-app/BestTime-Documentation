@@ -54,17 +54,17 @@ The Venue Search model will lookup venues in the background and will forecast th
 
 ### Venue filters
 
-The Venue Search Progress endpoint will return a link to view the results in the 'Radar tool' and the 'venue filter' API endpoint once the background job has been completed (`job_finished: true`). The venue search endpoint accepts filters similar to the 'venue filter' endpoint and Radar tool. By providing these parameters the links to the Radar tool and Venue Filter endpoint will automatically include the filter parameters. Only after analyzing each venue (foot-traffic forecast) the filters can be applied. The venue search result therefore also includes venues that do not meet the filter criteria, but match the other search query text.
+The Venue Search Progress endpoint will return a link to view the results in the 'Radar tool' and the 'venue filter' API endpoint once the background job has been completed (`job_finished: true`). The venue search endpoint accepts filters similar to the 'venue filter' endpoint and Radar tool. By providing these parameters the links to the Radar tool and Venue Filter endpoint will automatically include the filter parameters. Only after analyzing each venue (foot-traffic forecast) most filters will be applied in the Radar tool/ Venue Filter endpoint. The venue search result therefore also includes venues that do not meet the filter criteria, but match the other search query text. The filters that are directly applied in the search are: `opened`, `lat`, `lng`, and `radius` for both search methods ('normal' and 'fast' method). The 'fast' method filters directly as well on `price_min` and `price_max`. The 'normal' search method will filter directly on `rating_min`.
 
-### Natural langauge in the search query as filters
+### Natural language in the search query as filters
 
-Besides seperate parameters as filter inputs, the `q` search query understands also a variaty of natural language that will be translated into the related filter parameters. You can use it to filter on busyness, day of week, day part, or time range. For example:  
+Besides separate parameters as filter inputs, the `q` search query understands also a variety of natural language that will be translated into the related filter parameters. You can use it to filter on busyness, day of week, day part, or time range. For example:  
 
 Busyness natural language examples:  
 
-- Search query `Busy bars in Sydney Australia` will result in a search for `bars in Sydney Australia` and will set the filter parameter minimum busyness to 50% `busy_min=50`.  
+- Search query `Busy bars in Sydney Australia` will result in a search for `bars in Sydney Australia` and sets the filter parameter minimum busyness to 50% `busy_min=50`.  
 
-- Search query `Quiet supermarkets in Los Angeles, CA` will result in a search for `supermarkets in Los Angeles, CA` and will set the filter parameter maximum busyness to 50% `busy_max=50`.  
+- Search query `Quiet supermarkets in Los Angeles, CA` will result in a search for `supermarkets in Los Angeles, CA` and sets the filter parameter maximum busyness to 50% `busy_max=50`.  
 
 - Search query `10% to 60% busy shops in New York City` will result in a search for `shops in New York City` with `busy_min=10` and `busy_max=60` as filter parameters.
 
@@ -91,7 +91,7 @@ Day of week  natural language examples:
 - Search query `shopping malls in Singapore on Monday` will result in a search for `shopping malls 
 in Singapore` and with `day_int=0` as filter parameters.  
 
-- Search query `bars in Melbourne Australia Friday` will result in a search for `bars in Melbourne Australia` with `day_int=4` as filter parameter.  
+- Search query `bars in Melbourne Australia Friday` will result in a search for `bars in Melbourne Australia` with `day_int=4` as the filter parameter.  
 
 Strings (case insensitive) that will trigger the day of week are :
 - `Monday` -> `day_int=0`,  
@@ -104,13 +104,13 @@ Strings (case insensitive) that will trigger the day of week are :
 
 Time of day natural language examples:  
 
-- Search query `quiet shopping malls in Singapore this morning` will result in a search for `shopping malls in Singapore` and with `busy_max=50`, `hour_min=6`, and `hour_max=11` as filter parameters.  
+- Search query `quiet shopping malls in Singapore this morning` will result in a search for `shopping malls in Singapore` and with `busy_max=50`, `hour_min=6`, and `hour_max=11` as the filter parameters.  
 
-- Search query `busy bars in Melbourne Australia Saturday evening` will result in a search for `bars in Melbourne Australia` and with `busy_min=50`, `hour_min=18`, and `hour_max=0` as filter parameters.  
+- Search query `busy bars in Melbourne Australia Saturday evening` will result in a search for `bars in Melbourne Australia` and with `busy_min=50`, `hour_min=18`, and `hour_max=0` as the filter parameters.  
 
-- Search query `min 60% busy bars in Melbourne Australia Saturday after 9PM` will result in a search for `bars in Melbourne Australia` and with `busy_min=60`, `day_int=5`,`hour_min=21` as filter parameters.  
+- Search query `min 60% busy bars in Melbourne Australia Saturday after 9 PM` will result in a search for `bars in Melbourne Australia` and with `busy_min=60`, `day_int=5`,`hour_min=21` as the filter parameters.  
 
-- Search query `max 40% busy restaurants in Melbourne Australia on Wednesday from 13 until 15` will result in a search for `restaurants in Melbourne Australia` and with `busy_max=40`, `day_int=2`, `hour_min=13`, and `hour_max=15` as filter parameters.  
+- Search query `max 40% busy restaurants in Melbourne Australia on Wednesday from 13 until 15` will result in a search for `restaurants in Melbourne Australia` and with `busy_max=40`, `day_int=2`, `hour_min=13`, and `hour_max=15` as the filter parameters.  
 
 Strings (case insensitive) that will trigger the time of day filters:  
 
@@ -125,7 +125,7 @@ Strings (case insensitive) that will trigger the time of day filters:
   `after`, `before`, `until`, `till`, `from`  
   e.g. `until 1pm` or `from 9 till 15`  
 
-- `now` sets the the `hour_min` and `hour_max` value to filter foot-traffic data on current hour local time of the first venue. E.g. `busy bars in Sydney Australia now`. `Now` cannot be used in combination with day and other time triggers.  
+- `now` sets the the `hour_min` and `hour_max` value to filter foot-traffic data to the current hour local time of the first venue in the result. E.g. `busy bars in Sydney Australia now`. `Now` cannot be used in combination with day and other time triggers.  
 
 - `live` will only show venues with real-time live data. `live` cannot be used in combination with day and other time triggers.  
 
@@ -141,21 +141,31 @@ This query endpoint requires the private API key.
  &nbsp;
 - **num** `int` <span style="color:blue">OPTIONAL</span>  
 Maximum number of search results, with increments of 20 venues, and a range from `20` to `200`.
-Default number is `20`. API credits for this endpoint are counted per `20` search results. The search time grows liniarly with the amount of requested numbers (see also parameter `fast`).
+The default number is `20`. API credits for this endpoint are counted per `20` search results. The search time grows linearly with the number of requested numbers (see also parameter `fast`).
 &nbsp;
 - **opened** `string` <span style="color:blue">OPTIONAL</span>  
 Search for venues with specific opening times. Options are `24`, `now`, `all` . `24` will return venues with a 24 hour opening time. `now` will return venues that are opened at this moment. `all` will return all venues regardless of their opening hours. Defaults to `all`.
  &nbsp;
 - **fast** `boolean` <span style="color:blue">OPTIONAL</span>  
-Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See [API Credits](#credits) for more info. Fixed packages each have limited amount of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calander month. Contact us for high volume fast or normal search queries.
+Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See [API Credits](#credits) for more info. Fixed packages each have a limited amount of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calendar month. Contact us for high-volume fast or normal search queries.
  &nbsp;
 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
 Add the results to an existing or user-defined collection_id. If this parameter is omitted a new unique collection_id will be generated. All successfully forecasted venues will be automatically added to this collection. By giving an existing collection_id the user can merge the new venues with an existing venue collection. See [Collections](#collections) for more info.
  &nbsp;
 
+- **lat** `float` <span style="color:blue">OPTIONAL</span>  
+   Geographic latitude of the search circle. `lat` must be combined with `lng`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+  &nbsp;
+- **lng** `float` <span style="color:blue">OPTIONAL</span>  
+   Geographic longitude of the search circle.  `lng` must be combined with `lat`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+  &nbsp; 
+- **radius** `int` <span style="color:blue">OPTIONAL</span>  
+   Radius of the search circle in meter.  `radius` must be combined with `lat`, and `lng`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+  &nbsp; 
+
 <aside class="notice">
-The 'venue search' endpoint accepts also the filters below, similar to the `venue filter` filter parameters. These 'venue filter' parameters are NOT applied on the initial 'search venue' venue results, but are only passed on to the 'venue filter' and 'radar' URL links. When a 'venue search' is performend with filters set to e.g. `busy_min=60` the 'venue search` results will include and forecast all found venues. Only the subsequent 'venue filter'/ 'radar tool' step applies the filters. 
+The 'venue search' endpoint accepts also the filters below, similar to the `venue filter` filter parameters. These 'venue filter' parameters are NOT applied on the initial 'search venue' venue results (as with the parameters mentioned above), but are only passed on to the 'venue filter' and 'radar' URL links. When a 'venue search' is performed with filters set to e.g. `busy_min=60` the 'venue search` results will include and forecast all found venues. Only the subsequent 'venue filter'/ 'radar tool' step applies the filters. 
 </aside>  
 &nbsp;
 
@@ -193,35 +203,27 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 - **types** `list` <span style="color:blue">OPTIONAL</span>  
  Filters on one or more venue types. All types are selected if the `types` parameter is ommited. Possible types are `['APPAREL', 'ARTS', 'BANKING', 'BAR', 'BOTANICAL_GARDEN', 'CAFE', 'CAR_RENTAL', 'CHURCH', 'CITY_HALL', 'COFFEE', 'DENTIST', 'DOCTOR', 'EMBASSY', 'EVENT_VENUE', 'FAST_FOOD', 'FOOD_AND_DRINK', 'FOOD_DELIVERY', 'GAS_STATION', 'GOVERNMENT', 'GROCERY', 'LODGING','MARKET', 'MOVIE_THEATER', 'MUSEUM', 'Other', 'PARK', 'PERFORMING_ARTS', 'PERSONAL_CARE', 'PHARMACY', 'PUBLIC_TRANSIT', 'RESTAURANT', 'SCHOOL', 'SHOPPING', 'SKILL_INSTRUCTION', 'SPA', 'SPORTS_COMPLEX', 'SUPERMARKET', 'TEA', 'TOURIST_DESTINATION', 'VISITOR_CENTER']`  
  &nbsp; 
-- **lat** `float` <span style="color:blue">OPTIONAL</span>  
-   Geographic latitude of the search circle. `lat` must be combined with `lng`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
-  &nbsp;
-- **lng** `float` <span style="color:blue">OPTIONAL</span>  
-   Geographic longitude of the search circle.  `lng` must be combined with `lat`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
-  &nbsp; 
-- **radius** `int` <span style="color:blue">OPTIONAL</span>  
-   Radius of the search circle in meter.  `radius` must be combined with `lat`, and `lng`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
-  &nbsp; 
+
 - **lat_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum latitude of the bounding box (South-West). `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+   Minimum latitude of the bounding box (South-West). `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
   &nbsp; 
 - **lng_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum longitude of the bounding box (South-West). `lng_min` must be combined with `lng_max`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+   Minimum longitude of the bounding box (South-West). `lng_min` must be combined with `lng_max`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
   &nbsp; 
 - **lat_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum latitude of the bounding box (North-East). `lat_max` must be combined with `lat_min`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+   Maximum latitude of the bounding box (North-East). `lat_max` must be combined with `lat_min`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
   &nbsp; 
 - **lng_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum longitude of the bounding box (North-East). `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+   Maximum longitude of the bounding box (North-East). `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint. 
   &nbsp; 
 - **price_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>  
-   Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_min` filters out all venues without a price level.  
+   Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_min` filters out all venues without a price level. When the 'fast' search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint. 
   &nbsp; 
 - **price_max** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
-   Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level.  
+   Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level. When the 'fast' search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint.
   &nbsp; 
 - **rating_min** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
-   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`.  
+   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`. When the 'normal' speed search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint.
   &nbsp; 
 - **rating_max** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
    Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
@@ -327,11 +329,11 @@ $.ajax({
  Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-reference) for more info.
  &nbsp;
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
-Adding the `collection_id` passes on the collection_id in the result links once the venue search  is finished. See [Collections](#venue-collections).  
+Adding the `collection_id` passes on the collection_id in the result links once the venue search is finished. See [Collections](#venue-collections).  
  &nbsp;
 
 
-> The above request returns a JSON response with the progress of the venue search. Once it is completed it will show the second displayed JSON response.
+> The above request returns a JSON response with the progress of the venue search. Once it is complete it will show the second displayed JSON response.
 
 ```json
 {
@@ -348,7 +350,7 @@ Adding the `collection_id` passes on the collection_id in the result links once 
 ```
 
 
-> When the venue search is complete it will returns a JSON response with the following structure :
+> When the venue search is complete it will return a JSON response with the following structure :
 
 ```json
 {
@@ -405,7 +407,7 @@ Adding the `collection_id` passes on the collection_id in the result links once 
 The JSON response will contain the progress of the Venue Search query and once completed it will return the remaining attributes as shown in the second part of the attributes below.
 
 - **count_total** `int` 
- Total number of found venues matching the search query. When the venue search is still not finished (`job_finished: false`) this number could still go up until the maximum `num` of requested venues.  This number could also be below the amount of requested venues.
+ Total number of found venues matching the search query. When the venue search is still not finished (`job_finished: false`) this number could still go up until the maximum `num` of requested venues.  This number could also be below the amount of requested venues, if there are no
 - **count_completed** `int` 
  Number of venues processed (forecasted) in the background. 
 - **count_forecasted** `int` 
@@ -413,7 +415,7 @@ The JSON response will contain the progress of the Venue Search query and once c
 - **count_live** `int` 
  Number of venues with live foot-traffic data.  
 - **count_failed** `int` 
- Number of failed venues that resulted in errors. This number is not including venues without forecast data.  
+ Number of failed venues that resulted in errors. This number does not include venues without forecast data.  
 - **job_finished** `bool` 
  Boolean indicating if the Venue Search has been completed. `true` or `false`.  
 - **collection_id** `string` 
@@ -443,7 +445,7 @@ The attributes below will be displayed when the Venue Search job is finished (`j
     Indicates if the venue has foot-traffic forecast data. `true` or `false`. 
     &nbsp;
   - venues[N].**processed** `bool`  
-    Indicates if the venue has been processed (analysed) for foot-traffic data. `true` or `false`. 
+    Indicates if the venue has been processed (analyzed) for foot-traffic data. `true` or `false`. 
     &nbsp;
   - venues[N].**venue_address** `string`  
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
@@ -460,7 +462,7 @@ The attributes below will be displayed when the Venue Search job is finished (`j
 - **venues_n** `int`
 Total number of venues in list `venues`.
 - **bounding_box** `object` 
-  Geographical bounding box coordinates that fits all venues. Usefull to for displaying venues on a map. As alternative the map center lat, lng, map_zoom and a radius is provided to view all results on a map.
+  Geographical bounding box coordinates that fits all venues. Usefull to for displaying venues on a map. As an alternative the map center lat, lng, map_zoom and a radius parameters are provided to view all results on a map.
   &nbsp;
   - bounding_box.**lat** `string`  
     Geographic map latitude center of venue search result.  

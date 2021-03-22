@@ -4,7 +4,7 @@ Collections can be used to group venues together. Each collection has an unique 
 Venues inside a collection are managed using the `venue_id` of each venue. 
 Your existing collections can be also viewed on the [Collection page](https://beta.besttime.app/api/v1/collection_list). On the page, click on a collection_id to see which venues are inside or to open the collection in the Radar tool.
 
-Through the collections API endpoints you can create or delete collections, and add or remove venues to/from an existing collection. 
+Through the collections API endpoints, you can create or delete collections, and add or remove venues to/from an existing collection. 
 
 There are multiple ways to use a collection in combination with the other BestTime tools/ API endpoints 
 - Manually add venues to a collection to group them and later call the collection to simply know which `venue_id`’s belong together.
