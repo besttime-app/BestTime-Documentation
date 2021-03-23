@@ -6,7 +6,7 @@
 import requests
 import json
 
-url = "https://beta.besttime.app/api/v1/forecasts/week"
+url = "https://besttime.app/api/v1/forecasts/week"
 
 params = {
     'api_key_public': 'pub_e11661721b084d36b8f469a2c012e754',
@@ -22,7 +22,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://beta.besttime.app/api/v1/forecasts/week?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843'
+curl --location --request GET 'https://besttime.app/api/v1/forecasts/week?api_key_public=pub_e11661721b084d36b8f469a2c012e754&venue_id=ven_51387131543761435650505241346a394a6432395362654a496843'
 ```
 
 ```javascript
@@ -32,7 +32,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://beta.besttime.app/api/v1/forecasts/week?" + new URLSearchParams(params),
+"url": "https://besttime.app/api/v1/forecasts/week?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -55,7 +55,7 @@ The 'query week' endpoint is used to retrieve all data from an existing forecast
  &nbsp; 
 
 <aside class="notice">
-Week forecast endpoint: https://beta.besttime.app/api/v1/forecasts/week
+Week forecast endpoint: https://besttime.app/api/v1/forecasts/week
 </aside>
 
 <aside class="notice">
@@ -73,7 +73,7 @@ See [new forecast reponse attributes](#responseattributesnewforecast)
 This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
 
 -  HTTP method: `POST` (instead of `GET`)
--  The same API query endpoint URL `https://beta.besttime.app/api/v1/forecasts/week`
+-  The same API query endpoint URL `https://besttime.app/api/v1/forecasts/week`
 -  `venue_name` and `venue_address` as input or `venue_id`
 - The input attributes from this query endpoint
 

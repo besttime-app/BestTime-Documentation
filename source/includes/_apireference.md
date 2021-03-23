@@ -34,7 +34,7 @@ All key set use credits from the same account. When an API key is compromised yo
 ```python
 import requests
 
-url = "https://beta.besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122"
+url = "https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122"
 
 payload = {}
 headers= {}
@@ -46,12 +46,12 @@ print(response.text.encode('utf8'))
 
 ```shell
 # cURL
-curl --location --request GET 'https://beta.besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122'
+curl --location --request GET 'https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122'
 ```
 
 ```javascript
 var settings = {
-  "url": "https://beta.besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122",
+  "url": "https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122",
   "method": "GET"
 };
 
@@ -86,7 +86,7 @@ You can find or generate API keys at the [API keys Management](http://besttime.a
  &nbsp;  
 
 <aside class="notice">
-Base endpoint: https://beta.besttime.app/api/v1/keys
+Base endpoint: https://besttime.app/api/v1/keys
 </aside>
 
 <aside class="notice">

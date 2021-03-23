@@ -2,7 +2,7 @@
 
 Collections can be used to group venues together. Each collection has an unique 36 `collection_id` and an optional name.
 Venues inside a collection are managed using the `venue_id` of each venue. 
-Your existing collections can be also viewed on the [Collection page](https://beta.besttime.app/api/v1/collection_list). On the page, click on a collection_id to see which venues are inside or to open the collection in the Radar tool.
+Your existing collections can be also viewed on the [Collection page](https://besttime.app/api/v1/collection_list). On the page, click on a collection_id to see which venues are inside or to open the collection in the Radar tool.
 
 Through the collections API endpoints, you can create or delete collections, and add or remove venues to/from an existing collection. 
 
@@ -18,7 +18,7 @@ There are multiple ways to use a collection in combination with the other BestTi
 import requests
 import json
 
-url = "https://beta.besttime.app/api/v1/collection"
+url = "https://besttime.app/api/v1/collection"
 
 params = {
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
@@ -35,7 +35,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://beta.besttime.app/api/v1/collection?api_key_private=pri_s43661721b084d36b8f469a2c012e754&
+curl --location --request POST 'https://besttime.app/api/v1/collection?api_key_private=pri_s43661721b084d36b8f469a2c012e754&
 collection_id=col_51387131543761435650505241346a39&
 name=Supermarkets%20in%20Los%20Angeles%20CA'
 ```
@@ -48,7 +48,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://beta.besttime.app/api/v1/collection?" + new URLSearchParams(params),
+"url": "https://besttime.app/api/v1/collection?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -68,7 +68,7 @@ $.ajax({
  &nbsp; 
 
 <aside class="notice">
-Collection create endpoint: https://beta.besttime.app/api/v1/collection
+Collection create endpoint: https://besttime.app/api/v1/collection
 </aside>
 
 <aside class="notice">
@@ -96,7 +96,7 @@ HTTP method: POST
 import requests
 import json
 
-url = "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
+url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
 
 params = {
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
@@ -111,7 +111,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request POST 'https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754
+curl --location --request POST 'https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754
 ```
 
 ```javascript
@@ -120,7 +120,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
+"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
 "method": "POST"
 }).done(function (response) {
     console.log(response);
@@ -140,7 +140,7 @@ $.ajax({
  &nbsp; 
 
 <aside class="notice">
-Collection Add Venue endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
+Collection Add Venue endpoint: https://besttime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
 </aside>
 
 <aside class="notice">
@@ -167,7 +167,7 @@ Returns a list with all venue_id's of venues in the collection
 import requests
 import json
 
-url = "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39
+url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39
 
 params = {
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
@@ -182,7 +182,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request GET 'https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39?api_key_private=pri_s43661721b084d36b8f469a2c012e754
+curl --location --request GET 'https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39?api_key_private=pri_s43661721b084d36b8f469a2c012e754
 ```
 
 ```javascript
@@ -191,7 +191,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39?" + new URLSearchParams(params),
+"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39?" + new URLSearchParams(params),
 "method": "GET"
 }).done(function (response) {
     console.log(response);
@@ -208,7 +208,7 @@ $.ajax({
  &nbsp; 
 
 <aside class="notice">
-Collection Venues endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}
+Collection Venues endpoint: https://besttime.app/api/v1/collection/{{collection_id}}
 </aside>
 
 <aside class="notice">
@@ -236,7 +236,7 @@ Removes a venue from the collection using the `venue_id`.
 import requests
 import json
 
-url = "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
+url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
 
 params = {
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
@@ -251,7 +251,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request DELETE 'https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754
+curl --location --request DELETE 'https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754
 ```
 
 ```javascript
@@ -260,7 +260,7 @@ var params = {
 }
 
 $.ajax({
-"url": "https://beta.besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
+"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
 "method": "DELETE"
 }).done(function (response) {
     console.log(response);
@@ -280,7 +280,7 @@ $.ajax({
  &nbsp; 
 
 <aside class="notice">
-Collection Remove Venue endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
+Collection Remove Venue endpoint: https://besttime.app/api/v1/collection/{{collection_id}}/{{venue_id}}
 </aside>
 
 <aside class="notice">
@@ -309,7 +309,7 @@ Delete a collection using the `collection_id`. Deleting a collection does not af
 import requests
 import json
 
-url = "https://beta.besttime.app/api/v1/collection"
+url = "https://besttime.app/api/v1/collection"
 
 params = {
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
@@ -325,7 +325,7 @@ print(data)
 
 ```shell
 # cURL
-curl --location --request DELETE 'https://beta.besttime.app/api/v1/collection?api_key_private=pri_s43661721b084d36b8f469a2c012e754&
+curl --location --request DELETE 'https://besttime.app/api/v1/collection?api_key_private=pri_s43661721b084d36b8f469a2c012e754&
 collection_id=col_51387131543761435650505241346a39'
 ```
 
@@ -336,7 +336,7 @@ var params = {
     }
 
 $.ajax({
-"url": "https://beta.besttime.app/api/v1/collection?" + new URLSearchParams(params),
+"url": "https://besttime.app/api/v1/collection?" + new URLSearchParams(params),
 "method": "DELETE"
 }).done(function (response) {
     console.log(response);
@@ -353,7 +353,7 @@ $.ajax({
  &nbsp; 
 
 <aside class="notice">
-Collection Delete endpoint: https://beta.besttime.app/api/v1/collection/{{collection_id}}
+Collection Delete endpoint: https://besttime.app/api/v1/collection/{{collection_id}}
 </aside>
 
 <aside class="notice">
