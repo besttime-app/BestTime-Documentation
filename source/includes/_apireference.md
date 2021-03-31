@@ -123,6 +123,8 @@ Unsuccessful forecasts are also counted as credits, with the exception of server
 
 It is the users responsibility to prevent api key abuse. Hide your API keys secure to prevent other people from using API credits resulting in higher monthly subscription fees.
 
+The Venue Search functionality counts credits for finding matching venues, but this result does not include foot-traffic data. Therefore, the Venue Search function will automatically pushes the found venues to the 'New foot-traffic forecast' API endpoint. A 'normal' speed Venue search for max 20 venues will therefore cost: 1 Venue search normal credit + 20 * 2 New Forecast (successful) credit = 41 credits (equals to approximately $0.32 with the Premium plan). This is the maximum number of credits used. If the search result includes less venues, or if a venue does not have foot-traffic data the number will be lower. In a future version we will give the user the possibility to decide to not automatically forecast all found venues through the Venue Search tool. 
+
 
 ### Subscription plans
 BestTime has two types of plans. Metered and packaged plans. The metered plans will automatically charge you depending on the credit usage at the end of a (monthly) billing cycle. The basic plan is the lowest-priced plan. All functionality is available in the basic plan, However the forecast data is only stored for 7 days (retention days). After 7 days you will need to forecast a venue again to query an existing forecast or to use the venue in the venue filter endpoint (or radar tool). Upgrade to the premium plan to increase the retention days and benefit from lower-priced API credits. 
