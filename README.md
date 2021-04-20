@@ -1,4 +1,4 @@
-Blog repo for BestTime.app Foot-traffic data API.
+API documentation repo for BestTime.app Foot-traffic data API.
 
 https://besttime.app
 
