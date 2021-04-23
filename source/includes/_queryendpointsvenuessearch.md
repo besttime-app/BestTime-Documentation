@@ -29,19 +29,18 @@ curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_ke
 ```
 
 ```javascript
-var params = {
-    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-    'q': 'quiet supermarkets in sydney australia sunday morning',
-    'num': 200,
-    'fast': false,
-    'opened': 'now'
-}
+const params = new URLSearchParams({ 
+  'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+  'q': 'quiet supermarkets in sydney australia sunday morning',
+  'num': 200,
+  'fast': false,
+  'opened': 'now'
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/venues/search?" + new URLSearchParams(params),
-"method": "POST"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/venues/search?${params}`, {
+  method: 'POST'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 
@@ -310,16 +309,15 @@ job_id=0a693bb3-7bd6-4d43-9495-a2773f1c9e29&collection_id=col_ffbebb4003974979b7
 ```
 
 ```javascript
-var params = {
-    'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
-    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
-}
+const params = new URLSearchParams({ 
+  'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
+  'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/venues/progress?" + new URLSearchParams(params),
-"method": "GET"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/venues/progress?${params}`, {
+  method: 'GET'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 

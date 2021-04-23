@@ -36,8 +36,8 @@ curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key
 ```
 
 ```javascript
-var params = {
-    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+const params = new URLSearchParams({ 
+ 'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
     'busy_min': 50,
     'busy_max': 100,
     'busy_conf':'any',
@@ -49,13 +49,12 @@ var params = {
     'lat': 51.5121172,
     'lng': -0.126173,
     'radius': 2000
-}
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/venues/filter?" + new URLSearchParams(params),
-"method": "GET"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/venues/filter?${params}`, {
+  method: 'GET'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 

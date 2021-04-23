@@ -41,17 +41,16 @@ name=Supermarkets%20in%20Los%20Angeles%20CA'
 ```
 
 ```javascript
-var params = {
+const params = new URLSearchParams({ 
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
     'collection_id': 'col_51387131543761435650505241346a39',
     'name': 'Supermarkets in Los Angeles, CA'
-}
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/collection?" + new URLSearchParams(params),
-"method": "POST"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/collection?${params}`, {
+  method: 'POST'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 
@@ -115,15 +114,14 @@ curl --location --request POST 'https://besttime.app/api/v1/collection/col_51387
 ```
 
 ```javascript
-var params = {
-    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754'
-}
+const params = new URLSearchParams({ 
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
-"method": "POST"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?${params}`, {
+  method: 'POST'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 
@@ -186,15 +184,14 @@ curl --location --request GET 'https://besttime.app/api/v1/collection/col_513871
 ```
 
 ```javascript
-var params = {
-    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754'
-}
+const params = new URLSearchParams({ 
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39?" + new URLSearchParams(params),
-"method": "GET"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39?${params}`, {
+  method: 'GET'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 
@@ -255,15 +252,14 @@ curl --location --request DELETE 'https://besttime.app/api/v1/collection/col_513
 ```
 
 ```javascript
-var params = {
-    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754'
-}
+const params = new URLSearchParams({ 
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?" + new URLSearchParams(params),
-"method": "DELETE"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843?${params}`, {
+  method: 'DELETE'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 
@@ -330,17 +326,17 @@ collection_id=col_51387131543761435650505241346a39'
 ```
 
 ```javascript
-var params = {
+const params = new URLSearchParams({ 
     'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
     'collection_id': 'col_51387131543761435650505241346a39'
-    }
-
-$.ajax({
-"url": "https://besttime.app/api/v1/collection?" + new URLSearchParams(params),
-"method": "DELETE"
-}).done(function (response) {
-    console.log(response);
 });
+
+fetch(`https://besttime.app/api/v1/collection?${params}`, {
+  method: 'DELETE'
+}).then(function(data) { 
+  console.log(data); 
+});
+
 ```
 
 ### Input attributes

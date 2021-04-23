@@ -26,11 +26,10 @@ api_key_private=pri_50990bf1f8828f6abbf6152013113c6b'
 ```
 
 ```javascript
-$.ajax({
-"url": "https://besttime.app/api/v1/venues?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b",
-"method": "GET"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/venues?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b`, {
+  method: 'GET'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 

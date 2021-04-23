@@ -31,17 +31,16 @@ venue_address=Ocean%20Ave%2C%20San%20Fransisco'
 ```
 
 ```javascript
-var params = {
-    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-    'venue_name': 'McDonalds',
-    'venue_address': 'Ocean Ave, San Fransisco'
-}
+const params = new URLSearchParams({ 
+  'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+  'venue_name': 'McDonalds',
+  'venue_address': 'Ocean Ave, San Fransisco'
+});
 
-$.ajax({
-"url": "https://besttime.app/api/v1/forecasts/live?" + new URLSearchParams(params),
-"method": "POST"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/forecasts/live?${params}`, {
+  method: 'POST'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 

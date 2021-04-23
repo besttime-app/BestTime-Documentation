@@ -26,11 +26,10 @@ api_key_public=pub_e11661721b084d36b8f469a2c012e754'
 ```
 
 ```javascript
-$.ajax({
-"url": "https://besttime.app/api/v1/venues/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_public=pub_e11661721b084d36b8f469a2c012e754",
-"method": "GET"
-}).done(function (response) {
-    console.log(response);
+fetch(`https://besttime.app/api/v1/venues/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_public=pub_e11661721b084d36b8f469a2c012e754`, {
+  method: 'GET'
+}).then(function(data) { 
+  console.log(data); 
 });
 ```
 

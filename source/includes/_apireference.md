@@ -50,14 +50,10 @@ curl --location --request GET 'https://besttime.app/api/v1/keys/pri_a00de9e30266
 ```
 
 ```javascript
-var settings = {
-  "url": "https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122",
-  "method": "GET"
-};
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+fetch(`https://besttime.app/api/v1/keys/pri_a00de9e302662c0217a9cf08ab304122`, {
+  method: 'GET'
+}).then(function(data) { console.log(data); });
 ```
 
 You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
