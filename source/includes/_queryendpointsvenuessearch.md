@@ -17,10 +17,7 @@ params = {
 }
 
 response = requests.request("POST", url, params=params)
-
-data = json.loads(response.text)
-
-print(data)
+print(response.json())
 ```
 
 ```shell
@@ -296,10 +293,7 @@ params = {
 }
 
 response = requests.request("GET", url, params=params)
-
-data = json.loads(response.text)
-
-print(data)
+print(response.json())
 ```
 
 ```shell
