@@ -16,8 +16,7 @@ There are multiple ways to use a collection in combination with the other BestTi
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/collection"
 
 params = {
@@ -90,8 +89,7 @@ HTTP method: POST
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
 
 params = {
@@ -157,8 +155,7 @@ Returns a list with all venue_id's of venues in the collection
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39
 
 params = {
@@ -222,8 +219,7 @@ Removes a venue from the collection using the `venue_id`.
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/collection/col_51387131543761435650505241346a39/ven_51387131543761435650505241346a394a6432395362654a496843"
 
 params = {
@@ -291,8 +287,7 @@ Delete a collection using the `collection_id`. Deleting a collection does not af
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/collection"
 
 params = {

@@ -4,8 +4,7 @@
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/forecasts/quiet"
 
 params = {
@@ -247,7 +246,7 @@ HTTP method: GET
  - venue_info.**venue_current_gmtttime** `string`  
    Time at the venue in Greenwich Mean Time. Adjusting the `hour_step` and `day_step` will also alter this time.  
  - venue_info.**venue_current_localtime_iso** `string`  
-   Local time at the venue in ISO standard format. Adjusting the `hour_step` and `day_step` will also alter this time.  
+   Local time at the venue. Adjusting the `hour_step` and `day_step` will also alter this time.  
   &nbsp;
  - venue_info.**venue_id** `string`  
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).

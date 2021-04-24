@@ -4,8 +4,7 @@
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/venues/ven_51387131543761435650505241346a394a6432395362654a496843"
 
 params = {
@@ -61,8 +60,8 @@ HTTP method: GET
     "venue_forecasted": true,
     "venue_info": {
         "venue_address": "1201 Ocean Ave San Francisco, CA 94112",
-        "venue_current_gmttime": "Fri, 03 Apr 2020 03:03:51 GMT",
-        "venue_current_localtime_iso": "2020-04-02T20:03:51.063663-07:00",
+        "venue_current_gmttime": "Friday 2021-04-23 07:26AM",
+        "venue_current_localtime_iso": "Friday 2021-04-23 03:26PM",
         "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_lat": 37.7235448,
         "venue_lng": -122.455458,
@@ -96,7 +95,7 @@ The JSON response will contain detailed venue information.
   - venue_info.**venue_current_gmtttime** `string`  
    Time at the venue in Greenwich Mean Time. Adjusting the `hour_step` and `day_step` will also alter this time.  
   - venue_info.**venue_current_localtime_iso** `string`  
-   Local time at the venue in ISO standard format.
+   Local time at the venue.
   &nbsp;
  - venue_info.**venue_id** `string`  
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).

@@ -5,8 +5,7 @@
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/forecasts/live"
 
 params = {
@@ -82,8 +81,8 @@ HTTP method: POST
     },
     "status": "OK",
     "venue_info": {
-        "venue_current_gmttime": "Thu, 12 Mar 2020 13:05:53 GMT",
-        "venue_current_localtime_iso": "2020-03-12T06:05:53.948572-07:00",
+        "venue_current_gmttime": "Friday 2021-04-23 07:19AM",
+        "venue_current_localtime": "Friday 2021-04-23 03:19PM",
         "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_name": "McDonald's",
         "venue_timezone": "America/Los_Angeles"
@@ -126,7 +125,7 @@ HTTP method: POST
  - venue_info.**venue_current_gmtttime** `string`  
    Time at the venue in Greenwich Mean Time.  
  - venue_info.**venue_current_localtime_iso** `string`  
-   Local time at the venue in ISO standard format.  
+   Local time at the venue.  
   &nbsp;
  - venue_info.**venue_timezone** `string`  
   The timezone of the venue. E.g. `America/Los Angeles`.  

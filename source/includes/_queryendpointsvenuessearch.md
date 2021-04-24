@@ -4,8 +4,7 @@
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/venues/search"
 
 params = {
@@ -283,8 +282,7 @@ The JSON response will contain a URL to the Venue Search Progress endpoint to tr
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/venues/progress"
 
 params = {

@@ -5,8 +5,7 @@
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/forecasts/hour"
 
 params = {

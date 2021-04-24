@@ -5,8 +5,7 @@
 
 ```python
 import requests
-import json
-
+ 
 url = "https://besttime.app/api/v1/forecasts/now"
 
 params = {
@@ -77,7 +76,9 @@ HTTP method: GET
     "status": "OK",
     "venue_info": {
         "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
-        "venue_name": "McDonald's"
+        "venue_name": "McDonald's",
+        "venue_current_gmttime": "Saturday 2020-04-24 04:03AM",
+        "venue_current_localtime_iso": "Saturday 2020-04-24 12:02PM"
     }
 }
 ```
