@@ -8,14 +8,25 @@ Welcome to the BestTime.app documentation! The documentation includes different 
 
 
 ## What is BestTime.app?
+BestTime.app is a data (API) service that forecasts how busy a public business will be at any given hour of the week, using foot traffic data. 
+                The data is provided for 150+ countries using anonymous phone signals, and is available for retail, restaurants, bars, gyms, museums, and more. 
+                Foot traffic forecasts are based on average visits over the past weeks. 
+                Busyness for any given hour is predicted relative to the biggest peak of the week for this business. 
+                The foot traffic data is presented as percentages for each hour of the week from 0% (empty/ closed) to 100% (visitor peak of the week). 
+                Additional BestTime functionality:
+              <ul>
+                <li>Live updates if a venue is more or less busy than normal (real-time).</li>
+                <li>Foot traffic analyses, like peaks, quiet hours, week overviews</li>
+                <li>Search venue foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Fransisco).
+                </li>
+                <li>
+                  Filter venues in a whole area based on foot traffic visitor peaks, day, time, and business type, location, and more.
+                </li>
+                <li>Integrate all data directly into your applications/ research using the developer REST-API.
+                </li>
+              </ul>
+              You could compare it with a supercharged FourSquare foot traffic data/ Google Popular Times API with more footfall data analytic functionality.
 
-BestTime.app is a web (API) service that forecasts how busy a public business (e.g. restaurant, gym, etc) will be at any given hour of the week. Forecasts are based on average visits over the past weeks. Busyness for any given hour is predicted relative to the biggest peak of the week for this business.
-
-Besides hour forecasts, additional analysis are included. For example, the peak hours of the day, if it is now more busy than normal compared to the average, and a ranking of the busiest days of the week.
-
-Once a business has been forecasted additional queries can be made on the forecast. For example: When is today's next peak? When will it be quiet on Saturday? How busy will it be next hour? 
-
-Using the [Radar tool](https://besttime.app/api/v1/radar/filter) or the [Query filtered venues](#query-filtered-venues-radar) api endpoint venues can be filtered on how busy they are, location, time & day, and business type.
 
 ## Use cases
 Below are a few example use-cases how the analyzed data can be used in real-world:
@@ -27,8 +38,7 @@ Below are a few example use-cases how the analyzed data can be used in real-worl
 - Find the best time to go to a museum and avoid the queue.
 - Find out of a venue is more crowded than normal at this moment with the live data.
 - Create a dashboard for your venue (e.g. reception, kitchen, etc) to keep your employees informed how busy it is now (live), how busy it will be next hour (forecasted), and when the next peak is coming.
-- Compare your business with the competitors to find the perfect time to launch an event.
-- Marketing: Enrich your retail marketing research reports.
+- Compare your business with the competitors to find the perfect time to launch a promotion.
 - Behavioral research: Get insights on how people behave in certain areas. E.g. in general gyms tend to peak around 7 am and 7 pm, restaurants tend to peak around 1 pm and 9 pm, shops tend to peak around 4 pm.
 
 
