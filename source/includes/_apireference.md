@@ -14,9 +14,7 @@ The API Reference explains how:
 
 BestTime.app uses API keys to allow access to the API. You can find or generate API keys at the [API keys Management](http://besttime.app/api/v1/api_keys_list) page.
 
-BestTime.app expects for the API key to be included in all API requests to the server. 
-Our API accepts only JSON-encoded POST requests and returns JSON-encoded responses.
-This makes it easier to request venue names and addresses without the need to encode the parameters (like you would usually need to do with GET query parameters).
+BestTime.app expects for the API key to be included in all API requests to the server.
 
 Authentication for the API is done using API keys.
 There are two types of API keys; Private keys are used to create a new forecast, and public keys to query data from existing forecasted venues. The private key can be used to create, delete and list forecasts. As the name suggests, the private key should be kept secret, to avoid other people from forecasting new venues and abusing your limited forecast credits. The public key can be used to query existing venue forecasts. However, it can only be used to get existing forecast data (read-only). 
