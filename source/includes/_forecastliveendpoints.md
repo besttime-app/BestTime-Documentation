@@ -77,6 +77,7 @@ HTTP method: POST
         "venue_forecasted_busyness": 60,
         "venue_live_busyness": 20,
         "venue_live_busyness_available": true,
+        "venue_forecast_busyness_available": true,   
         "venue_live_forecasted_delta": -40
     },
     "status": "OK",
@@ -105,6 +106,9 @@ HTTP method: POST
   &nbsp;
  - analysis.**venue_live_busyness_available** `bool`  
    Indicates if there is live data available for this venue at this moment.  
+  &nbsp;
+ - analysis.**venue_forecast_busyness_available** `bool`  
+   Indicates if there is forecast data available for this venue at this moment. The forecast value can be used as alternative when there is no live data available.
   &nbsp;
  - analysis.**venue_live_forecasted_delta** `int`  
    Indicates the difference of the current live busyness versus the forecasted busyness for this hour, in percentage. A negative number indicates that is is less busy then normal, while a positive number indicates that it is more busy than normal. Ranging from `-100` to `100`.  
