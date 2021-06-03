@@ -153,6 +153,10 @@ New forecast endpoint: https://besttime.app/api/v1/forecasts
 HTTP method: POST
 </aside>
 
+<aside class="warning">
+By default the API is limited to 10 requests per second. Contact us for higher limits.
+</aside>
+
 
 ### Response attributes New Forecast <a name="responseattributesnewforecast"></a>
 

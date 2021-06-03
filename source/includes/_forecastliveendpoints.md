@@ -68,6 +68,11 @@ Live endpoint: https://besttime.app/api/v1/forecast/live
 HTTP method: POST
 </aside>
 
+<aside class="warning">
+By default the API is limited to 10 requests per second. Contact us for higher limits.
+</aside>  
+
+
 
 > The above request returns JSON structured like this:
 

@@ -244,6 +244,11 @@ API Credit usage per API call for this endpoint depends on the number `num` of r
 </aside>
 
 
+<aside class="warning">
+The Venue Search endpoint is by default limited to 30 requests per minute. Contact us for higher limits.
+</aside>
+
+
 > The above request returns a JSON response with links to the background job:
 
 ```json
