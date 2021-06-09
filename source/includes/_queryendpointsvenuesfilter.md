@@ -65,7 +65,7 @@ The BestTime Radar tool is using the same API endpoint to show all venues that m
 
 The endpoint will only return venues that have been forecasted before with the provided `api_key_private`. The user can manually add each desired venue individually through the BestTime API, or can use an external API service with public business (like Google Maps Places Nearby search, Here.com, Fouresquare Venues, or Factual Places). Using the external service places in a certain area can be discovered and the results (venue name and address) can be fed into the BestTime API. 
 
-To prevent manually adding all venues in a specific area (e.g. neighborhood or city) the 'Add Area' tool can be used (expected to be released in August 2020). Using this tool the user can define a geographical bounding box, select multiple desired types of venues (e.g. supermarkets, gyms, restaurants, etc). Under the hood it uses the Google Maps Nearby API to discover venues in the defined area (you will need a Google Maps API key). This geocoder has currently the biggest database and gives the best results.
+To prevent manually adding all venues in a specific area (e.g. neighborhood or city) the 'Add Area' or 'Venue Search' tool can be used. Using the 'Add Area' tool the user can define a geographical bounding box, select multiple desired types of venues (e.g. supermarkets, gyms, restaurants, etc). Under the hood it uses the Google Maps Nearby API to discover venues in the defined area (you will need a Google Maps API key). This geocoder has currently the biggest database and gives the best results.
 
 Radar tool (which is using this 'venue filter' endpoint) 
 <a href="images/radar-venue-filter-small.jpg" target="_blank">
@@ -188,6 +188,7 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
       "venue_lat": 51.5079836, 
       "venue_lng": -0.1404946, 
       "venue_name": "Caffe Concerto Green Park",
+      "venue_type": "CAFE",
       "venue_dwell_time_min": 30,
       "venue_dwell_time_max": 70,
     }, 
@@ -206,6 +207,7 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
       "venue_lat": 51.5183082, 
       "venue_lng": -0.1415526, 
       "venue_name": "The Great Thai Restaurant",
+      "venue_type": "RESTAURANT",
       "venue_dwell_time_min": 40,
       "venue_dwell_time_max": 80,
     }
@@ -240,6 +242,9 @@ The JSON response will contain a `list` with venue `objects`.
   &nbsp;
   - venues[N].**venue_name** `string`  
    Name of the venue. This is the name of the venue as found by the geocoding lookup.  
+  &nbsp;
+ - venue_info.**venue_type** `string`  
+   Type of venue, or `OTHER` when not available. Possible types are (most common shown first) `RESTAURANT, SHOPPING, FAST_FOOD, BAR, SUPERMARKET, GROCERY, PARK, OTHER, APPAREL, FOOD_AND_DRINK, CAFE, SHOPPING_CENTER, COFFEE, AIRPORT, SPORTS_COMPLEX, PHARMACY, PERSONAL_CARE, VEHICLE, GAS_STATION, MUSEUM, DENTIST, LIBRARY, BANKING, TOURIST_DESTINATION, CASH_MACHINE, FOOD_DELIVERY, EVENT_VENUE, SPA, MARKET, CLUBS, PUBLIC_TRANSIT, BREWERY, SPORTING_GOODS, HISTORICAL, PERFORMING_ARTS, DOCTOR, AMUSEMENT_PARK, GIFTS, TEA, CHURCH, SKILL_INSTRUCTION, TRAIN_STATION, ARTS, GOLF, ZOO, BOTANICAL_GARDEN, NATIONAL_PARK, SUBWAY_STATION, CASINO, MOVIE_THEATER, POST_OFFICE, HIKING, GOLF_COURSE, NATURE_RESERVE, BRIDGE, BUS_STATION, GOVERNMENT, REST_AREA, WINERY, SCENIC_POINT, SOUVENIR_SHOP, CITY_HALL, BOATING, CONCERT_HALL, SWIMMING, MONUMENT, SOCCER, CAR_RENTAL, MOSQUE, INDUSTRIAL, VISITOR_CENTER, ANTIQUES, AQUARIUM, PALACE, HINDU_TEMPLE, STADIUM, WINTER_SPORTS, BUDDHIST_TEMPLE, EMBASSY, TEMPLE, TENNIS, BASEBALL, FERRY_TERMINAL, FISHING, POLICE, SCHOOL, BAKERY, AGRICULTURE, CRICKET, FAIRGROUNDS, GONDOLA_LIFT_STATION, HOSPITAL, LIGHTHOUSE, MILITARY, MORMON_TEMPLE, UNIVERSITY`   
   &nbsp;
   - venues[N].**venue_dwell_time_min** `int`  
    Minimum usual visitor dwell time in minutes, or `null` when not available.  
