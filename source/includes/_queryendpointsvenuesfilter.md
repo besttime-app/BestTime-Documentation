@@ -16,7 +16,7 @@ params = {
     'busy_conf':'any',
     'now': False,
     'live': False,
-    'types': ['BAR','CAFE','NIGHTCLUB'],
+    'types': ['BAR','CAFE','RESTAURANT'],
     'lat': 51.5121172,
     'lng': -0.126173,
     'radius': 2000
@@ -28,7 +28,7 @@ print(response.json())
 
 ```shell
 # cURL
-curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&hour_conf=any&now=false&live=false&types=BAR,CAFE,NIGHTCLUB&lat=51.5121172&lng=-0.126173&radius=2000
+curl --location --request GET 'https://besttime.app/api/v1/venues/filter?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&busy_min=50&busy_max=100&hour_min=18&hour_max=23&hour_conf=any&now=false&live=false&types=BAR,CAFE,RESTAURANT&lat=51.5121172&lng=-0.126173&radius=2000
 ```
 
 ```javascript
@@ -41,7 +41,7 @@ const params = new URLSearchParams({
     'hour_max': 23,
     'now': false,
     'live': false,
-    'types': ['BAR','CAFE','NIGHTCLUB'],
+    'types': ['BAR','CAFE','RESTAURANT'],
     'lat': 51.5121172,
     'lng': -0.126173,
     'radius': 2000
