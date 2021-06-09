@@ -187,7 +187,9 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
       "venue_id": "ven_386d55494f76464873784752676b6445593949455752594a496843", 
       "venue_lat": 51.5079836, 
       "venue_lng": -0.1404946, 
-      "venue_name": "Caffe Concerto Green Park"
+      "venue_name": "Caffe Concerto Green Park",
+      "venue_dwell_time_min": 30,
+      "venue_dwell_time_max": 70,
     }, 
     {
       "day_int": 0, 
@@ -203,7 +205,9 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
       "venue_id": "ven_6372542d36476a4a59686d52676b646155646e713661514a496843", 
       "venue_lat": 51.5183082, 
       "venue_lng": -0.1415526, 
-      "venue_name": "The Great Thai Restaurant"
+      "venue_name": "The Great Thai Restaurant",
+      "venue_dwell_time_min": 40,
+      "venue_dwell_time_max": 80,
     }
   ]
 }
@@ -236,6 +240,12 @@ The JSON response will contain a `list` with venue `objects`.
   &nbsp;
   - venues[N].**venue_name** `string`  
    Name of the venue. This is the name of the venue as found by the geocoding lookup.  
+  &nbsp;
+  - venues[N].**venue_dwell_time_min** `int`  
+   Minimum usual visitor dwell time in minutes, or `null` when not available.  
+  &nbsp;
+  - venues[N].**venue_dwell_time_max** `int`  
+   Maximum usual visitor dwell time in minutes, or `null` when not available.   
   &nbsp;
 - **status** `string` 
  Status of the response. Either `OK` or `error`.

@@ -91,7 +91,10 @@ By default the API is limited to 10 requests per second. Contact us for higher l
         "venue_current_localtime": "Friday 2021-04-23 03:19PM",
         "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
         "venue_name": "McDonald's",
-        "venue_timezone": "America/Los_Angeles"
+        "venue_timezone": "America/Los_Angeles",
+        "venue_dwell_time_min": 20,
+        "venue_dwell_time_max": 60,
+        "venue_dwell_time_avg": 40
     }
 }
 ```
@@ -138,4 +141,13 @@ By default the API is limited to 10 requests per second. Contact us for higher l
   &nbsp;
  - venue_info.**venue_timezone** `string`  
   The timezone of the venue. E.g. `America/Los Angeles`.  
+  &nbsp;
+ - venue_info.**venue_dwell_time_min** `int`  
+   Minimum usual visitor dwell time in minutes, or `null` when not available.  
+  &nbsp;
+ - venue_info.**venue_dwell_time_max** `int`  
+   Maximum usual visitor dwell time in minutes, or `null` when not available.   
+  &nbsp;
+ - venue_info.**venue_dwell_time_avg** `int`  
+   Average usual visitor dwell time in minutes, or `null` when not available.   
   &nbsp;
