@@ -381,7 +381,8 @@ Adding the `collection_id` passes on the collection_id in the result links once 
             "venue_address": "21 Shelley St, Sydney NSW 2000, Australia",
             "venue_lat": -33.8670477,
             "venue_lon": 151.2023238,
-            "venue_name": "Kings Wharf Supermarket"
+            "venue_name": "Kings Wharf Supermarket",
+            "venue_id": "ven_6372542d36476a8759686d52676b646155646e713661514a496843"
         },
         {
             "forecast": true,
@@ -389,7 +390,8 @@ Adding the `collection_id` passes on the collection_id in the result links once 
             "venue_address": "4/490 Crown St, Surry Hills NSW 2010, Australia",
             "venue_lat": -33.8866095,
             "venue_lon": 151.2138922,
-            "venue_name": "Maloneys Grocer"
+            "venue_name": "Maloneys Grocer",
+            "venue_id": "ven_9372542d36476a8759686d52676b646155646e713661514a496847"
         },
         ... Only the first two results are displayed here
     ],
@@ -449,11 +451,13 @@ The attributes below will be displayed when the Venue Search job is finished (`j
    Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.  
    &nbsp;
   - venues[N].**venue_lat** `float`  
-   Geographic latitude of the venue.
+   Geographic latitude of the venue.  
   &nbsp;
   - venues[N].**venue_lng** `float`  
-   Geographic longitude of the venue.
+   Geographic longitude of the venue.  
   &nbsp;
+  - venues[N].**venue_id** `string`  
+   Unique BestTime.app venue id.  
 - **venues_n** `int`
 Total number of venues in list `venues`.
 - **bounding_box** `object` 
