@@ -45,7 +45,7 @@ The 'live forecast' endpoint is used to get live information of the venue. Life 
 When creating a live forecast the normal forecast for the venue will NOT be updated. Use one of the other New Forecast endpoints
 
 
-### Input attributes New Forecast
+### Input attributes Live foot traffic data
 
 - **venue_name** `string` <span style="color:blue">OPTIONAL</span>  
  Name of the venue (public business). When then using the `venue_id` the `venue_name` and `venue_address` can be omitted.  
