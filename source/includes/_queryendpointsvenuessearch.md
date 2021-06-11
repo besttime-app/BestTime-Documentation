@@ -404,7 +404,7 @@ Adding the `collection_id` passes on the collection_id in the result links once 
 The JSON response will contain the progress of the Venue Search query and once completed it will return the remaining attributes as shown in the second part of the attributes below.
 
 - **count_total** `int` 
- Total number of found venues matching the search query. When the venue search is still not finished (`job_finished: false`) this number could still go up until the maximum `num` of requested venues.  This number could also be below the amount of requested venues, if there are no
+ Total number of found venues matching the search query. When the venue search is still not finished (`job_finished: false`) this number could still go up until the maximum `num` of requested venues.  This number could also be below the number of requested venues, if there are no more matching venues are found.
 - **count_completed** `int` 
  Number of venues processed (forecasted) in the background. 
 - **count_forecasted** `int` 
