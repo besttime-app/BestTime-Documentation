@@ -191,6 +191,9 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
       "venue_type": "CAFE",
       "venue_dwell_time_min": 30,
       "venue_dwell_time_max": 70,
+      "price_level": 2,
+      "rating": 4.8,
+      "reviews": 1276,
     }, 
     {
       "day_int": 0, 
@@ -210,6 +213,9 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
       "venue_type": "RESTAURANT",
       "venue_dwell_time_min": 40,
       "venue_dwell_time_max": 80,
+      "price_level": 3,
+      "rating": 4.1,
+      "reviews": 4276,
     }
   ]
 }
@@ -252,5 +258,14 @@ The JSON response will contain a `list` with venue `objects`.
   - venues[N].**venue_dwell_time_max** `int`  
    Maximum usual visitor dwell time in minutes, or `null` when not available.   
   &nbsp;
+  - venues[N].**price_level** `int`
+   Price level for a venue. Range `1` (cheapest) to `5` (most expensive. Not all venues have a price level, indicated with `null`. 
+  &nbsp; 
+  - venues[N].**rating** `float`
+   Rating for a venue. Ranging from `1.0` to `5.0`. Not all venues have a rating, indicated with `null`. 
+  &nbsp; 
+  - venues[N]**reviews** `int`   
+  Number of reviews for a venue. Minimum value `0`. Not all venues have a number of reviews, indicated as `null`.   
+  &nbsp; 
 - **status** `string` 
  Status of the response. Either `OK` or `error`.
