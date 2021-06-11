@@ -142,7 +142,7 @@ The default number is `20`. API credits for this endpoint are counted per `20` s
 Search for venues with specific opening times. Options are `24`, `now`, `all` . `24` will return venues with a 24 hour opening time. `now` will return venues that are opened at this moment. `all` will return all venues regardless of their opening hours. Defaults to `all`.
  &nbsp;
 - **fast** `boolean` <span style="color:blue">OPTIONAL</span>  
-Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See [API Credits](#credits) for more info. Fixed packages each have a limited amount of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calendar month. Contact us for high-volume fast or normal search queries.
+Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See [API Credits](#credits) for more info. Fixed packages each have a limited number of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calendar month. Contact us for high-volume fast or normal search queries.
  &nbsp;
 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
@@ -224,10 +224,10 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
    Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
   &nbsp; 
 - **reviews_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
-   Minimum amount of reviews for a venue. Minimum value `0`.  
+   Minimum number of reviews for a venue. Minimum value `0`.  
   &nbsp;  
 - **reviews_max** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>   
-   Maximum amount of reviews for a venue. Minimum value `0`.
+   Maximum number of reviews for a venue. Minimum value `0`.
   &nbsp; 
 
 

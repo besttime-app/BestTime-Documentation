@@ -142,10 +142,10 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
    Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
   &nbsp; 
 - **reviews_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
-   Minimum amount of reviews for a venue. Minimum value `0`.  
+   Minimum number of reviews for a venue. Minimum value `0`.  
   &nbsp;  
 - **reviews_max** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>   
-   Maximum amount of reviews for a venue. Minimum value `0`.
+   Maximum number of reviews for a venue. Minimum value `0`.
   &nbsp; 
 
 
@@ -158,7 +158,7 @@ HTTP method: GET
 </aside>
 
 <aside class="warning">
-API Credit usage per API call for this endpoint depends on the amount of returned venues and your plan. See 'API key credits' for more information.
+API Credit usage per API call for this endpoint depends on the number of returned venues and your plan. See 'API key credits' for more information.
 </aside>
 
 <aside class="warning">

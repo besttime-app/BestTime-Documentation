@@ -94,7 +94,7 @@ BestTime.app does not provide absolute business visitor numbers. Data in the for
 BestTime.app has coverage in 150+ countries. It depends on multiple factors if a business can be forecasted. A rough guideline is that the business needs to be a public business and has at least 100 visitors per day. 
 
 ### Data retention
-Forecast will only be stored on the server for a specific amount of days. This depends on your subscription plan. Expired forecasts will be automatically deleted. Store a forecast response locally or upgrade your plan to keep using a forecast.
+Forecast will only be stored on the server for a specific number of days. This depends on your subscription plan. Expired forecasts will be automatically deleted. Store a forecast response locally or upgrade your plan to keep using a forecast.
 
 ### Updating a forecast
 To update an existing business forecast you need to create a new forecast. Currently, only the latest forecast for each business is accessible through the API. It is up to the user to decide how often a forecast needs to be updated, but in general, we recommend to update a forecast every two to four weeks. Live data is the current relative activity for the current hour. It is therefore suggested to update the live data every hour.
