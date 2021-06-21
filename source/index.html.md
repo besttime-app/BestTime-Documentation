@@ -22,6 +22,7 @@ includes:
   - queryendpointsvenuesfilter
   - queryendpointsvenue
   - queryendpointsvenues
+  - queryendpointsvenuesupdate
   - queryendpointsweek
   - queryendpointsweekraw
   - queryendpointsweekoverview
