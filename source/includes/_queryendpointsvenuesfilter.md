@@ -57,9 +57,7 @@ fetch(`https://besttime.app/api/v1/venues/filter?${params}`, {
 
 ### Input attributes Venue Filter
 
-The 'venue filter' endpoint will return all venues and the raw forecasted busyness data that meet the filter requirements. Venues can be filtered on how busy they are, on  location, type of venue, day & time range, or a combination. This could be useful to for e.g. find all busy bars, cafes and nightclubs, between 6pm and 11pm in a specific neighborhood. The filter will only return venues that are forecasted with the given private API key.
-
-This query endpoint requires the private API key. Although the private API keys is used, this endpoint will be charged with query credits.
+The 'venue filter' endpoint will return all venues and foot traffic data that meet the filter requirements. Venues can be filtered on how busy they are, on  location, type of venue, day & time range, etc, or a combination. This could be useful to for e.g. find all busy bars, cafes and nightclubs, between 6pm and 11pm in a specific neighborhood. The filter will only return venues that are forecasted before with the given private API key.
 
 The BestTime Radar tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map.
 
