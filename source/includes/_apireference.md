@@ -92,7 +92,7 @@ Make sure to replace <code>pri_a00de9e302662c0217a9cf08ab304122</code> with your
 
 ## Credits
 
-The API usage is counted with credits and the amount of credits per API call depends on the used API endpoint. The tools on the website also use the API internally and will therefore also count the used credits.
+The API usage is counted with credits and the number of credits per API call depends on the used API endpoint. The tools on the website also use the API internally and will therefore also count the used credits.
 
 When querying an existing forecast a query credit is counted for every request. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).  
 &nbsp;  
@@ -120,8 +120,8 @@ The Venue Search functionality counts credits for finding matching venues, but t
 ### Subscription plans
 BestTime has two types of plans. Metered and packaged plans. The metered plans will automatically charge you depending on the credit usage at the end of a (monthly) billing cycle. The basic plan is the lowest-priced plan. All functionality is available in the basic plan, However the forecast data is only stored for 7 days (retention days). After 7 days you will need to forecast a venue again to query an existing forecast or to use the venue in the venue filter endpoint (or radar tool). Upgrade to the premium plan to increase the retention days and benefit from lower-priced API credits. 
 
-BestTime also offers multiple 'packaged' plans if you don't like the uncertainty of a metered plan. The packaged plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each packehed plan is limited to a certain amount of new venues per calender month, and venue search calls per calender month.
-Contact us for a custom amount of retention days, for a higher monthly amount of packaged venues, or more venue search calls.
+BestTime also offers multiple 'packaged' plans if you don't like the uncertainty of a metered plan. The packaged plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each packege plan is limited to a certain number of new venues per calender month, and venue search calls per calender month.
+Contact us for a custom number of retention days, for a higher monthly number of packaged venues, or more venue search calls.
 
 
 Old plans:  &nbsp;  
