@@ -84,4 +84,6 @@ The JSON response will contain a `list` with venue `objects`.
  - venue[N].**venue_name** `string`  
    Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.  
   &nbsp;
+ - venue[N].**forecast_updated_on** `DateTime string`  
+   Date and time of the last foot traffic forecast in UTC.
 
