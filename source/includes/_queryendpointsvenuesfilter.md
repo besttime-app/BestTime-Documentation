@@ -74,7 +74,7 @@ Radar tool (which is using this 'venue filter' endpoint)
  Private API Key. The endpoint will only return venues that are forecasted with this private API key.  See more info on [API keys](#api-reference)  
  &nbsp;
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
-Filters on vennues within a collection. See more info on [Collections](#venue-collections)
+Filters on venues within a collection. See more info on [Collections](#venue-collections)
  &nbsp;
 - **busy_min** `int` <span style="color:blue">OPTIONAL</span>  
 Minimum busyness for the filtered venues, ranging from `0` to `100` procent.  Use `busy_conf` parameter to change the filter method.  

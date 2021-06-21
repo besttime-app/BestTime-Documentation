@@ -1,6 +1,6 @@
 # Venues Update
 
-> Show a list of venues that our older than a specified amount of weeks. Optionally update each listed venue with a 'new foot traffic forecast':
+> Show a list of venues that are older than a specified amount of weeks. Optionally update each listed venue with a 'new foot traffic forecast':
 
 ```python
 import requests
@@ -44,7 +44,7 @@ fetch(`https://besttime.app/api/v1/venues/update${params}`, {
 
 ### Input attributes Venues Update
 
-The 'Venues Update' endpoint returns list of venues that our older than a specified amount of weeks for the given 'api_key_private'. Optionally update each listed venue with a 'new foot traffic forecast'. This endpoint can also be filtered by collection_id or a geographical bounding box. This is useful, since venue foot traffic is only updated through a new 'New foot traffic forecast' per venue or venues from the  'Venue Search' results. The Venue Filter (except for live data) endpoint and other query endpoints will not update the foot traffic data.
+The 'Venues Update' endpoint returns a list of venues that are older than a specified amount of weeks for the given 'api_key_private'. Optionally update each listed venue with a 'new foot traffic forecast'. This endpoint can also be filtered by collection_id or a geographical bounding box. This is useful since venue foot traffic is only updated through a new 'New foot traffic forecast' per venue or venues from the  'Venue Search' results. The Venue Filter (except for live data) endpoint and other query endpoints will not update the foot traffic data.
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
  Private API Key. See more info on [API keys](#api-reference)  
@@ -53,10 +53,10 @@ The 'Venues Update' endpoint returns list of venues that our older than a specif
  Return only venues that have not been updated more than the selected number of `weeks`. Default is `2`. Minimum is `0` and will return all matching venues regardless of the last update date.  
  &nbsp; 
 - **update** `bool` <span style="color:blue">OPTIONAL</span>  
-  Automatically update all returend venues by pushing them to the 'New foot traffic forecast' API endpoint (normal API credits apply for each venue). Default is `false` (not updating).  
+  Automatically update all returned venues by pushing them to the 'New foot traffic forecast' API endpoint (normal API credits apply for each venue). Default is `false` (not updating).  
  &nbsp; 
 - **foottraffic** `string` <span style="color:blue">OPTIONAL</span>  
-  Returns only venues with or without foot traffic data. Options `with`, `without`, `all`. `with` will return only venues that had foot traffic forecast data last update. `without` will only return venues that did not have foot traffic forecast data last update. `all` will return all matching venues regardless if they have foot traffic data. Default is `with`. Not all venues that have been added to your BestTime account have foot traffic data. Also venues without foot traffic data will be stored in your account. By default, these venues will not be shown and updated to save API credits (`with`). Sometimes it can be usefull to also update previously failed forecast - when e.g. venues are re-opened or are getting more popular (and therefore might have foot traffic at this moment).  
+  Returns only venues with or without foot traffic data. Options `with`, `without`, `all`. `with` will return only venues that had foot traffic forecast data last update. `without` will only return venues that did not have foot traffic forecast data last update. `all` will return all matching venues regardless if they have foot traffic data. Default is `with`. Not all venues that have been added to your BestTime account have foot traffic data. Also, venues without foot traffic data will be stored in your account. By default, these venues will not be shown and updated to save API credits (`with`). Sometimes it can be useful to also update previously failed forecast - when e.g. venues are re-opened or are getting more popular (and therefore might have foot traffic at this moment).  
  &nbsp; 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>   
 Return only venues within a collection. See more info on [Collections](#venue-collections)  

@@ -461,7 +461,7 @@ The attributes below will be displayed when the Venue Search job is finished (`j
 - **venues_n** `int`
 Total number of venues in list `venues`.
 - **bounding_box** `object` 
-  Geographical bounding box coordinates that fits all venues. Usefull to for displaying venues on a map. As an alternative the map center lat, lng, map_zoom and a radius parameters are provided to view all results on a map.
+  Geographical bounding box coordinates that fits all venues. Useful to for displaying venues on a map. As an alternative the map center lat, lng, map_zoom and a radius parameters are provided to view all results on a map.
   &nbsp;
   - bounding_box.**lat** `string`  
     Geographic map latitude center of venue search result.  
