@@ -77,10 +77,10 @@ Radar tool (which is using this 'venue filter' endpoint)
 Filters on venues within a collection. See more info on [Collections](#venue-collections)
  &nbsp;
 - **busy_min** `int` <span style="color:blue">OPTIONAL</span>  
-Minimum busyness for the filtered venues, ranging from `0` to `100` procent.  Use `busy_conf` parameter to change the filter method.  
+Minimum busyness for the filtered venues, ranging from `0` to `100` procent.  Use `busy_conf` parameter to change the filter method. Warning: Currently the `busy_min` filter is applied after the `limit` parameter. We are currently working on a fix. A temporarily solution is to not set the 'limit' value in the API, and limit the number of venues client side.
  &nbsp;
 - **busy_max** `int` <span style="color:blue">OPTIONAL</span>  
-Maximum busyness for the filtered venues, ranging from `0` to `100` procent. Use `busy_conf` parameter to change the filter method.    
+Maximum busyness for the filtered venues, ranging from `0` to `100` procent. Use `busy_conf` parameter to change the filter method. Warning: Currently the `busy_max` filter is applied after the `limit` parameter. We are currently working on a fix. A temporarily solution is to not set the 'limit' value in the API, and limit the number of venues client side. 
  &nbsp;
 - **busy_conf** `string` <span style="color:blue">OPTIONAL</span>  
 Selects how `busy_min` and `busy_max` filters on busyness percentage. Possible options are `any` or `all`. Defaults to  `any`. `any` will return venues when at least one of the (selected) hours matches the `busy_min` and/or `busy_max` filter(s). `all` will return venues when all (selected) hours match the `busy_min` and/or `busy_max` filter(s). Use the `hour_min` and/or `hour_max` parameters to select specific hours were the `busy_min` and/or `busy_max` filters are applied on.  
