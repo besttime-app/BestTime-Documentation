@@ -65,6 +65,7 @@ A forecast is usually created within a few seconds and responds with all primary
 
 The forecast results include:
 
+- Relative foot traffic intensity percentage data for every hour of the week.
 - Week analysis
     - Peak busyness per day percentage
     - Average busyness (volume) per day percentage
@@ -84,7 +85,6 @@ The forecast results include:
     - List of all busy hours per day.
 - Quiet hours
     - List of all quiet hours per day.
-- Raw hour busyness percentage data for every day of the week.
 
 ### Relative numbers
 
