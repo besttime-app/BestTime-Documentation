@@ -59,8 +59,10 @@ The 'Venues Update' endpoint returns a list of venues that are older than a spec
   Returns only venues with or without foot traffic data. Options `with`, `without`, `all`. `with` will return only venues that had foot traffic forecast data last update. `without` will only return venues that did not have foot traffic forecast data last update. `all` will return all matching venues regardless if they have foot traffic data. Default is `with`. Not all venues that have been added to your BestTime account have foot traffic data. Also, venues without foot traffic data will be stored in your account. By default, these venues will not be shown and updated to save API credits (`with`). Sometimes it can be useful to also update previously failed forecast - when e.g. venues are re-opened or are getting more popular (and therefore might have foot traffic at this moment).  
  &nbsp; 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>   
-Return only venues within a collection. See more info on [Collections](#venue-collections)  
+Return only venues within an existing  collection. See more info on [Collections](#venue-collections)  
  &nbsp;
+
+Return only venues without a geographic bounding box:
 - **lat_min** `float` <span style="color:blue">OPTIONAL</span>  
    Minimum latitude of the bounding box (South-West). `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
   &nbsp; 
