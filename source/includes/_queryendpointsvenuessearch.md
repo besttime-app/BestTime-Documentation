@@ -150,10 +150,10 @@ Add the results to an existing or user-defined collection_id. If this parameter 
  &nbsp;
 
 - **lat** `float` <span style="color:blue">OPTIONAL</span>  
-   Geographic latitude of the search circle. A maximum of 3 decimal floating points are allowed (≈ 111 meter). `lat` must be combined with `lng`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+   Geographic latitude of the search circle. A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lat` must be combined with `lng`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
   &nbsp;
 - **lng** `float` <span style="color:blue">OPTIONAL</span>  
-   Geographic longitude of the search circle. A maximum of 3 decimal floating points are allowed (≈ 111 meter). `lng` must be combined with `lat`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
+   Geographic longitude of the search circle. A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lng` must be combined with `lat`, and `radius`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
   &nbsp; 
 - **radius** `int` <span style="color:blue">OPTIONAL</span>  
    Radius of the search circle in meter.  `radius` must be combined with `lat`, and `lng`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
@@ -200,34 +200,46 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
  &nbsp; 
 
 - **lat_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum latitude of the bounding box (South-West). A maximum of 3 decimal floating points are allowed (≈ 111 meter). `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
+   Minimum latitude of the bounding box (South-West). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
   &nbsp; 
 - **lng_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum longitude of the bounding box (South-West). A maximum of 3 decimal floating points are allowed (≈ 111 meter). `lng_min` must be combined with `lng_max`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
+   Minimum longitude of the bounding box (South-West). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lng_min` must be combined with `lng_max`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
   &nbsp; 
 - **lat_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum latitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). `lat_max` must be combined with `lat_min`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
+   Maximum latitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lat_max` must be combined with `lat_min`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
   &nbsp; 
 - **lng_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum longitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint. 
+   Maximum longitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint. 
   &nbsp; 
-- **price_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>  
+- **price_min** `int` <span style="color:blue">OPTIONAL</span>  
    Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_min` filters out all venues without a price level. When the 'fast' search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint. 
   &nbsp; 
-- **price_max** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **price_max** `int` <span style="color:blue">OPTIONAL</span>    
    Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level. When the 'fast' search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint.
   &nbsp; 
-- **rating_min** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **rating_min** `float` <span style="color:blue">OPTIONAL</span>    
    Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`. When the 'normal' speed search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint.
   &nbsp; 
-- **rating_max** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **rating_max** `float` <span style="color:blue">OPTIONAL</span>  
    Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
   &nbsp; 
-- **reviews_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **reviews_min** `int` <span style="color:blue">OPTIONAL</span>    
    Minimum number of reviews for a venue. Minimum value `0`.  
   &nbsp;  
-- **reviews_max** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>   
+- **reviews_max** `int` <span style="color:blue">OPTIONAL</span>    
    Maximum number of reviews for a venue. Minimum value `0`.
+  &nbsp; 
+- **limit** `int` <span style="color:blue">OPTIONAL</span>    
+   Maximum number returned venues. Default `5000`, min `0`, max `10000`. Warning: currently foot traffic filters `busy_min` and `busy_max` are only applied after the limit. We are currently working to improve this.
+  &nbsp; 
+- **page** `int` <span style="color:blue">OPTIONAL</span>    
+   Selects the page number.  
+  &nbsp; 
+- **order_by** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green">COMING SOON</span>    
+   Order venues by a specific parameter. Can be `foot_traffic`, `rating`,`reviews`,`name`,`dwell_time_min`,`dwell_time_max`,`price_level`,`date`. Default is `date`. Max two comma seperated parameters allowed (e.g. `order_by=rating,reviews`). Let us know if you are interested in testing this.
+  &nbsp; 
+- **order** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green">COMING SOON</span>    
+   Order the `order_by` parameters ascending or descending. Can be `asc` or `desc`.  Default `desc`. Max two comma seperated parameters allowed (e.g. `order=desc,asc`).
   &nbsp; 
 
 
