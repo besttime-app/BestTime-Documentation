@@ -40,9 +40,11 @@ fetch(`https://besttime.app/api/v1/venues/search?${params}`, {
 });
 ```
 
-Find and add new venues based on a search query. The search query can e.g. contain the name of a venue (e.g. McDonald's, Walmart,etc), or a type of venue (e.g. supermarkets, pizza, beach, things to do, etc). 
+Find and add multiple new venues based on a search query. The search query can e.g. contain the name of a venue (e.g. McDonald's, Walmart,etc), or a type of venue (e.g. supermarkets, pizza, beach, things to do, etc). 
 
 The search query can be narrowed down with additional filters like the location (e.g. a neighborhood, city, or country), or add geographical data (lat, lng, radius) to find venues related to the search query in a geographic location.
+
+Note: Use the 'New foot traffic forecast' API endpoint when searching for a single venue (this is much faster).
 
 Multiple API endpoints are involved from entering a search input until returning foot-traffic data for the found venues.
 The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id` (see [Collections](#venue-collections)).  You can poll the Venue Search Progress endpoint to poll to progress. The venue search functionality can also be used without API using the website [Venue Search Tool](https://besttime.app/api/v1/searchvenues) or on the [Radar tool](https://besttime.app/api/v1/radar/filter).
