@@ -152,7 +152,7 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
    Selects the page number. Default page `0`. Min page `0`.  
   &nbsp; 
 - **order_by** `int` <span style="color:blue">OPTIONAL</span>
-   Order venues by a specific parameter. Can be `date`, `dwell_time_min`,`dwell_time_max`, `name`,`rating`,`reviews`,`price_level`. Default is `date`. Max two comma seperated parameters allowed (e.g. `order_by=rating,reviews`). Coming soon: Sort venues on foot traffic intensity data.  
+   Order venues by a specific parameter. Can be `date`, `dwell_time_min`,`dwell_time_max`, `name`,`rating`,`reviews`,`price_level`. Default is `reviews`. Max two comma seperated parameters allowed (e.g. `order_by=rating,reviews`). Coming soon: Sort venues on foot traffic intensity data.  
   &nbsp; 
 - **order** `int` <span style="color:blue">OPTIONAL</span>
    Order the `order_by` parameters ascending or descending. Can be `asc` or `desc`.  Default `desc`. Max two comma seperated parameters allowed (e.g. `order=desc,asc`).  
