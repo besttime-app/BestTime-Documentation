@@ -143,11 +143,11 @@ By default the API is limited to 10 requests per second. Contact us for higher l
   The timezone of the venue. E.g. `America/Los Angeles`.  
   &nbsp;
  - venue_info.**venue_dwell_time_min** `int`  
-   Minimum usual visitor dwell time in minutes, or `null` when not available.  
+   Minimum usual visitor dwell time in minutes, or `0` when not available.  
   &nbsp;
  - venue_info.**venue_dwell_time_max** `int`  
-   Maximum usual visitor dwell time in minutes, or `null` when not available.   
+   Maximum usual visitor dwell time in minutes, or `0` when not available.   
   &nbsp;
  - venue_info.**venue_dwell_time_avg** `int`  
-   Average usual visitor dwell time in minutes, or `null` when not available.   
+   Average usual visitor dwell time in minutes, or `0` when not available.   
   &nbsp;

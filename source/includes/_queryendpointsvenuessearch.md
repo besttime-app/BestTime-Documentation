@@ -220,10 +220,10 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
    Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level. When the 'fast' search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint.
   &nbsp; 
 - **rating_min** `float` <span style="color:blue">OPTIONAL</span>    
-   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`. When the 'normal' speed search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint.
+   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`. Venues without a rating (0) will NOT be returned when applying this filter.   
   &nbsp; 
 - **rating_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
+   Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`. Venues without a rating (0) WILL be returned when applying this filter.
   &nbsp; 
 - **reviews_min** `int` <span style="color:blue">OPTIONAL</span>    
    Minimum number of reviews for a venue. Minimum value `0`.  

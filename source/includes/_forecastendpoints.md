@@ -264,16 +264,16 @@ By default the API is limited to 10 requests per second. Contact us for higher l
    The `venue_id` is used to perform queries.  
   &nbsp;
  - venue_info.**venue_dwell_time_min** `int`  
-   Minimum usual visitor dwell time in minutes, or `null` when not available.  
+   Minimum usual visitor dwell time in minutes, or `0` when not available.  
   &nbsp;
  - venue_info.**venue_dwell_time_max** `int`  
-   Maximum usual visitor dwell time in minutes, or `null` when not available.   
+   Maximum usual visitor dwell time in minutes, or `0` when not available.   
   &nbsp;
  - venue_info.**venue_dwell_time_avg** `int`  
-   Average usual visitor dwell time in minutes, or `null` when not available.   
+   Average usual visitor dwell time in minutes, or `0` when not available.   
   &nbsp;
   - venue_info.**venue_dwell_time_avg** `int`  
-   Average usual visitor dwell time in minutes, or `null` when not available.   
+   Average usual visitor dwell time in minutes, or `0` when not available.   
   &nbsp;
   - venue_info.**venue_type** `string`  
    Type of venue, or `OTHER` when not available. Possible types are (most common shown first) `RESTAURANT, SHOPPING, FAST_FOOD, BAR, SUPERMARKET, GROCERY, PARK, OTHER, APPAREL, FOOD_AND_DRINK, CAFE, SHOPPING_CENTER, COFFEE, AIRPORT, SPORTS_COMPLEX, PHARMACY, PERSONAL_CARE, VEHICLE, GAS_STATION, MUSEUM, DENTIST, LIBRARY, BANKING, TOURIST_DESTINATION, CASH_MACHINE, FOOD_DELIVERY, EVENT_VENUE, SPA, MARKET, CLUBS, PUBLIC_TRANSIT, BREWERY, SPORTING_GOODS, HISTORICAL, PERFORMING_ARTS, DOCTOR, AMUSEMENT_PARK, GIFTS, TEA, CHURCH, SKILL_INSTRUCTION, TRAIN_STATION, ARTS, GOLF, ZOO, BOTANICAL_GARDEN, NATIONAL_PARK, SUBWAY_STATION, CASINO, MOVIE_THEATER, POST_OFFICE, HIKING, GOLF_COURSE, NATURE_RESERVE, BRIDGE, BUS_STATION, GOVERNMENT, REST_AREA, WINERY, SCENIC_POINT, SOUVENIR_SHOP, CITY_HALL, BOATING, CONCERT_HALL, SWIMMING, MONUMENT, SOCCER, CAR_RENTAL, MOSQUE, INDUSTRIAL, VISITOR_CENTER, ANTIQUES, AQUARIUM, PALACE, HINDU_TEMPLE, STADIUM, WINTER_SPORTS, BUDDHIST_TEMPLE, EMBASSY, TEMPLE, TENNIS, BASEBALL, FERRY_TERMINAL, FISHING, POLICE, SCHOOL, BAKERY, AGRICULTURE, CRICKET, FAIRGROUNDS, GONDOLA_LIFT_STATION, HOSPITAL, LIGHTHOUSE, MILITARY, MORMON_TEMPLE, UNIVERSITY` 

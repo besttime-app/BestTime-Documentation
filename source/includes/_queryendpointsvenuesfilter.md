@@ -128,16 +128,16 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
    Maximum longitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
   &nbsp; 
 - **price_min** `int` <span style="color:blue">OPTIONAL</span>  
-   Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_min` filters out all venues without a price level.  
+   Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level, indicated as `0`. Using `price_min` WILL filter out all venues without a price level.  
   &nbsp; 
 - **price_max** `int` <span style="color:blue">OPTIONAL</span>  
-   Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level.  
+   Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level, indicated as `0`. Using `price_max` will NOT filter out all venues without a price level.  
   &nbsp; 
 - **rating_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`.  
+   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`. Venues without a rating (0) will NOT be returned when applying this filter. 
   &nbsp; 
 - **rating_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
+   Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`. Venues without a rating (0) WILL be returned when applying this filter.
   &nbsp; 
 - **reviews_min** `int` <span style="color:blue">OPTIONAL</span>  
    Minimum number of reviews for a venue. Minimum value `0`.  
@@ -145,17 +145,17 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 - **reviews_max** `int` <span style="color:blue">OPTIONAL</span>     
    Maximum number of reviews for a venue. Minimum value `0`.  
   &nbsp; 
+- **order_by** `int` <span style="color:blue">OPTIONAL</span>
+   Order venues by a specific parameter. Can be `date`, `dwell_time_min`,`dwell_time_max`, `name`,`rating`,`reviews`,`price_level`. Default is `reviews`. Max two comma seperated parameters allowed (e.g. `order_by=rating,reviews`). Coming soon: Sort venues on foot traffic intensity data. Warning: Venues forecasted before June 24, 2021 without dwelltime, rating, review, price_level data need to be updated (new foot traffic forecast) to order them correctly.  
+  &nbsp; 
+- **order** `int` <span style="color:blue">OPTIONAL</span>
+   Order the `order_by` parameters ascending or descending. Can be `asc` or `desc`.  Default `desc`. Max two comma seperated parameters allowed (e.g. `order=desc,asc`).  
+  &nbsp; 
 - **limit** `int` <span style="color:blue">OPTIONAL</span>    
    Maximum number returned venues. Default `5000`, min `0`, max `10000`. Warning: currently foot traffic filters `busy_min` and `busy_max` are only applied after the limit. We are currently working to improve this.  
   &nbsp; 
 - **page** `int` <span style="color:blue">OPTIONAL</span>    
    Selects the page number. Default page `0`. Min page `0`.  
-  &nbsp; 
-- **order_by** `int` <span style="color:blue">OPTIONAL</span>
-   Order venues by a specific parameter. Can be `date`, `dwell_time_min`,`dwell_time_max`, `name`,`rating`,`reviews`,`price_level`. Default is `reviews`. Max two comma seperated parameters allowed (e.g. `order_by=rating,reviews`). Coming soon: Sort venues on foot traffic intensity data.  
-  &nbsp; 
-- **order** `int` <span style="color:blue">OPTIONAL</span>
-   Order the `order_by` parameters ascending or descending. Can be `asc` or `desc`.  Default `desc`. Max two comma seperated parameters allowed (e.g. `order=desc,asc`).  
   &nbsp; 
 
 
@@ -263,19 +263,19 @@ The JSON response will contain a `list` with venue `objects`.
    Type of venue, or `OTHER` when not available. Possible types are (most common shown first) `RESTAURANT, SHOPPING, FAST_FOOD, BAR, SUPERMARKET, GROCERY, PARK, OTHER, APPAREL, FOOD_AND_DRINK, CAFE, SHOPPING_CENTER, COFFEE, AIRPORT, SPORTS_COMPLEX, PHARMACY, PERSONAL_CARE, VEHICLE, GAS_STATION, MUSEUM, DENTIST, LIBRARY, BANKING, TOURIST_DESTINATION, CASH_MACHINE, FOOD_DELIVERY, EVENT_VENUE, SPA, MARKET, CLUBS, PUBLIC_TRANSIT, BREWERY, SPORTING_GOODS, HISTORICAL, PERFORMING_ARTS, DOCTOR, AMUSEMENT_PARK, GIFTS, TEA, CHURCH, SKILL_INSTRUCTION, TRAIN_STATION, ARTS, GOLF, ZOO, BOTANICAL_GARDEN, NATIONAL_PARK, SUBWAY_STATION, CASINO, MOVIE_THEATER, POST_OFFICE, HIKING, GOLF_COURSE, NATURE_RESERVE, BRIDGE, BUS_STATION, GOVERNMENT, REST_AREA, WINERY, SCENIC_POINT, SOUVENIR_SHOP, CITY_HALL, BOATING, CONCERT_HALL, SWIMMING, MONUMENT, SOCCER, CAR_RENTAL, MOSQUE, INDUSTRIAL, VISITOR_CENTER, ANTIQUES, AQUARIUM, PALACE, HINDU_TEMPLE, STADIUM, WINTER_SPORTS, BUDDHIST_TEMPLE, EMBASSY, TEMPLE, TENNIS, BASEBALL, FERRY_TERMINAL, FISHING, POLICE, SCHOOL, BAKERY, AGRICULTURE, CRICKET, FAIRGROUNDS, GONDOLA_LIFT_STATION, HOSPITAL, LIGHTHOUSE, MILITARY, MORMON_TEMPLE, UNIVERSITY`   
   &nbsp;
   - venues[N].**venue_dwell_time_min** `int`  
-   Minimum usual visitor dwell time in minutes, or `null` when not available.  
+   Minimum usual visitor dwell time in minutes, or `0` when not available.  
   &nbsp;
   - venues[N].**venue_dwell_time_max** `int`  
-   Maximum usual visitor dwell time in minutes, or `null` when not available.   
+   Maximum usual visitor dwell time in minutes, or `0` when not available.   
   &nbsp;
   - venues[N].**price_level** `int`
    Price level for a venue. Range `1` (cheapest) to `5` (most expensive. Not all venues have a price level, indicated with `null`. 
   &nbsp; 
   - venues[N].**rating** `float`
-   Rating for a venue. Ranging from `1.0` to `5.0`. Not all venues have a rating, indicated with `null`. 
+   Rating for a venue. Ranging from `1.0` to `5.0`. Not all venues have a rating, indicated with `0`. 
   &nbsp; 
   - venues[N]**reviews** `int`   
-  Number of reviews for a venue. Minimum value `0`. Not all venues have a number of reviews, indicated as `null`.   
+  Number of reviews for a venue. Minimum value `0`. Not all venues have a number of reviews, indicated as `0`.   
   &nbsp; 
 - **status** `string` 
  Status of the response. Either `OK` or `error`.
