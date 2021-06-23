@@ -127,23 +127,35 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 - **lng_max** `float` <span style="color:blue">OPTIONAL</span>  
    Maximum longitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
   &nbsp; 
-- **price_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>  
+- **price_min** `int` <span style="color:blue">OPTIONAL</span>  
    Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_min` filters out all venues without a price level.  
   &nbsp; 
-- **price_max** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **price_max** `int` <span style="color:blue">OPTIONAL</span>  
    Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level.  
   &nbsp; 
-- **rating_min** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **rating_min** `float` <span style="color:blue">OPTIONAL</span>  
    Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`.  
   &nbsp; 
-- **rating_max** `float` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **rating_max** `float` <span style="color:blue">OPTIONAL</span>  
    Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`.  
   &nbsp; 
-- **reviews_min** `int` <span style="color:blue">OPTIONAL</span><span style="color:green"> New</span>    
+- **reviews_min** `int` <span style="color:blue">OPTIONAL</span>  
    Minimum number of reviews for a venue. Minimum value `0`.  
   &nbsp;  
-- **reviews_max** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>   
-   Maximum number of reviews for a venue. Minimum value `0`.
+- **reviews_max** `int` <span style="color:blue">OPTIONAL</span>     
+   Maximum number of reviews for a venue. Minimum value `0`.  
+  &nbsp; 
+- **limit** `int` <span style="color:blue">OPTIONAL</span>    
+   Maximum number returned venues. Default `5000`, min `0`, max `10000`. Warning: currently foot traffic filters `busy_min` and `busy_max` are only applied after the limit. We are currently working to improve this.  
+  &nbsp; 
+- **page** `int` <span style="color:blue">OPTIONAL</span>    
+   Selects the page number. Default page `0`. Min page `0`.  
+  &nbsp; 
+- **order_by** `int` <span style="color:blue">OPTIONAL</span>
+   Order venues by a specific parameter. Can be `date`, `dwell_time_min`,`dwell_time_max`, `name`,`rating`,`reviews`,`price_level`. Default is `date`. Max two comma seperated parameters allowed (e.g. `order_by=rating,reviews`). Coming soon: Sort venues on foot traffic intensity data.  
+  &nbsp; 
+- **order** `int` <span style="color:blue">OPTIONAL</span>
+   Order the `order_by` parameters ascending or descending. Can be `asc` or `desc`.  Default `desc`. Max two comma seperated parameters allowed (e.g. `order=desc,asc`).  
   &nbsp; 
 
 

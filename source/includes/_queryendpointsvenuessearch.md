@@ -231,18 +231,6 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 - **reviews_max** `int` <span style="color:blue">OPTIONAL</span>    
    Maximum number of reviews for a venue. Minimum value `0`.
   &nbsp; 
-- **limit** `int` <span style="color:blue">OPTIONAL</span>    
-   Maximum number returned venues. Default `5000`, min `0`, max `10000`. Warning: currently foot traffic filters `busy_min` and `busy_max` are only applied after the limit. We are currently working to improve this.
-  &nbsp; 
-- **page** `int` <span style="color:blue">OPTIONAL</span>    
-   Selects the page number.  
-  &nbsp; 
-- **order_by** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green">COMING SOON</span>    
-   Order venues by a specific parameter. Can be `foot_traffic`, `rating`,`reviews`,`name`,`dwell_time_min`,`dwell_time_max`,`price_level`,`date`. Default is `date`. Max two comma seperated parameters allowed (e.g. `order_by=rating,reviews`). Let us know if you are interested in testing this.
-  &nbsp; 
-- **order** `int` <span style="color:blue">OPTIONAL</span> <span style="color:green">COMING SOON</span>    
-   Order the `order_by` parameters ascending or descending. Can be `asc` or `desc`.  Default `desc`. Max two comma seperated parameters allowed (e.g. `order=desc,asc`).
-  &nbsp; 
 
 
 <aside class="notice">
