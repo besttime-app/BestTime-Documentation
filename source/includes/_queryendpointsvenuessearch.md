@@ -134,7 +134,7 @@ This query endpoint requires the private API key.
  Private API Key. The endpoint will only return venues that are forecasted with this private API key. See [API keys](#api-reference) for more info.
  &nbsp;
 - **q** `string` <span style="color:orange">REQUIRED</span>  
- Text query to search venues with a matching venue name (e.g. Whole Foods), or venue type (e.g. restaurants), and location (e.g. neighborhood, city, state or country). You can use natural language to automatically add venue filters. See [Natural Language in a search query](#natural-language-in-the-search-query-as-filters)
+ Text query to search venues with a matching venue name (e.g. Whole Foods), or venue type (e.g. restaurants), and location (e.g. neighborhood, city, state or country). Max length `128` characters. You can use natural language to automatically add venue filters. See [Natural Language in a search query](#natural-language-in-the-search-query-as-filters)
  &nbsp;
 - **num** `int` <span style="color:blue">OPTIONAL</span>  
 Maximum number of search results, with increments of 20 venues, and a range from `20` to `200`.
