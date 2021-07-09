@@ -48,10 +48,10 @@ When creating a live forecast the normal forecast for the venue will NOT be upda
 ### Input attributes Live foot traffic data
 
 - **venue_name** `string` <span style="color:blue">OPTIONAL</span>  
- Name of the venue (public business). When then using the `venue_id` the `venue_name` and `venue_address` can be omitted.  
+ Name of the venue (public business). Max input length `256` characters.  When then using the `venue_id` the `venue_name` and `venue_address` can be omitted.  
  &nbsp; 
 - **venue_address** `string` <span style="color:blue">OPTIONAL</span>  
- Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.  
+ Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. Max input length `1024` characters. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.  
  &nbsp;
 - **venue_id** `string` <span style="color:blue">OPTIONAL</span>  
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues. To use the `venue_id` as input, the venue needs to be forecasted before. When the `venue_id` parameter is omitted the `venue_name` and `venue_address` parameters are required.  
@@ -108,15 +108,15 @@ By default the API is limited to 10 requests per second. Contact us for higher l
    Forecasted busyness for this hour, based on the weekly forecast. Ranging from `0` to `100`.  
   &nbsp;
  - analysis.**venue_live_busyness** `int`  
-   Live busyness at the venue for current, based on the weekly forecast. Ranging from `0` to `200` percent. 
-   In most cases the live percentage will be 100% or lower. However if the value is above 100% it 
-   means it is more busy than the highest forecasted peak of the week. E.g. 200% meaning it is two times more busy than the normal forecasted peak of the week. 
+   Live busyness at the venue for current, based on the weekly forecast.  
+   In most cases, the live percentage will be between 0% and 100%. However, a value above 100%
+   means it is busier than the highest forecasted peak of the week. E.g. 200% meaning it is two times as busy as the normal forecasted peak (100%) of the week. 
   &nbsp;
  - analysis.**venue_live_busyness_available** `bool`  
    Indicates if there is live data available for this venue at this moment.  
   &nbsp;
  - analysis.**venue_forecast_busyness_available** `bool`  
-   Indicates if there is forecast data available for this venue at this moment. The forecast value can be used as alternative when there is no live data available.
+   Indicates if there is forecast data available for this venue at this moment. The forecast value can be used as the alternative when there is no live data available.
   &nbsp;
  - analysis.**venue_live_forecasted_delta** `int`  
    Indicates the difference of the current live busyness versus the forecasted busyness for this hour, in percentage. A negative number indicates that is is less busy then normal, while a positive number indicates that it is more busy than normal. Ranging from `-100` to `100`.  
