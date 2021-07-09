@@ -176,6 +176,9 @@ Maximum busyness for the filtered venues, ranging from `0` to `100` procent. Use
 - **busy_conf** `string` <span style="color:blue">OPTIONAL</span>  
 Selects how `busy_min` and `busy_max` filters on busyness percentage. Possible options are `any` or `all`. Defaults to  `any`. `any` will return venues when at least one of the (selected) hours matches the `busy_min` and/or `busy_max` filter(s). `all` will return venues when all (selected) hours match the `busy_min` and/or `busy_max` filter(s). Use the `hour_min` and/or `hour_max` parameters to select specific hours were the `busy_min` and/or `busy_max` filters are applied on.  
  &nbsp;
+- **foot_traffic** `string` <span style="color:blue">OPTIONAL</span>  
+ Selects which part(s) of the foot traffic data will be returned in the response. Can be `limited`, `day`, or `both`. Default is `limited`. With `limited` selected, only the foot traffic data between the selected hours (`hour_min` and `hour_max`) is returned in the `day_raw` value (or whole day when no specific hours are selected). This also applies when combining with `now` or `live` in the input. When `day` is selected, foot traffic data for the whole day is returned (even if filters on specific hours are applied) in the `day_raw_whole` value. The `day_raw` value is in this case not returned. When `both` is selected, both the previously described `day_raw` and `day_raw_whole` value results are returned in the response.   
+ &nbsp;
 - **hour_min** `int` <span style="color:blue">OPTIONAL</span>  
 Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the day window.  See [Forecast day window and weekdays](#forecast-day-window-and-weekdays). Cannot be used in combination with the `now` and `live` parameters set to be `true`.  
  &nbsp;
@@ -186,7 +189,7 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
  Day of the week. Range `0` (Monday) to `6` (Sunday). Will default to current day in local time of the first found venue that meets the filter. Cannot be used in combination with the `now` and `live` parameters set to be `true`.
  &nbsp; 
 - **now** `bool` <span style="color:blue">OPTIONAL</span>  
- Sets the time and day filter to the current day and hour in local time. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `live`, `day_int`, `hour_min`, and `hour_max` parameters.  
+ Sets the time and day filter to the current day and hour in local time. Note: This option only takes into account one timezone! So it is best to use this parameter only when requesting venues within one timezone. When a collection_id is given, the timezone of the first venue in the collection is chosen. When bounding box parameters are given, the timezone of the center of the box is chosen as timezone. When `lat`, `lng` are given the timezone of the given coordinate is chosen. So if the determined timezone indicates currently 2 PM, the foot traffic forecast for all venues - regardless of the individual venue timezones - will be for 2 PM. Cannot be used in combination with the `live`, `day_int`, `hour_min`, and `hour_max` parameters.  
  &nbsp; 
 - **live** `bool` <span style="color:blue">OPTIONAL</span>  
  Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
