@@ -49,6 +49,11 @@ Note: Use the 'New foot traffic forecast' API endpoint when searching for a sing
 Multiple API endpoints are involved from entering a search input until returning foot-traffic data for the found venues.
 The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id` (see [Collections](#venue-collections)).  You can poll the Venue Search Progress endpoint to poll to progress. The venue search functionality can also be used without API using the website [Venue Search Tool](https://besttime.app/api/v1/searchvenues) or on the [Radar tool](https://besttime.app/api/v1/radar/filter).
 
+<b>Highly recommended to read first:
+- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+</b>
+
 ### Venue filters
 
 The Venue Search Progress endpoint will return a link to view the results in the 'Radar tool' and the 'venue filter' API endpoint once the background job has been completed (`job_finished: true`). The venue search endpoint accepts filters similar to the 'venue filter' endpoint and Radar tool. By providing these parameters the links to the Radar tool and Venue Filter endpoint will automatically include the filter parameters. Only after analyzing each venue (foot-traffic forecast) most filters will be applied in the Radar tool/ Venue Filter endpoint. The venue search result therefore also includes venues that do not meet the filter criteria, but match the other search query text. The filters that are directly applied in the search are: `opened`, `lat`, `lng`, and `radius` for both search methods ('normal' and 'fast' method). The 'fast' method filters directly as well on `price_min` and `price_max`. The 'normal' search method will filter directly on `rating_min`.

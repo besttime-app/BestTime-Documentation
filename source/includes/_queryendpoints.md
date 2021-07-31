@@ -60,3 +60,8 @@ Query the quiet hours of today.
 
 **Surge Hours**
 Query the surge hours of today. Surge analysis shows when most people come to a venue, or leave the venue.  
+
+<b>Highly recommended to read first:
+- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+</b>

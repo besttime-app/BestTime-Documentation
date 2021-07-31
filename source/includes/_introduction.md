@@ -8,33 +8,38 @@ Welcome to the BestTime.app documentation! The documentation includes different 
 
 
 ## What is BestTime.app?
-BestTime.app is a data (API) service that forecasts how busy a public business will be at any given hour of the week, using foot traffic data. 
-                The data is provided for 150+ countries using anonymous phone signals, and is available for retail, restaurants, bars, gyms, museums, and more. 
-                Foot traffic forecasts are based on average visits over the past weeks. 
-                Busyness for any given hour is predicted relative to the biggest peak of the week for this business. 
-                The foot traffic data is presented as percentages for each hour of the week from 0% (empty/ closed) to 100% (visitor peak of the week). 
-                Additional BestTime functionality:
-              <ul>
-                <li>Live updates if a venue is more or less busy than normal (real-time).</li>
-                <li>Foot traffic analyses, like peaks, quiet hours, week overviews</li>
-                <li>Search venue foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Fransisco).
-                </li>
-                <li>
-                  Filter venues in a whole area based on foot traffic visitor peaks, day, time, and business type, location, and more.
-                </li>
-                <li>Integrate all data directly into your applications/ research using the developer REST-API.
-                </li>
-              </ul>
-              You could compare it with a supercharged FourSquare foot traffic data/ Google Popular Times API with more footfall data analytic functionality.
+BestTime.app is a foot traffic data (API) service that forecasts how busy a public business (venues) will be at any given hour of the week. 
+The data is provided for 150+ countries using anonymous phone signals, and is available for retail, restaurants, bars, gyms, museums, and more. 
+Foot traffic forecasts are based on average visits over the past weeks. 
+Busyness for any given hour is predicted relative to the biggest peak of the week for this business. 
+The foot traffic data is presented as percentages for each hour of the week from 0% (empty/ closed) to 100% (visitor peak of the week). 
+
+<b>Highly recommended to read:
+- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+</b>
+
+Additional BestTime functionality:
+<ul>
+<li>Live updates if a venue is more or less busy than normal (real-time).</li>
+<li>Foot traffic analyses, like peaks, quiet hours, week overviews</li>
+<li>Search venue foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Fransisco).
+</li>
+<li>
+    Filter and sort venues in a whole area based on foot traffic data, dwell time, day, time, and business type, location, and more.
+</li>
+<li>Integrate all data directly into your applications/ research using the developer REST-API.
+</li>
+</ul>
+You could compare it with a supercharged FourSquare foot traffic data/ Google Popular Times API with more footfall data analytic functionality.
 
 
 ## Use cases
 Below are a few example use-cases how the analyzed data can be used in real-world:
 
 - Inform visitors what the best time is to visit a venue.
-- Find the most popular hours of a bar using the peak analysis. This way you will never end up in an empty bar, and never end up in the queue.
+- Find the most popular hours of a bar nearby. This way you will never end up in an empty bar, and never end up in the queue.
 - Find the quietest gym by comparing multiple gyms in your neighborhood.
-- Compare how multiple chain stores of different brands compete against each other.
 - Find the best time to go to a museum and avoid the queue.
 - Find out of a venue is more crowded than normal at this moment with the live data.
 - Create a dashboard for your venue (e.g. reception, kitchen, etc) to keep your employees informed how busy it is now (live), how busy it will be next hour (forecasted), and when the next peak is coming.

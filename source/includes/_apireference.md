@@ -21,8 +21,12 @@ There are two types of API keys; Private keys are used to create a new forecast,
 
 API keys are generated in pairs, and you can generate multiple API key sets (pairs) in the API key management page. When using multiple API keys, you should remember that you can only query forecasts from the same key set. 
 
-All key set use credits from the same account. When an API key is compromised you can delete the API key set through the API Key management page.
+All key set use credits from the same account. When an API key is compromised, you can delete the API key set through the API Key management page.
 
+<b>Highly recommended to read first:
+- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+</b>  
 
 ## Authentication
 

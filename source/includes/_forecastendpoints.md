@@ -145,6 +145,11 @@ fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
 The 'new forecast' endpoint is used to create a [forecast](#forecasts) of a venue based on the most recent available data. Forecasts are created using the venue name and address as input. The response includes the forecast (including different analysis), and venue information.
 The venue information includes the `venue_id`. This ID is the primary parameter to lookup previously forecasted venues, using the [query endpoints] (#query-endpoints). Forecasts are stored on the server for a certain number of days (see [data retention](#data-retention))
 
+<b>Highly recommended to read first:
+- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+</b>
+
 ### Input attributes New Forecast
 
 - **venue_name** `string` <span style="color:orange">REQUIRED</span>  

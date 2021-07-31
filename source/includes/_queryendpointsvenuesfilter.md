@@ -71,6 +71,12 @@ The endpoint will only return venues that have been forecasted before with the p
 
 To prevent manually adding all venues in a specific area (e.g. neighborhood or city) the 'Add Area' or 'Venue Search' tool can be used. Using the 'Add Area' tool the user can define a geographical bounding box, select multiple desired types of venues (e.g. supermarkets, gyms, restaurants, etc). Under the hood it uses the Google Maps Nearby API to discover venues in the defined area (you will need a Google Maps API key). This geocoder has currently the biggest database and gives the best results.
 
+
+<b>Highly recommended to read first:
+- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+</b>
+
 Radar tool (which is using this 'venue filter' endpoint) 
 <a href="images/radar-venue-filter-small.jpg" target="_blank">
   <img alt="Radar tool (Venue filter)" src="images/radar-venue-filter-small.jpg">

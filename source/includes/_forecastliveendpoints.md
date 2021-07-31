@@ -44,6 +44,12 @@ The 'live forecast' endpoint is used to get live information of the venue. Life 
 
 When creating a live forecast the normal forecast for the venue will NOT be updated. Use one of the other New Forecast endpoints
 
+<b>Highly recommended to read first:
+- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+</b>  
+
+
 
 ### Input attributes Live foot traffic data
 
