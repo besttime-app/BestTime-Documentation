@@ -415,7 +415,7 @@ The JSON response will contain a `list` with venue `objects`.
        Hour of day when the venue opens. Range `0` to `23` hour  
        &nbsp;
 
-- window `object` 
+- **window** `object` 
   Indicating the time window of the foot traffic data. See Introduction section [Forecast day window and weekdays](#forecast-day-window-and-weekdays)   
   &nbsp;
   - window.**day_window** `string`  
