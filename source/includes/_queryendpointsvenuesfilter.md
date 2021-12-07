@@ -202,105 +202,142 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
 
 ```json
 {
-  "status": "OK", 
+  "status": "OK",
   "venues": [
     {
-      "day_int": 0, 
+      "day_info": {
+          "day_int": 4,
+          "day_max": 74,
+          "day_mean": 55,
+          "day_rank_max": 7,
+          "day_rank_mean": 4,
+          "day_text": "Friday",
+          "venue_closed": 22,
+          "venue_open": 7
+      },
+      "day_int": 4,
       "day_raw": [
-        85,
-        60,
-        30,
-        10,
-        0,
-        0
-      ], 
+          65,
+          65,
+          60,
+          50,
+          0,
+          0
+      ],
       "day_raw_whole": [
-        0,
-        0,
-        0,
-        0,
-        10,
-        15,
-        15,
-        15,
-        20,
-        25,
-        45,
-        70,
-        85,
-        60,
-        30,
-        10,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ], 
-      "venue_address": "61 Piccadilly Mayfair, London W1J 0DY United Kingdom", 
-      "venue_id": "ven_386d55494f76464873784752676b6445593949455752594a496843", 
-      "venue_lat": 51.5079836, 
-      "venue_lng": -0.1404946, 
-      "venue_name": "Caffe Concerto Green Park",
-      "venue_type": "CAFE",
-      "venue_dwell_time_min": 30,
-      "venue_dwell_time_max": 70,
-      "price_level": 2,
-      "rating": 4.8,
-      "reviews": 1276,
-    }, 
+          0,
+          10,
+          35,
+          50,
+          45,
+          55,
+          70,
+          75,
+          70,
+          60,
+          60,
+          60,
+          65,
+          65,
+          60,
+          50,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+      ],
+      "price_level": 0,
+      "rating": 4.6,
+      "reviews": 496,
+      "venue_address": "45 Jermyn St St. James's, London SW1Y 6DN United Kingdom",
+      "venue_dwell_time_max": 120,
+      "venue_dwell_time_min": 60,
+      "venue_id": "ven_6f39545031476b54345f5852676b6445596457484a79674a496843",
+      "venue_lat": 51.5080107,
+      "venue_lng": -0.1382948,
+      "venue_name": "45 Jermyn St.",
+      "venue_type": "RESTAURANT"
+    },
     {
-      "day_int": 0, 
+      "day_info": {
+          "day_int": 4,
+          "day_max": 87,
+          "day_mean": 41,
+          "day_rank_max": 2,
+          "day_rank_mean": 3,
+          "day_text": "Friday",
+          "venue_closed": 0,
+          "venue_open": 12
+      },
+      "day_int": 4,
       "day_raw": [
-        75,
-        95,
-        95,
-        70,
-        0,
-        0
+          55,
+          80,
+          85,
+          80,
+          55,
+          30
       ],
       "day_raw_whole": [
-        0,
-        0,
-        15,
-        25,
-        35,
-        40,
-        45,
-        45,
-        40,
-        35,
-        40,
-        55,
-        75,
-        95,
-        95,
-        70,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15,
+          20,
+          15,
+          10,
+          15,
+          30,
+          55,
+          80,
+          85,
+          80,
+          55,
+          30,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0
       ],
-      "venue_address": "14 Riding House St Fitzrovia, London W1W 7HR United Kingdom", 
-      "venue_id": "ven_6372542d36476a4a59686d52676b646155646e713661514a496843", 
-      "venue_lat": 51.5183082, 
-      "venue_lng": -0.1415526, 
-      "venue_name": "The Great Thai Restaurant",
-      "venue_type": "RESTAURANT",
-      "venue_dwell_time_min": 40,
-      "venue_dwell_time_max": 80,
-      "price_level": 3,
-      "rating": 4.1,
-      "reviews": 4276,
+      "price_level": 2,
+      "rating": 4.5,
+      "reviews": 1782,
+      "venue_address": "7 Northumberland Ave London WC2N 5BY United Kingdom",
+      "venue_dwell_time_max": 120,
+      "venue_dwell_time_min": 60,
+      "venue_id": "ven_6f5a30484241302d48623552676b6446556e49492d36374a496843",
+      "venue_lat": 51.5071129,
+      "venue_lng": -0.1265196,
+      "venue_name": "50 Kalò di Ciro Salvo Pizzeria London",
+      "venue_type": "RESTAURANT"
     }
-  ]
+  ],
+  "venues_n": 2,
+  "window": {
+      "day_window": "Friday 6PM until Friday 11PM",
+      "day_window_end_int": 4,
+      "day_window_end_txt": "Friday",
+      "day_window_start_int": 4,
+      "day_window_start_txt": "Friday",
+      "time_local": 8,
+      "time_local_12": "8AM",
+      "time_local_index": 2,
+      "time_window_end": 23,
+      "time_window_end_12h": "11PM",
+      "time_window_end_ix": 17,
+      "time_window_start": 18,
+      "time_window_start_12h": "6PM",
+      "time_window_start_ix": 12
+  }
 }
 ```
 
@@ -355,3 +392,74 @@ The JSON response will contain a `list` with venue `objects`.
   &nbsp; 
 - **status** `string` 
  Status of the response. Either `OK` or `error`.
+  &nbsp; 
+ - venues[N].**day_info** `object`  
+   Details about the day.   
+  &nbsp;
+     - venues[N].day_info.**day_int** `int`  
+       Day integer range `0` (Monday) to `6` (Sunday)  
+       &nbsp;
+     - venues[N].day_info.**day_rank_max** `int`  
+       Day ranking based on maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
+       &nbsp;
+     - venues[N].day_info.**day_rank_mean** `int`  
+       Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least busy day of the week.  
+       &nbsp;
+     - venues[N].day_info.**day_text** `string`  
+       Day name. E.g. `monday`  
+       &nbsp;
+     - venues[N].day_info.**venue_closed** `int`  
+       Hour of day when the venue closes. Range `0` to `23` hour  
+       &nbsp;
+     - venues[N].day_info.**venue_open** `int`  
+       Hour of day when the venue opens. Range `0` to `23` hour  
+       &nbsp;
+
+- window `object` 
+  Indicating the time window of the foot traffic data. See Introduction section [Forecast day window and weekdays](#forecast-day-window-and-weekdays)   
+  &nbsp;
+  - window.**day_window** `string`  
+    Time window of the foot traffic data as a human readable sentence.  
+  &nbsp;
+  - window.**day_window_end_int** `int`  
+    Week day (day_int) of the window end. Range `0` to `6`.    
+  &nbsp;
+  - window.**day_window_end_txt** `string`  
+    Week day as text of the window end.  
+  &nbsp;
+  - window.**day_window_start_int** `int`  
+    Week day (day_int) of the window start. Range `0` to `6`.  
+  &nbsp;
+  - window.**day_window_start_txt** `string`  
+    Week day as text of the window start.  
+  &nbsp;
+  - window.**time_local** `int`  
+    Current local hour of day at location in 24 hour format. Range `0` to `23` hour.  
+  &nbsp;
+  - window.**time_local_12** `string`  
+    Current local hour of day at location in 12 hour format. Range `12AM` to `23PM` hour.  
+  &nbsp;
+  - window.**time_local_index** `int`  
+    The index value of the element in a 24 hour foot traffic data array corresponding to the foot traffic data for the current local hour. In the example, the value is `2`. If no hour_min and hour_max filter is applied the `day_raw` array will consist of 24 elements. However, in the example, the hours are filtered and the `day_raw` array only consists out of six elements. In this example, the `foot_traffic` input is set to `both` so it will also return a full 24 element foot traffic array in the `day_raw_whole`. So the `time_local_index=2` corresponds to a foot traffic percentage of `35` in the second venue in the example response (45 Jermyn St.). As alternative, to get both the foot traffic value for the current hour and the whole 24 hour foot traffic array - it is recommended to set `now=true` and `foot_traffic` to both. The `day_raw` with one element will then indicate the foot traffic percentage currently at each venue.  
+  &nbsp;
+  - window.**time_window_end** `int`  
+    Hour of the window end. Range `0` to `23` hour.  
+  &nbsp;
+  - window.**time_window_end_12** `string`  
+    Hour of the window end. Range `12AM` to `23PM` hour.   
+  &nbsp;
+  - window.**time_window_end_ix** `int`  
+    The index value of the element in a 24 hour foot traffic data array corresponding to last hour of the window.
+  &nbsp;
+  - window.**time_window_start** `int`  
+    Hour of the window start. Range `0` to `23` hour.  
+  &nbsp;
+  - window.**time_window_start_12** `string`  
+    Hour of the window start. Range `12AM` to `23PM` hour.   
+  &nbsp;
+  - window.**time_window_start_ix** `int`  
+    The index value of the element in a 24 hour foot traffic data array corresponding to first hour of the window.  
+  &nbsp;
+
+- venues_n `int`  
+  The total number of found venues. Please add venues first to your account before using the Venue Filter tool. You can add venues using the New Foot Traffic Forecast tool/ API to individually add venues, or using the Venue Search tool/ API to add multiple venues at once. Remove filters to increase the amount of returned venues.
