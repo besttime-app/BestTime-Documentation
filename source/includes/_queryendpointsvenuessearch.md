@@ -4,7 +4,7 @@
 
 ```python
 import requests
- 
+
 url = "https://besttime.app/api/v1/venues/search"
 
 params = {
@@ -26,11 +26,11 @@ curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_ke
 
 ```javascript
 const params = new URLSearchParams({ 
-  'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-  'q': 'quiet supermarkets in sydney australia sunday morning',
-  'num': 200,
-  'fast': false,
-  'opened': 'now'
+    'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
+    'q': 'quiet supermarkets in sydney australia sunday morning',
+    'num': 200,
+    'fast': false,
+    'opened': 'now'
 });
 
 fetch(`https://besttime.app/api/v1/venues/search?${params}`, {
@@ -49,7 +49,7 @@ Note: Use the 'New foot traffic forecast' API endpoint when searching for a sing
 Multiple API endpoints are involved from entering a search input until returning foot-traffic data for the found venues.
 The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id` (see [Collections](#venue-collections)).  You can poll the Venue Search Progress endpoint to poll to progress. The venue search functionality can also be used without API using the website [Venue Search Tool](https://besttime.app/api/v1/searchvenues) or on the [Radar tool](https://besttime.app/api/v1/radar/filter).
 
-Once finished and if available for the venue, the Venue Search Progress endpoint will return the foot traffic data for the found venues. This data is similar to the `day_info` and `day_raw` response values of the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint. However, it does not include all additional analyses. Use the [#query-week](Query Week) endpoint to get the whole forecast analysis using the venue_id. Normally API credits are charged for this endpoint, but is free within one day after created a new forecast (through the Venue Search- or directly through the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint).
+Once finished and if available for the venue, the Venue Search Progress endpoint will return the foot traffic data for the found venues. This data is similar to the `day_info` and `day_raw` response values of the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint. However, it does not include all additional analyses. Use the [Query Week](#query-week) endpoint to get the whole forecast analysis using the venue_id. Normally API credits are charged for this endpoint, but is free within one day after created a new forecast (through the Venue Search- or directly through the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint).
 
 <b>Highly recommended to read first:
 - [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
@@ -299,7 +299,7 @@ The JSON response will contain a URL to the Venue Search Progress endpoint to tr
 
 ```python
 import requests
- 
+
 url = "https://besttime.app/api/v1/venues/progress"
 
 params = {
@@ -319,8 +319,8 @@ job_id=0a693bb3-7bd6-4d43-9495-a2773f1c9e29&collection_id=col_ffbebb4003974979b7
 
 ```javascript
 const params = new URLSearchParams({ 
-  'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
-  'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
+    'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
+    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
 });
 
 fetch(`https://besttime.app/api/v1/venues/progress?${params}`, {
@@ -522,16 +522,16 @@ The attributes below will be displayed when the Venue Search job is finished (`j
    Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.  
    &nbsp;
   - venues[N].**venue_lat** `float`  
-   Geographic latitude of the venue.  
+   Geographic latitude of the venue.
   &nbsp;
   - venues[N].**venue_lng** `float`  
-   Geographic longitude of the venue.  
+   Geographic longitude of the venue.
   &nbsp;
   - venues[N].**venue_id** `string`  
-   Unique BestTime.app venue id.  
+   Unique BestTime.app venue id.    
   &nbsp;    
   - venues[N].**venue_foot_traffic_forecast** `string`  
-   Foot-traffic forecast data for each hour of the day, for every day of the week. See [New Foot Traffic Forecast](#input-attributes-new-forecast) for details on the `day_info` and `day_raw` attributes.    
+   Foot-traffic forecast data for each hour of the day, for every day of the week. See [New Foot Traffic Forecast](#input-attributes-new-forecast) for details on the `day_info` and `day_raw` attributes. However, it does not include all additional analyses. Use the [Query Week](#query-week) endpoint to get the whole forecast analysis using the venue_id. Normally API credits are charged for this endpoint, but is free within one day after created a new forecast (through the Venue Search- or directly through the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint).     
    &nbsp;
 
    
