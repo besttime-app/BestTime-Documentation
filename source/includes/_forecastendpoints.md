@@ -177,7 +177,7 @@ By default the API is limited to 10 requests per second. Contact us for higher l
 </aside>
 
 
-### Response attributes New Forecast <a name="responseattributesnewforecast"></a>
+### Response attributes New Forecast <a name="#response-attributes-new-forecast"></a>
 
 - **analysis** `list`  
  List with an analysis object for each day of the week, containing analysis like 'peak_hours', 'busy_hours', etc per day. The list contains days `object` and are sorted on day of the week: `day_int` `0` (Monday) to `6` (Sunday).  

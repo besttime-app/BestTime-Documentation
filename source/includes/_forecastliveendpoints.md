@@ -105,7 +105,7 @@ By default the API is limited to 10 requests per second. Contact us for higher l
 }
 ```
 
-### Response attributes Live Forecast <a name="responseattributesnewforecast"></a>
+### Response attributes Live Forecast <a name="#response-attributes-live-forecast"></a>
 
 - **analysis** `object`  
  Object with live analysis details.  

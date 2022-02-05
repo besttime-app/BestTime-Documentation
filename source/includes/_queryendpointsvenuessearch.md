@@ -49,6 +49,8 @@ Note: Use the 'New foot traffic forecast' API endpoint when searching for a sing
 Multiple API endpoints are involved from entering a search input until returning foot-traffic data for the found venues.
 The Venue Search model will lookup venues in the background and will forecast them subsequently. Remember that this will therefore also result in forecast API credit usage. The endpoint will reply with a background task URL, `job_id`, and a `collection_id` (see [Collections](#venue-collections)).  You can poll the Venue Search Progress endpoint to poll to progress. The venue search functionality can also be used without API using the website [Venue Search Tool](https://besttime.app/api/v1/searchvenues) or on the [Radar tool](https://besttime.app/api/v1/radar/filter).
 
+Once finished and if available for the venue, the Venue Search Progress endpoint will return the foot traffic data for the found venues. This data is similar to the `day_info` and `day_raw` response values of the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint. However, it does not include all additional analyses. Use the [#query-week](Query Week) endpoint to get the whole forecast analysis using the venue_id. Normally API credits are charged for this endpoint, but is free within one day after created a new forecast (through the Venue Search- or directly through the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint).
+
 <b>Highly recommended to read first:
 - [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
 - [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
@@ -386,7 +388,7 @@ Adding the `collection_id` passes on the collection_id in the result links once 
     "status": "OK",
     "venues": [
         {
-            "forecast": true,
+            "forecast": false,
             "processed": true,
             "venue_address": "21 Shelley St, Sydney NSW 2000, Australia",
             "venue_lat": -33.8670477,
@@ -401,7 +403,66 @@ Adding the `collection_id` passes on the collection_id in the result links once 
             "venue_lat": -33.8866095,
             "venue_lon": 151.2138922,
             "venue_name": "Maloneys Grocer",
-            "venue_id": "ven_9372542d36476a8759686d52676b646155646e713661514a496847"
+            "venue_id": "ven_9372542d36476a8759686d52676b646155646e713661514a496847",
+            "venue_foot_traffic_forecast": [
+                {
+                    "day_info": {
+                        "day_int": 0,
+                        "day_max": 25,
+                        "day_mean": 12,
+                        "day_rank_max": 6,
+                        "day_rank_mean": 7,
+                        "day_text": "Monday",
+                        "venue_closed": 21,
+                        "venue_open": 6
+                    },
+                    "day_int": 0,
+                    "day_raw": [
+                        5,
+                        5,
+                        5,
+                        10,
+                        15,
+                        20,
+                        20,
+                        25,
+                        25,
+                        20,
+                        15,
+                        10,
+                        5,
+                        5,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "day_info": {
+                        "day_int": 1,
+                        "day_max": 24,
+                        "day_mean": 12,
+                        "day_rank_max": 7,
+                        "day_rank_mean": 7,
+                        "day_text": "Tuesday",
+                        "venue_closed": 21,
+                        "venue_open": 6
+                    },
+                    "day_int": 1,
+                    "day_raw": [
+                        0,
+                        5,
+                        5,
+                        10,
+                        15,
+                        ...
         },
         ... Only the first two results are displayed here
     ],
@@ -468,6 +529,12 @@ The attributes below will be displayed when the Venue Search job is finished (`j
   &nbsp;
   - venues[N].**venue_id** `string`  
    Unique BestTime.app venue id.  
+  &nbsp;    
+  - venues[N].**venue_foot_traffic_forecast** `string`  
+   Foot-traffic forecast data for each hour of the day, for every day of the week. See [New Foot Traffic Forecast](#input-attributes-new-forecast) for details on the `day_info` and `day_raw` attributes.    
+   &nbsp;
+
+   
 - **venues_n** `int`
 Total number of venues in list `venues`.
 - **bounding_box** `object` 

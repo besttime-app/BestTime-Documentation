@@ -40,7 +40,7 @@ fetch(`https://besttime.app/api/v1/forecasts/week?${params}`, {
 
 ### Input attributes
 
-The 'query week' endpoint is used to retrieve all data from an existing forecast (every day of the week). The response structure is exactly the same as the [new forecast](#new-forecast) response. 
+The 'query week' endpoint is used to retrieve all data from an existing forecast (every day of the week). The response structure is exactly the same as the [new forecast](#new-forecast) response. Normally API credits are charged for this endpoint, but is free within one day after created a new forecast (through the Venue Search- or directly through the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint).
 
 - **venue_id** `string` <span style="color:orange">REQUIRED</span>  
  The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues.  
@@ -62,7 +62,7 @@ HTTP method: GET
 
 The response attributes are exactly the same as the attributes in the 'new forecast' endpoint.  
  &nbsp;
-See [new forecast reponse attributes](#responseattributesnewforecast)
+See [new forecast reponse attributes](#response-attributes-new-forecast)
 
 ### Combine a new forecast with this query in a single API call
 This query endpoint takes data from an earlier forecasted venue. You can also combine a fresh forecast and get the results from this query endpoint using:
