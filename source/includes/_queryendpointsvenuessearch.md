@@ -12,7 +12,7 @@ params = {
     'q': 'quiet supermarkets in sydney australia sunday morning',
     'num': 200,
     'fast': False,
-    'opened': 'now'
+    'format': 'raw'
 }
 
 response = requests.request("POST", url, params=params)
@@ -21,7 +21,7 @@ print(response.json())
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&opened=now'
+curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&format=raw'
 ```
 
 ```javascript
@@ -30,7 +30,7 @@ const params = new URLSearchParams({
     'q': 'quiet supermarkets in sydney australia sunday morning',
     'num': 200,
     'fast': false,
-    'opened': 'now'
+    'format': 'raw'
 });
 
 fetch(`https://besttime.app/api/v1/venues/search?${params}`, {
@@ -145,10 +145,10 @@ This query endpoint requires the private API key.
  &nbsp;
 - **num** `int` <span style="color:blue">OPTIONAL</span>  
 Maximum number of search results, with increments of 20 venues, and a range from `20` to `200`.
-The default number is `20`. API credits for this endpoint are counted per `20` search results. The search time grows linearly with the number of requested numbers (see also parameter `fast`).
+The default number is `20`. API credits for this endpoint are counted per `20` search results. The search time grows linearly with the number of requested numbers (see also parameter `fast`).    
 &nbsp;
 - **format** `string` <span style="color:blue">OPTIONAL</span>  
-Format for the foot traffic forecast of `venue_foot_traffic_forecast` returned in the final search results (if the venue has foot traffic data available). Options are: `none, raw, all`. Choosing `raw` will only return the hourly foot traffic percentages for every day of the week. `all` will return the raw data including all foot traffic analyses, similar to the 'New Foot Traffic Forecast' and 'Query Week' response format. Select `None` skip the foot traffic data in the response to reduce the response size and increase the performance (e.g. if you use the foot traffic filter endpoint after this). The default is `raw`.   
+Format for the foot traffic forecast of `venue_foot_traffic_forecast` returned in the final search results (if the venue has foot traffic data available). Choices are: `none, raw, all`. Choosing `raw` will only return the hourly foot traffic percentages for every day of the week (default). `all` will return the raw data including all foot traffic analyses, similar to the 'New Foot Traffic Forecast' and 'Query Week' response format. Select `None` skip the foot traffic data in the response to reduce the response size and increase the performance (e.g. if you use the foot traffic filter endpoint after this).   
  &nbsp;
 - **opened** `string` <span style="color:blue">OPTIONAL</span>  
 Search for venues with specific opening times. Options are `24`, `now`, `all` . `24` will return venues with a 24 hour opening time. `now` will return venues that are opened at this moment. `all` will return all venues regardless of their opening hours. Defaults to `all`.
