@@ -147,6 +147,9 @@ This query endpoint requires the private API key.
 Maximum number of search results, with increments of 20 venues, and a range from `20` to `200`.
 The default number is `20`. API credits for this endpoint are counted per `20` search results. The search time grows linearly with the number of requested numbers (see also parameter `fast`).
 &nbsp;
+- **format** `string` <span style="color:blue">OPTIONAL</span>  
+Format for the foot traffic forecast of `venue_foot_traffic_forecast` returned in the final search results (if the venue has foot traffic data available). Options are: `none, raw, all`. Choosing `raw` will only return the hourly foot traffic percentages for every day of the week. `all` will return the raw data including all foot traffic analyses, similar to the 'New Foot Traffic Forecast' and 'Query Week' response format. Select `None` skip the foot traffic data in the response to reduce the response size and increase the performance (e.g. if you use the foot traffic filter endpoint after this). The default is `raw`.   
+ &nbsp;
 - **opened** `string` <span style="color:blue">OPTIONAL</span>  
 Search for venues with specific opening times. Options are `24`, `now`, `all` . `24` will return venues with a 24 hour opening time. `now` will return venues that are opened at this moment. `all` will return all venues regardless of their opening hours. Defaults to `all`.
  &nbsp;
@@ -266,7 +269,7 @@ The Venue Search endpoint is by default limited to 30 requests per minute. Conta
 ```json
 {
     "_links": {
-        "venue_search_progress": "https://besttime.app/api/v1/venues/progress?job_id=e0880f28-3a19-4871-a355-4ca21f10c2c8&collection_id=col_ac734e76ad2d4696a5a66541c67587e8"
+        "venue_search_progress": "https://besttime.app/api/v1/venues/progress?job_id=e0880f28-3a19-4871-a355-4ca21f10c2c8&collection_id=col_ac734e76ad2d4696a5a66541c67587e8&format=raw"
     },
     "collection_id": "col_ac734e76ad2d4696a5a66541c67587e8",
     "job_id": "e0880f28-3a19-4871-a355-4ca21f10c2c8",
@@ -304,7 +307,8 @@ url = "https://besttime.app/api/v1/venues/progress"
 
 params = {
     'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
-    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
+    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5',
+    'format': 'raw'
 }
 
 response = requests.request("GET", url, params=params)
@@ -314,13 +318,15 @@ print(response.json())
 ```shell
 # cURL
 curl --location --request GET 'https://besttime.app/api/v1/venues/progress?
-job_id=0a693bb3-7bd6-4d43-9495-a2773f1c9e29&collection_id=col_ffbebb4003974979b75a14844d60e9c5'
+job_id=0a693bb3-7bd6-4d43-9495-a2773f1c9e29&collection_id=col_ffbebb4003974979b75a14844d60e9c5&
+format=raw'
 ```
 
 ```javascript
 const params = new URLSearchParams({ 
     'job_id': '0a693bb3-7bd6-4d43-9495-a2773f1c9e29',
-    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5'
+    'collection_id': 'col_ffbebb4003974979b75a14844d60e9c5',
+    'format': 'raw'
 });
 
 fetch(`https://besttime.app/api/v1/venues/progress?${params}`, {
@@ -531,8 +537,11 @@ The attributes below will be displayed when the Venue Search job is finished (`j
    Unique BestTime.app venue id.    
   &nbsp;    
   - venues[N].**venue_foot_traffic_forecast** `string`  
-   Foot-traffic forecast data for each hour of the day, for every day of the week. See [New Foot Traffic Forecast](#input-attributes-new-forecast) for details on the `day_info` and `day_raw` attributes. However, it does not include all additional analyses. Use the [Query Week](#query-week) endpoint to get the whole forecast analysis using the venue_id. Normally API credits are charged for this endpoint, but is free within one day after created a new forecast (through the Venue Search- or directly through the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint).     
+   Foot-traffic forecast data for each hour of the day, for every day of the week. See [New Foot Traffic Forecast](#input-attributes-new-forecast) for details on the `day_info` and `day_raw` attributes. 
+   
+    Alternatively, use the [Query Week](#query-week) endpoint to get the whole forecast analysis using the venue_id. Normally API credits are charged for this endpoint, but is free within one day after created a new forecast (through the Venue Search- or directly through the [New Foot Traffic Forecast](#input-attributes-new-forecast) endpoint).     
    &nbsp;
+
 
    
 - **venues_n** `int`
