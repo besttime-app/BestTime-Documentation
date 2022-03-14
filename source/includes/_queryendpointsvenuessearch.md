@@ -169,7 +169,11 @@ Add the results to an existing or user-defined collection_id. If this parameter 
   &nbsp; 
 - **radius** `int` <span style="color:blue">OPTIONAL</span>  
    Radius of the search circle in meter.  `radius` must be combined with `lat`, and `lng`. The search circle cannot be combined with the bounding box parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
-  &nbsp; 
+  &nbsp;   
+- **live** `bool` <span style="color:blue">OPTIONAL</span>    
+ The live attribute value changes the behavior of both the Venue Search and optionally the subsequent Venue Filter response. Venue Search: When `live=true`, the Venue Search will always refresh the data and Search Progress response will contains live data (if available). When `format=raw` it will only include the raw live percentage in `venue_foot_traffic_live`. When `format=all` the response includes the live data - including the analysis similar to the [Live foot-traffic data](#live-foot-traffic-data) endpoint) - in `venue_foot_traffic_live`.
+ Venue Filter: Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
+ &nbsp; 
 
 <aside class="notice">
 The 'venue search' endpoint accepts also the filters below, similar to the `venue filter` filter parameters. These 'venue filter' parameters are NOT applied on the initial 'search venue' venue results (as with the parameters mentioned above), but are only passed on to the 'venue filter' and 'radar' URL links. When a 'venue search' is performed with filters set to e.g. `busy_min=60` the 'venue search` results will include and forecast all found venues. Only the subsequent 'venue filter'/ 'radar tool' step applies the filters. 
@@ -201,11 +205,12 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
 - **now** `bool` <span style="color:blue">OPTIONAL</span>  
  Sets the time and day filter to the current day and hour in local time. Note: This option only takes into account one timezone! So it is best to use this parameter only when requesting venues within one timezone. When a collection_id is given, the timezone of the first venue in the collection is chosen. When bounding box parameters are given, the timezone of the center of the box is chosen as timezone. When `lat`, `lng` are given the timezone of the given coordinate is chosen. So if the determined timezone indicates currently 2 PM, the foot traffic forecast for all venues - regardless of the individual venue timezones - will be for 2 PM. Cannot be used in combination with the `live`, `day_int`, `hour_min`, and `hour_max` parameters.  
  &nbsp; 
-- **live** `bool` <span style="color:blue">OPTIONAL</span>  
- Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
+- **live** `bool` <span style="color:blue">OPTIONAL</span>    
+ The live attribute value changes the behavior of both the Venue Search and Venue Filter endpoints. Venue Search: When `live=true`, the Venue Search will always refresh the data and Search Progress response will contains live data (if available). When `format=raw` it will only include the raw live percentage in `venue_foot_traffic_live`. When `format=all` the response includes the live data - including the analysis similar to the [Live foot-traffic data](#live-foot-traffic-data) endpoint) - in `venue_foot_traffic_live`
+ Venue Filter: Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
  &nbsp; 
 - **live_refresh** `bool` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
- Live refresh set to `true` will refresh all live and forecast data for each individual venue meeting the filter.  This will slow down the request and results in extra API credits per refreshed venue. 
+ Live refresh set to `true` will refresh all live and forecast data for each individual venue meeting the filter.  This will slow down the request and results in extra API credits per refreshed venue.  Default is `false`.We recommend setting this to `false` when using the Venue Search endpoint while setting `live=true` (as this will refresh the life data in the Search and later again in the Filter endpoint, resulting higher API credit usage and slower results).
  &nbsp; 
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
  Returns only venues added to given collection. See Collections for more info. See [Collections](#venue-collections).  
