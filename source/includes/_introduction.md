@@ -21,9 +21,9 @@ The foot traffic data is presented as percentages for each hour of the week from
 
 Additional BestTime functionality:
 <ul>
-<li>Live updates if a venue is more or less busy than normal (real-time).</li>
-<li>Foot traffic analyses, like peaks, quiet hours, week overviews</li>
-<li>Search venue foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Fransisco).
+<li>Live updates - know if a venue is more or less busy than normal (not available for all venues).</li>
+<li>Foot traffic analyses, like peak hours, quiet hours, week overviews</li>
+<li>Search foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Fransisco).
 </li>
 <li>
     Filter and sort venues in a whole area based on foot traffic data, dwell time, day, time, and business type, location, and more.
@@ -61,6 +61,7 @@ BestTime.app works in general only for public businesses. For example:
 * Museums
 * Theatres
 * Malls
+* Beaches
 * Supermarkets
 * Public offices (like customer service points)
 * Theme parks
@@ -70,7 +71,7 @@ A forecast is usually created within a few seconds and responds with all primary
 
 The forecast results include:
 
-- Relative foot traffic intensity percentage data for every hour of the week.
+- Relative foot traffic intensity percentage data for every hour of the week ranging from 0 to 100% (wherein 100% is the forecasted peak hour of the week)
 - Week analysis
     - Peak busyness per day percentage
     - Average busyness (volume) per day percentage

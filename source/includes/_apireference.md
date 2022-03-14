@@ -64,8 +64,6 @@ You can find or generate API keys at the [API keys Management](http://besttime.a
     "active": true,
     "api_key_private": "pri_a00de9e302662c0217a9cf08ab304122",
     "api_key_public": "pub_e11661721b084d36b8f469a2c012e754",
-    "credits_forecast": 300,
-    "credits_query": 10000000,
     "status": "OK",
     "valid": true
   }
@@ -96,20 +94,24 @@ Make sure to replace <code>pri_a00de9e302662c0217a9cf08ab304122</code> with your
 
 ## Credits
 
-The API usage is counted with credits and the number of credits per API call depends on the used API endpoint. The tools on the website also use the API internally and will therefore also count the used credits.
+For metered API subscription API credits are used to calculate your total monthly bill. See the pricing page for the price per API credit. 
 
-When querying an existing forecast a query credit is counted for every request. The public API key can only perform read-only actions, but you could choose to hide the public key on public websites (e.g. in your website back-end) to lower your query credit usage (or to prevent abuse).  
+The number of credits per API call depends on the used API endpoint. The tools on the website also use the API internally and will therefore also count towards your total API usage.
+
+Alternatively, you can buy a Package subscription. Then you always pay a fixed fee per month and can call the API as many times as you want (see the BestTime pricing page for more details on the packages).
+
+ 
 &nbsp;  
 
 | API Endpoint                           | Credits     | API Key required |
 |------------------------------------|------------------|------------------|
-| New forecasts (success)             | 2          | Private          | 
-| New forecasts (unsuccessful)        | 1         | Private        |
-| Live data                           | 1         | Private          | 
+| New foot traffic forecasts (success)             | 2          | Private          | 
+| New foot traffic forecasts (unsuccessful)        | 1         | Private        |
+| Live foot traffic data                           | 1         | Private          | 
 | Venue (all/ filter/ update)           | 1 / 10 venues | Private          |
 | Venue Search (Normal)          | 1 / 20 venues | Private          |
 | Venue Search (Fast)          | 5 / 20 venues | Private          |
-| Query existing forecast                | 1         | Public            |  
+| Query (existing forecast)                | 1         | Public            |  
  
  &nbsp; 
 
@@ -121,10 +123,9 @@ The Venue Search functionality counts credits for finding matching venues, but t
 
 
 ### Subscription plans
-BestTime has two types of plans. Metered and packaged plans. The metered plans will automatically charge you depending on the credit usage at the end of a (monthly) billing cycle. The basic plan is the lowest-priced plan. All functionality is available in the basic plan, However the forecast data is only stored for 7 days (retention days). After 7 days you will need to forecast a venue again to query an existing forecast or to use the venue in the venue filter endpoint (or radar tool). Upgrade to the premium plan to increase the retention days and benefit from lower-priced API credits. 
+BestTime has two types of plans. Metered and packaged plans. The metered plans will automatically charge you depending on the credit usage at the end of a (monthly) billing cycle. The basic plan is the lowest-priced plan. All functionality is available in the basic plan, 
 
-BestTime also offers multiple 'packaged' plans if you don't like the uncertainty of a metered plan. The packaged plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each packege plan is limited to a certain number of new venues per calender month, and venue search calls per calender month.
-Contact us for a custom number of retention days, for a higher monthly number of packaged venues, or more venue search calls.
+BestTime also offers multiple 'packaged' plans if you don't like the uncertainty of a metered plan. The packaged plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each package plan is limited to a certain number of new venues-, and venue search calls per calender month.
 
 
 Old plans:  &nbsp;  
