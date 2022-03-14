@@ -106,7 +106,7 @@ When querying an existing forecast a query credit is counted for every request. 
 | New forecasts (success)             | 2          | Private          | 
 | New forecasts (unsuccessful)        | 1         | Private        |
 | Live data                           | 1         | Private          | 
-| Venue (all/ filter/ update)           | 1 / 100 venues | Private          |
+| Venue (all/ filter/ update)           | 1 / 10 venues | Private          |
 | Venue Search (Normal)          | 1 / 20 venues | Private          |
 | Venue Search (Fast)          | 5 / 20 venues | Private          |
 | Query existing forecast                | 1         | Public            |  
