@@ -137,5 +137,35 @@ Forecast of a single venue queries:
 
 
 ## Forecast day window and weekdays
-BestTime.app uses 24-hour notation, displayed from `0` to `23`. Where `0` indicates midnight and `23` indicates 11 pm. 
-To make forecasts more useful in real-life the window for one day has been set from 6 am until 5 am next day. This is for example useful for public venues with late opening times like bars and nightclubs. If you query for example the data for a Monday. The result includes the hours for Monday 6 am until Tuesday 5 am.
+BestTime.app uses 24-hour notation, displayed from `0` to `23`. Where `0` indicates midnight and `23` indicates 11 PM. 
+To make forecasts more useful in real-life the window for one day has been set from 6 AM until 5 AM next day instead of midnight to midnight. This is for example useful for public venues with late opening times like bars and nightclubs. For ex  AMple, if you query the data for a Monday: the response includes an array of 24 hours from Monday 6 AM until Tuesday 5 AM.
+
+Below an example how an array of 24 foot traffic percentages relate to the hour of the day and the index of the array. The foot traffic data is an example for a restaurant that has a lunch peak 1 PM and a dinner peak at 9 PM.
+
+
+| Hour | Index | Foot Traffic (Example) |
+|------|-------|------------------------|
+| 6 AM  | 0     | 0                      |
+| 7 AM  | 1     | 0                      |
+| 8 AM  | 2     | 0                      |
+| 9 AM  | 3     | 10                     |
+| 10 AM | 4     | 15                     |
+| 11 AM | 5     | 35                     |
+| 12 PM | 6     | 50                     |
+| 1 PM  | 7     | 65                     |
+| 2 PM  | 8     | 45                     |
+| 3 PM  | 9     | 35                     |
+| 4 PM  | 10    | 30                     |
+| 5 PM  | 11    | 35                     |
+| 6 PM  | 12    | 45                     |
+| 7 PM  | 13    | 60                     |
+| 8 PM  | 14    | 85                     |
+| 9 PM  | 15    | 90                     |
+| 10 PM | 16    | 80                     |
+| 11 PM | 17    | 55                     |
+| 12 AM | 18    | 40                     |
+| 1 AM  | 19    | 30                     |
+| 2 AM  | 20    | 20                     |
+| 3 AM  | 21    | 0                      |
+| 4 AM  | 22    | 0                      |
+| 5 AM  | 23    | 0                      |
