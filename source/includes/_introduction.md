@@ -137,10 +137,10 @@ Forecast of a single venue queries:
 
 
 ## Forecast day window and weekdays
-BestTime.app uses 24-hour notation, displayed from `0` to `23`. Where `0` indicates midnight and `23` indicates 11 PM. 
-To make forecasts more useful in real-life the window for one day has been set from 6 AM until 5 AM next day instead of midnight to midnight. This is for example useful for public venues with late opening times like bars and nightclubs. For ex  AMple, if you query the data for a Monday: the response includes an array of 24 hours from Monday 6 AM until Tuesday 5 AM.
+BestTime.app uses a 24-hour notation, displayed from `0` to `23`. Where `0` indicates midnight and `23` indicates 11 PM. 
+Important to know is that the foot traffic data time window ranges from 6 AM until 5 AM next day. Not from midnight to midnight. This is for example useful for public venues with late opening times like bars and nightclubs. 
 
-Below an example how an array of 24 foot traffic percentages relate to the hour of the day and the index of the array. The foot traffic data is an example for a restaurant that has a lunch peak 1 PM and a dinner peak at 9 PM.
+Below is an example how an array of 24 foot traffic percentages relate to the hour of the day , and the index of the array (from 0 - 23). The foot traffic data is just an example for a restaurant that opens at 9PM (array index 3) has a lunch peak 1 PM (array index 7),  a dinner peak at 9 PM (array index 15) and closes at 3 AM (array index 21).  
 
 
 | Hour | Index | Foot Traffic (Example) |
