@@ -148,4 +148,4 @@ BestTime uses the following HTTP codes
 
 &nbsp;  
 
-By default the API is limited to 10 API requests per second. The Venue Search and Venue Filter API endpoints are by default limited to 30 request per minute. You will receive a HTTP 429 'too many requests' above this threshold. Contact us for if you need higher limits.
+By default the API is limited to 300 API requests per minute. The Venue Search API endpoint is limited to 30 request per minute and 300 requests per hour. The Venue Filter is limited to 30 request per minute. You will receive a HTTP 429 'too many requests' above this threshold. Contact us for if you need higher limits.

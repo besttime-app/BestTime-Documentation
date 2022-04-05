@@ -265,7 +265,7 @@ API Credit usage per API call for this endpoint depends on the number `num` of r
 
 
 <aside class="warning">
-The Venue Search endpoint is by default limited to 30 requests per minute. Contact us for higher limits.
+The Venue Search endpoint is by default limited to 30 requests per minute, and 300 requests per hour. Contact us for higher limits.
 </aside>
 
 
