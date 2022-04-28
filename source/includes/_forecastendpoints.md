@@ -154,14 +154,20 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
 
 ### Input attributes New Forecast
 
-- **venue_name** `string` <span style="color:orange">REQUIRED</span>  
- Name of the venue (public business). Max input length `256` characters.  
+- **venue_name** `string` <span style="color:blue">OPTIONAL</span>  
+ Name of the venue (public business). Max input length `256` characters.  When then using the `venue_id` the `venue_name` and `venue_address` can be omitted.  
  &nbsp; 
-- **venue_address** `string` <span style="color:orange">REQUIRED</span>  
- Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. Max input length `1024` characters.  The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.  
- &nbsp; 
+- **venue_address** `string` <span style="color:blue">OPTIONAL</span>  
+ Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. Max input length `1024` characters. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.   
+ &nbsp;  
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
  Private API Key. See more info on [API keys](#api-reference)
+ &nbsp; 
+- **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
+ Add a venue to an existing collection. See more info on [Collections](#venue-collections)  
+ &nbsp;
+- **venue_id** `string` <span style="color:blue">OPTIONAL</span>  
+ The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues. To use the `venue_id` as input, the venue needs to be forecasted before. When the `venue_id` parameter is omitted the `venue_name` and `venue_address` parameters are required.  
  &nbsp; 
 
 <aside class="notice">
