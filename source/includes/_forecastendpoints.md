@@ -150,6 +150,7 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
 <b>Highly recommended to read first:
 - [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
 - [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
+- [HTML/ Javascript examples](#examples)
 </b>
 
 ### Input attributes New Forecast
