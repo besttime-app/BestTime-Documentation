@@ -36,6 +36,7 @@ includes:
   - queryendpointsbusyhours
   - queryendpointsquiethours
   - queryendpointsurge
+  - examples
 
 
 search: true
