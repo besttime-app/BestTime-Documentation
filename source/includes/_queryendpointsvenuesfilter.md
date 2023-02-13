@@ -69,7 +69,7 @@ The BestTime Radar tool is using the same API endpoint to show all venues that m
 
 The endpoint will only return venues that have been forecasted before with the provided `api_key_private`. The user can manually add each desired venue individually through the BestTime API, or can use an external API service with public business (like Google Maps Places Nearby search, Here.com, Fouresquare Venues, or Factual Places). Using the external service places in a certain area can be discovered and the results (venue name and address) can be fed into the BestTime API. 
 
-To prevent manually adding all venues in a specific area (e.g. neighborhood or city) the 'Add Area' or 'Venue Search' tool can be used. Using the 'Add Area' tool the user can define a geographical bounding box, select multiple desired types of venues (e.g. supermarkets, gyms, restaurants, etc). Under the hood it uses the Google Maps Nearby API to discover venues in the defined area (you will need a Google Maps API key). This geocoder has currently the biggest database and gives the best results.
+The 'Venue Search' tool can be used to add multiple venues to your account with one API call. See more info on [Venue Search](#venue-search).
 
 
 <b>Highly recommended to read first:
