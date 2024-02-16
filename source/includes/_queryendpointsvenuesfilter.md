@@ -1,6 +1,6 @@
 # Query filtered venues (Radar)
 
-> Filter forecasted venues on busyness, location, type, day, and time. 
+> Filter forecasted venues on busyness, location, type, day, and time.
 
 ```python
 import requests
@@ -14,12 +14,12 @@ params = {
     'hour_min': 18,
     'hour_max': 23,
     'busy_conf':'any',
-    'types': ['BAR','CAFE','RESTAURANT'],
+    'types': 'BAR,CAFE,RESTAURANT',
     'lat': 51.5121172,
     'lng': -0.126173,
     'radius': 2000,
-    'order_by': ['day_rank_max','reviews'],
-    'order': ['desc','desc'],
+    'order_by': 'day_rank_max,reviews',
+    'order': 'desc,desc',
     'foot_traffic': 'both',
     'limit': 20,
     'page': 0
@@ -42,12 +42,12 @@ const params = new URLSearchParams({
     'busy_conf':'any',
     'hour_min': 18,
     'hour_max': 23,
-    'types': ['BAR','CAFE','RESTAURANT'],
+    'types': 'BAR,CAFE,RESTAURANT',
     'lat': 51.5121172,
     'lng': -0.126173,
     'radius': 2000,
-    'order_by': ['day_rank_max','reviews'],
-    'order': ['desc','desc'],
+    'order_by': 'day_rank_max,reviews',
+    'order': 'desc,desc',
     'foot_traffic': 'both',
     'limit': 20,
     'page': 0

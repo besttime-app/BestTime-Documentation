@@ -34,8 +34,14 @@ fetch(`https://besttime.app/api/v1/venues?api_key_private=pri_50990bf1f8828f6abb
 The 'query venues' endpoint is used to retrieve a list with all previously forecasted venues. This query endpoint requires the private API key. Although the private API keys is used, this endpoint will be charged with query credits.
 
 - **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-reference)  
+   Private API Key. See more info on [API keys](#api-reference)  
  &nbsp; 
+- **limit** `int` <span style="color:blue">OPTIONAL</span>    
+   Maximum number returned venues. Default `1000`, min `0`, max `10000`.  
+  &nbsp; 
+- **page** `int` <span style="color:blue">OPTIONAL</span>    
+   Selects the page number. Default page `0`. Min page `0`.  
+  &nbsp; 
 
 <aside class="notice">
 Query venues endpoint: https://besttime.app/api/v1/venues
