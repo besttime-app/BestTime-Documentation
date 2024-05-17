@@ -1,6 +1,6 @@
 
 # New foot-traffic forecast
-<a name="forecast-new-link"></a> 
+<a name="forecast-new-link"></a>
 
 > Returns foot-traffic forecast for a venue based on a name and address
 
@@ -28,7 +28,7 @@ venue_address=Ocean%20Ave%2C%20San%20Fransisco'
 ```
 
 ```javascript
-const params = new URLSearchParams({ 
+const params = new URLSearchParams({
  'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
   'venue_name': 'McDonalds',
   'venue_address': 'Ocean Ave, San Fransisco'
@@ -36,8 +36,8 @@ const params = new URLSearchParams({
 
 fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
   method: 'POST'
-}).then(function(data) { 
-  console.log(data); 
+}).then(function(data) {
+  console.log(data);
 });
 ```
 
@@ -52,8 +52,17 @@ fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
                 "day_rank_max": 6,
                 "day_rank_mean": 4,
                 "day_text": "Monday",
-                "venue_closed": 6,
-                "venue_open": 23
+                "venue_open_close_v2": {
+                    "24h": [
+                        {
+                            "opens": 6,
+                            "closes": 23
+                        }
+                    ],
+                    "12h": [
+                        "6am–11pm"
+                    ]
+                },
             },
             "day_raw": [
                 10,
@@ -155,21 +164,21 @@ The venue information includes the `venue_id`. This ID is the primary parameter 
 
 ### Input attributes New Forecast
 
-- **venue_name** `string` <span style="color:blue">OPTIONAL</span>  
- Name of the venue (public business). Max input length `256` characters.  When then using the `venue_id` the `venue_name` and `venue_address` can be omitted.  
- &nbsp; 
-- **venue_address** `string` <span style="color:blue">OPTIONAL</span>  
- Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. Max input length `1024` characters. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.   
- &nbsp;  
-- **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-reference)
- &nbsp; 
-- **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
- Add a venue to an existing collection. See more info on [Collections](#venue-collections)  
+- **venue_name** `string` <span style="color:blue">OPTIONAL</span>
+ Name of the venue (public business). Max input length `256` characters.  When then using the `venue_id` the `venue_name` and `venue_address` can be omitted.
  &nbsp;
-- **venue_id** `string` <span style="color:blue">OPTIONAL</span>  
- The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues. To use the `venue_id` as input, the venue needs to be forecasted before. When the `venue_id` parameter is omitted the `venue_name` and `venue_address` parameters are required.  
- &nbsp; 
+- **venue_address** `string` <span style="color:blue">OPTIONAL</span>
+ Address of the venue (public business). The address does not have to be exact, but needs to be precise enough for the geocoder engine to find the correct venue. The more specific the address the higher chance the geocoder will find the venue. Max input length `1024` characters. The response object will also display the `venue_name` and `venue_address`, but is using the name and address of the geocoder's found venue. Check the `venue_name` and `venue_address` in the response object to verify if the correct venue has been forecasted.
+ &nbsp;
+- **api_key_private** `string` <span style="color:orange">REQUIRED</span>
+ Private API Key. See more info on [API keys](#api-reference)
+ &nbsp;
+- **collection_id** `string` <span style="color:blue">OPTIONAL</span>
+ Add a venue to an existing collection. See more info on [Collections](#venue-collections)
+ &nbsp;
+- **venue_id** `string` <span style="color:blue">OPTIONAL</span>
+ The unique ID for the venue. The venue_id can be retrieved from a 'new forecast' endpoint response, or by the 'all venues' endpoint which shows all previously forecasted venues. To use the `venue_id` as input, the venue needs to be forecasted before. When the `venue_id` parameter is omitted the `venue_name` and `venue_address` parameters are required.
+ &nbsp;
 
 <aside class="notice">
 New forecast endpoint: https://besttime.app/api/v1/forecasts
@@ -186,118 +195,127 @@ By default the API is limited to 10 requests per second. Contact us for higher l
 
 ### Response attributes New Forecast <a name="#response-attributes-new-forecast"></a>
 
-- **analysis** `list`  
- List with an analysis object for each day of the week, containing analysis like 'peak_hours', 'busy_hours', etc per day. The list contains days `object` and are sorted on day of the week: `day_int` `0` (Monday) to `6` (Sunday).  
- &nbsp; 
- - analysis[day_int].**busy_hours** `list`  
-   List with busy hours of the day. The hours are in 24 hour `int` notation.  
+- **analysis** `list`
+ List with an analysis object for each day of the week, containing analysis like 'peak_hours', 'busy_hours', etc per day. The list contains days `object` and are sorted on day of the week: `day_int` `0` (Monday) to `6` (Sunday).
+ &nbsp;
+ - analysis[day_int].**busy_hours** `list`
+   List with busy hours of the day. The hours are in 24 hour `int` notation.
   &nbsp;
- - analysis[day_int].**day_info** `object`  
-   Details about the day.   
+ - analysis[day_int].**day_info** `object`
+   Details about the day.
   &nbsp;
-     - analysis[day_int].day_info.**day_int** `int`  
-       Day integer range `0` (Monday) to `6` (Sunday)  
+     - analysis[day_int].day_info.**day_int** `int`
+       Day integer range `0` (Monday) to `6` (Sunday)
        &nbsp;
-     - analysis[day_int].day_info.**day_rank_max** `int`  
-       Day ranking based on maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.  
+     - analysis[day_int].day_info.**day_rank_max** `int`
+       Day ranking based on maximum busyness of the day. Range `1` to `7`. E.g. `2` indicates the 2nd most busy day of the week.
        &nbsp;
-     - analysis[day_int].day_info.**day_rank_mean** `int`  
-       Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least busy day of the week.  
+     - analysis[day_int].day_info.**day_rank_mean** `int`
+       Day ranking based on mean busyness (total volume) of the day. Range `1` to `7`. E.g. `7` indicates the least busy day of the week.
        &nbsp;
-     - analysis[day_int].day_info.**day_text** `string`  
-       Day name. E.g. `monday`  
+     - analysis[day_int].day_info.**day_text** `string`
+       Day name. E.g. `monday`
        &nbsp;
-     - analysis[day_int].day_info.**venue_closed** `int`  
-       Hour of day when the venue closes. Range `0` to `23` hour  
+     - analysis[day_int].day_info.**venue_closed** `int` <span style="color:red">DEPRECATED</span>
+       Hour of day when the venue closes. Range `0` to `23` hour. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
-     - analysis[day_int].day_info.**venue_open** `int`  
-       Hour of day when the venue opens. Range `0` to `23` hour  
+     - analysis[day_int].day_info.**venue_open** `int` <span style="color:red">DEPRECATED</span>
+       Hour of day when the venue opens. Range `0` to `23` hour. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
- - analysis[day_int].**day_raw** `list`  
-   List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.  
+     - analysis[day_int].day_info.**venue_open_close_v2** `object`
+       Object with open and close times for the venue. The object contains two lists: `24h` and `12h`. The `24h` list contains open and close times for the venue in 24 hour notation. The `12h` list contains open and close times for the venue in 12 hour notation. A venue can have multiple opening times per day. Note: requires refreshing the foot traffic forecast if the foot traffic forecast is outdated.
+        &nbsp;
+        - analysis[day_int].day_info.venue_open_close_v2.**24h** `list`
+          List with open and close times objects for the venue in 24 hour notation.
+          &nbsp;
+        - analysis[day_int].day_info.venue_open_close_v2.**12h** `list`
+          List with open and close times for the venue in 12 hour notation.
+          &nbsp;
+ - analysis[day_int].**day_raw** `list`
+   List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.
     &nbsp;
- - analysis[day_int].**hour_analysis** `list`  
-   List with hour objects, containing details per hour.  
+ - analysis[day_int].**hour_analysis** `list`
+   List with hour objects, containing details per hour.
   &nbsp;
-     - analysis[day_int].hour_analysis.**hour** `int`  
-       Hour integer range `0` (midnight) to `23` (11pm). Please note that the day window within a weekday starts at 6AM `hour = 6` and ends at 5AM `hour = 5` next day. See Introduction section [Forecast day window and weekdays](#forecast-day-window-and-weekdays)  
+     - analysis[day_int].hour_analysis.**hour** `int`
+       Hour integer range `0` (midnight) to `23` (11pm). Please note that the day window within a weekday starts at 6AM `hour = 6` and ends at 5AM `hour = 5` next day. See Introduction section [Forecast day window and weekdays](#forecast-day-window-and-weekdays)
        &nbsp;
-     - analysis[day_int].hour_analysis.**intensity_nr** `int`  
-       Hour intensity_nr indicates how busy the venue is on a scale of 5, ranging from `-2` to `2`. When the venue is closed at the given hour it indicates `999`. See `intensity_txt` for the textual version of the same scale.  
+     - analysis[day_int].hour_analysis.**intensity_nr** `int`
+       Hour intensity_nr indicates how busy the venue is on a scale of 5, ranging from `-2` to `2`. When the venue is closed at the given hour it indicates `999`. See `intensity_txt` for the textual version of the same scale.
        &nbsp;
-     - analysis[day_int].hour_analysis.**intensity_txt** `string`  
-       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensity is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.  
+     - analysis[day_int].hour_analysis.**intensity_txt** `string`
+       Hour intensity_txt indicates how busy the venue is on a scale of 5. See `intensity_nr` for the integer version of the same scale. The intensity is either `Low`, `Below average`, `Average`, `Above average`, or `High`. When the venue is closed at the given hour it indicates `Closed`.
        &nbsp;
- - analysis[day_int].**peak_hours** `list`  
-   List with peak objects, containing details of one or multiple peaks per day.  
+ - analysis[day_int].**peak_hours** `list`
+   List with peak objects, containing details of one or multiple peaks per day.
   &nbsp;
-     - analysis[day_int].peak_hours.**peak_start** `int`  
-       Start hour of the peak, using the 24 hour notation.  
+     - analysis[day_int].peak_hours.**peak_start** `int`
+       Start hour of the peak, using the 24 hour notation.
        &nbsp;
-     - analysis[day_int].peak_hours.**peak_max** `int`  
-       Hour of the day when the peak is at its maximum. Using the 24 hour notation.  
+     - analysis[day_int].peak_hours.**peak_max** `int`
+       Hour of the day when the peak is at its maximum. Using the 24 hour notation.
        &nbsp;
-     - analysis[day_int].peak_hours.**peak_end** `int`  
-       End hour of the peak, using the 24 hour notation.  
+     - analysis[day_int].peak_hours.**peak_end** `int`
+       End hour of the peak, using the 24 hour notation.
        &nbsp;
-     - analysis[day_int].peak_hours.**peak_intensity** `int`  
-       Intensity of the peak, rated from `1` (minimum) to `5` (maximum)  
+     - analysis[day_int].peak_hours.**peak_intensity** `int`
+       Intensity of the peak, rated from `1` (minimum) to `5` (maximum)
        &nbsp;
-     - analysis[day_int].peak_hours.**peak_delta_mean_week** `int`  
-       Percentage how much the peak maximum is above the mean busyness of the week.  
+     - analysis[day_int].peak_hours.**peak_delta_mean_week** `int`
+       Percentage how much the peak maximum is above the mean busyness of the week.
        &nbsp;
- - analysis[day_int].**quiet_hours** `list`  
-   List with quiet hours of the day. The hours are in 24 hour `int` notation.  
+ - analysis[day_int].**quiet_hours** `list`
+   List with quiet hours of the day. The hours are in 24 hour `int` notation.
   &nbsp;
- - analysis[day_int].**surge_hours** `object`  
+ - analysis[day_int].**surge_hours** `object`
    Details at which hour most people enter (come) or leave the venue.
   &nbsp;
-     - analysis[day_int].surge_hours.**most_people_come** `int`  
-       Hour when most people come to the venue during the day window. The hours are in 24 hour `int` notation.  
+     - analysis[day_int].surge_hours.**most_people_come** `int`
+       Hour when most people come to the venue during the day window. The hours are in 24 hour `int` notation.
        &nbsp;
-     - analysis[day_int].surge_hours.**most_people_leave** `int`  
-       Hour when most people leave to the venue during the day window. The hours are in 24 hour `int` notation.  
+     - analysis[day_int].surge_hours.**most_people_leave** `int`
+       Hour when most people leave to the venue during the day window. The hours are in 24 hour `int` notation.
        &nbsp;
-- **epoch_analysis** `int`  
- Epoch timestamp when the forecast was made.  
- &nbsp; 
-- **status** `string`  
- Status of the response. Either `OK` or `Error`.  
- &nbsp; 
-- **venue_info** `object`  
- Details of the forecasted venue.  
- &nbsp; 
- - venue_info.**venue_name** `string`  
-   Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.  
+- **epoch_analysis** `int`
+ Epoch timestamp when the forecast was made.
+ &nbsp;
+- **status** `string`
+ Status of the response. Either `OK` or `Error`.
+ &nbsp;
+- **venue_info** `object`
+ Details of the forecasted venue.
+ &nbsp;
+ - venue_info.**venue_name** `string`
+   Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.
   &nbsp;
- - venue_info.**venue_address** `string`  
-   Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
+ - venue_info.**venue_address** `string`
+   Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.
   &nbsp;
- - venue_info.**venue_id** `string`  
+ - venue_info.**venue_id** `string`
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
-   The `venue_id` is used to perform queries.  
+   The `venue_id` is used to perform queries.
   &nbsp;
- - venue_info.**venue_dwell_time_min** `int`  
-   Minimum usual visitor dwell time in minutes, or `0` when not available.  
+ - venue_info.**venue_dwell_time_min** `int`
+   Minimum usual visitor dwell time in minutes, or `0` when not available.
   &nbsp;
- - venue_info.**venue_dwell_time_max** `int`  
-   Maximum usual visitor dwell time in minutes, or `0` when not available.   
+ - venue_info.**venue_dwell_time_max** `int`
+   Maximum usual visitor dwell time in minutes, or `0` when not available.
   &nbsp;
- - venue_info.**venue_dwell_time_avg** `int`  
-   Average usual visitor dwell time in minutes, or `0` when not available.   
+ - venue_info.**venue_dwell_time_avg** `int`
+   Average usual visitor dwell time in minutes, or `0` when not available.
   &nbsp;
-  - venue_info.**venue_dwell_time_avg** `int`  
-   Average usual visitor dwell time in minutes, or `0` when not available.   
+  - venue_info.**venue_dwell_time_avg** `int`
+   Average usual visitor dwell time in minutes, or `0` when not available.
   &nbsp;
-  - venue_info.**venue_type** `string`  
-   Type of venue, or `OTHER` when not available. Possible types are (most common shown first) `RESTAURANT, SHOPPING, FAST_FOOD, BAR, SUPERMARKET, GROCERY, PARK, OTHER, APPAREL, FOOD_AND_DRINK, CAFE, SHOPPING_CENTER, COFFEE, AIRPORT, SPORTS_COMPLEX, PHARMACY, PERSONAL_CARE, VEHICLE, GAS_STATION, MUSEUM, DENTIST, LIBRARY, BANKING, TOURIST_DESTINATION, CASH_MACHINE, FOOD_DELIVERY, EVENT_VENUE, SPA, MARKET, CLUBS, PUBLIC_TRANSIT, BREWERY, SPORTING_GOODS, HISTORICAL, PERFORMING_ARTS, DOCTOR, AMUSEMENT_PARK, GIFTS, TEA, CHURCH, SKILL_INSTRUCTION, TRAIN_STATION, ARTS, GOLF, ZOO, BOTANICAL_GARDEN, NATIONAL_PARK, SUBWAY_STATION, CASINO, MOVIE_THEATER, POST_OFFICE, HIKING, GOLF_COURSE, NATURE_RESERVE, BRIDGE, BUS_STATION, GOVERNMENT, REST_AREA, WINERY, SCENIC_POINT, SOUVENIR_SHOP, CITY_HALL, BOATING, CONCERT_HALL, SWIMMING, MONUMENT, SOCCER, CAR_RENTAL, MOSQUE, INDUSTRIAL, VISITOR_CENTER, ANTIQUES, AQUARIUM, PALACE, HINDU_TEMPLE, STADIUM, WINTER_SPORTS, BUDDHIST_TEMPLE, EMBASSY, TEMPLE, TENNIS, BASEBALL, FERRY_TERMINAL, FISHING, POLICE, SCHOOL, BAKERY, AGRICULTURE, CRICKET, FAIRGROUNDS, GONDOLA_LIFT_STATION, HOSPITAL, LIGHTHOUSE, MILITARY, MORMON_TEMPLE, UNIVERSITY` 
+  - venue_info.**venue_type** `string`
+   Type of venue, or `OTHER` when not available. Possible types are (most common shown first) `RESTAURANT, SHOPPING, FAST_FOOD, BAR, SUPERMARKET, GROCERY, PARK, OTHER, APPAREL, FOOD_AND_DRINK, CAFE, SHOPPING_CENTER, COFFEE, AIRPORT, SPORTS_COMPLEX, PHARMACY, PERSONAL_CARE, VEHICLE, GAS_STATION, MUSEUM, DENTIST, LIBRARY, BANKING, TOURIST_DESTINATION, CASH_MACHINE, FOOD_DELIVERY, EVENT_VENUE, SPA, MARKET, CLUBS, PUBLIC_TRANSIT, BREWERY, SPORTING_GOODS, HISTORICAL, PERFORMING_ARTS, DOCTOR, AMUSEMENT_PARK, GIFTS, TEA, CHURCH, SKILL_INSTRUCTION, TRAIN_STATION, ARTS, GOLF, ZOO, BOTANICAL_GARDEN, NATIONAL_PARK, SUBWAY_STATION, CASINO, MOVIE_THEATER, POST_OFFICE, HIKING, GOLF_COURSE, NATURE_RESERVE, BRIDGE, BUS_STATION, GOVERNMENT, REST_AREA, WINERY, SCENIC_POINT, SOUVENIR_SHOP, CITY_HALL, BOATING, CONCERT_HALL, SWIMMING, MONUMENT, SOCCER, CAR_RENTAL, MOSQUE, INDUSTRIAL, VISITOR_CENTER, ANTIQUES, AQUARIUM, PALACE, HINDU_TEMPLE, STADIUM, WINTER_SPORTS, BUDDHIST_TEMPLE, EMBASSY, TEMPLE, TENNIS, BASEBALL, FERRY_TERMINAL, FISHING, POLICE, SCHOOL, BAKERY, AGRICULTURE, CRICKET, FAIRGROUNDS, GONDOLA_LIFT_STATION, HOSPITAL, LIGHTHOUSE, MILITARY, MORMON_TEMPLE, UNIVERSITY`
   &nbsp;
-- venue_info.**venue_types** `list`  
-   Detailed venue types/services (not to confuse with `venue_type`)  
+- venue_info.**venue_types** `list`
+   Detailed venue types/services (not to confuse with `venue_type`)
   &nbsp;
-- venue_info.**venue_lat** `float`  
-   Geographic latitude of the venue.  
+- venue_info.**venue_lat** `float`
+   Geographic latitude of the venue.
   &nbsp;
-- venue_info.**venue_lng** `float`  
-   Geographic longitude of the venue.  
+- venue_info.**venue_lng** `float`
+   Geographic longitude of the venue.
   &nbsp;
