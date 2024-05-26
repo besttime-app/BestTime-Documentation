@@ -4,7 +4,7 @@
 
 ```python
 import requests
- 
+
 url = "https://besttime.app/api/v1/venues/update"
 
 params = {
@@ -28,7 +28,7 @@ footttraffic=with'
 ```
 
 ```javascript
-const params = new URLSearchParams({ 
+const params = new URLSearchParams({
   'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
   'weeks': 2,
   'update': false,
@@ -37,8 +37,8 @@ const params = new URLSearchParams({
 
 fetch(`https://besttime.app/api/v1/venues/update${params}`, {
   method: 'GET'
-}).then(function(data) { 
-  console.log(data); 
+}).then(function(data) {
+  console.log(data);
 });
 ```
 
@@ -46,34 +46,38 @@ fetch(`https://besttime.app/api/v1/venues/update${params}`, {
 
 The 'Venues Update' endpoint returns a list of venues that are older than a specified amount of weeks for the given 'api_key_private'. Optionally update each listed venue with a 'new foot traffic forecast'. This endpoint can also be filtered by collection_id or a geographical bounding box. This is useful since venue foot traffic is only updated through a new 'New foot traffic forecast' per venue or venues from the  'Venue Search' results. The Venue Filter (except for live data) endpoint and other query endpoints will not update the foot traffic data.
 
-- **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
- Private API Key. See more info on [API keys](#api-reference)  
- &nbsp; 
-- **weeks** `int` <span style="color:blue">OPTIONAL</span>  
- Return only venues that have not been updated more than the selected number of `weeks`. Default is `2`. Minimum is `0` and will return all matching venues regardless of the last update date.  
- &nbsp; 
-- **update** `bool` <span style="color:blue">OPTIONAL</span>  
-  Automatically update all returned venues by pushing them to the 'New foot traffic forecast' API endpoint (normal API credits apply for each venue). Default is `false` (not updating).  
- &nbsp; 
-- **foottraffic** `string` <span style="color:blue">OPTIONAL</span>  
-  Returns only venues with or without foot traffic data. Options `with`, `without`, `all`. `with` will return only venues that had foot traffic forecast data last update. `without` will only return venues that did not have foot traffic forecast data last update. `all` will return all matching venues regardless if they have foot traffic data. Default is `all`. Not all venues that have been added to your BestTime account have foot traffic data. Also, venues without foot traffic data will be stored in your account. By default, these venues will not be shown and updated to save API credits (`with`). Sometimes it can be useful to also update previously failed forecast - when e.g. venues are re-opened or are getting more popular (and therefore might have foot traffic at this moment).  
- &nbsp; 
-- **collection_id** `string` <span style="color:blue">OPTIONAL</span>   
-Return only venues within an existing  collection. See more info on [Collections](#venue-collections)  
+- **api_key_private** `string` <span style="color:orange">REQUIRED</span>
+ Private API Key. See more info on [API keys](#api-reference)
+ &nbsp;
+- **weeks** `int` <span style="color:blue">OPTIONAL</span>
+ Return only venues that have not been updated more than the selected number of `weeks`. Default is `2`. Minimum is `0` and will return all matching venues regardless of the last update date.
+ &nbsp;
+- **update** `bool` <span style="color:blue">OPTIONAL</span>
+  Automatically update all returned venues by pushing them to the 'New foot traffic forecast' API endpoint (normal API credits apply for each venue). Default is `false` (not updating).
+ &nbsp;
+- **foottraffic** `string` <span style="color:blue">OPTIONAL</span>
+  Returns only venues with or without foot traffic data. Options `with`, `without`, `all`. `with` will return only venues that had foot traffic forecast data last update. `without` will only return venues that did not have foot traffic forecast data last update. `all` will return all matching venues regardless if they have foot traffic data. Default is `all`. Not all venues that have been added to your BestTime account have foot traffic data. Also, venues without foot traffic data will be stored in your account. By default, these venues will not be shown and updated to save API credits (`with`). Sometimes it can be useful to also update previously failed forecast - when e.g. venues are re-opened or are getting more popular (and therefore might have foot traffic at this moment).
+ &nbsp;
+- **collection_id** `string` <span style="color:blue">OPTIONAL</span>
+Return only venues within an existing  collection. See more info on [Collections](#venue-collections)
+ &nbsp;
+- **collection_ids** `comma separated list of strings` <span style="color:blue">OPTIONAL</span>
+Return only venues from multiple collections. Add the collection ids separated by commas. See more info on [Collections](#venue-collections)
  &nbsp;
 
+
 Return only venues without a geographic bounding box:
-- **lat_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum latitude of the bounding box (South-West). `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.  
-  &nbsp; 
-- **lng_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum longitude of the bounding box (South-West). `lng_min` must be combined with `lng_max`, `lat_min` and `lat_max`.  
-  &nbsp; 
-- **lat_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum latitude of the bounding box (North-East). `lat_max` must be combined with `lat_min`, `lng_min` and `lng_max`.   
-  &nbsp; 
-- **lng_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum longitude of the bounding box (North-East). `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. 
+- **lat_min** `float` <span style="color:blue">OPTIONAL</span>
+   Minimum latitude of the bounding box (South-West). `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required.
+  &nbsp;
+- **lng_min** `float` <span style="color:blue">OPTIONAL</span>
+   Minimum longitude of the bounding box (South-West). `lng_min` must be combined with `lng_max`, `lat_min` and `lat_max`.
+  &nbsp;
+- **lat_max** `float` <span style="color:blue">OPTIONAL</span>
+   Maximum latitude of the bounding box (North-East). `lat_max` must be combined with `lat_min`, `lng_min` and `lng_max`.
+  &nbsp;
+- **lng_max** `float` <span style="color:blue">OPTIONAL</span>
+   Maximum longitude of the bounding box (North-East). `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`.
   &nbsp;
 
 
@@ -110,21 +114,21 @@ API Credit usage per API call for this endpoint depends on the number of returne
 ### Response attributes Query Venues
 The JSON response will contain a `list` with venue `objects`.
 
-- **venues[N]** `object` 
+- **venues[N]** `object`
  Each venue object contains detailed venue information.
- - venues[N].**venue_name** `string`  
-   Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.  
+ - venues[N].**venue_name** `string`
+   Name of the venue. This is the name of the venue as found by the geocoding lookup. Note this name could be slightly different than the `venue_address` used as input.
   &nbsp;
- - venues[N].**venue_address** `string`  
-   Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
+ - venues[N].**venue_address** `string`
+   Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.
   &nbsp;
- - venues[N].**venue_forecasted** `Bool`  
-   When a venue has been successfully forecasted the value will be `true`. The value will be `false` if the venue has been found by the geocoder, but the venue could not be forecasted.  
+ - venues[N].**venue_forecasted** `Bool`
+   When a venue has been successfully forecasted the value will be `true`. The value will be `false` if the venue has been found by the geocoder, but the venue could not be forecasted.
   &nbsp;
- - venues[N].**venue_id** `string`  
+ - venues[N].**venue_id** `string`
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
    The `venue_id` is used to perform queries.
   &nbsp;
- - venue[N].**forecast_updated_on** `DateTime string`  
+ - venue[N].**forecast_updated_on** `DateTime string`
    Date and time of the last foot traffic forecast.
 
