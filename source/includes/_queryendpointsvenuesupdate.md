@@ -59,10 +59,10 @@ The 'Venues Update' endpoint returns a list of venues that are older than a spec
   Returns only venues with or without foot traffic data. Options `with`, `without`, `all`. `with` will return only venues that had foot traffic forecast data last update. `without` will only return venues that did not have foot traffic forecast data last update. `all` will return all matching venues regardless if they have foot traffic data. Default is `all`. Not all venues that have been added to your BestTime account have foot traffic data. Also, venues without foot traffic data will be stored in your account. By default, these venues will not be shown and updated to save API credits (`with`). Sometimes it can be useful to also update previously failed forecast - when e.g. venues are re-opened or are getting more popular (and therefore might have foot traffic at this moment).
  &nbsp;
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>
-Return only venues within an existing  collection. See more info on [Collections](#venue-collections)
+Return only venues within an existing collection. See more info on [Collections](#venue-collections)
  &nbsp;
 - **collection_ids** `comma separated list of strings` <span style="color:blue">OPTIONAL</span>
-Return only venues from multiple collections. Add the collection ids separated by commas. See more info on [Collections](#venue-collections)
+Return only venues from multiple collections. Add the collection ids separated by commas. By adding venues to multiple own defined collections (e.g. live-music, karaoke) you can use collection as tags. See more info on [Collections](#venue-collections)
  &nbsp;
 
 
