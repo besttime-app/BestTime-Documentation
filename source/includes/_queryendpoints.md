@@ -5,8 +5,6 @@ The `venue_id` is the primary parameter to query an existing forecast.
 
 It is also possible to update a venue forecast in combination with the query in one API call. This way you can retrieve query-specific data:
 -  with a fresh forecast
-- don't having to worry about the retention days (maximum days a forecast is stored on the server)
-- use the venue name and address as API input instead of the venue_id
 
 Check the query endpoint itself for more information. This will be counted as new forecast credit.
 

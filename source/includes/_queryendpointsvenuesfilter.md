@@ -67,10 +67,7 @@ The 'venue filter' endpoint will return all venues and foot traffic data that me
 
 The BestTime Radar tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map.
 
-The endpoint will only return venues that have been forecasted before with the provided `api_key_private`. The user can manually add each desired venue individually through the BestTime API, or can use an external API service with public business (like Google Maps Places Nearby search, Here.com, Fouresquare Venues, or Factual Places). Using the external service places in a certain area can be discovered and the results (venue name and address) can be fed into the BestTime API.
-
-The 'Venue Search' tool can be used to add multiple venues to your account with one API call. See more info on [Venue Search](#venue-search).
-
+By default (for new users after July 25 2024) the venue filter will return all venues meeting the filter criteria in the BestTime database. If venues are missing you can add them individually using the New Foot Traffic Forecast API, or multiple venues - by query - using the Venue Search API.
 
 <b>Highly recommended to read first:
 - [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
@@ -98,7 +95,7 @@ Maximum busyness for the filtered venues, ranging from `0` to `100` procent. Use
 Selects how `busy_min` and `busy_max` filters on busyness percentage. Possible options are `any` or `all`. Defaults to  `any`. `any` will return venues when at least one of the (selected) hours matches the `busy_min` and/or `busy_max` filter(s). `all` will return venues when all (selected) hours match the `busy_min` and/or `busy_max` filter(s). Use the `hour_min` and/or `hour_max` parameters to select specific hours were the `busy_min` and/or `busy_max` filters are applied on.
  &nbsp;
 - **foot_traffic** `string` <span style="color:blue">OPTIONAL</span>
- Selects which part(s) of the foot traffic data will be returned. Can be `limited`, `day`, or `both`. Default is `limited`. With `limited` selected, only the foot traffic data between the selected hours (`hour_min` and `hour_max`) is returned in the `day_raw` value result (or whole day when no hours are selected). This also applies when combining with `now` or `live` in the input. When `day` is selected, foot traffic data for the whole day is returned (regardless of the filtered hours) in the `day_raw_whole` value result. The `day_raw` value is in this case not returned. When `both` is selected, both the previously described `day_raw` and `day_raw_whole` value results are returned in the response.
+ Selects which part(s) of the foot traffic data will be returned. Can be `limited`, `day`, or `both`. Default is `limited`. With `limited` selected, only the foot traffic data between the selected hours (`hour_min` and `hour_max`) is returned in the `day_raw` value result (or whole day when no hours are selected). This also applies when combining with `now`  in the input. When `day` is selected, foot traffic data for the whole day is returned (regardless of the filtered hours) in the `day_raw_whole` value result. The `day_raw` value is in this case not returned. When `both` is selected, both the previously described `day_raw` and `day_raw_whole` value results are returned in the response.
  &nbsp;
 - **hour_min** `int` <span style="color:blue">OPTIONAL</span>
 Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the day window.  See [Forecast day window and weekdays](#forecast-day-window-and-weekdays). Cannot be used in combination with the `now` and `live` parameters set to be `true`.
@@ -113,14 +110,14 @@ Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the
  Sets the time and day filter to the current day and hour in local time. Note: This option only takes into account one timezone! So it is best to use this parameter only when requesting venues within one timezone. When a collection_id is given, the timezone of the first venue in the collection is chosen. When bounding box parameters are given, the timezone of the center of the box is chosen as the timezone. When `lat`, `lng` are given the timezone of the given coordinate is chosen. When no geographic parameters are given the timezone is based on the first venue in your account. So if the determined timezone indicates currently 2 PM, the foot traffic forecast for all venues - regardless of the individual venue timezones - will be for 2 PM. Cannot be used in combination with the `live`, `day_int`, `hour_min`, and `hour_max` parameters.
  &nbsp;
 - **live** `bool` <span style="color:blue">OPTIONAL</span>
- Will display the live foot traffic data. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. By default the live data is not refreshed, see parameter `live_refresh`. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters. Warning: When using `live_refresh=true` the limit is only applied after refreshing (new venue foot traffic forecast) all matching venues individually. This can therefore result in high API credit usage eventhough a limit is set.
+ Will display the live foot traffic data. Venues without live data will be filtered out. Note: The Venue Filter does NOT refresh the live data automatically. Use the Live API endpoint to refresh the data for example every hour. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters. 
  &nbsp;
-- **live_refresh** `bool` <span style="color:blue">OPTIONAL</span>
+<!-- - **live_refresh** `bool` <span style="color:blue">OPTIONAL</span>
  Live_refresh set to `true` will refresh all live and forecast data (new venue Foot Traffic Forecast) for each individual venue meeting the filter. This will slow down the request and results in extra API credits per refreshed venue. By default set to `false` to get a faster response and lower API credit usage. Note: The live_refresh will ignore the `limit` parameter to refresh all venues matching the other parameters. Only after the refresh the venue limit is applied. This may result in high API credit usage. Use the New Forecast or Live endpoints to manually control which venues needs to be updated.
  &nbsp;
  - **live_limit** `int` <span style="color:blue">OPTIONAL</span>
 Limits the maximum number of venues refreshed when `live` and `live_refresh` is set to `true`. Default `500`, min `0`, max `5000`.
- &nbsp;
+ &nbsp; -->
 - **types** `list` <span style="color:blue">OPTIONAL</span>
  Filters on one or more venue types. All types are selected if the `types` parameter is omitted. Possible types are (most common shown first) `RESTAURANT, SHOPPING, FAST_FOOD, BAR, SUPERMARKET, GROCERY, PARK, OTHER, APPAREL, FOOD_AND_DRINK, CAFE, SHOPPING_CENTER, COFFEE, AIRPORT, SPORTS_COMPLEX, PHARMACY, PERSONAL_CARE, VEHICLE, GAS_STATION, MUSEUM, DENTIST, LIBRARY, BANKING, TOURIST_DESTINATION, CASH_MACHINE, FOOD_DELIVERY, EVENT_VENUE, SPA, MARKET, CLUBS, PUBLIC_TRANSIT, BREWERY, SPORTING_GOODS, HISTORICAL, PERFORMING_ARTS, DOCTOR, AMUSEMENT_PARK, GIFTS, TEA, CHURCH, SKILL_INSTRUCTION, TRAIN_STATION, ARTS, GOLF, ZOO, BOTANICAL_GARDEN, NATIONAL_PARK, SUBWAY_STATION, CASINO, MOVIE_THEATER, POST_OFFICE, HIKING, GOLF_COURSE, NATURE_RESERVE, BRIDGE, BUS_STATION, GOVERNMENT, REST_AREA, WINERY, SCENIC_POINT, SOUVENIR_SHOP, CITY_HALL, BOATING, CONCERT_HALL, SWIMMING, MONUMENT, SOCCER, CAR_RENTAL, MOSQUE, INDUSTRIAL, VISITOR_CENTER, ANTIQUES, AQUARIUM, PALACE, HINDU_TEMPLE, STADIUM, WINTER_SPORTS, BUDDHIST_TEMPLE, EMBASSY, TEMPLE, TENNIS, BASEBALL, FERRY_TERMINAL, FISHING, POLICE, SCHOOL, BAKERY, AGRICULTURE, CRICKET, FAIRGROUNDS, GONDOLA_LIFT_STATION, HOSPITAL, LIGHTHOUSE, MILITARY, MORMON_TEMPLE, UNIVERSITY`
  &nbsp;
@@ -169,14 +166,18 @@ Limits the maximum number of venues refreshed when `live` and `live_refresh` is 
 - **day_rank_max** `int` <span style="color:blue">OPTIONAL</span>
     Maximum day rank value. Ranges from day `1` to `7`, wherein `1` is the most busy ranked day of the week and `7` the least busy day of the week. Rank is based on peak values (`day_max`) of each week day. E.g. setting the value to `2` will return only the 1st and 2nd most busy days.
   &nbsp;
+- **own_venues_only** `int` <span style="color:blue">OPTIONAL</span>
+  Optionally only return venues that have previously been added to your account or filtered instead of all venues available on BestTime. Default `false` for users after July 25 2024. Users before this date need to manually set this parameter to `false` to return all available venues from BestTime that meet the filter criteria. Note: If venues are missing you can try to add them using a New Foot Traffic Forecast API call or the Venue Search API.
+  &nbsp;
+
 - **order_by** `int` <span style="color:blue">OPTIONAL</span>
-   BETA: Sort venues on foot traffic intensity data. Order venues by a specific parameter. Can be `reviews`,`rating`,`price_level`,`live`,`now`,`name`,`day_rank_max`,`day_rank_mean`,`day_max`,`day_mean`,`date`, `dwell_time_min`,`dwell_time_max`,`0`,`1`,`2`,`3`,`4`,`5`,`6`,`7`,`8`,`9`,`10`,`11`,`12`,`13`,`13`,`14`,`15`,`16`,`17`,`18`,`19`,`20`,`21`,`22`,`23`. Default is `reviews`. Max two comma separated parameters allowed (e.g. `order_by=rating,reviews`). The 24 numbers represent the foot traffic data for each of the 24 hours in a day. E.g. `16` will sort the venues based on predicted foot traffic at 16:00 (4PM). Warning: Venues forecasted before July 1st, 2021 need to be updated (new foot traffic forecast) to order them correctly.
+   BETA: Sort venues on foot traffic intensity data. Order venues by a specific parameter. Can be `reviews`,`rating`,`price_level`,`now`,`name`,`day_rank_max`,`day_rank_mean`,`day_max`,`day_mean`,`date`, `dwell_time_min`,`dwell_time_max`,`0`,`1`,`2`,`3`,`4`,`5`,`6`,`7`,`8`,`9`,`10`,`11`,`12`,`13`,`13`,`14`,`15`,`16`,`17`,`18`,`19`,`20`,`21`,`22`,`23`. Default is `reviews`. Max two comma separated parameters allowed (e.g. `order_by=rating,reviews`). The 24 numbers represent the foot traffic data for each of the 24 hours in a day. E.g. `16` will sort the venues based on predicted foot traffic at 16:00 (4PM). Warning: Venues forecasted before July 1st, 2021 need to be updated (new foot traffic forecast) to order them correctly.
   &nbsp;
 - **order** `int` <span style="color:blue">OPTIONAL</span>
    Order the `order_by` parameters ascending or descending. Can be `asc` or `desc`.  Default `desc`. Max two comma seperated parameters allowed (e.g. `order=desc,asc`).
   &nbsp;
 - **limit** `int` <span style="color:blue">OPTIONAL</span>
-   Maximum number returned venues. Default `5000`, min `0`, max `10000`. Higher limits result in slower responses and higher API credit usage. Warning: When using `live_refresh=true` the limit is only applied after refreshing (new venue foot traffic forecast) all matching venues individually. This can therefore result in high API credit usage eventhough a limit is set.
+   Maximum number returned venues. Default `5000`, min `0`, max `10000`. Higher limits result in slower responses and higher API credit usage. 
   &nbsp;
 - **page** `int` <span style="color:blue">OPTIONAL</span>
    Selects the page number. Default page `0`. Min page `0`.

@@ -9,7 +9,7 @@ url = "https://besttime.app/api/v1/venues/search"
 
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-    'q': 'quiet supermarkets in sydney australia sunday morning',
+    'q': 'supermarkets in sydney australia',
     'num': 200,
     'fast': False,
     'format': 'raw'
@@ -27,7 +27,7 @@ curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_ke
 ```javascript
 const params = new URLSearchParams({ 
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
-    'q': 'quiet supermarkets in sydney australia sunday morning',
+    'q': 'supermarkets in sydney australia',
     'num': 200,
     'fast': false,
     'format': 'raw'
@@ -55,83 +55,6 @@ Once finished and if available for the venue, the Venue Search Progress endpoint
 - [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
 - [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
 </b>
-
-### Venue filters
-
-The Venue Search Progress endpoint will return a link to view the results in the 'Radar tool' and the 'venue filter' API endpoint once the background job has been completed (`job_finished: true`). The venue search endpoint accepts filters similar to the 'venue filter' endpoint and Radar tool. By providing these parameters the links to the Radar tool and Venue Filter endpoint will automatically include the filter parameters. Only after analyzing each venue (foot-traffic forecast) most filters will be applied in the Radar tool/ Venue Filter endpoint. The venue search result therefore also includes venues that do not meet the filter criteria, but match the other search query text. The filters that are directly applied in the search are: `opened`, `lat`, `lng`, and `radius` for both search methods ('normal' and 'fast' method). The 'fast' method filters directly as well on `price_min` and `price_max`. The 'normal' search method will filter directly on `rating_min`.
-
-### Natural language in the search query as filters
-
-Besides separate parameters as filter inputs, the `q` search query understands also a variety of natural language that will be translated into the related filter parameters. You can use it to filter on busyness, day of week, day part, or time range. For example:  
-
-Busyness natural language examples:  
-
-- Search query `Busy bars in Sydney Australia` will result in a search for `bars in Sydney Australia` and sets the filter parameter minimum busyness to 50% `busy_min=50`.  
-
-- Search query `Quiet supermarkets in Los Angeles, CA` will result in a search for `supermarkets in Los Angeles, CA` and sets the filter parameter maximum busyness to 50% `busy_max=50`.  
-
-- Search query `10% to 60% busy shops in New York City` will result in a search for `shops in New York City` with `busy_min=10` and `busy_max=60` as filter parameters.
-
-Strings that will trigger the busyness filters are:  
-
-`busy` -> `busy_min=50`,  
-
-`quiet`-> `busy_max=50`,  
-
-Define a range with multiple percentages including the word `busy`:  
-
-E.g. `40% to 90% busy bars in New York City`.
-Define a custom minimum or maximum using the strings:  
-
-- `min`,`minimal`, `minimum`,`least`  
-
-- `max`,`maximal`,`maximum`,`most`  
-
-E.g. `at least 60% busy bars in Melbourne Australia` will set the filter to `busy_min=60`
-
-
-Day of week  natural language examples:  
-
-- Search query `shopping malls in Singapore on Monday` will result in a search for `shopping malls 
-in Singapore` and with `day_int=0` as filter parameters.  
-
-- Search query `bars in Melbourne Australia Friday` will result in a search for `bars in Melbourne Australia` with `day_int=4` as the filter parameter.  
-
-Strings (case insensitive) that will trigger the day of week are :
-- `Monday` -> `day_int=0`,  
-- `Tuesday` -> `day_int=1`,  
-- `Wednesday`  -> `day_int=2`,  
-- `Thursday` -> `day_int=3`,  
-- `Friday` -> `day_int=4`,  
-- `Saturday` -> `day_int=5`,  
-- `Sunday` -> `day_int=6`
-
-Time of day natural language examples:  
-
-- Search query `quiet shopping malls in Singapore this morning` will result in a search for `shopping malls in Singapore` and with `busy_max=50`, `hour_min=6`, and `hour_max=11` as the filter parameters.  
-
-- Search query `busy bars in Melbourne Australia Saturday evening` will result in a search for `bars in Melbourne Australia` and with `busy_min=50`, `hour_min=18`, and `hour_max=0` as the filter parameters.  
-
-- Search query `min 60% busy bars in Melbourne Australia Saturday after 9 PM` will result in a search for `bars in Melbourne Australia` and with `busy_min=60`, `day_int=5`,`hour_min=21` as the filter parameters.  
-
-- Search query `max 40% busy restaurants in Melbourne Australia on Wednesday from 13 until 15` will result in a search for `restaurants in Melbourne Australia` and with `busy_max=40`, `day_int=2`, `hour_min=13`, and `hour_max=15` as the filter parameters.  
-
-Strings (case insensitive) that will trigger the time of day filters:  
-
-- Dayparts (only works in combination with a day of the week string like e.g. `Monday`, or `this`):  
-
-  `morning` -> `hour_min=6`, `hour_max=11`,  
-  `afternoon` -> `hour_min=12`, `hour_max=17`,  
-  `evening` -> `hour_min=18`, `hour_max=0`,  
-  `night` -> `hour_min=21`, `hour_max=5`,  
-  
-- Min and/or max time in combination with a 12 or 24 hour notation:  
-  `after`, `before`, `until`, `till`, `from`  
-  e.g. `until 1pm` or `from 9 till 15`  
-
-- `now` sets the the `hour_min` and `hour_max` value to filter foot-traffic data to the current hour local time of the first venue in the result. E.g. `busy bars in Sydney Australia now`. `Now` cannot be used in combination with day and other time triggers.  
-
-- `live` will only show venues with real-time live data. `live` cannot be used in combination with day and other time triggers.  
 
 This query endpoint requires the private API key. 
 
@@ -174,81 +97,6 @@ Add the results to an existing or user-defined collection_id. If this parameter 
  The live attribute value changes the behavior of both the Venue Search and optionally the subsequent Venue Filter response. Venue Search: When `live=true`, the Venue Search will always refresh the data and Search Progress response will contains live data (if available). When `format=raw` it will only include the raw live percentage in `venue_foot_traffic_live`. When `format=all` the response includes the live data - including the analysis similar to the [Live foot-traffic data](#live-foot-traffic-data) endpoint) - in `venue_foot_traffic_live`.
  Venue Filter: Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
  &nbsp; 
-
-<aside class="notice">
-The 'venue search' endpoint accepts also the filters below, similar to the `venue filter` filter parameters. These 'venue filter' parameters are NOT applied on the initial 'search venue' venue results (as with the parameters mentioned above), but are only passed on to the 'venue filter' and 'radar' URL links. When a 'venue search' is performed with filters set to e.g. `busy_min=60` the 'venue search` results will include and forecast all found venues. Only the subsequent 'venue filter'/ 'radar tool' step applies the filters. 
-</aside>  
-&nbsp;
-
-
-- **busy_min** `int` <span style="color:blue">OPTIONAL</span>  
-Minimum busyness for the filtered venues, ranging from `0` to `100` procent.  Use `busy_conf` parameter to change the filter method.  
- &nbsp;
-- **busy_max** `int` <span style="color:blue">OPTIONAL</span>  
-Maximum busyness for the filtered venues, ranging from `0` to `100` procent. Use `busy_conf` parameter to change the filter method.    
- &nbsp;
-- **busy_conf** `string` <span style="color:blue">OPTIONAL</span>  
-Selects how `busy_min` and `busy_max` filters on busyness percentage. Possible options are `any` or `all`. Defaults to  `any`. `any` will return venues when at least one of the (selected) hours matches the `busy_min` and/or `busy_max` filter(s). `all` will return venues when all (selected) hours match the `busy_min` and/or `busy_max` filter(s). Use the `hour_min` and/or `hour_max` parameters to select specific hours were the `busy_min` and/or `busy_max` filters are applied on.  
- &nbsp;
-- **foot_traffic** `string` <span style="color:blue">OPTIONAL</span>  
- Selects which part(s) of the foot traffic data will be returned in the response. Can be `limited`, `day`, or `both`. Default is `limited`. With `limited` selected, only the foot traffic data between the selected hours (`hour_min` and `hour_max`) is returned in the `day_raw` value (or whole day when no specific hours are selected). This also applies when combining with `now` or `live` in the input. When `day` is selected, foot traffic data for the whole day is returned (even if filters on specific hours are applied) in the `day_raw_whole` value. The `day_raw` value is in this case not returned. When `both` is selected, both the previously described `day_raw` and `day_raw_whole` value results are returned in the response.   
- &nbsp;
-- **hour_min** `int` <span style="color:blue">OPTIONAL</span>  
-Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the day window.  See [Forecast day window and weekdays](#forecast-day-window-and-weekdays). Cannot be used in combination with the `now` and `live` parameters set to be `true`.  
- &nbsp;
-- **hour_max** `int` <span style="color:blue">OPTIONAL</span>  
-Start hour, using the 24 hour notation. Ranging from `0` to `24` hour within the day window.  See [Forecast day window and weekdays](#forecast-day-window-and-weekdays). Cannot be used in combination with the `now` and `live` parameters set to be `true`.  
- &nbsp;
-- **day_int** `int` <span style="color:blue">OPTIONAL</span>  
- Day of the week. Range `0` (Monday) to `6` (Sunday). Will default to current day in local time of the first found venue that meets the filter. Cannot be used in combination with the `now` and `live` parameters set to be `true`.
- &nbsp; 
-- **now** `bool` <span style="color:blue">OPTIONAL</span>  
- Sets the time and day filter to the current day and hour in local time. Note: This option only takes into account one timezone! So it is best to use this parameter only when requesting venues within one timezone. When a collection_id is given, the timezone of the first venue in the collection is chosen. When bounding box parameters are given, the timezone of the center of the box is chosen as timezone. When `lat`, `lng` are given the timezone of the given coordinate is chosen. So if the determined timezone indicates currently 2 PM, the foot traffic forecast for all venues - regardless of the individual venue timezones - will be for 2 PM. Cannot be used in combination with the `live`, `day_int`, `hour_min`, and `hour_max` parameters.  
- &nbsp; 
-- **live** `bool` <span style="color:blue">OPTIONAL</span>    
- The live attribute value changes the behavior of both the Venue Search and Venue Filter endpoints. Venue Search: When `live=true`, the Venue Search will always refresh the data and Search Progress response will contains live data (if available). When `format=raw` it will only include the raw live percentage in `venue_foot_traffic_live`. When `format=all` the response includes the live data - including the analysis similar to the [Live foot-traffic data](#live-foot-traffic-data) endpoint) - in `venue_foot_traffic_live`
- Venue Filter: Sets the time and day filter to the current day and hour in local time, and will display the live busyness. Venues without live data will be filtered out. The local time of the first venue is taken that matches the filter criteria. Cannot be used in combination with the `now`, `day_int`, `hour_min`, and `hour_max` parameters.  
- &nbsp; 
-- **live_refresh** `bool` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
- Live refresh set to `true` will refresh all live and forecast data for each individual venue meeting the filter.  This will slow down the request and results in extra API credits per refreshed venue.  Default is `false`.We recommend setting this to `false` when using the Venue Search endpoint while setting `live=true` (as this will refresh the life data in the Search and later again in the Filter endpoint, resulting higher API credit usage and slower results).
- &nbsp; 
-- **collection_id** `string` <span style="color:blue">OPTIONAL</span> <span style="color:green"> New</span>     
- Returns only venues added to given collection. See Collections for more info. See [Collections](#venue-collections).  
- &nbsp; 
-- **types** `list` <span style="color:blue">OPTIONAL</span>  
- Filters on one or more venue types. All types are selected if the `types` parameter is ommited. Possible types are `['APPAREL', 'ARTS', 'BANKING', 'BAR', 'BOTANICAL_GARDEN', 'CAFE', 'CAR_RENTAL', 'CHURCH', 'CITY_HALL', 'COFFEE', 'DENTIST', 'DOCTOR', 'EMBASSY', 'EVENT_VENUE', 'FAST_FOOD', 'FOOD_AND_DRINK', 'FOOD_DELIVERY', 'GAS_STATION', 'GOVERNMENT', 'GROCERY', 'LODGING','MARKET', 'MOVIE_THEATER', 'MUSEUM', 'Other', 'PARK', 'PERFORMING_ARTS', 'PERSONAL_CARE', 'PHARMACY', 'PUBLIC_TRANSIT', 'RESTAURANT', 'SCHOOL', 'SHOPPING', 'SKILL_INSTRUCTION', 'SPA', 'SPORTS_COMPLEX', 'SUPERMARKET', 'TEA', 'TOURIST_DESTINATION', 'VISITOR_CENTER']`  
- &nbsp; 
-
-- **lat_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum latitude of the bounding box (South-West). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lat_min` must be combined with `lat_max`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
-  &nbsp; 
-- **lng_min** `float` <span style="color:blue">OPTIONAL</span>  
-   Minimum longitude of the bounding box (South-West). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lng_min` must be combined with `lng_max`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
-  &nbsp; 
-- **lat_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum latitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lat_max` must be combined with `lat_min`, `lng_min` and `lng_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint.
-  &nbsp; 
-- **lng_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum longitude of the bounding box (North-East). A maximum of 3 decimal floating points are allowed (≈ 111 meter). This will be enforced starting from September 1st, 2021.  `lng_max` must be combined with `lng_min`, `lat_min` and `lat_max`. The bounding box cannot be combined with the circle parameters. Either a combination of a `lat`, `lng`, with a `radius` or `lat_min`, `lng_min`, `lat_max`, and `lng_max` is required. It is recommended to use the `lat`, `lng`, and `radius` parameters over the bounding box parameters in the search tool. The bounding box filters are only applied after the search result using the Radar Tool/ Venue filter endpoint. 
-  &nbsp; 
-- **price_min** `int` <span style="color:blue">OPTIONAL</span>  
-   Minimum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_min` filters out all venues without a price level. When the 'fast' search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint. 
-  &nbsp; 
-- **price_max** `int` <span style="color:blue">OPTIONAL</span>    
-   Maximum price level for a venue. Range `1` to `5`. Not all venues have a price level. Using `price_max` filters out all venues without a price level. When the 'fast' search method is used `price_min` and `price_max` will be directly filtered in the initial search tool, instead of after the search results in the subsequent Radar Tool/ Venue Filter endpoint.
-  &nbsp; 
-- **rating_min** `float` <span style="color:blue">OPTIONAL</span>    
-   Minimum rating for a venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5`. Venues without a rating (0) will NOT be returned when applying this filter.   
-  &nbsp; 
-- **rating_max** `float` <span style="color:blue">OPTIONAL</span>  
-   Maximum rating for a venue. Possible values are `2.0, 3.0, 3.5, 4.0, 4.5, 5.0`. Venues without a rating (0) WILL be returned when applying this filter.
-  &nbsp; 
-- **reviews_min** `int` <span style="color:blue">OPTIONAL</span>    
-   Minimum number of reviews for a venue. Minimum value `0`.  
-  &nbsp;  
-- **reviews_max** `int` <span style="color:blue">OPTIONAL</span>    
-   Maximum number of reviews for a venue. Minimum value `0`.
-  &nbsp; 
 
 
 <aside class="notice">

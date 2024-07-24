@@ -128,9 +128,6 @@ BestTime has two types of plans. Metered and packaged plans. The metered plans w
 BestTime also offers multiple 'packaged' plans if you don't like the uncertainty of a metered plan. The packaged plans have a fixed price per month and unlimited forecast, live, query and venue API calls. However, each package plan is limited to a certain number of new venues-, and venue search calls per calender month.
 
 
-Old plans:  &nbsp;  
-Credits will be added at the start of every monthly invoice cycle, when you upgrade, or when you buy extra credit bundles (only for selected subscription plans). Credits don't expire and automatically roll over to the next month. If you cancel your subscription coins will stay in your account. However, all your API keys will be deactivated. This means you cannot create new forecasts and query existing forecasts. If you decide to re-subscribe on the same account you can use your old coins, but you cannot access the previous forecasts anymore.
-
 ## HTTP (Error) API codes
 
 BestTime uses the following HTTP codes

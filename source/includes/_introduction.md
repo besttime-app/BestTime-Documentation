@@ -99,19 +99,19 @@ BestTime.app does not provide absolute business visitor numbers. Data in the for
 ### Coverage
 BestTime.app has coverage in 150+ countries. It depends on multiple factors if a business can be forecasted. A rough guideline is that the business needs to be a public business and has at least 100 visitors per day. 
 
-### Data retention
-Forecast will only be stored on the server for a specific number of days. This depends on your subscription plan. Expired forecasts will be automatically deleted. Store a forecast response locally or upgrade your plan to keep using a forecast.
 
-### Updating a forecast
-To update an existing business forecast you need to create a new forecast. Currently, only the latest forecast for each business is accessible through the API. It is up to the user to decide how often a forecast needs to be updated, but in general, we recommend to update a forecast every two to four weeks. Live data is the current relative activity for the current hour. It is therefore suggested to update the live data every hour.
+### Updating venue foot traffic data
+- Live data needs to be refreshed every clock hour using the Live data endpoint.
+- A foot traffic forecast can be used for one or multiple weeks. To update an existing business forecast you need to create a 'New venue foot traffic data forecast'.
+* The venue filter returns updated foot traffic data that is never older than a month. If you want the latest foot traffic data you can use the 'New venue foot traffic data forecast' to update a single venue, or the Venue Update tool to update multiple venues.
 
 ## Queries
-Forecasting a (new) business takes a few seconds. Normally a forecast is accurate for at least several weeks (depending on the business), therefore the data from existing forecasts can still be used for a longer period. Queries are used to get data from an existing forecasted business. For example the whole forecast, or a specific analysis on a specific day.
+Forecasting a (new) business takes a few seconds (using the New Foot Traffic forecast endpoint). Normally a forecast is accurate for at least several weeks (depending on the business), therefore the data from existing forecasts can still be used for a longer period. Queries are used to get data from an existing forecasted business. For example the whole forecast, or a specific analysis on a specific day.
 
 A query response is almost instant, includes sometimes additional data, and makes it easier to answer specific questions.
 
 ### Recommended usage
-Forecasts are based on visits to the business from the past few weeks. We recommend therefore to only forecast (update) a business once every few weeks. Queries should be used in between the forecasts. This reduces API forecast credits and improves the API performance.
+Forecasts are based on visits to the business from the past few weeks. We recommend therefore to only forecast (update) a business once every few weeks. Queries should be used in between the forecasts. This reduces API forecast credits and improves the API performance. The Venue filter tool is the most cost/speed effective method to get foot traffic data for multiple venues. Live data needs to be updated every clock hour and is therefore relatively expensive compared to using the Venue filter API and / or the New Foot Traffic forecast endpoint - which returns data that is useful for a week or longer.
 
 ### Additional dynamic data
 Some query responses include additional dynamic data on top of the stored forecast. 
