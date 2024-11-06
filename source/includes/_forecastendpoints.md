@@ -216,11 +216,11 @@ By default the API is limited to 10 requests per second. Contact us for higher l
      - analysis[day_int].day_info.**day_text** `string`
        Day name. E.g. `monday`
        &nbsp;
-     - analysis[day_int].day_info.**venue_closed** `int` <span style="color:red">DEPRECATED</span>
-       Hour of day when the venue closes. Range `0` to `23` hour. Deprecated, use `venue_open_close_v2` instead.
+     - analysis[day_int].day_info.**venue_closed** `int`/`string` <span style="color:red">DEPRECATED</span>
+       Hour of day when the venue closes. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
-     - analysis[day_int].day_info.**venue_open** `int` <span style="color:red">DEPRECATED</span>
-       Hour of day when the venue opens. Range `0` to `23` hour. Deprecated, use `venue_open_close_v2` instead.
+     - analysis[day_int].day_info.**venue_open** `int`/`string` <span style="color:red">DEPRECATED</span>
+       Hour of day when the venue opens. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
      - analysis[day_int].day_info.**venue_open_close_v2** `object`
        Object with open and close times for the venue. The object contains two lists: `24h` and `12h`. The `24h` list contains open and close times for the venue in 24 hour notation. The `12h` list contains open and close times for the venue in 12 hour notation. A venue can have multiple opening times per day. Note: requires refreshing the foot traffic forecast if the foot traffic forecast is outdated.

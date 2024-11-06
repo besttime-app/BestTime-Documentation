@@ -412,11 +412,11 @@ The JSON response will contain a `list` with venue `objects`.
      - venues[N].day_info.**day_text** `string`
        Day name. E.g. `monday`
        &nbsp;
-     - venues[N].day_info.**venue_closed** `int`
-       Hour of day when the venue closes. Range `0` to `23` hour
+     - venues[N].day_info.**venue_closed** `int`/`string`
+       Hour of day when the venue closes. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day.
        &nbsp;
-     - venues[N].day_info.**venue_open** `int`
-       Hour of day when the venue opens. Range `0` to `23` hour
+     - venues[N].day_info.**venue_open** `int`/`string`
+       Hour of day when the venue opens. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day.
        &nbsp;
 
 - **window** `object`

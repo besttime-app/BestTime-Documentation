@@ -164,11 +164,11 @@ HTTP method: GET
      - analysis.weekoverview[day].**day_text** `string`  
        Day name. E.g. `monday`  
        &nbsp;
-     - analysis.weekoverview[day].**venue_closed** `int`  
-       Hour of day when the venue closes. Range `0` to `23` hour  
+     - analysis.weekoverview[day].**venue_closed** `int`/`string`  
+       Hour of day when the venue closes. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day.  
        &nbsp;
-     - analysis.weekoverview[day].**venue_open** `int`  
-       Hour of day when the venue opens. Range `0` to `23` hour  
+     - analysis.weekoverview[day].**venue_open** `int`/`string`  
+       Hour of day when the venue opens. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day.  
        &nbsp;
 - **forecast_updated_on** `TimeZone Aware DateTime string`  
  Date and time (Time Zone aware) of the original forecast.  

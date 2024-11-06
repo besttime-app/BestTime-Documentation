@@ -117,3 +117,19 @@ Special Thanks
 - [middleman-syntax](https://github.com/middleman/middleman-syntax)
 - [middleman-gh-pages](https://github.com/edgecase/middleman-gh-pages)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+
+
+# Docker
+
+Build slate with docker
+docker run --rm --name slate -v $(pwd)/build:/srv/slate/build -v $(pwd)/source:/srv/slate/source slatedocs/slate build
+
+# Run slate
+
+docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source slatedocs/slate serve
+
+See: <http://localhost:4567>
+
+# Deply to cloudflare
+
+Zip the files inside 'build' folder and deploy to cloudflare using Pages > Upload zip
