@@ -63,11 +63,13 @@ fetch(`https://besttime.app/api/v1/venues/filter?${params}`, {
 
 ### Input attributes Venue Filter
 
-The 'venue filter' endpoint will return all venues and foot traffic data that meet the filter requirements. Venues can be filtered on how busy they are, on  location, type of venue, day & time range, etc, or a combination. This could be useful to for e.g. find all busy bars, cafes and nightclubs, between 6pm and 11pm in a specific neighborhood. The filter will only return venues that are forecasted before with the given private API key.
+The 'venue filter' endpoint will return all venues and foot traffic data that meet the filter requirements. Venues can be filtered on how busy they are, on  location, type of venue, day & time range, etc, or a combination. This could be useful to for e.g. find all busy bars, cafes and nightclubs, between 6pm and 11pm in a specific neighborhood. 
 
 The BestTime Radar tool is using the same API endpoint to show all venues that meet the filter criteria on a (heat)map.
 
-By default (for new users after July 25 2024) the venue filter will return all venues meeting the filter criteria in the BestTime database. If venues are missing you can add them individually using the New Foot Traffic Forecast API, or multiple venues - by query - using the Venue Search API.
+By default (for new users after July 25 2024) the venue filter will return all venues meeting the filter criteria in the BestTime database. Older users see by default only venues that have been previously added by this account (specifically this API key set). Behavior can be changed using the `own_venues_only` parameter.
+
+If venues are missing you can add them individually using the New Foot Traffic Forecast API, or multiple venues using the Venue Search API.
 
 <b>Highly recommended to read first:
 - [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
