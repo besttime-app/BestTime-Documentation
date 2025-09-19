@@ -11,7 +11,7 @@ url = "https://besttime.app/api/v1/forecasts/live"
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
     'venue_name': 'McDonalds',
-    'venue_address': 'Ocean Ave, San Fransisco'
+    'venue_address': 'Ocean Ave, San Francisco'
 }
 
 response = requests.request("POST", url, params=params)
@@ -23,14 +23,14 @@ print(response.json())
 curl --location --request POST 'https://besttime.app/api/v1/forecasts/live?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
 venue_name=McDonalds&
-venue_address=Ocean%20Ave%2C%20San%20Fransisco'
+venue_address=Ocean%20Ave%2C%20San%20Francisco'
 ```
 
 ```javascript
 const params = new URLSearchParams({ 
   'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
   'venue_name': 'McDonalds',
-  'venue_address': 'Ocean Ave, San Fransisco'
+  'venue_address': 'Ocean Ave, San Francisco'
 });
 
 fetch(`https://besttime.app/api/v1/forecasts/live?${params}`, {
@@ -101,7 +101,10 @@ By default the API is limited to 10 requests per second. Contact us for higher l
         "venue_timezone": "America/Los_Angeles",
         "venue_dwell_time_min": 20,
         "venue_dwell_time_max": 60,
-        "venue_dwell_time_avg": 40
+        "venue_dwell_time_avg": 40,
+        "rating": 3.5,
+        "reviews": 1204,
+        "price_level": 1
     }
 }
 ```
@@ -158,3 +161,12 @@ By default the API is limited to 10 requests per second. Contact us for higher l
  - venue_info.**venue_dwell_time_avg** `int`  
    Average usual visitor dwell time in minutes, or `0` when not available.   
   &nbsp;
+ - venue_info.**rating** `float`
+    Average rating of the venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0`, or `0` when not available.
+   &nbsp;
+  - venue_info.**reviews** `int`
+    Total number of reviews for the venue, or `0` when not available.
+   &nbsp;
+  - venue_info.**price_level** `int`
+    Price level of the venue ranging from `1` (least expensive) to `5` (most expensive), or `0` when not available.
+   &nbsp;

@@ -12,7 +12,7 @@ url = "https://besttime.app/api/v1/forecasts"
 params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
     'venue_name': 'McDonalds',
-    'venue_address': 'Ocean Ave, San Fransisco'
+    'venue_address': 'Ocean Ave, San Francisco'
 }
 
 response = requests.request("POST", url, params=params)
@@ -24,14 +24,14 @@ print(response.json())
 curl --location --request POST 'https://besttime.app/api/v1/forecasts?
 api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&
 venue_name=McDonalds&
-venue_address=Ocean%20Ave%2C%20San%20Fransisco'
+venue_address=Ocean%20Ave%2C%20San%20Francisco'
 ```
 
 ```javascript
 const params = new URLSearchParams({
  'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
   'venue_name': 'McDonalds',
-  'venue_address': 'Ocean Ave, San Fransisco'
+  'venue_address': 'Ocean Ave, San Francisco'
 });
 
 fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
@@ -145,7 +145,10 @@ fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
             "sandwich_shop"
         ],
         "venue_lat": -8.6487349,
-        "venue_lon": 115.13728069999999
+        "venue_lon": 115.13728069999999,
+        "rating": 3.5,
+        "reviews": 1204,
+        "price_level": 1
     }
 }}
 ```
@@ -318,4 +321,13 @@ By default the API is limited to 10 requests per second. Contact us for higher l
   &nbsp;
 - venue_info.**venue_lng** `float`
    Geographic longitude of the venue.
+  &nbsp;
+- venue_info.**rating** `float`
+   Average rating of the venue. Possible values are `2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0`, or `0` when not available.
+  &nbsp;
+- venue_info.**reviews** `int`
+   Total number of reviews for the venue, or `0` when not available.
+  &nbsp;
+- venue_info.**price_level** `int`
+   Price level of the venue ranging from `1` (least expensive) to `5` (most expensive), or `0` when not available.
   &nbsp;

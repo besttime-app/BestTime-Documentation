@@ -23,7 +23,7 @@ Additional BestTime functionality:
 <ul>
 <li>Live updates - know if a venue is more or less busy than normal (not available for all venues).</li>
 <li>Foot traffic analyses, like peak hours, quiet hours, week overviews</li>
-<li>Search foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Fransisco).
+<li>Search foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Francisco).
 </li>
 <li>
     Filter and sort venues in a whole area based on foot traffic data, dwell time, day, time, and business type, location, and more.
