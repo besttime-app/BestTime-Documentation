@@ -111,7 +111,7 @@ API Credit usage per API call for this endpoint depends on the number of returne
 ```
 
 
-### Response attributes Query Venues
+### Response attributes Venues Update
 The JSON response will contain a `list` with venue `objects`.
 
 - **venues[N]** `object`

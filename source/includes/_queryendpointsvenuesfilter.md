@@ -348,7 +348,7 @@ The Venue Filter endpoint is by default limited to 30 requests per minute. Conta
 ```
 
 
-### Response attributes Query Venues
+### Response attributes Venue Filter
 The JSON response will contain a `list` with venue `objects`.
 
 - **venues[N]** `object`

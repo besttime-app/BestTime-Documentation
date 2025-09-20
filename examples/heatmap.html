@@ -1,0 +1,1222 @@
+<link href="https://besttime.app/app-assets/css/components.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css"
+    integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous" />
+
+<link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css"
+    rel="stylesheet" />
+<link href="https://besttime.app/styles/vendor/leaflet-locate.css" rel="stylesheet" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"
+    integrity="sha256-fNoRrwkP2GuYPbNSJmMJOCyfRB2DhPQe0rGTgzRsyso=" crossorigin="anonymous"></script>
+
+<script src="https://besttime.app/scripts/vendor/heatmap.js"></script>
+<script src="https://besttime.app/scripts/vendor/leaflet-heatmap.js"></script>
+
+
+<style>
+    .leaflet-mouse-marker {
+        background-color: #fff;
+        cursor: crosshair;
+    }
+
+    .leaflet-marker-icon {
+        border: 0px;
+        background-color: #ffffff00;
+    }
+
+    .collision_icon {
+        /* background: white; */
+        /* border: 1px solid #888; */
+        text-shadow: 1px 1px 4px #fff, 1px 1px 20px #fcfcfc !important;
+        color: rgb(52, 52, 52);
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .leaflet-tooltip {
+        position: absolute;
+        padding: 0px;
+        background-color: transparent;
+        border: 0px solid transparent;
+        /* border-radius: 3px; */
+        color: #222;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+
+    }
+
+
+    .symbol {
+        display: inline !important;
+        float: right;
+    }
+
+    .demo-wrapper {
+        position: relative;
+    }
+
+    /* animation player css */
+    .timeline-wrapper {
+        z-index: 1000;
+        position: fixed;
+        top: 10px;
+        left: 38%;
+        right: 60px;
+        max-width: 700px;
+        height: 35px;
+        background: white;
+        transition: 1s ease all;
+        border-radius: 4px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .65);
+    }
+
+    .heatmap-timeline {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        left: 80px;
+        height: 100%;
+        margin-right: 15px;
+    }
+
+    .heatmap-timeline .line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 15px;
+        height: 2px;
+        background: #d7d7d7;
+    }
+
+    .heatmap-timeline .time-point.active {
+        background: #7367F0 !important;
+    }
+
+    .heatmap-timeline .time-point {
+        position: absolute;
+        background: white;
+        border: 2px solid #7367F0;
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        cursor: pointer;
+        top: 15px;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .heatmap-timeline .time-point:hover {
+        box-shadow: 0 0 5px black;
+    }
+
+    .timeline-wrapper button {
+        position: absolute;
+        outline: none;
+        color: black;
+        background: #f2f2f2;
+        width: 65px;
+        height: 100%;
+        cursor: pointer;
+        border: none;
+        text-transform: uppercase;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .button-live {
+        color: white !important;
+        background: #f50057 !important;
+    }
+
+    .button-now {
+        color: white !important;
+        background: #7367F0 !important;
+    }
+
+    .heatmap-timeline .time-point.active {
+        background: black;
+    }
+
+    .timeline-live {
+        max-width: 108px !important;
+    }
+
+
+    /* Page split */
+    /* Split the screen in half */
+    .split {
+        height: 100%;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        overflow-x: hidden;
+        /* padding-top: 20px; */
+    }
+
+    /* Control the left side */
+    .left {
+        width: 35%;
+        /* left: 0; */
+        background-color: rgb(255, 255, 255);
+    }
+
+    /* Control the right side */
+    .right {
+        width: 65%;
+        left: 35%;
+        /* background-color: red; */
+    }
+
+
+    /* Left venues list */
+    .section-result {
+        cursor: pointer;
+        box-sizing: border-box;
+        min-height: 112px;
+        padding: 10px 18px 10px 24px;
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+        border-left: 1px solid #E8EAED;
+    }
+
+    .section-result-wo-pointer {
+        box-sizing: border-box;
+        min-height: 112px;
+        padding: 10px 18px 10px 24px;
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+        border-left: 1px solid #E8EAED;
+    }
+
+    .section-result-content {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        /* display: flex; */
+    }
+
+    .section-result-text-content {
+        color: #70757A;
+        display: inline-block;
+        font-size: 13px;
+        line-height: 16px;
+        min-width: 1px;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        max-width: 195px;
+    }
+
+    .section-result-header-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+
+    .section-result-header-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+
+    .section-result-title-container {
+        padding-right: 10px;
+        width: 100%;
+        white-space: normal;
+    }
+
+    .cards-rating-score {
+        color: #e7711b;
+        margin-right: 4px;
+    }
+
+    .cards-rating-stars {
+        vertical-align: middle;
+        display: inline-block;
+        height: 13px;
+        margin-top: -2px;
+        margin-right: 4px;
+        font-size: 0;
+    }
+
+    .highres .cards-rating-star {
+        background-image: url(//maps.gstatic.com/tactile/omnibox/star-20130618-2x.png);
+    }
+
+    .cards-rating-star {
+        background: url(//maps.gstatic.com/tactile/omnibox/star-20130618.png) no-repeat;
+        background-size: 37px 13px;
+        display: inline-block;
+        height: 13px;
+        width: 13px;
+    }
+
+    .section-result-num-ratings {
+        color: #5F6368;
+    }
+
+    .section-result-details-container,
+    .section-result-descriptions,
+    .section-result-hours-phone-container,
+    .section-result-amenities {
+        padding-top: 2px;
+    }
+
+    .section-result-text-content {
+        color: #70757A;
+        display: inline-block;
+        font-size: 13px;
+        line-height: 16px;
+        min-width: 1px;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+    .section-result-text-content {
+        color: #70757A;
+        display: inline-block;
+        font-size: 13px;
+        line-height: 16px;
+        min-width: 1px;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+    .section-result-details-container,
+    .section-result-descriptions,
+    .section-result-hours-phone-container,
+    .section-result-amenities {
+        padding-top: 2px;
+    }
+
+    .section-image-container {
+        display: inline-block;
+        height: 92px;
+        width: 80px;
+        margin-left: 10px;
+        position: relative;
+    }
+
+    .section-result-image {
+        background-position: 50% 50%;
+        background-size: cover;
+        height: 92px;
+        width: 80px;
+        vertical-align: top;
+        -webkit-flex: 0 0 80px;
+        -ms-flex: 0 0 80px;
+        flex: 0 0 80px;
+    }
+
+    .section-divider-bottom-line {
+        border-bottom: 1px solid #E8EAED;
+        height: 0px;
+    }
+
+    .venues-search-bar {
+        border-left: 1px solid #E8EAED;
+        border-bottom: 1px solid #E8EAED;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 80%;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 13px;
+        background-color: white;
+        z-index: 1000;
+    }
+
+    .venues-search-bar-bg {
+        position: fixed;
+        width: 100%;
+        height: 150px;
+        background-color: white;
+        z-index: 999;
+    }
+</style>
+
+<div id="map_leaflet" style="height: 100% !important;border-radius: 0px;">
+</div>
+<div class="demo-wrapper" style="    font-family: sans-serif;">
+    <div class="timeline-wrapper"><button>play</button>
+        <div class="heatmap-timeline">
+            <div class="line"></div>
+            <div class="time-point" style="left: 0%;">
+                <div style="margin-top:5px; color:#a7a7a7;font-size:11px">6AM</div>
+            </div>
+            <div class="time-point active" style="left: 4.34783%;">
+                <div style="margin-top:5px; color:#7367F0;font-size:11px">7AM</div>
+            </div>
+            <div class="time-point" style="left: 8.69565%;"></div>
+            <div class="time-point" style="left: 13.0435%;"></div>
+            <div class="time-point" style="left: 17.3913%;"></div>
+            <div class="time-point" style="left: 21.7391%;"></div>
+            <div class="time-point" style="left: 26.087%;"></div>
+            <div class="time-point" style="left: 30.4348%;"></div>
+            <div class="time-point" style="left: 34.7826%;"></div>
+            <div class="time-point" style="left: 39.1304%;"></div>
+            <div class="time-point" style="left: 43.4783%;"></div>
+            <div class="time-point" style="left: 47.8261%;"></div>
+            <div class="time-point" style="left: 52.1739%;"></div>
+            <div class="time-point" style="left: 56.5217%;"></div>
+            <div class="time-point" style="left: 60.8696%;"></div>
+            <div class="time-point" style="left: 65.2174%;"></div>
+            <div class="time-point" style="left: 69.5652%;"></div>
+            <div class="time-point" style="left: 73.913%;"></div>
+            <div class="time-point" style="left: 78.2609%;"></div>
+            <div class="time-point" style="left: 82.6087%;"></div>
+            <div class="time-point" style="left: 86.9565%;"></div>
+            <div class="time-point" style="left: 91.3043%;"></div>
+            <div class="time-point" style="left: 95.6522%;"></div>
+            <div class="time-point" style="left: 100%;">
+                <div style="margin-top:5px;color:#a7a7a7;font-size:11px">5AM</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://besttime.app/scripts/vendor/leaflet-collision.js"></script>
+<script src="https://besttime.app/scripts/vendor/rbush.js"></script>
+<script src="https://besttime.app/scripts/vendor/leaflet-locate.js"></script>
+<script src="https://besttime.app/scripts/vendor/heatmap-data-interpolation.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+<script src="https://besttime.app/scripts/vendor/heatmap-data-interpolation.js"></script>
+
+
+<script>
+    let api_key_private = prompt("Please enter your api_key_private", "pri_XXX");
+    var maxLeafletVenueMarkers = 200;
+    var mvcObj;
+    var data;
+    var chartWeekRaw2;
+    var baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
+        maxZoom: 18
+    });
+    var venuemarkers = new L.LayerGroup();
+    var venuemarkers2 = [];
+    var collisionLayer = L.LayerGroup.collision({
+        margin: 5
+    });
+    window.layer = ""
+    window.heatmapData2 = [];
+    window.map_leaflet = new L.Map('map_leaflet', {
+        fullscreenControl: true,
+        center: new L.LatLng(37.7749, -122.4194),
+        zoom: 5,
+        layers: [baseLayer, venuemarkers, collisionLayer],
+        scrollWheelZoom: false,
+    });
+    var venue_ids
+
+    var table;
+    var markerIconUrl = "/images/radar/marker-icon-violet.png"
+    var moveMapOnInitFail = false;
+    var heatmapLayer;
+    var animationData;
+    var dayTimeWindow;
+    var player;
+    var choices_hours = [
+        [0, "6AM"],
+        [1, "7AM"],
+        [2, "8AM"],
+        [3, "9AM"],
+        [4, "10AM"],
+        [5, "11AM"],
+        [6, "12PM"],
+        [7, "1PM"],
+        [8, "2PM"],
+        [9, "3PM"],
+        [10, "4PM"],
+        [11,"5PM"],
+        [12, "6PM"],
+        [13, "7PM"],
+        [14, "8PM"],
+        [15, "9PM"],
+        [16, "10PM"],
+        [17, "11PM"],
+        [18, "12AM"],
+        [19, "1AM"],
+        [20, "2AM"],
+        [21, "3AM"],
+        [22, "4AM"],
+        [23, "5AM"]
+    ]
+
+
+    $('#PlaceDetailsModalScrollable').on('hidden.bs.modal', function () {
+        $('.customizer-toggle').show();
+    });
+    
+    function truncate(str, n, useWordBoundary, elips) {
+        el = elips ? "&hellip;" : "";
+        if (str.length <= n) {
+            return str;
+        }
+        const subString = str.substr(0, n - 1); // the original check
+        return (useWordBoundary ?
+            subString.substr(0, subString.lastIndexOf(" ")) :
+            subString) + el;
+    };
+
+
+    function replaceUrlParam(url, paramName, paramValue) {
+        if (paramValue == null || paramValue == "") {
+            return url.replace(new RegExp('[?&]' + paramName + '=[^&#]*(#.*)?$'), '$1').replace(new RegExp('([?&])' +
+                paramName + '=[^&]*&'), '$1');
+        }
+        url = url.replace(/\?$/, '');
+        var pattern = new RegExp('\\b(' + paramName + '=).*?(&|$)')
+        if (url.search(pattern) >= 0) {
+            return url.replace(pattern, '$1' + paramValue + '$2');
+        }
+        return url + (url.indexOf('?') > 0 ? '&' : '?') + paramName + '=' + paramValue
+    }
+
+    function venueFilter(setView = true) {
+
+
+        $.ajax({
+            url: `https://besttime.app/api/v1/venues/filter?api_key_private=${api_key_private}&radius=100000&lat=49.28&lng=-122.93&limit=200`,
+            method: "GET",
+        }).fail(function (err) {
+            console.log(err);
+
+            if (typeof (mvcObj) == 'object') mvcObj.clear();
+            try {
+                message = err.responseJSON['message']
+                if (typeof (message) == 'object') {
+                    param_name = Object.keys(err.responseJSON['message'])[0];
+                    mess = err.responseJSON['message'][param_name][0]
+                    alert("Error. Parameter " + param_name + ": " + mess + " ");
+                    console.log(param_name, mess);
+                } else {
+                    alert(err.responseJSON.message);
+                }
+            } catch (error) {
+                console.log(error);
+                try {
+                    alert(err.responseJSON.message);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            $("#venues_table").html("");
+            if (map_leaflet.hasLayer(venuemarkers)) {
+                venuemarkers.clearLayers();
+            }
+            if (map_leaflet.hasLayer(collisionLayer)) {
+                collisionLayer.clearLayers();
+            }
+            if (map_leaflet.hasLayer(heatmapLayer)) {
+                map_leaflet.removeLayer(heatmapLayer);
+            }
+        }).done(function (data) {
+            $('#spinner_preload').hide();
+            window.data = data;
+            dayTimeWindow = data['window'];
+            data = data['venues'];
+            drawMap(data, setView = setView);
+        }).always(function () {
+
+        });
+    };
+
+    function drawMap(data, setView = true, animation_ix = -1) {
+        var weigth_min = 0;
+        var heatmapData = [];
+        if (data) {
+
+            map_lat = data[0]['venue_lat']
+            map_lng = data[0]['venue_lng']
+            map_z = 13;
+
+            if (setView == true) {
+                map_leaflet.setView([map_lat, map_lng], map_z);
+            }
+            var cfg = {
+                "radius": 20,
+                "maxOpacity": 0.6,
+                "minOpacity": 0.3,
+                "blur": 1,
+                "scaleRadius": false,
+                gradient: {
+                    '.0': 'green',
+                    '.5': 'orange',
+                    '.8': 'red'
+                },
+                "useLocalExtrema": false,
+                latField: 'lat',
+                lngField: 'lng',
+                valueField: 'count'
+            };
+            if (map_leaflet.hasLayer(venuemarkers)) {
+                venuemarkers.clearLayers();
+            }
+            if (map_leaflet.hasLayer(collisionLayer)) {
+                collisionLayer.clearLayers();
+            }
+            if (map_leaflet.hasLayer(heatmapLayer)) {
+                map_leaflet.removeLayer(heatmapLayer);
+            }
+            heatmapLayer = new HeatmapOverlay(cfg);
+            heatmapData3 = {
+                max: 100,
+                data: heatmapData2
+            };
+            heatmapLayer.setData(heatmapData3);
+            heatmapLayer.addTo(map_leaflet);
+            collisionLayer.addTo(map_leaflet);
+            layer = heatmapLayer;
+            addVenueMarkers(data);
+            var timerId;
+            var throttleFunction = function (func, delay) {
+                if (timerId) {
+                    return
+                }
+                timerId = setTimeout(function () {
+                    func()
+                    timerId = undefined;
+                }, delay)
+            }
+            map_leaflet.on("moveend", function () {
+                function map_moveend() {
+                    console.log("Execute leaflet moveend")
+                    map_lat = map_leaflet.getCenter().lat.toFixed(2);
+                    map_lng = map_leaflet.getCenter().lng.toFixed(2);
+                    map_z = parseInt(map_leaflet.getZoom());
+                    new_url = replaceUrlParam(window.location.href, "map_lat", map_lat);
+                    new_url = replaceUrlParam(new_url, "map_lng", map_lng);
+                    new_url = replaceUrlParam(new_url, "map_z", map_z);
+                    if (window.location.href != new_url) {
+                        window.history.replaceState("", "", new_url);
+                    }
+                    b = map_leaflet.getBounds();
+                    radius = Math.round(1000 * calcDistance(b._southWest.lat, b._southWest.lng, b._northEast
+                        .lat, b._northEast.lng));
+                    trackFilterWithMap = true;
+                    if (trackFilterWithMap) {
+                        new_url = replaceUrlParam(window.location.href, "lat", map_lat);
+                        new_url = replaceUrlParam(new_url, "lng", map_lng);
+                        new_url = replaceUrlParam(new_url, "radius", radius);
+                        if (window.location.href != new_url) {
+                            window.history.replaceState("", "", new_url);
+                        }
+                    }
+                    $("#lat").val(map_lat);
+                    $("#lng").val(map_lng);
+                    $("#radius").val(radius);
+                }
+                throttleFunction(map_moveend, 2000);
+            })
+            Animate(data);
+            $("#animate_time_btn").click(function () {
+                choices_hours.forEach(function (item, index_hour) {
+                    setTimeout(function () {
+                        var heatmapDataNew = []
+                        data.forEach(function (item, index_data) {
+                            weight = item['day_raw'][index_hour]
+                            heatmapDataNew.push({
+                                lat: item['venue_lat'],
+                                lng: item['venue_lng'],
+                                count: weight
+                            })
+                        });
+                        heatmapLayer.addData(heatmapDataNew);
+                        $("#animate_time_btn").text(item[1]);
+                    }, index_hour * parseInt($("#animateDelay").val()))
+                })
+                setTimeout(function () {
+                    $("#animate_time_btn").html('<i class="feather icon-play"></i>');
+                    drawMap(data, setView = false);
+                }, (choices_hours.length + 1) * parseInt($("#animateDelay").val()))
+            })
+        }
+    }
+
+    function Animate(data) {
+        function AnimationPlayer(options) {
+            this.heatmap = options.heatmap;
+            this.data = options.data;
+            this.interval = null;
+            this.animationSpeed = options.animationSpeed || 300;
+            this.wrapperEl = options.wrapperEl;
+            this.isPlaying = false;
+            this.init();
+        };
+        AnimationPlayer.prototype = {
+            init: function () {
+                var dataLen = this.data.length;
+                this.wrapperEl.innerHTML = '';
+                var playButton = this.playButton = document.createElement('button');
+                playButton.onclick = function () {
+                    if (this.isPlaying) {
+                        this.stop();
+                        this.isPlaying = !this.isPlaying;
+                    } else {
+                        if ($('#live').prop("checked") == true) {
+                            this.live();
+                        } else {
+                            this.play();
+                            this.isPlaying = !this.isPlaying;
+                        }
+                    }
+                }.bind(this);
+                if ($('#live').prop("checked") == true) {
+                    playButton.innerText = 'LIVE';
+                } else if ($('#now').prop("checked") == true) {
+                    playButton.innerText = 'NOW';
+                } else {
+                    playButton.innerText = 'play';
+                }
+                this.wrapperEl.appendChild(playButton);
+                var events = document.createElement('div');
+                events.className = 'heatmap-timeline';
+                events.innerHTML = '<div class="line"></div>';
+                $('.timeline-wrapper').prop('title',
+                    "The timeline indicates the current selected hour of the selected day. Click on a different hour of the timeline to show foot traffic data for that hour. Click 'Play' to animate the foot traffic data throughout the selected day."
+                    );
+                $('.timeline-wrapper').prop('data-placement', "bottom");
+                for (var i = 0; i < dataLen; i++) {
+                    var xOffset = 100 / (dataLen - 1) * i;
+                    var ev = document.createElement('div');
+                    ev.className = 'time-point';
+                    ev.style.left = xOffset + '%';
+                    if ($('#live').prop("checked") == false) {
+                        ev.onclick = (function (i) {
+                            return function () {
+                                this.isPlaying = false;
+                                this.stop();
+                                this.setFrame(i);
+                            }.bind(this);
+                        }.bind(this))(i);
+                    }
+                    events.appendChild(ev);
+                }
+                this.wrapperEl.appendChild(events);
+                if (dayTimeWindow['time_local_index'] >= dayTimeWindow['time_window_start_ix'] && dayTimeWindow[
+                        'time_local_index'] <= dayTimeWindow['time_window_end_ix']) {
+                    frame = dayTimeWindow['time_local_index'] - dayTimeWindow['time_window_start_ix'];
+                } else {
+                    frame = dayTimeWindow['time_window_start_ix'] - dayTimeWindow['time_window_start_ix'];
+                }
+                if ($('#live').prop("checked") == true) {
+                    frame = 0;
+                    $('.timeline-wrapper').addClass('timeline-live');
+                    $('.line').hide();
+                    $('.timeline-wrapper button').addClass('button-live');
+                } else if ($('#now').prop("checked") == true) {
+                    frame = 0;
+                    $('.timeline-wrapper').addClass('timeline-live');
+                    $('.line').hide();
+                    $('.timeline-wrapper button').addClass('button-now');
+                } else {
+                    $('.timeline-wrapper').removeClass('timeline-live');
+                    $('.timeline-wrapper button').removeClass('button-live');
+                    $('.timeline-wrapper').removeClass('timeline-now');
+                    $('.timeline-wrapper button').removeClass('button-now');
+                    $('.line').show();
+                }
+                this.setFrame(frame);
+                if ($('#live').prop("checked") == true) {
+                    try {
+                        clearInterval(forecast_reload);
+                    } catch {}
+                    var live_reload = setInterval(function () {
+                        venueFilter();
+                    }, 900 * 1000);
+                } else {
+                    try {
+                        clearInterval(live_reload);
+                    } catch {}
+                    if ($('#day_int').val() == "" && $('#hour_min').val() == "" && $('#hour_max').val() == "") {
+                        var forecast_reload = setInterval(function () {
+                            var d = new Date();
+                            minute = d.getMinutes();
+                            if (minute == 0) {
+                                if (player.currentFrame == 23) {
+                                    venueFilter();
+                                } else {
+                                    player.setFrame(player.currentFrame + 1);
+                                }
+                            }
+                        }, 60 * 1000);
+                    }
+                }
+            },
+            play: function () {
+                if (!$('#now').prop("checked") && !$('#live').prop("checked")) {
+                    var dataLen = this.data.length;
+                    this.playButton.innerText = 'pause';
+                    this.interval = setInterval(function () {
+                        this.setFrame(++this.currentFrame % dataLen);
+                    }.bind(this), this.animationSpeed);
+                }
+            },
+            stop: function () {
+                clearInterval(this.interval);
+                this.playButton.innerText = 'play';
+            },
+            live: function () {
+                this.playButton.innerText = 'LIVE';
+            },
+            setFrame: function (frame) {
+                this.currentFrame = frame;
+                var snapshot = this.data[frame];
+                heatmapData3 = {
+                    max: 100,
+                    data: snapshot
+                };
+                heatmapLayer.setData(heatmapData3);
+                var timePoints = $('.heatmap-timeline .time-point');
+                for (var i = 0; i < timePoints.length; i++) {
+                    timePoints[i].classList.remove('active');
+                    timePoints[i].innerHTML = "";
+                }
+                if ($('#now').prop("checked") == true) {
+                    timePoints[0].classList.add('active');
+                    timePoints[0].innerHTML = '<div style="margin-top:5px; color:#7367F0;font-size:11px">' +
+                        dayTimeWindow['time_local_12']; + '</div>';
+                } else {
+                    timePoints[0].innerHTML = '<div style="margin-top:5px; color:#a7a7a7;font-size:11px">' +
+                        dayTimeWindow['time_window_start_12h'] + '</div>';
+                    timePoints[this.data.length - 1].innerHTML =
+                        '<div style="margin-top:5px;color:#a7a7a7;font-size:11px">' + dayTimeWindow[
+                            'time_window_end_12h'] + '</div>';
+                    timePoints[frame].classList.add('active');
+                    timePoints[frame].innerHTML = '<div style="margin-top:5px; color:#7367F0;font-size:11px">' +
+                        choices_hours[frame + dayTimeWindow['time_window_start_ix']][1]; + '</div>';
+                }
+            },
+            setAnimationData: function (data) {
+                this.isPlaying = false;
+                this.stop();
+                this.data = window.data;
+                this.init();
+            },
+            setAnimationSpeed: function (speed) {
+                this.isPlaying = false;
+                this.stop();
+                this.animationSpeed = speed;
+            }
+        };
+        animationData = [];
+        for (var i = 0; i < data[0]['day_raw'].length; i++) {
+            hour_data = [];
+            data.forEach(function (item, index) {
+                weight = item['day_raw'][i]
+                hour_data.push({
+                    lat: item['venue_lat'],
+                    lng: item['venue_lng'],
+                    count: weight
+                })
+            });
+            animationData.push(hour_data);
+        };
+        player = new AnimationPlayer({
+            heatmap: heatmapLayer,
+            wrapperEl: document.querySelector('.timeline-wrapper'),
+            data: animationData,
+            animationSpeed: 100
+        });
+        $("#animateDelay").change(function () {
+            player.setAnimationSpeed(parseInt($("#animateDelay").val()));
+        })
+    }
+
+    function calcDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371;
+        var dLat = toRad(lat2 - lat1);
+        var dLon = toRad(lon2 - lon1);
+        var lat1 = toRad(lat1);
+        var lat2 = toRad(lat2);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+        return d;
+    }
+
+    function toRad(Value) {
+        return Value * Math.PI / 180;
+    }
+
+    function convert24to12(hours) {
+        var AmOrPm = hours >= 12 ? 'pm' : 'am';
+        hours = (hours % 12) || 12;
+        return hours + " " + AmOrPm
+    }
+
+    function addVenueMarkers(tabledata) {
+        var venuesadded = [];
+        var j = 0;
+        if (tabledata.length == 1) {
+            getVenueDetails(window.data.venues[0])
+        }
+
+        function onClick(e) {
+            getVenueDetails(window.data.venues[e.sourceTarget.tableid])
+        }
+
+        var count = 0;
+        var scrollFlag = true;
+
+        for (i = 0; i < tabledata.length; i++) {
+            if (i < maxLeafletVenueMarkers) {
+                var venuemarker = L.marker([tabledata[i].venue_lat, tabledata[i].venue_lng], {
+                    opacity: 0,
+                }).on('click', onClick);
+                venuemarker.tableid = i;
+                venuemarker.bindTooltip("<div class='leaflet-tooltip-transparent'>" + truncate(tabledata[i].venue_name,
+                    20, true, true) + "</div>", {
+                    permanent: false,
+                    direction: 'center',
+                    offset: [0, 0],
+                    opacity: 1,
+                    className: 'leaflet-tooltip-transparent'
+                });
+                collisionmarker = L.marker([tabledata[i].venue_lat, tabledata[i].venue_lng], {
+                    icon: L.divIcon({
+                        html: "<span class='collision_icon'>" +
+                            tabledata[i].venue_name +
+                            "</span>"
+                    }),
+                    opacity: 1,
+                }).on('click', onClick);
+                collisionmarker.tableid = i;
+                venuemarkers2.push(venuemarker);
+                venuemarkers.addLayer(venuemarker);
+                collisionLayer.addLayer(collisionmarker);
+            }
+            j = j + 1;
+        }
+        return venuemarkers;
+    }
+
+    function getVenueDetails(venue_data) {
+        alert(venue_data.venue_name + " " + venue_data.venue_address)
+
+    }
+
+    function getWeekRaw(venue_id) {
+        var params = {
+            'api_key_public': api_key_public,
+            'venue_id': venue_id
+        }
+        $.ajax({
+            url: window.location.protocol + "//" + window.location.host + "/api/v1/forecasts/week/raw2?" +
+                new URLSearchParams(params).toString(),
+            method: "GET",
+        }).fail(function (err) {
+            console.log(err);
+            console.log("forecast week raw. fail");
+            if (typeof (mvcObj) == 'object') mvcObj.clear();
+            alert(err.responseJSON.message);
+        }).done(function (data) {
+            open_ix = []
+            close_ix = []
+            data.analysis.week_raw.forEach(function (item, index) {
+                venue_open = item.day_info.venue_open;
+                venue_closed = item.day_info.venue_closed;
+                if (venue_open != "Closed") {
+                    open_ix.push(hour2index(venue_open));
+                    close_ix.push(hour2index(venue_closed));
+                }
+            });
+            open_ix_min = Math.min(...open_ix);
+            close_ix_max = Math.max(...close_ix);
+            if (open_ix_min > close_ix_max || open_ix_min == close_ix_max) {
+                open_ix_min = 0;
+                close_ix_max = 23;
+            } else {
+                close_ix_max = close_ix_max;
+            }
+            chartWeekRaw2.updateOptions({
+                xaxis: {
+                    categories: ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM',
+                        '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM', '12AM',
+                        '1AM', '2AM', '3AM', '4AM', '5AM'
+                    ].slice(open_ix_min, close_ix_max)
+                }
+            });
+            chartWeekRaw2.updateSeries([{
+                name: 'Sun',
+                data: data.analysis.week_raw[6].day_raw.slice(open_ix_min, close_ix_max)
+            }, {
+                name: 'Sat',
+                data: data.analysis.week_raw[5].day_raw.slice(open_ix_min, close_ix_max)
+            }, {
+                name: 'Fri',
+                data: data.analysis.week_raw[4].day_raw.slice(open_ix_min, close_ix_max)
+            }, {
+                name: 'Thu',
+                data: data.analysis.week_raw[3].day_raw.slice(open_ix_min, close_ix_max)
+            }, {
+                name: 'Wed',
+                data: data.analysis.week_raw[2].day_raw.slice(open_ix_min, close_ix_max)
+            }, {
+                name: 'Tue',
+                data: data.analysis.week_raw[1].day_raw.slice(open_ix_min, close_ix_max)
+            }, {
+                name: 'Mon',
+                data: data.analysis.week_raw[0].day_raw.slice(open_ix_min, close_ix_max)
+            }])
+        });
+    }
+    busyCategories = {
+        notBusy: {
+            min: 1,
+            max: 39,
+            name: 'Not busy',
+            color: '#00A100'
+        },
+        littleBusy: {
+            min: 40,
+            max: 69,
+            name: 'Little busy',
+            color: '#FFB200'
+        },
+        Busy: {
+            min: 70,
+            max: 500,
+            name: "Busy",
+            color: '#FF0000'
+        }
+    }
+
+    function initWeekRaw2Chart() {
+        var sampleData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var options = {
+            series: [{
+                name: 'Sun',
+                data: sampleData
+            }, {
+                name: 'Sat',
+                data: sampleData
+            }, {
+                name: 'Fri',
+                data: sampleData
+            }, {
+                name: 'Thu',
+                data: sampleData
+            }, {
+                name: 'Wed',
+                data: sampleData
+            }, {
+                name: 'Tue',
+                data: sampleData
+            }, {
+                name: 'Mon',
+                data: sampleData
+            }],
+            chart: {
+                height: 350,
+                type: 'heatmap',
+            },
+            plotOptions: {
+                heatmap: {
+                    shadeIntensity: 0.5,
+                    useFillColorAsStroke: true,
+                    colorScale: {
+                        ranges: [{
+                            from: busyCategories.notBusy.min,
+                            to: busyCategories.notBusy.max,
+                            name: busyCategories.notBusy.name,
+                            color: busyCategories.notBusy.color
+                        }, {
+                            from: 40,
+                            to: 69,
+                            name: 'Usually a little busy',
+                            color: '#FFB200'
+                        }, {
+                            from: 70,
+                            to: 100,
+                            name: 'As busy as it gets',
+                            color: '#FF0000'
+                        }]
+                    }
+                }
+            },
+            dataLabels: {
+                enabled: false,
+                formatter: function (val) {
+                    return val + "%";
+                }
+            },
+            xaxis: {
+                labels: {
+                    rotate: 90,
+                    rotateAlways: true,
+                    trim: false,
+                    hideOverlappingLabels: true,
+                    offsetY: 25,
+                },
+                categories: ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM',
+                    '6PM', '7PM', '8PM', '9PM', '10PM', '11PM', '12AM', '1AM', '2AM', '3AM', '4AM', '5AM'
+                ],
+                tickPlacement: 'between'
+            },
+            axisTicks: {
+                show: true,
+                borderType: 'solid',
+                color: '#78909C',
+                height: 6,
+                offsetX: 0,
+                offsetY: 0
+            },
+            stroke: {
+                width: 1
+            },
+            title: {
+                text: 'Week visitor forecast'
+            },
+            tooltip: {
+                enabled: true,
+                x: {
+                    show: false
+                },
+                y: {
+                    formatter: function (value, {
+                        series,
+                        seriesIndex,
+                        dataPointIndex,
+                        w
+                    }) {
+                        return value + "%";
+                    }
+                },
+                fixed: {
+                    enabled: false,
+                    position: 'topLeft',
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+            },
+        };
+        chartWeekRaw2 = new ApexCharts(document.querySelector("#chart-weekheatmap"), options);
+        chartWeekRaw2.render();
+    }
+    var data_test;
+
+    function getRandomInRange(from, to, fixed) {
+        return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
+    }
+
+    function generateRandomData(len) {
+        var points = [];
+        var max = 0;
+        var width = 840;
+        var height = 400;
+        while (len--) {
+            var val = Math.floor(Math.random() * 100);
+            max = Math.max(max, val);
+            var point = {
+                lat: getRandomInRange(52.37, 52.39, 7),
+                lng: getRandomInRange(4.7, 4.9, 7),
+                count: val
+            };
+            points.push(point);
+        }
+        return points
+    }
+    var option = {
+        tooltip: {
+            show: true,
+            formatter: '{c}% vs max <br> max of the week'
+        },
+        xAxis: {
+            show: true,
+            nameTextStyle: {
+                color: "#b5b5b5"
+            },
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show: true,
+                showMinLabel: true,
+                showMaxLabel: true,
+                interval: 3,
+                color: "#b5b5b5",
+                align: 'center'
+            },
+            data: ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM',
+                '7PM', '8PM', '9PM', '10PM', '11PM', '12AM', '1AM', '2AM', '3AM', '4AM', '5AM'
+            ]
+        },
+        yAxis: {
+            show: true,
+            min: 0,
+            max: 100,
+            interval: 100,
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false,
+            },
+            axisLabel: {
+                show: true,
+                interval: 100,
+                showMaxLabel: true,
+                showMinLabel: false,
+                color: "#b5b5b5",
+                formatter: function (value) {
+                    return value + "%";
+                }
+            },
+            splitline: {
+                show: false
+            }
+        },
+        grid: {
+            left: 40,
+            top: 30,
+            right: 0,
+            bottom: 20
+        },
+        series: [{
+            type: 'bar'
+        }]
+    };
+
+    $(document).ready(function () {
+        venueFilter();
+    });
+</script>
