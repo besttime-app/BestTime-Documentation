@@ -11,7 +11,6 @@ params = {
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
     'q': 'supermarkets in sydney australia',
     'num': 200,
-    'fast': False,
     'format': 'raw'
 }
 
@@ -21,7 +20,7 @@ print(response.json())
 
 ```shell
 # cURL
-curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=200&fast=false&format=raw'
+curl --location --request POST 'https://besttime.app/api/v1/venues/search?api_key_private=pri_50990bf1f8828f6abbf6152013113c6b&q=quiet%20supermarkets%20in%20sydney%20australia%20sunday%20morning&num=60&format=raw'
 ```
 
 ```javascript
@@ -29,7 +28,6 @@ const params = new URLSearchParams({
     'api_key_private': 'pri_50990bf1f8828f6abbf6152013113c6b',
     'q': 'supermarkets in sydney australia',
     'num': 200,
-    'fast': false,
     'format': 'raw'
 });
 
@@ -67,8 +65,8 @@ This query endpoint requires the private API key.
  Text query to search venues with a matching venue name (e.g. Whole Foods), or venue type (e.g. restaurants), and location (e.g. neighborhood, city, state or country). Max length `128` characters. You can use natural language to automatically add venue filters. See [Natural Language in a search query](#natural-language-in-the-search-query-as-filters)
  &nbsp;
 - **num** `int` <span style="color:blue">OPTIONAL</span>  
-Maximum number of search results, with increments of 20 venues, and a range from `20` to `200`.
-The default number is `20`. API credits for this endpoint are counted per `20` search results. The search time grows linearly with the number of requested numbers (see also parameter `fast`).    
+Maximum number of search results, with increments of 20 venues, and a range from `20` to `60`.
+The default number is `20`. API credits for this endpoint are counted per `20` search results. The search time grows linearly with the number of requested numbers.    
 &nbsp;
 - **format** `string` <span style="color:blue">OPTIONAL</span>  
 Format for the foot traffic forecast of `venue_foot_traffic_forecast` returned in the final search results (if the venue has foot traffic data available). Choices are: `none, raw, all`. Choosing `raw` will only return the hourly foot traffic percentages for every day of the week (default). `all` will return the raw data including all foot traffic analyses, similar to the 'New Foot Traffic Forecast' and 'Query Week' response format. Select `None` skip the foot traffic data in the response to reduce the response size and increase the performance (e.g. if you use the foot traffic filter endpoint after this).   
@@ -76,10 +74,6 @@ Format for the foot traffic forecast of `venue_foot_traffic_forecast` returned i
 - **opened** `string` <span style="color:blue">OPTIONAL</span>  
 Search for venues with specific opening times. Options are `24`, `now`, `all` . `24` will return venues with a 24 hour opening time. `now` will return venues that are opened at this moment. `all` will return all venues regardless of their opening hours. Defaults to `all`.
  &nbsp;
-- **fast** `boolean` <span style="color:blue">OPTIONAL</span>  
-Boolean to select the normal speed or fast search method. Searching with the fast method is charged with more API credits. Defaults to `true` (fast search speed). The fast method is limited to a maximum `num` of `60`. Selecting a higher number will automatically use the normal speed method. Select `false` to save on API credits or to search for more venues. See [API Credits](#credits) for more info. Fixed packages each have a limited number of fast and normal search queries per month. The Pro - metered plan has a limit of 10000 fast venue search calls per calendar month. Contact us for high-volume fast or normal search queries.
- &nbsp;
-
 - **collection_id** `string` <span style="color:blue">OPTIONAL</span>  
 Add the results to an existing or user-defined collection_id. If this parameter is omitted a new unique collection_id will be generated. All successfully forecasted venues will be automatically added to this collection. By giving an existing collection_id the user can merge the new venues with an existing venue collection. See [Collections](#collections) for more info.
  &nbsp;
@@ -108,7 +102,7 @@ HTTP method: POST
 </aside>
 
 <aside class="warning">
-API Credit usage per API call for this endpoint depends on the number `num` of requested venues and the search speed (Normal or Fast). See 'API key credits' for more information.
+API Credit usage per API call for this endpoint depends on the number `num` of requested venues and the search speed. See 'API key credits' for more information.
 </aside>
 
 
@@ -272,6 +266,23 @@ Adding the `collection_id` passes on the collection_id in the result links once 
                         "day_rank_max": 6,
                         "day_rank_mean": 7,
                         "day_text": "Monday",
+                        "venue_open_close_v2": {
+                            "24h": [
+                                {
+                                    "opens": 6,
+                                    "opens_minutes": 0,
+                                    "closes": 21,
+                                    "closes_minutes": 0,
+                                    "open_24h": false,
+                                    "crosses_midnight": false,
+                                    "day_text": "Monday"
+                                }
+                            ],
+                            "12h": [
+                                "6am–9pm"
+                            ],
+                            "special_day": null
+                        },
                         "venue_closed": 21,
                         "venue_open": 6
                     },
@@ -311,6 +322,23 @@ Adding the `collection_id` passes on the collection_id in the result links once 
                         "day_rank_max": 7,
                         "day_rank_mean": 7,
                         "day_text": "Tuesday",
+                        "venue_open_close_v2": {
+                            "24h": [
+                                {
+                                    "opens": 6,
+                                    "opens_minutes": 0,
+                                    "closes": 21,
+                                    "closes_minutes": 0,
+                                    "open_24h": false,
+                                    "crosses_midnight": false,
+                                    "day_text": "Tuesday"
+                                }
+                            ],
+                            "12h": [
+                                "6am–9pm"
+                            ],
+                            "special_day": null
+                        },
                         "venue_closed": 21,
                         "venue_open": 6
                     },
