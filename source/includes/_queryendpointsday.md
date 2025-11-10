@@ -75,6 +75,23 @@ HTTP method: GET
       "day_rank_max": 6,
       "day_rank_mean": 4,
       "day_text": "Monday",
+      "venue_open_close_v2": {
+        "24h": [
+          {
+            "opens": 6,
+            "opens_minutes": 0,
+            "closes": 23,
+            "closes_minutes": 0,
+            "open_24h": false,
+            "crosses_midnight": false,
+            "day_text": "Monday"
+          }
+        ],
+        "12h": [
+          "6am–11pm"
+        ],
+        "special_day": null
+      },
       "venue_closed": 4,
       "venue_open": 4
     },
@@ -152,11 +169,23 @@ HTTP method: GET
      - analysis.day_info.**day_text** `string`  
        Day name. E.g. `monday`  
        &nbsp;
-     - analysis.day_info.**venue_closed** `int`/`string`  
-       Hour of day when the venue closes. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day.  
+     - analysis.day_info.**venue_open_close_v2** `object`
+       Object with open and close times for the venue. The object contains two lists: `24h` and `12h`. The `24h` list contains open and close times for the venue in 24 hour notation. The `12h` list contains open and close times for the venue in 12 hour notation. A venue can have multiple opening times per day. Note: requires refreshing the foot traffic forecast if the foot traffic forecast is outdated.
+        &nbsp;
+        - analysis.day_info.venue_open_close_v2.**24h** `list`
+          List with objects describing each opening period in 24 hour notation. Every object contains `opens`, `opens_minutes`, `closes`, `closes_minutes`, `open_24h`, `crosses_midnight`, and `day_text`.
+          &nbsp;
+        - analysis.day_info.venue_open_close_v2.**12h** `list`
+          List with open and close times for the venue in 12 hour notation (matching the `label` values shown in the `24h` objects).
+          &nbsp;
+        - analysis.day_info.venue_open_close_v2.**special_day** `object|null`
+          Optional object describing holiday/special-day overrides. Either `null` or an object with `message` and `name` fields when Google marks a day as special.
+          &nbsp;
+     - analysis.day_info.**venue_closed** `int`/`string` <span style="color:red">DEPRECATED</span>
+       Hour of day when the venue closes. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
-     - analysis.day_info.**venue_open** `int`/`string`  
-       Hour of day when the venue opens. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day.  
+     - analysis.day_info.**venue_open** `int`/`string` <span style="color:red">DEPRECATED</span>
+       Hour of day when the venue opens. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
  - analysis.**hour_analysis** `list`  
    List with hour objects, containing details per hour.  

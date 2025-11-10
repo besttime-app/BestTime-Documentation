@@ -53,15 +53,24 @@ fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
                 "day_rank_mean": 4,
                 "day_text": "Monday",
                 "venue_open_close_v2": {
-                    "24h": [
-                        {
-                            "opens": 6,
-                            "closes": 23
-                        }
+                   "24h": [
+                    {
+                        "opens": 6,
+                        "opens_minutes": 0,
+                        "closes": 23,
+                        "closes_minutes": 0,
+                        "open_24h": false,
+                        "crosses_midnight": false,
+                        "day_text": "Monday"
+                    }
                     ],
                     "12h": [
                         "6am–11pm"
-                    ]
+                    ],
+                    "special_day": {
+                      "message": "Opening hours might differ on Christmas Day",
+                      "name": "Christmas Day",
+                    }
                 },
             },
             "day_raw": [
@@ -229,10 +238,13 @@ By default the API is limited to 10 requests per second. Contact us for higher l
        Object with open and close times for the venue. The object contains two lists: `24h` and `12h`. The `24h` list contains open and close times for the venue in 24 hour notation. The `12h` list contains open and close times for the venue in 12 hour notation. A venue can have multiple opening times per day. Note: requires refreshing the foot traffic forecast if the foot traffic forecast is outdated.
         &nbsp;
         - analysis[day_int].day_info.venue_open_close_v2.**24h** `list`
-          List with open and close times objects for the venue in 24 hour notation.
+          List with objects describing each opening period in 24 hour notation. Every object contains `opens`, `opens_minutes`, `closes`, `closes_minutes`, `open_24h`, `crosses_midnight`, and `day_text`.
           &nbsp;
         - analysis[day_int].day_info.venue_open_close_v2.**12h** `list`
-          List with open and close times for the venue in 12 hour notation.
+          List with open and close times for the venue in 12 hour notation (matching the `label` values shown in the `24h` objects).
+          &nbsp;
+        - analysis[day_int].day_info.venue_open_close_v2.**special_day** `object|null`
+          Optional object describing holiday/special-day overrides. Either `null` or an object with `message` and `name` fields.
           &nbsp;
  - analysis[day_int].**day_raw** `list`
    List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.
@@ -312,6 +324,9 @@ By default the API is limited to 10 requests per second. Contact us for higher l
   &nbsp;
   - venue_info.**venue_type** `string`
    Type of venue, or `OTHER` when not available. Possible types are (most common shown first) `RESTAURANT, SHOPPING, FAST_FOOD, BAR, SUPERMARKET, GROCERY, PARK, OTHER, APPAREL, FOOD_AND_DRINK, CAFE, SHOPPING_CENTER, COFFEE, AIRPORT, SPORTS_COMPLEX, PHARMACY, PERSONAL_CARE, VEHICLE, GAS_STATION, MUSEUM, DENTIST, LIBRARY, BANKING, TOURIST_DESTINATION, CASH_MACHINE, FOOD_DELIVERY, EVENT_VENUE, SPA, MARKET, CLUBS, PUBLIC_TRANSIT, BREWERY, SPORTING_GOODS, HISTORICAL, PERFORMING_ARTS, DOCTOR, AMUSEMENT_PARK, GIFTS, TEA, CHURCH, SKILL_INSTRUCTION, TRAIN_STATION, ARTS, GOLF, ZOO, BOTANICAL_GARDEN, NATIONAL_PARK, SUBWAY_STATION, CASINO, MOVIE_THEATER, POST_OFFICE, HIKING, GOLF_COURSE, NATURE_RESERVE, BRIDGE, BUS_STATION, GOVERNMENT, REST_AREA, WINERY, SCENIC_POINT, SOUVENIR_SHOP, CITY_HALL, BOATING, CONCERT_HALL, SWIMMING, MONUMENT, SOCCER, CAR_RENTAL, MOSQUE, INDUSTRIAL, VISITOR_CENTER, ANTIQUES, AQUARIUM, PALACE, HINDU_TEMPLE, STADIUM, WINTER_SPORTS, BUDDHIST_TEMPLE, EMBASSY, TEMPLE, TENNIS, BASEBALL, FERRY_TERMINAL, FISHING, POLICE, SCHOOL, BAKERY, AGRICULTURE, CRICKET, FAIRGROUNDS, GONDOLA_LIFT_STATION, HOSPITAL, LIGHTHOUSE, MILITARY, MORMON_TEMPLE, UNIVERSITY`
+  &nbsp;
+- venue_info.**venue_open_close_v2** `object`
+  Returned in both success and error payloads when opening hours are available, so you can inspect the latest schedule even if not enough foot-traffic data exists for a forecast. Structure matches `analysis.day_info.venue_open_close_v2`, including the optional `special_day` that is either `null` or `{ "message": "...", "name": "..." }`.
   &nbsp;
 - venue_info.**venue_types** `list`
    Detailed venue types/services (not to confuse with `venue_type`)
