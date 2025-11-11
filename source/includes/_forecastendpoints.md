@@ -44,35 +44,82 @@ fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
 > The above request returns JSON structured like this:
 
 ```json
-  {
+{
+    "status": "OK",
+    "venue_info": {
+        "venue_id": "ven_454e4e686e4a7046453659526b6f775a6c3673525158614a496843",
+        "venue_name": "Empire State Building",
+        "venue_address": "20 W 34th St. New York, NY 10001 United States",
+        "venue_address_list": [
+            "20 W 34th St.",
+            "New York, NY 10001",
+            "United States"
+        ],
+        "venue_timezone": "America/New_York",
+        "venue_dwell_time_min": 45,
+        "venue_dwell_time_max": 120,
+        "venue_dwell_time_avg": 82,
+        "venue_type": "HISTORICAL",
+        "venue_types": [
+            "historical_landmark",
+            "historical_place_museum",
+            "observation_deck",
+            "tourist_attraction"
+        ],
+        "venue_lat": 40.7484405,
+        "venue_lon": -73.98566439999999,
+        "rating": 4.7,
+        "reviews": 121628,
+        "price_level": 0
+    },
     "analysis": [
         {
             "day_info": {
                 "day_int": 0,
-                "day_rank_max": 6,
-                "day_rank_mean": 4,
                 "day_text": "Monday",
+                "venue_open": 11,
+                "venue_closed": 21,
+                "day_rank_mean": 6,
+                "day_rank_max": 6,
+                "day_mean": 79,
+                "day_max": 82,
                 "venue_open_close_v2": {
-                   "24h": [
-                    {
-                        "opens": 6,
-                        "opens_minutes": 0,
-                        "closes": 23,
-                        "closes_minutes": 0,
-                        "open_24h": false,
-                        "crosses_midnight": false,
-                        "day_text": "Monday"
-                    }
+                    "24h": [
+                        {
+                            "opens": 11,
+                            "closes": 21,
+                            "opens_minutes": 0,
+                            "closes_minutes": 0
+                        }
                     ],
                     "12h": [
-                        "6am–11pm"
+                        "11am–9pm"
                     ],
-                    "special_day": {
-                      "message": "Opening hours might differ on Christmas Day",
-                      "name": "Christmas Day",
-                    }
+                    "special_day": null,
+                    "open_24h": false,
+                    "crosses_midnight": false,
+                    "day_text": "Monday"
                 },
+                "note": "Update: venue_open_close_v2 replaces venue_open and venue_closed and supports multiple opening times per day."
             },
+            "busy_hours": [],
+            "quiet_hours": [
+                20,
+                21
+            ],
+            "peak_hours": [],
+            "surge_hours": {
+                "most_people_come": 9,
+                "most_people_leave": 22
+            },
+            "hour_analysis": [
+                {
+                    "hour": 6,
+                    "intensity_nr": -1,
+                    "intensity_txt": "Below average"
+                },
+                ... Other hours hidden. See full JSON example link below
+            ],
             "day_raw": [
                 10,
                 25,
@@ -98,68 +145,12 @@ fetch(`https://besttime.app/api/v1/forecasts?${params}`, {
                 0,
                 5,
                 5
-            ],
-            "hour_analysis": [
-                {
-                    "hour": 6,
-                    "intensity_nr": -1,
-                    "intensity_txt": "Below average"
-                },
-                ... Other hours hidden. See full JSON example link below
-            ],
-            "peak_hours": [
-                {
-                    "peak_start": 8,
-                    "peak_max": 11,
-                    "peak_end": 23,
-                    "peak_intensity": 4
-                }
-            ],
-            "quiet_hours": [
-                6,
-                1,
-                2,
-                3
-            ],
-            "busy_hours": [
-                9,
-                10,
-                11,
-                12
-            ],
-            "surge_hours": {
-                "most_people_come": 8,
-                "most_people_leave": 22
-            },
+            ]
         },
         ... Other days hidden. See full JSON example link below
     ],
-    "epoch_analysis": "1583314752",
-    "status": "OK",
-    "venue_info": {
-        "venue_address": "1201 Ocean Ave San Francisco, CA 94112 United States",
-        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
-        "venue_name": "McDonald's",
-        "venue_timezone": "America/Los_Angeles",
-        "venue_dwell_time_min": 20,
-        "venue_dwell_time_max": 60,
-        "venue_dwell_time_avg": 40,
-        "venue_type": "FAST_FOOD",
-        "venue_types": [
-            "fast_food_restaurant",
-            "breakfast_restaurant",
-            "coffee_shop",
-            "hamburger_restaurant",
-            "restaurant",
-            "sandwich_shop"
-        ],
-        "venue_lat": -8.6487349,
-        "venue_lon": 115.13728069999999,
-        "rating": 3.5,
-        "reviews": 1204,
-        "price_level": 1
-    }
-}}
+    "epoch_analysis": "1583314752"
+}
 ```
 
 > Click <a href="https://github.com/besttime-app/slate/blob/master/source/examples/forecast_new/forecast_new_response.json" target="_blank">here</a> for the full JSON response
@@ -228,6 +219,12 @@ By default the API is limited to 10 requests per second. Contact us for higher l
      - analysis[day_int].day_info.**day_text** `string`
        Day name. E.g. `monday`
        &nbsp;
+     - analysis[day_int].day_info.**day_mean** `int`
+       Indicating the average busyness percentage (0 - 100%). Values are based on the total visitors (volume) of the day, relative to the biggest peak of the week for this venue.
+       &nbsp;
+     - analysis[day_int].day_info.**day_max** `int`
+       Indicating the maximum busyness percentage. Values (0 - 100%) are based on the hour with the most visitors of the day, relative to the biggest peak of the week for this venue.
+       &nbsp;
      - analysis[day_int].day_info.**venue_closed** `int`/`string` <span style="color:red">DEPRECATED</span>
        Hour of day when the venue closes. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
@@ -235,17 +232,29 @@ By default the API is limited to 10 requests per second. Contact us for higher l
        Hour of day when the venue opens. Range `0` to `23` hour. States `'closed'` when the venue is closed whole day. Deprecated, use `venue_open_close_v2` instead.
        &nbsp;
      - analysis[day_int].day_info.**venue_open_close_v2** `object`
-       Object with open and close times for the venue. The object contains two lists: `24h` and `12h`. The `24h` list contains open and close times for the venue in 24 hour notation. The `12h` list contains open and close times for the venue in 12 hour notation. A venue can have multiple opening times per day. Note: requires refreshing the foot traffic forecast if the foot traffic forecast is outdated.
+       Object with open and close times for the venue. The object contains `day_text`, `open_24h`, `crosses_midnight`, two lists: `24h` and `12h`, and optional `special_day`. The `24h` list contains open and close times for the venue in 24 hour notation. The `12h` list contains open and close times for the venue in 12 hour notation. A venue can have multiple opening times per day. Note: requires refreshing the foot traffic forecast if the foot traffic forecast is outdated.
         &nbsp;
+        - analysis[day_int].day_info.venue_open_close_v2.**day_text** `string`
+          Day name for this day. E.g. `"Monday"`.
+          &nbsp;
+        - analysis[day_int].day_info.venue_open_close_v2.**open_24h** `bool`
+          Indicates if the venue is open 24 hours on this day.
+          &nbsp;
+        - analysis[day_int].day_info.venue_open_close_v2.**crosses_midnight** `bool`
+          Indicates if any opening period crosses midnight.
+          &nbsp;
         - analysis[day_int].day_info.venue_open_close_v2.**24h** `list`
-          List with objects describing each opening period in 24 hour notation. Every object contains `opens`, `opens_minutes`, `closes`, `closes_minutes`, `open_24h`, `crosses_midnight`, and `day_text`.
+          List with objects describing each opening period in 24 hour notation. Every object contains `opens`, `opens_minutes`, `closes`, and `closes_minutes`.
           &nbsp;
         - analysis[day_int].day_info.venue_open_close_v2.**12h** `list`
-          List with open and close times for the venue in 12 hour notation (matching the `label` values shown in the `24h` objects).
+          List with open and close times for the venue in 12 hour notation.
           &nbsp;
         - analysis[day_int].day_info.venue_open_close_v2.**special_day** `object|null`
           Optional object describing holiday/special-day overrides. Either `null` or an object with `message` and `name` fields.
           &nbsp;
+     - analysis[day_int].day_info.**note** `string`
+       Optional note about the day_info structure or updates.
+       &nbsp;
  - analysis[day_int].**day_raw** `list`
    List of raw busyness data for each hour of the day, or within the selected hour range. The list contains percentages ranging from `0` to `100`. Indicating the busyness percentage. Percentages are based on historical visits for the given hour, relative to the biggest peak of the week for this venue. When the `now` or `live` parameter is `true` the list will contain one `int` for the current hour in the local time.
     &nbsp;
@@ -305,6 +314,9 @@ By default the API is limited to 10 requests per second. Contact us for higher l
   &nbsp;
  - venue_info.**venue_address** `string`
    Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.
+  &nbsp;
+ - venue_info.**venue_address_list** `list`
+   Address of the venue broken down into a list of components. Typically contains street address, city/state/zip, and country as separate elements.
   &nbsp;
  - venue_info.**venue_id** `string`
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).

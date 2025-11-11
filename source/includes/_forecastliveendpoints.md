@@ -85,26 +85,52 @@ By default the API is limited to 10 requests per second. Contact us for higher l
 
 ```json
 {
-    "analysis": {
-        "venue_forecasted_busyness": 60,
-        "venue_live_busyness": 20,
-        "venue_live_busyness_available": true,
-        "venue_forecast_busyness_available": true,   
-        "venue_live_forecasted_delta": -40
-    },
     "status": "OK",
+    "analysis": {
+        "venue_forecasted_busyness": 85,
+        "venue_forecast_busyness_available": true,
+        "venue_live_busyness": 90,
+        "venue_live_busyness_available": true,
+        "venue_live_forecasted_delta": 5,
+        "hour_start": 11,
+        "hour_start_12": "11AM",
+        "hour_end": 12,
+        "hour_end_12": "12PM"
+    },
     "venue_info": {
-        "venue_current_gmttime": "Friday 2021-04-23 07:19AM",
-        "venue_current_localtime": "Friday 2021-04-23 03:19PM",
-        "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
-        "venue_name": "McDonald's",
-        "venue_timezone": "America/Los_Angeles",
-        "venue_dwell_time_min": 20,
-        "venue_dwell_time_max": 60,
-        "venue_dwell_time_avg": 40,
-        "rating": 3.5,
-        "reviews": 1204,
-        "price_level": 1
+        "venue_current_gmttime": "Tuesday 2025-11-11 04:23PM",
+        "venue_current_localtime": "Tuesday 2025-11-11 11:23AM",
+        "venue_id": "ven_454e4e686e4a7046453659526b6f775a6c3673525158614a496843",
+        "venue_name": "Empire State Building",
+        "venue_address": "20 W 34th St. New York, NY 10001 United States",
+        "venue_timezone": "America/New_York",
+        "venue_open": "Open",
+        "venue_dwell_time_min": 45,
+        "venue_dwell_time_max": 120,
+        "venue_dwell_time_avg": 82,
+        "venue_lat": 40.7484405,
+        "venue_lon": -73.98566439999999,
+        "rating": 4.7,
+        "reviews": 121628,
+        "price_level": 0,
+        "venue_open_close_v2": {
+            "day_int": 1,
+            "day_text": "Tuesday",
+            "24h": [
+                {
+                    "opens": 11,
+                    "closes": 22,
+                    "opens_minutes": 0,
+                    "closes_minutes": 0
+                }
+            ],
+            "12h": [
+                "11am–10pm"
+            ],
+            "special_day": null,
+            "open_24h": false,
+            "crosses_midnight": false
+        }
     }
 }
 ```
@@ -131,6 +157,18 @@ By default the API is limited to 10 requests per second. Contact us for higher l
  - analysis.**venue_live_forecasted_delta** `int`  
    Indicates the difference of the current live busyness versus the forecasted busyness for this hour, in percentage. A negative number indicates that is is less busy then normal, while a positive number indicates that it is more busy than normal. Ranging from `-100` to `100`.  
   &nbsp;
+ - analysis.**hour_start** `int`  
+   Start hour of the current time window in 24 hour notation.  
+  &nbsp;
+ - analysis.**hour_start_12** `string`  
+   Start hour of the current time window in 12 hour notation.  
+  &nbsp;
+ - analysis.**hour_end** `int`  
+   End hour of the current time window in 24 hour notation.  
+  &nbsp;
+ - analysis.**hour_end_12** `string`  
+   End hour of the current time window in 12 hour notation.  
+  &nbsp;
 - **status** `string`  
  Status of the response. Either `OK` or `Error`.  
  &nbsp; 
@@ -144,13 +182,20 @@ By default the API is limited to 10 requests per second. Contact us for higher l
    Unique BestTime.app venue id. The `venue_id` is generated based on the venue name + address geocoding result. Therefore, when forecasting the same venue again it results in the same venue id. The `venue_id` is the primary input parameter to lookup (query) an existing forecast, using the [query endpoints] (#query-endpoints).
    The `venue_id` is used to perform queries.  
   &nbsp;
+ - venue_info.**venue_address** `string`  
+   Address of the venue. This is the address of the venue as found by the geocoding lookup. Note this address could be different than the `venue_address` used as input.  
+  &nbsp;
  - venue_info.**venue_current_gmtttime** `string`  
    Time at the venue in Greenwich Mean Time.  
- - venue_info.**venue_current_localtime_iso** `string`  
+  &nbsp;
+ - venue_info.**venue_current_localtime** `string`  
    Local time at the venue.  
   &nbsp;
  - venue_info.**venue_timezone** `string`  
   The timezone of the venue. E.g. `America/Los Angeles`.  
+  &nbsp;
+ - venue_info.**venue_open** `string`  
+   Current open status of the venue. Either `"Open"` or `"Closed"`.  
   &nbsp;
  - venue_info.**venue_dwell_time_min** `int`  
    Minimum usual visitor dwell time in minutes, or `0` when not available.  
@@ -170,3 +215,33 @@ By default the API is limited to 10 requests per second. Contact us for higher l
   - venue_info.**price_level** `int`
     Price level of the venue ranging from `1` (least expensive) to `5` (most expensive), or `0` when not available.
    &nbsp;
+ - venue_info.**venue_lat** `float`
+   Geographic latitude of the venue.
+   &nbsp;
+ - venue_info.**venue_lon** `float`
+   Geographic longitude of the venue.
+   &nbsp;
+ - venue_info.**venue_open_close_v2** `object`
+   Object with open and close times for the venue for the current day. The object contains `day_int`, `day_text`, two lists: `24h` and `12h`, and optional `special_day`. The `24h` list contains open and close times for the venue in 24 hour notation. The `12h` list contains open and close times for the venue in 12 hour notation. A venue can have multiple opening times per day.
+   &nbsp;
+   - venue_info.venue_open_close_v2.**day_int** `int`
+     Day integer range `0` (Monday) to `6` (Sunday) for the current day.
+     &nbsp;
+   - venue_info.venue_open_close_v2.**day_text** `string`
+     Day name for the current day. E.g. `"Tuesday"`.
+     &nbsp;
+   - venue_info.venue_open_close_v2.**24h** `list`
+     List with objects describing each opening period in 24 hour notation. Every object contains `opens`, `opens_minutes`, `closes`, and `closes_minutes`.
+     &nbsp;
+   - venue_info.venue_open_close_v2.**12h** `list`
+     List with open and close times for the venue in 12 hour notation.
+     &nbsp;
+   - venue_info.venue_open_close_v2.**special_day** `object|null`
+     Optional object describing holiday/special-day overrides. Either `null` or an object with `message` and `name` fields when Google marks a day as special.
+     &nbsp;
+   - venue_info.venue_open_close_v2.**open_24h** `bool`
+     Indicates if the venue is open 24 hours on this day.
+     &nbsp;
+   - venue_info.venue_open_close_v2.**crosses_midnight** `bool`
+     Indicates if any opening period crosses midnight.
+     &nbsp;
