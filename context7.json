@@ -3,6 +3,8 @@
   "projectTitle": "BestTime.app Foot-traffic Data API",
   "description": "Provides an API for accessing foot-traffic data, with its documentation repository created using Slate.",
   "branch": "master",
+  "url": "https://context7.com/besttime-app/besttime-documentation",
+  "public_key": "pk_ZDbu7mzmXIWpnT30DfdrV",
   "excludeFolders": [
     "archive",
     "archived",
