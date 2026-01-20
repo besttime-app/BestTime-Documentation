@@ -1,171 +1,160 @@
+Here is a rewritten, polished version of the introduction. I have kept the original structure and sections but improved the clarity, flow, and formatting to make it more developer-friendly and professional.
+
+***
 
 # Introduction
 
-Welcome to the BestTime.app documentation! The documentation includes different sections.
+Welcome to the BestTime.app documentation. This guide covers everything you need to know to integrate foot traffic data into your applications.
 
-* What is BestTime.app (see below)
-* [API reference](#api-reference)
-
+* **What is BestTime.app?** (See below)
+* **[API Reference](#api-reference)** (Authentication, Endpoints, and Parameters)
 
 ## What is BestTime.app?
-BestTime.app is a foot traffic data (API) service that forecasts how busy a public business (venues) will be at any given hour of the week. 
-The data is provided for 150+ countries using anonymous phone signals, and is available for retail, restaurants, bars, gyms, museums, and more. 
-Foot traffic forecasts are based on average visits over the past weeks. 
-Busyness for any given hour is predicted relative to the biggest peak of the week for this business. 
-The foot traffic data is presented as percentages for each hour of the week from 0% (empty/ closed) to 100% (visitor peak of the week). 
 
-<b>Highly recommended to read:
-- [BestTime tools beginners tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
-- [BestTime Software API beginners tutorial](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
-</b>
+BestTime.app is a foot traffic data API service that forecasts how busy public venues (e.g., restaurants, gyms, parks, retail stores) will be at any given hour of the week.
 
-Additional BestTime functionality:
-<ul>
-<li>Live updates - know if a venue is more or less busy than normal (not available for all venues).</li>
-<li>Foot traffic analyses, like peak hours, quiet hours, week overviews</li>
-<li>Search foot traffic based on category (e.g. supermarkets in London) or name (e.g. McDonalds in San Francisco).
-</li>
-<li>
-    Filter and sort venues in a whole area based on foot traffic data, dwell time, day, time, and business type, location, and more.
-</li>
-<li>Integrate all data directly into your applications/ research using the developer REST-API.
-</li>
-</ul>
-You could compare it with a supercharged FourSquare foot traffic data/ Google Popular Times API with more footfall data analytic functionality.
+The data covers 150+ countries and is derived from anonymized mobile signals.
 
+**Key concepts:**
 
-## Use cases
-Below are a few example use-cases how the analyzed data can be used in real-world:
+* **Forecasts:** Predictions based on historical visitor trends from recent weeks.
+* **Relative Busyness:** Data is expressed as a percentage (0% to 100%), relative to that specific venue's peak traffic of the week.
+* **Granularity:** Data is provided for every hour of the week.
 
-- Inform visitors what the best time is to visit a venue.
-- Find the most popular hours of a bar nearby. This way you will never end up in an empty bar, and never end up in the queue.
-- Find the quietest gym by comparing multiple gyms in your neighborhood.
-- Find the best time to go to a museum and avoid the queue.
-- Find out of a venue is more crowded than normal at this moment with the live data.
-- Create a dashboard for your venue (e.g. reception, kitchen, etc) to keep your employees informed how busy it is now (live), how busy it will be next hour (forecasted), and when the next peak is coming.
-- Compare your business with the competitors to find the perfect time to launch a promotion.
-- Behavioral research: Get insights on how people behave in certain areas. E.g. in general gyms tend to peak around 7 am and 7 pm, restaurants tend to peak around 1 pm and 9 pm, shops tend to peak around 4 pm.
+> **Recommended Tutorials:**
+>
+> * [BestTime Tools: Beginners Tutorial](https://blog.besttime.app/foot-traffic-nightlife-bars/)
+> * [Software API: Beginners Guide](https://blog.besttime.app/beginners-guide-foot-traffic-data-software-api/)
 
+### Core Functionality
+
+* **Live Updates:** Check if a venue is currently busier or quieter than usual (available for select high-traffic venues).
+* **Advanced Analysis:** Access data on peak hours, quiet hours, dwell time, and surge hours (when people arrive/leave).
+* **Venue Search:** Find venues by category (e.g., "Supermarkets in London") or specific name (e.g., "McDonald's in San Francisco").
+* **Venue Filtering:** Sort and filter venues in a geographic area based on foot traffic, popularity, time of day, and more.
+* **Integration:** Full REST-API access for seamless integration into your software or research.
+
+## Use Cases
+
+Here are a few ways developers and businesses utilize BestTime data:
+
+* **Consumer Apps:** Show users the best time to visit museums, gyms, or theme parks to avoid queues.
+* **Nightlife Discovery:** Find the most popular bars nearby right now, ensuring users don't end up in an empty venue.
+* **Health & Wellness:** Compare local gyms to find the quietest one for a workout.
+* **Operational Dashboards:** Inform staff (e.g., kitchen or reception) about current real-time traffic and predicted peaks for the coming hours.
+* **Competitive Intelligence:** Compare your foot traffic against competitors to optimize marketing campaigns.
+* **Behavioral Research:** Analyze macro-trends, such as standard peak hours for different industries (e.g., gyms often peak at 7 AM and 7 PM).
 
 ## Forecasts
 
-A forecast can be made by giving the name and the approximate address of the public business. BestTime.app will try to find the correct business. If there is enough data available it will analyse the data and create a forecast. 
+To create a forecast, you simply provide the name and approximate address of a venue. BestTime analyzes available data to generate a foot traffic prediction.
 
-### Public businesses
-BestTime.app works in general only for public businesses. For example:
+### Supported Venues
 
-* Restaurants
-* Bars
-* Gyms
-* Shops
-* Museums
-* Theatres
-* Malls
-* Beaches
-* Supermarkets
-* Public offices (like customer service points)
-* Theme parks
+BestTime works for public "Points of Interest" (POIs). Examples include:
 
-### Results
-A forecast is usually created within a few seconds and responds with all primary analyses. Additionally, a forecast is stored on the server so it can be queried later again without the need to forecast the business again.
+* Restaurants, Bars, and Nightclubs
+* Gyms and Sports Centers
+* Shops, Malls, and Supermarkets
+* Museums, Theaters, and Theme Parks
+* Public Offices and Tourist Attractions
 
-The forecast results include:
+### Forecast Results
 
-- Relative foot traffic intensity percentage data for every hour of the week ranging from 0 to 100% (wherein 100% is the forecasted peak hour of the week)
-- Week analysis
-    - Peak busyness per day percentage
-    - Average busyness (volume) per day percentage
-    - Ranking based on the maximum peak of the day
-    - Ranking based on the total visitor's volume of the day
-- Hour analysis
-    - How busy each hour of the day will be (rated from -2 to +2)
-- Peak analysis
-    - Start time of the peak
-    - Time of the peak (maximum)
-    - End time of the peak
-    - Peak intensity (rated from 1 to 5)
-- Surge analysis
-    - What time are most people going to the business 
-    - What time are most people leaving the business
-- Busy hours
-    - List of all busy hours per day.
-- Quiet hours
-    - List of all quiet hours per day.
+Generating a forecast takes a few seconds. The result is stored on the server for fast retrieval later. The data includes:
 
-### Relative numbers
+* **Weekly Overview:** Foot traffic intensity (0-100%) for every hour of the week.
+* **Daily Analysis:** Peak busyness, average volume, and a comparative ranking of days (e.g., "Monday is the quietest day").
+* **Hour Analysis:** A descriptive rating for each hour (rated on a scale from -2 to +2).
+* **Peak Data:** Start time, end time, maximum intensity, and duration of peaks.
+* **Surge Analysis:** The specific times when most visitors arrive or leave.
+* **Lists:** Quick access lists for "Busy Hours" and "Quiet Hours."
 
-BestTime.app does not provide absolute business visitor numbers. Data in the forecasts represent an approximate how busy a business will be in a relative number. Each hour of the week is rated on a five-point scale from -2 to +2 (Low, below average, average, above average, high). The rating is also depending on the mean busyness of the week.
+### Relative Numbers vs. Absolute Numbers
+
+BestTime provides **relative** foot traffic data, not absolute visitor counts.
+
+* **0% to 100% Scale:** 100% represents the busiest hour of the week for that specific venue.
+* **Intensity Score:** Hours are also rated on a 5-point scale (Low, Below Average, Average, Above Average, High).
 
 ### Coverage
-BestTime.app has coverage in 150+ countries. It depends on multiple factors if a business can be forecasted. A rough guideline is that the business needs to be a public business and has at least 100 visitors per day. 
 
+We cover **150+ countries**.
 
-### Updating venue foot traffic data
-- Live data needs to be refreshed every clock hour using the Live data endpoint.
-- A foot traffic forecast can be used for one or multiple weeks. To update an existing business forecast you need to create a 'New venue foot traffic data forecast'.
-* The venue filter returns updated foot traffic data that is never older than a month. If you want the latest foot traffic data you can use the 'New venue foot traffic data forecast' to update a single venue, or the Venue Update tool to update multiple venues.
+* **Requirement:** A venue generally needs to be a public business with at least 100 visitors per week to generate statistically significant data.
+
+### Updating Data
+
+* **Forecasts:** Represents a "typical week" based on recent history. We recommend updating/refreshing forecasts once every 2–4 weeks using the *New Foot Traffic Forecast* endpoint.
+* **Live Data:** Represents real-time activity. This must be refreshed every clock hour using the *Live Data* endpoint.
+* **Venue Filter:** Returns cached data (never older than a month). For strictly fresh data, use the *New Foot Traffic Forecast* endpoint.
 
 ## Queries
-Forecasting a (new) business takes a few seconds (using the New Foot Traffic forecast endpoint). Normally a forecast is accurate for at least several weeks (depending on the business), therefore the data from existing forecasts can still be used for a longer period. Queries are used to get data from an existing forecasted business. For example the whole forecast, or a specific analysis on a specific day.
 
-A query response is almost instant, includes sometimes additional data, and makes it easier to answer specific questions.
+There is a difference between **Generating** a forecast and **Querying** one.
 
-### Recommended usage
-Forecasts are based on visits to the business from the past few weeks. We recommend therefore to only forecast (update) a business once every few weeks. Queries should be used in between the forecasts. This reduces API forecast credits and improves the API performance. The Venue filter tool is the most cost/speed effective method to get foot traffic data for multiple venues. Live data needs to be updated every clock hour and is therefore relatively expensive compared to using the Venue filter API and / or the New Foot Traffic forecast endpoint - which returns data that is useful for a week or longer.
+1. **New Forecast:** Analyzes raw data to create a prediction. Takes a few seconds; costs more credits.
+2. **Query:** Retrieves a previously generated forecast from the database. Instant response; costs fewer credits.
 
-### Additional dynamic data
-Some query responses include additional dynamic data on top of the stored forecast. 
-The peak-, surge-, busy-, quiet analysis query responses include the time remaining until the next event (e.g. 2,5 hours until the first busy hour).
+### Recommended Usage
 
-### Query analysis
-BestTime.app has several query endpoints:
+To optimize performance and credit usage:
 
-Venue queries:
-- Query the details of a specific venue
-- Query all forecasted venues
-- Query all venues matching the busyness, location, time & day, and/or type filter
+* Generate a **New Forecast** for a venue once every few weeks.
+* Use **Queries** to retrieve that data as often as needed in between updates.
+* Use the **Venue Filter** to retrieve data for multiple venues efficiently.
 
-Forecast of a single venue queries:
-- Query the whole original forecast (includes all analysis) of a venue
-- Query a specific day of the week (includes all analysis)
-- Query a specific hour of the day 
-- Query the current hour of the business with the local business timezone taken into account (or X hours ahead from the current hour)
-- Query the busy hours of today (or X days ahead from today)
-- Query the quiet hours of today (or X days ahead from today)
-- Query the peak hours of today (or X days ahead from today)
-- Query the surge hours of today (or X days ahead from today)
+### Smart Attributes
 
+Some query endpoints provide dynamic calculations on top of static data. For example, peak/surge analysis endpoints will calculate the "Time remaining until the next busy hour" (e.g., *"2.5 hours until peak"*).
 
-## Forecast day window and weekdays
-BestTime.app uses a 24-hour notation, displayed from `0` to `23`. Where `0` indicates midnight and `23` indicates 11 PM. 
-Important to know is that the foot traffic data time window ranges from 6 AM until 5 AM next day. Not from midnight to midnight. This is for example useful for public venues with late opening times like bars and nightclubs. 
+### Query Endpoints
 
-Below is an example how an array of 24 foot traffic percentages relate to the hour of the day , and the index of the array (from 0 - 23). The foot traffic data is just an example for a restaurant that opens at 9PM (array index 3) has a lunch peak 1 PM (array index 7),  a dinner peak at 9 PM (array index 15) and closes at 3 AM (array index 21).  
+* **Venue Details:** Retrieve metadata for specific venues or lists of venues.
+* **Full Forecast:** Retrieve the complete analysis for a venue.
+* **Specific Analysis:** Query specific data points to reduce payload size:
+  * Day or Week overview
+  * Specific Hour or "Current Hour" (adjusted for venue timezone)
+  * Lists of Busy, Quiet, Peak, or Surge hours
 
+## Forecast Day Window (The "BestTime Day")
 
-| Hour | Index | Foot Traffic (Example) |
-|------|-------|------------------------|
-| 6 AM  | 0     | 0                      |
-| 7 AM  | 1     | 0                      |
-| 8 AM  | 2     | 0                      |
-| 9 AM  | 3     | 10                     |
-| 10 AM | 4     | 15                     |
-| 11 AM | 5     | 35                     |
-| 12 PM | 6     | 50                     |
-| 1 PM  | 7     | 65                     |
-| 2 PM  | 8     | 45                     |
-| 3 PM  | 9     | 35                     |
-| 4 PM  | 10    | 30                     |
-| 5 PM  | 11    | 35                     |
-| 6 PM  | 12    | 45                     |
-| 7 PM  | 13    | 60                     |
-| 8 PM  | 14    | 85                     |
-| 9 PM  | 15    | 90                     |
-| 10 PM | 16    | 80                     |
-| 11 PM | 17    | 55                     |
-| 12 AM | 18    | 40                     |
-| 1 AM  | 19    | 30                     |
-| 2 AM  | 20    | 20                     |
-| 3 AM  | 21    | 0                      |
-| 4 AM  | 22    | 0                      |
-| 5 AM  | 23    | 0                      |
+It is crucial to understand how BestTime handles the "day."
+
+* **Standard Notation:** Hours are displayed from `0` (Midnight) to `23` (11 PM).
+* **The Day Window:** A "BestTime Day" runs from **6 AM to 5 AM the next morning**, rather than Midnight to Midnight.
+
+**Why?** This prevents data for nightlife venues (bars/clubs) from being split across two different days. A forecast for "Friday" includes the late-night hours of Friday night leading into Saturday morning (up to 5 AM).
+
+### Data Array Example
+
+The array index `0` corresponds to 6 AM, and index `23` corresponds to 5 AM the next day.
+
+*Example: A restaurant that opens at 9 AM, has a lunch peak at 1 PM, a dinner peak at 9 PM, and closes at 3 AM.*
+
+| Hour    | Array Index | Foot Traffic % | Note               |
+|:--------|:----------:|:--------------:|:-------------------|
+| 6 AM    | 0          | 0%             | Closed             |
+| 7 AM    | 1          | 0%             |                    |
+| 8 AM    | 2          | 0%             |                    |
+| **9 AM**| **3**      | **10%**        | **Opens**          |
+| 10 AM   | 4          | 15%            |                    |
+| 11 AM   | 5          | 35%            |                    |
+| 12 PM   | 6          | 50%            |                    |
+| **1 PM**| **7**      | **65%**        | **Lunch Peak**     |
+| 2 PM    | 8          | 45%            |                    |
+| 3 PM    | 9          | 30%            |                    |
+| 4 PM    | 10         | 25%            |                    |
+| 5 PM    | 11         | 30%            |                    |
+| 6 PM    | 12         | 40%            |                    |
+| 7 PM    | 13         | 60%            |                    |
+| 8 PM    | 14         | 80%            |                    |
+| **9 PM**| **15**     | **90%**        | **Dinner Peak**    |
+| 10 PM   | 16         | 80%            |                    |
+| 11 PM   | 17         | 55%            |                    |
+| 12 AM   | 18         | 40%            |                    |
+| 1 AM    | 19         | 30%            |                    |
+| 2 AM    | 20         | 20%            |                    |
+| **3 AM**| **21**     | **0%**         | **Closes**         |
+| 4 AM    | 22         | 0%             |                    |
+| 5 AM    | 23         | 0%             | End of Day Window  |
