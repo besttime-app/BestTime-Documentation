@@ -213,6 +213,77 @@ HTTP method: GET
 }
 ```
 
+## Collection by venue (lookup)
+
+Returns all collections (for a single API key) that already contain a specific venue.
+
+```python
+import requests
+ 
+url = "https://besttime.app/api/v1/collection/by_venue/ven_51387131543761435650505241346a394a6432395362654a496843"
+
+params = {
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+}
+
+response = requests.request("GET", url, params=params)
+print(response.json())
+```
+
+```shell
+# cURL
+curl --location --request GET 'https://besttime.app/api/v1/collection/by_venue/ven_51387131543761435650505241346a394a6432395362654a496843?api_key_private=pri_s43661721b084d36b8f469a2c012e754'
+```
+
+```javascript
+const params = new URLSearchParams({ 
+    'api_key_private': 'pri_s43661721b084d36b8f469a2c012e754',
+});
+
+fetch(`https://besttime.app/api/v1/collection/by_venue/ven_51387131543761435650505241346a394a6432395362654a496843?${params}`, {
+  method: 'GET'
+}).then(function(data) { 
+  console.log(data); 
+});
+```
+
+### Input attributes
+
+- **venue_id** `string` <span style="color:orange">REQUIRED</span>  
+ ID of the venue to check.
+ &nbsp; 
+- **api_key_private** `string` <span style="color:orange">REQUIRED</span>  
+ Private API Key. See more info on [API keys](#api-reference)  
+ &nbsp; 
+
+<aside class="notice">
+Collection by Venue endpoint: https://besttime.app/api/v1/collection/by_venue/{{venue_id}}
+</aside>
+
+<aside class="notice">
+HTTP method: GET
+</aside>
+
+> The above request returns JSON structured like this:
+
+```json
+{
+    "status": "OK",
+    "venue_id": "ven_51387131543761435650505241346a394a6432395362654a496843",
+    "count": 2,
+    "collections": [
+        {
+            "collection_id": "col_51387131543761435650505241346a39",
+            "name": "Supermarkets in Los Angeles, CA"
+        },
+        {
+            "collection_id": "col_9aa22614c7bf4dd6bcb1c3e0b46fd6bb",
+            "name": "Downtown favorites"
+        }
+    ]
+}
+```
+
 ## Collection Remove venue
 
 Removes a venue from the collection using the `venue_id`.
