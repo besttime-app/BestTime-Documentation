@@ -133,3 +133,54 @@ See: <http://localhost:4567>
 # Deply to cloudflare
 
 Zip the files inside 'build' folder and deploy to cloudflare using Pages > Upload zip
+
+# Build support-bot markdown for R2
+
+The public BestTime AI support bot uses a generated markdown file from R2:
+
+```text
+https://cdn.besttime.app/llm_besttime_email_tutorials_api_docs.md
+```
+
+Editable support-bot source parts live in `support_bot/`. API documentation is
+pulled from `source/index.html.md` and `source/includes/` in Slate include order.
+
+Build locally:
+
+```shell
+python3 scripts/build_support_bot_docs.py
+```
+
+Compare with the live CDN object:
+
+```shell
+python3 scripts/build_support_bot_docs.py --compare-live
+```
+
+Upload to R2 with Wrangler:
+
+```shell
+SUPPORT_BOT_R2_BUCKET=besttime scripts/upload_support_bot_docs.sh --deploy
+```
+
+The upload command requires `CLOUDFLARE_API_TOKEN` and
+`CLOUDFLARE_ACCOUNT_ID`. The wrapper safely loads these from
+`/Users/mickvermaat/Github/howbusyco/.env` by default, or from
+`CLOUDFLARE_ENV_FILE` when set.
+
+# Deploy Slate docs with Wrangler
+
+The public API docs are served by Cloudflare Pages. Build and deploy with:
+
+```shell
+scripts/deploy_slate_pages.sh --deploy
+```
+
+The script builds `source/` into `build/` and runs:
+
+```shell
+npx wrangler pages deploy build --project-name "$CLOUDFLARE_PAGES_PROJECT"
+```
+
+The default Pages project is `besttime-docs-api`, which serves
+`documentation.besttime.app`.
